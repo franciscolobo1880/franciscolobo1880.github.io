@@ -720,7 +720,9 @@ literal "false"
 ).
 
 \color purple
- This 
+ 
+\color inherit
+This 
 \begin_inset Formula $s$
 \end_inset
 
@@ -729,8 +731,6 @@ literal "false"
 \end_inset
 
 -wave superconductivity Kitaev model.
-
-\color inherit
  We show that in this suitable geometry, as the (gate controlled) chemical
  potential 
 \begin_inset Formula $\mu$
@@ -743,13 +743,14 @@ literal "false"
  is tuned, the SC state in the SM undergoes a phase transition from a topologica
 l SC state containing Majorana modes at the junction to an ordinary SC state
  with no Majorana modes at the junction.
- 
-\color purple
-For a small chemical potential in the nanowire, the combination of the spin-orbi
-t interaction and the Zeeman field, by virtue of the SC proximity effect,
- generates a helical phase similar to that of topological insulators (propagatin
-g edge states with spin-momentum locking) but with broken time-reversal
- symmetry.
+ For a small chemical potential in the nanowire, the combination of the
+ spin-orbit interaction and the Zeeman field, by virtue of the SC proximity
+ effect, generates
+\color darkgray
+ a helical phase similar to that of topological insulators (propagating
+ edge states with spin-momentum locking) but with broken time-reversal symmetry.
+
+\color inherit
  Moreover, we show that the supercurrent circling through the SM-SC heterostruct
 ure exhibits unusual behavior due to the presence of MFs in the system.
  In particular, the spectrum of Andreev states has an odd number of crossings
@@ -839,22 +840,14 @@ Consider the system show in Fig.(
 \end_inset
 
 .
- 
-\color green
-We further consider the realistic complication that the SO coupling and
+ We further consider the realistic complication that the SO coupling and
  the Zeeman field are largely confined to the normal part of the nanowire.
-
-\color inherit
  Also, to ensure that only one 1D mode is occupied, we consider the nanowire
  radius small compared to the Fermi wavelength 
 \begin_inset Formula $R\lesssim k_{F}^{-1}$
 \end_inset
 
 .
- 
-\color blue
-How do I generalize for the various modes? Like, where do I insert it on
- the math.
 \end_layout
 
 \begin_layout Standard
@@ -936,19 +929,15 @@ name "fig:SMSC"
 
 \end_inset
 
-The Hamiltonian density (
-\begin_inset Formula $H=\int_{-\infty}^{-\infty}\text{d}x\mathcal{H}$
-\end_inset
-
-) describing the kinetic energy of the SM electrons with the gate controlled
- chemical potential (in natural units 
+The Hamiltonian describing the kinetic energy of the SM electrons with the
+ gate controlled chemical potential (in natural units 
 \begin_inset Formula $c=1$
 \end_inset
 
 ) is simply
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}_{\text{K}}=\psi_{\alpha}^{\dagger}(x)\left(-\eta\partial_{x}^{2}-\mu\right)\psi_{\beta}(x)
+H_{\text{K}}=\psi_{\alpha}^{\dagger}\left(-\eta\partial_{x}^{2}-\mu\right)\psi_{\beta}
 \end{equation}
 
 \end_inset
@@ -1010,7 +999,7 @@ reaking potential is the opening of a band gap
  direction to the electron's spin as,
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}_{\text{R}}=\psi_{\alpha}^{\dagger}(x)\left(i\alpha_{\text{R}}\sigma_{y}\partial_{x}\right)\psi_{\beta}(x)
+H_{\text{R}}=\psi_{\alpha}^{\dagger}\left(i\alpha_{\text{R}}\sigma_{y}\partial_{x}\right)\psi_{\beta}
 \end{equation}
 
 \end_inset
@@ -1055,7 +1044,7 @@ ng (TB) approach, describing the hybridization in term of hoppings from
 \end_inset
 
 , 
-\begin_inset Formula $t_{\alpha\beta}=\langle\sigma_{\alpha}\mathbf{r}_{\alpha}\tilde{\tilde{\alpha}}|\mathcal{H}_{\text{R}}|\sigma_{\beta}\mathbf{r}_{\beta}\tilde{\tilde{\beta}}\rangle$
+\begin_inset Formula $t_{\alpha\beta}=\langle\sigma_{\alpha}\mathbf{r}_{\alpha}\tilde{\tilde{\alpha}}|H_{\text{R}}|\sigma_{\beta}\mathbf{r}_{\beta}\tilde{\tilde{\beta}}\rangle$
 \end_inset
 
 .
@@ -1074,8 +1063,8 @@ ng (TB) approach, describing the hybridization in term of hoppings from
 \emph on
 all 
 \emph default
-of the degrees of freedom while the tilde'd ones imply all but the ones
- made explicit subsequently.
+of the degrees of freedom while the tilded ones imply all but the ones made
+ explicit subsequently.
  This will become relevant further in the notes, when dealing with Nambu
  spinors.
  In a 1D nearest neighbor approximation with constant hopping term 
@@ -1083,7 +1072,7 @@ of the degrees of freedom while the tilde'd ones imply all but the ones
 \end_inset
 
 , we have 
-\begin_inset Formula $t_{\alpha,\beta}^{\text{NN}}=t_{0}\langle\tilde{\tilde{\alpha}}|\mathcal{H}_{\text{R}}|\tilde{\tilde{\beta}}\rangle\delta_{\sigma\sigma^{\prime}}$
+\begin_inset Formula $t_{\alpha,\beta}^{\text{NN}}=t_{0}\langle\tilde{\tilde{\alpha}}|H_{\text{R}}|\tilde{\tilde{\beta}}\rangle\delta_{\sigma\sigma^{\prime}}$
 \end_inset
 
 .
@@ -1106,7 +1095,7 @@ of the degrees of freedom while the tilde'd ones imply all but the ones
 
 .
  Hence, we have that 
-\begin_inset Formula $(\alpha_{\text{R}})_{\alpha\beta}\approx a_{0}t_{0}\Delta_{\text{SO}}/\Delta_{\text{sb}}\langle\tilde{\tilde{\alpha}}|\mathcal{H}_{\text{R}}|\tilde{\tilde{\beta}}\rangle\equiv\alpha_{0}^{\text{R}}\langle\tilde{\tilde{\alpha}}|\mathcal{H}_{\text{R}}|\tilde{\tilde{\beta}}\rangle$
+\begin_inset Formula $(\alpha_{\text{R}})_{\alpha\beta}\approx a_{0}t_{0}\Delta_{\text{SO}}/\Delta_{\text{sb}}\langle\tilde{\tilde{\alpha}}|H_{\text{R}}|\tilde{\tilde{\beta}}\rangle\equiv\alpha_{0}^{\text{R}}\langle\tilde{\tilde{\alpha}}|H_{\text{R}}|\tilde{\tilde{\beta}}\rangle$
 \end_inset
 
  with 
@@ -1115,7 +1104,7 @@ of the degrees of freedom while the tilde'd ones imply all but the ones
 
  the Bravais lattice length.
  
-\color green
+\color gray
 If one considers a very large system, the wave function will behave approximatel
 y as a plane-wave effectively averaging the locality of the hoppings, and
  thus one could set the Rashba interaction strength as simply a constant
@@ -1143,7 +1132,7 @@ As an additional term to our nanowire system, we next consider spin-splitting
  This term is straightforwardly described as
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}_{\text{Z}}=\psi_{\alpha}^{\dagger}(x)\left(V_{\text{Z}}\sigma_{x}\right)\psi_{\beta}(x)
+H_{\text{Z}}=\psi_{\alpha}^{\dagger}\left(V_{\text{Z}}\sigma_{x}\right)\psi_{\beta}
 \end{equation}
 
 \end_inset
@@ -1191,15 +1180,6 @@ yromagnetic factor of the semiconductor and
 \end_inset
 
  Bohr's magneton.
- 
-\color blue
-On the Quantica code we wrote instead 
-\begin_inset Formula $\sigma_{z}$
-\end_inset
-
- .
- When I asked you told me it didn't really matter but I don't see why.
- 
 \end_layout
 
 \begin_layout Standard
@@ -1265,22 +1245,12 @@ with
  These correlations can then be described with the Hamiltonian density
 \begin_inset Formula 
 \begin{equation}
-\mathcal{H}_{\text{SC}}=\frac{1}{2}\Delta(x)\psi_{\tilde{\alpha}\uparrow}^{*}(x)\psi_{\tilde{\alpha}\downarrow}^{*}(x)+c.c.\label{eq:H_SC}
+\mathcal{H}_{\text{SC}}=\frac{1}{2}\Delta(x)\psi_{\tilde{\alpha}\uparrow}^{*}\psi_{\tilde{\alpha}\downarrow}^{*}+c.c.\label{eq:H_SC}
 \end{equation}
 
 \end_inset
 
-
-\color green
-Notice that complex conjugation (instead of a hermitian conjugation) is
- sufficient since we said to be working with a 
-\begin_inset Formula $s$
-\end_inset
-
--wave SC.
-
-\color inherit
- Finally, the Hamiltonian density describing the whole system is given by
+Finally, the Hamiltonian density describing the whole system is given by
  
 \begin_inset Formula $\mathcal{H}=(\mathcal{H}_{\text{K}}+\mathcal{H}_{\text{R}}+\mathcal{H}_{\text{Z}})+\mathcal{H}_{\text{SC}}=\mathcal{H}_{\text{SM}}+\mathcal{H}_{\text{SC}}$
 \end_inset
@@ -1293,15 +1263,11 @@ Notice that complex conjugation (instead of a hermitian conjugation) is
 
 \end_inset
 
-where we omitted every spacial dependency (
-\begin_inset Formula $\psi_{\alpha}\equiv\psi_{\alpha}(x)$
-\end_inset
-
-, 
+where we omitted the spacial dependency in 
 \begin_inset Formula $\Delta\equiv\Delta(x)$
 \end_inset
 
-, etc...).
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1362,16 +1328,6 @@ where
 
 where the repeated indices signify a sum over them as is often done in Einstein
  notation.
- 
-\color green
-See that, and following the comment after Eq.(
-\begin_inset Formula $\text{\ref{eq:H_SC}}$
-\end_inset
-
-), we must now use hermitian conjugation (instead of just complex conjugation)
- on the anomalous terms.
-
-\color inherit
  Following the convection for Nambu spinors, one could initially assume
  the solution 
 \begin_inset Formula $\Psi_{\alpha}$
@@ -1668,19 +1624,6 @@ where
 \end_inset
 
  the exciton energies.
- 
-\color blue
-People always write this with 
-\begin_inset Formula $c$
-\end_inset
-
-'s but in my case these are just 
-\begin_inset Formula $\psi$
-\end_inset
-
-'s.
- Like, it's really just a matter of notation right, I'm not missing something?
- This is relevant in the mean-field dynamics.
 \end_layout
 
 \begin_layout Standard
@@ -1819,7 +1762,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-colback=black!6!white, colframe=black!6!white, breakable
+colback=black!5!white, colframe=black!5!white, breakable
 \end_layout
 
 \end_inset
@@ -2188,11 +2131,7 @@ Infinite nanowire
 \end_layout
 
 \begin_layout Subsubsection
-Normal infinite nanowire (
-\begin_inset Formula $\Delta=0$
-\end_inset
-
-)
+SM infinite nanowire with no SC proximity affects
 \end_layout
 
 \begin_layout Standard
@@ -2300,7 +2239,7 @@ literal "false"
 
  gap the spin is fixed and cannot flip.
  
-\color purple
+\color darkgray
 Furthermore, since the spin is given by the momentum direction, the nanowire
  is said to be in the helical regime.
  Also, if the chemical potential 
@@ -2407,7 +2346,7 @@ name "fig:En"
 \end_layout
 
 \begin_layout Subsubsection
-Superconductive infinite nanowire (
+SM infinite nanowire with homogeneous proximity effects (
 \begin_inset Formula $\varphi=0$
 \end_inset
 
@@ -2504,14 +2443,12 @@ In Fig.(
 
  only results in the horizontal squishing of the spectrum.
  The pairing will play two crucial roles: opening a gap at the outer wings
- of the dispersion, near the Fermi momenta 
+ of the dispersion,
+\color darkgray
+ near the Fermi momenta 
 \begin_inset Formula $k_{\text{F}}$
 \end_inset
 
- 
-\color blue
-why is it the Fermi wave vector?
-\color inherit
  corresponding to 
 \begin_inset Formula $\left(\eta k_{\text{F}}^{2}-\mu\right)\pm\alpha_{\text{R}}k_{\text{F}}=0$
 \end_inset
@@ -2555,7 +2492,7 @@ minigap
 
 .
  
-\color purple
+\color darkgray
 The former role eliminates the possibility of high-momentum gapless excitations,
  thus leaving only the chiral states near 
 \begin_inset Formula $k=0$
@@ -2567,8 +2504,10 @@ The former role eliminates the possibility of high-momentum gapless excitations,
  The latter role allows us to tune the topological phase transitions.
 
 \color purple
- We note that there is another way for gapping out the large momentum excitation
-s, for example, by coupling our system to an antiferromagnet with periodicity
+ 
+\color darkgray
+We note that there is another way for gapping out the large momentum excitations
+, for example, by coupling our system to an antiferromagnet with periodicity
  comparable to 
 \begin_inset Formula $2k_{F}$
 \end_inset
@@ -2612,7 +2551,7 @@ Furthermore, see that for
 \end_inset
 
  the nanowire is in it's trivial phase and has a superconducting gap 
-\color purple
+\color darkgray
 (being no longer spinless)
 \color inherit
  while for values 
@@ -2751,7 +2690,7 @@ Finite nanowire
 \end_layout
 
 \begin_layout Subsubsection
-Majorana nanowire (
+Minimal Majorana nanowire (
 \begin_inset Formula $\varphi=0$
 \end_inset
 
@@ -2800,35 +2739,8 @@ The energy spectrums of such a system can then be calculated by solving
 .
  The algebra is not particularly enlightening so we present here numerical
  results obtained with recourse of Quantica.jl.
- For the sake of completeness and clarity we explicitly write the fo
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\backslash
-delta_{ij}.
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-rm of the Hamiltonian matrix, being
+ For the sake of completeness and clarity we explicitly write the form of
+ the Hamiltonian matrix, being
 \begin_inset Formula 
 \[
 \mathcal{H}=\left(\begin{array}{ccc|ccc||ccc|ccc}
@@ -2986,7 +2898,7 @@ In Fig.(
 
 .
  
-\color purple
+\color darkgray
 This topological minigap can be shown to be effectively 
 \begin_inset Formula $p$
 \end_inset
@@ -3175,13 +3087,18 @@ Majorana wavefunctions amplitudes
 \end_inset
 
 meV (corresponding to InSb).
- 
-\color red
-The wavefuntions and the phase diagrams are from Elsa's article.
- 
+ Wavefunctions and phase diagrams from Elsa's article [
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "0.3"
+literal "false"
+
+\end_inset
+
+].
+
 \color blue
-The short length phase diagram looks like that because there are various
- modes allowed (not really 1D then) or...? 
+ 
 \color red
 
 \begin_inset CommandInset label
@@ -3408,14 +3325,16 @@ Being a quartic equation, the complete solution will read as
 \begin_inset Formula $C_{i}$
 \end_inset
 
- should satisfy the following constrains: 
+ 
+\color darkgray
+should satisfy the following constrains: 
 \begin_inset Formula $\prod_{i=i}^{4}\zeta_{i}=4m^{*2}C_{0}\text{ and }\sum_{i=1}^{4}\zeta_{i}=0$
 \end_inset
 
 .
 
 \color blue
- Where does this come from? From generic quartic solutions? 
+ 
 \color inherit
 This forces that, for example, if there is at least one complex solution
  
@@ -3433,7 +3352,9 @@ This forces that, for example, if there is at least one complex solution
 \end_inset
 
 .
- Fixing different values of 
+ 
+\color darkgray
+Fixing different values of 
 \begin_inset Formula $\lambda=\pm1$
 \end_inset
 
@@ -3444,9 +3365,9 @@ This forces that, for example, if there is at least one complex solution
 .
 
 \color blue
- Why? Again, from generic quartic solutions?
+ 
 \color inherit
- The remarkable feature of this model is that, for a fixed values of 
+The remarkable feature of this model is that, for a fixed values of 
 \begin_inset Formula $\Delta_{0}$
 \end_inset
 
@@ -3576,19 +3497,6 @@ nt coefficients, there will be no zero energy solution, however, for
 .
  This corresponds to the closing of the SC bulk excitations meaning that
  it specifies the phases boundary between TP trivial and nontrivial SC phases.
- 
-\color blue
-What about the case of massless electrons, 
-\begin_inset Formula $m^{*}=0$
-\end_inset
-
-, as in the case of graphene's Dirac cone dispersions? What does 
-\begin_inset Formula $\zeta^{4}=0$
-\end_inset
-
- mean physically?
-\color inherit
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -3709,8 +3617,6 @@ The Andreev spectrum as a function of the order parameters phase
 \end_layout
 
 \begin_layout Standard
-
-\color purple
 The two Majoranas at either side of a short junction in the topological
  phase combine into the characteristic low energy ABS spectrum 
 \begin_inset Formula $E(\varphi)\sim\cos(\varphi/2)$
@@ -3764,8 +3670,6 @@ The two Majoranas at either side of a short junction in the topological
 
 )(b.II.3).
  
-\color inherit
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -3899,19 +3803,15 @@ name "fig:S_phi"
 
 \begin_layout Standard
 
-\color purple
+\color darkgray
 In the absence of a Zeeman field, spin splitting of the ABS spectrum can
  be achieved by a nonzero 
 \begin_inset Formula $\varphi$
 \end_inset
 
  in a two-subband model with intersubband coupling.
- Specifically, mixing between the two lowest 
-\color blue
-transverse
-\color purple
- subbands in a low density regime may produce a strongly spin-dependent
- Fermi velocity 
+ Specifically, mixing between the two lowest transverse subbands in a low
+ density regime may produce a strongly spin-dependent Fermi velocity 
 \begin_inset Formula $v_{F}^{\uparrow}\neq v_{F}^{\downarrow}$
 \end_inset
 
@@ -3939,56 +3839,6 @@ transverse
 
  is protected by time-reversal symmetry.
  
-\color blue
-I don't even know where to put this paragraph because I don't understand
- it.
- 
-\end_layout
-
-\begin_layout Subsection
-Slow-varying order parameter
-\end_layout
-
-\begin_layout Standard
-Let us now consider a more realistic case where the superconducting proximity
- effects in the nanowire are slow-varying, this is, instead of considering
- that the order parameter 
-\begin_inset Formula $\Delta(x)$
-\end_inset
-
- behaves rigidly as Heaviside functions 
-\begin_inset Formula $\Theta$
-\end_inset
-
- when penetrating into the wire, we assume instead that it can (and it should)
- slowly-vary over some small length 
-\begin_inset Formula $\xi_{\text{sv}}\ll L$
-\end_inset
-
-.
- As the slow-varying we will be making use of Fermi distributions 
-\begin_inset Formula $f$
-\end_inset
-
- as follows,
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\Delta(x)=\Delta_{0}f_{h}(x-L)+\Delta_{0}e^{i\varphi}f_{h}(-x-L),\text{ with }f_{h}(x)=1-f_{e}(x)=1-\frac{1}{1+e^{\frac{1}{\xi_{\text{sv}}}x}}.
-\end{equation}
-
-\end_inset
-
-Of course, if one sets 
-\begin_inset Formula $\xi_{\text{sv}}\rightarrow0$
-\end_inset
-
- we come back to the previous Heaviside theta case.
-
-\color teal
- I want to make the code general to this kind of functions.
 \end_layout
 
 \begin_layout Standard
@@ -4213,6 +4063,8 @@ Kruchinin, Sergei.
 \end_layout
 
 \begin_layout Bibliography
+
+\color darkgray
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "note"
@@ -4221,9 +4073,7 @@ literal "false"
 
 \end_inset
 
- 
-\color blue
-Still have many many article to cite here that were in the 0's sections
+ Still have many many article to cite here that were in the 0's sections
  articles.
 \end_layout
 
