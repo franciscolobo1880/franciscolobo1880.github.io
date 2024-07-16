@@ -240,6 +240,12 @@ vspace{1cm}
 
 \end_layout
 
+\begin_layout Section
+
+\size largest
+Hartree-Fock-Nambu mean-field theory
+\end_layout
+
 \begin_layout Subsection
 Introduction
 \end_layout
@@ -662,7 +668,7 @@ As derived below in the gray appendices, the purely electronic rDM equation
  compact and elegant manner as 
 \begin_inset Formula 
 \begin{equation}
-i\hbar\frac{d}{dt}\rho_{ab}^{\text{ee}}=\left[h_{ab}^{\text{HF}},\rho_{ab}^{\text{ee}}\right]-\rho_{ab}^{\text{ee}}\Delta_{ba}^{*}+\Delta_{ab}\rho_{ab}^{\text{he}}\label{eq:EoM_n}
+i\hbar\frac{d}{dt}\rho_{ab}^{\text{ee}}=\left[h_{ab}^{\text{HF}},\rho_{ab}^{\text{ee}}\right]-\rho_{ab}^{\text{ee}}\left(\Sigma_{ba}^{\Delta}\right)^{*}+\Sigma_{ab}^{\Delta}\rho_{ab}^{\text{he}}\label{eq:EoM_n}
 \end{equation}
 
 \end_inset
@@ -686,7 +692,7 @@ identifying the Hartree, Fock and pairing self-energies (themselves dependent
 \begin{array}{c}
 \Sigma_{ab}^{H}=\sum_{\gamma\delta}V_{b\gamma}^{\delta a}\rho_{\gamma\delta}^{\text{ee}}\vspace{2mm}\\
 \Sigma_{ab}^{F}=-\sum_{\gamma\delta}V_{b\gamma}^{a\delta}\rho_{\gamma\delta}^{\text{ee}}
-\end{array}\quad\text{and}\quad\,\Delta_{ab}=\sum_{\gamma\delta}V_{\delta\gamma}^{ab}\rho_{\gamma\delta}^{\text{eh}}
+\end{array}\quad\text{and}\quad\,\Sigma_{ab}^{\Delta}=\sum_{\gamma\delta}V_{\delta\gamma}^{ab}\rho_{\gamma\delta}^{\text{eh}}
 \end{equation}
 
 \end_inset
@@ -698,7 +704,7 @@ As a side note concerning excitons, notice that the Fock self-energy term
  Conversely, the Hartree self-energy term will control details of the excitation
  spectrum, such as spin-splitting.
  Also, note the symmetry 
-\begin_inset Formula $\Delta_{ab}=-\Delta_{ba}$
+\begin_inset Formula $\Sigma_{ab}^{\Delta}=-\Sigma_{ba}^{\Delta}$
 \end_inset
 
 .
@@ -727,7 +733,7 @@ but instead perform the mean-field decoupling
 which yields the anomalous equation of motion
 \begin_inset Formula 
 \begin{equation}
-i\hbar\frac{d}{dt}\rho_{ab}^{\text{eh}}=h_{ab}^{\text{HF}}\rho_{ab}^{\text{eh}}-\rho_{ab}^{\text{eh}}h_{ba}^{\text{HF}}+\Delta_{ab}\rho_{ab}^{\text{hh}}-\rho_{ab}^{\text{ee}}\Delta_{ab}\label{eq:EoM_an}
+i\hbar\frac{d}{dt}\rho_{ab}^{\text{eh}}=h_{ab}^{\text{HF}}\rho_{ab}^{\text{eh}}-\rho_{ab}^{\text{eh}}h_{ba}^{\text{HF}}+\Sigma_{ab}^{\Delta}\rho_{ab}^{\text{hh}}-\rho_{ab}^{\text{ee}}\Sigma_{ab}^{\Delta}\label{eq:EoM_an}
 \end{equation}
 
 \end_inset
@@ -795,8 +801,8 @@ with the purely electronic reading
 \begin_inset Formula 
 \begin{align*}
  & -\frac{1}{2}\mathfrak{\rho}_{a\gamma}^{\text{eh}}(V_{b\gamma}^{\beta\alpha}-V_{\gamma b}^{\beta\alpha})(\mathfrak{\rho}_{\alpha\beta}^{\text{eh}})^{*}-\frac{1}{2}(V_{\beta\gamma}^{\alpha a}-V_{\beta\gamma}^{a\alpha})\mathfrak{\rho}_{\gamma\beta}^{\text{eh}}\mathfrak{\rho}_{\alpha b}^{\text{he}}\\
-= & -\frac{1}{2}\mathfrak{\rho}_{a\gamma}^{\text{eh}}(\Delta_{b\gamma}-\Delta_{\gamma b})^{*}-\frac{1}{2}(\Delta_{\alpha a}-\Delta_{a\alpha})\mathfrak{\rho}_{\alpha b}^{\text{he}}\\
-= & \left.\rho_{\text{eh}}\cdot\Delta^{*}\right|_{ab}+\left.\Delta\cdot\mathfrak{\rho}_{\text{he}}\right|_{ab}
+= & -\frac{1}{2}\mathfrak{\rho}_{a\gamma}^{\text{eh}}(\Sigma_{b\gamma}^{\Delta}-\Sigma_{\gamma b}^{\Delta})^{*}-\frac{1}{2}(\Sigma_{\alpha a}^{\Delta}-\Sigma_{a\alpha}^{\Delta})\mathfrak{\rho}_{\alpha b}^{\text{he}}\\
+= & \left.\rho_{\text{eh}}\cdot\Sigma_{\Delta}^{*}\right|_{ab}+\left.\Sigma_{\Delta}\cdot\mathfrak{\rho}_{\text{he}}\right|_{ab}
 \end{align*}
 
 \end_inset
@@ -844,8 +850,8 @@ The first term reading
 \begin_inset Formula 
 \begin{align*}
  & \rho_{a\gamma}^{\text{eh}}(V_{\gamma\beta}^{\alpha b}-V_{\gamma\beta}^{b\alpha})\rho_{\beta\alpha}^{\text{ee}}-\frac{1}{2}\rho_{a\alpha}^{\text{ee}}(V_{\beta\gamma}^{\alpha b}-V_{\beta\gamma}^{b\alpha})\rho_{\gamma\beta}^{\text{eh}}\\
-= & \rho_{a\gamma}^{\text{eh}}\Sigma_{b\gamma}^{\text{HF}}-\frac{1}{2}\rho_{a\alpha}^{\text{ee}}(\Delta_{\alpha b}-\Delta_{b\alpha})\\
-= & \left.\rho_{\text{eh}}\cdot\Sigma_{\text{\text{HF}}}^{*}\right|_{ab}-\left.\rho_{\text{ee}}\cdot\Delta\right|_{ab}
+= & \rho_{a\gamma}^{\text{eh}}\Sigma_{b\gamma}^{\text{HF}}-\frac{1}{2}\rho_{a\alpha}^{\text{ee}}(\Sigma_{\alpha b}^{\Delta}-\Sigma_{b\alpha}^{\Delta})\\
+= & \left.\rho_{\text{eh}}\cdot\Sigma_{\text{\text{HF}}}^{*}\right|_{ab}-\left.\rho_{\text{ee}}\cdot\Sigma_{\Delta}\right|_{ab}
 \end{align*}
 
 \end_inset
@@ -854,8 +860,8 @@ and the second one reading
 \begin_inset Formula 
 \begin{align*}
  & -\frac{1}{2}\left(V_{\beta\gamma}^{\alpha a}-V_{\beta\gamma}^{a\alpha}\right)\rho_{\gamma\beta}^{\text{eh}}\rho_{\alpha b}^{\text{hh}}+\left(V_{\beta\gamma}^{\alpha a}-V_{\beta\gamma}^{a\alpha}\right)\rho_{\gamma\alpha}^{\text{ee}}\rho_{\beta b}^{\text{eh}}\\
-= & -\frac{1}{2}\left(\Delta_{\alpha a}-\Delta_{a\alpha}\right)\rho_{\alpha b}^{\text{hh}}+\Sigma_{a\beta}^{\text{HF}}\rho_{\beta b}^{\text{eh}}\\
-= & \left.\Delta\cdot\rho_{\text{hh}}\right|_{ab}+\left.\Sigma_{\text{HF}}\cdot\rho_{\text{eh}}\right|_{ab}
+= & -\frac{1}{2}\left(\Sigma_{\alpha a}^{\Delta}-\Sigma_{a\alpha}^{\Delta}\right)\rho_{\alpha b}^{\text{hh}}+\Sigma_{a\beta}^{\text{HF}}\rho_{\beta b}^{\text{eh}}\\
+= & \left.\Sigma_{\Delta}\cdot\rho_{\text{hh}}\right|_{ab}+\left.\Sigma_{\text{HF}}\cdot\rho_{\text{eh}}\right|_{ab}
 \end{align*}
 
 \end_inset
@@ -867,8 +873,8 @@ Confirming that the result actually checks out
 \begin_inset Formula 
 \begin{align*}
  & \left(\begin{array}{cc}
-h_{ab}^{\text{HF}} & \Delta_{ab}\\
-\Delta_{ba}^{*} & -h_{ba}^{\text{HF}}
+h_{ab}^{\text{HF}} & \Sigma_{ab}^{\Delta}\\
+\left(\Sigma_{ba}^{\Delta}\right)^{*} & -h_{ba}^{\text{HF}}
 \end{array}\right)\left(\begin{array}{cc}
 \rho_{ab}^{\text{ee}} & \rho_{ab}^{\text{eh}}\\
 \rho_{ab}^{\text{he}} & \rho_{ab}^{\text{hh}}
@@ -876,18 +882,18 @@ h_{ab}^{\text{HF}} & \Delta_{ab}\\
 \rho_{ab}^{\text{ee}} & \rho_{ab}^{\text{eh}}\\
 \rho_{ab}^{\text{he}} & \rho_{ab}^{\text{hh}}
 \end{array}\right)\left(\begin{array}{cc}
-h_{ab}^{\text{HF}} & \Delta_{ab}\\
-\Delta_{ba}^{*} & -h_{ba}^{\text{HF}}
+h_{ab}^{\text{HF}} & \Sigma_{ab}^{\Delta}\\
+\left(\Sigma_{ba}^{\Delta}\right)^{*} & -h_{ba}^{\text{HF}}
 \end{array}\right)\\
 = & \left[\begin{array}{cc}
-\left(h_{ab}^{\text{HF}}\rho_{ab}^{\text{ee}}+\Delta_{ab}\rho_{ab}^{\text{he}}\right) & \left(h_{ab}^{\text{HF}}\rho_{ab}^{\text{eh}}+\Delta_{ab}\rho_{ab}^{\text{hh}}\right)\\
+\left(h_{ab}^{\text{HF}}\rho_{ab}^{\text{ee}}+\Sigma_{ab}^{\Delta}\rho_{ab}^{\text{he}}\right) & \left(h_{ab}^{\text{HF}}\rho_{ab}^{\text{eh}}+\Sigma_{ab}^{\Delta}\rho_{ab}^{\text{hh}}\right)\\
 \circ & \circ
 \end{array}\right]-\left[\begin{array}{cc}
-\left(\rho_{ab}^{\text{ee}}h_{ab}^{\text{HF}}-\rho_{ab}^{\text{eh}}\Delta_{ba}^{*}\right) & \left(\rho_{ab}^{\text{ee}}\Delta_{ab}-\rho_{ab}^{\text{eh}}h_{ba}^{\text{HF}}\right)\\
+\left(\rho_{ab}^{\text{ee}}h_{ab}^{\text{HF}}-\rho_{ab}^{\text{eh}}\left(\Sigma_{ba}^{\Delta}\right)^{*}\right) & \left(\rho_{ab}^{\text{ee}}\Sigma_{ab}^{\Delta}-\rho_{ab}^{\text{eh}}h_{ba}^{\text{HF}}\right)\\
 \circ & \circ
 \end{array}\right]\\
 = & \left[\begin{array}{cc}
-\left(\left[h_{ab}^{\text{HF}},\rho_{ab}^{\text{ee}}\right]+\Delta_{ab}\rho_{\text{he}}+\rho_{ab}^{\text{eh}}\Delta_{ba}^{*}\right) & \left(h_{ab}^{\text{HF}}\rho_{ab}^{\text{eh}}-\rho_{ab}^{\text{eh}}h_{ba}^{\text{HF}}-\rho_{ab}^{\text{ee}}\Delta_{ab}+\Delta_{ab}\rho_{ab}^{\text{hh}}\right)\\
+\left(\left[h_{ab}^{\text{HF}},\rho_{ab}^{\text{ee}}\right]+\Sigma_{ab}^{\Delta}\rho_{\text{he}}+\rho_{ab}^{\text{eh}}\left(\Sigma_{ba}^{\Delta}\right)^{*}\right) & \left(h_{ab}^{\text{HF}}\rho_{ab}^{\text{eh}}-\rho_{ab}^{\text{eh}}h_{ba}^{\text{HF}}-\rho_{ab}^{\text{ee}}\Sigma_{ab}^{\Delta}+\Sigma_{ab}^{\Delta}\rho_{ab}^{\text{hh}}\right)\\
 \circ & \circ
 \end{array}\right]
 \end{align*}
@@ -940,7 +946,7 @@ colback=black!10!white, colframe=black!10!white, breakable
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Delta_{ab}=V_{\delta\gamma}^{ab}\rho_{\gamma\delta}^{\text{eh}}=V_{\gamma\delta}^{ba}\rho_{\gamma\delta}^{\text{eh}}\overset{\delta\rightleftharpoons\gamma}{=}V_{\delta\gamma}^{ba}\rho_{\delta\gamma}^{\text{eh}}=V_{\delta\gamma}^{ba}\left(-\rho_{\gamma\delta}^{\text{eh}}\right)=-\Delta_{ba}$
+\begin_inset Formula $\Sigma_{ab}^{\Delta}=V_{\delta\gamma}^{ab}\rho_{\gamma\delta}^{\text{eh}}=V_{\gamma\delta}^{ba}\rho_{\gamma\delta}^{\text{eh}}\overset{\delta\rightleftharpoons\gamma}{=}V_{\delta\gamma}^{ba}\rho_{\delta\gamma}^{\text{eh}}=V_{\delta\gamma}^{ba}\left(-\rho_{\gamma\delta}^{\text{eh}}\right)=-\Sigma_{ba}^{\Delta}$
 \end_inset
 
 
@@ -958,8 +964,8 @@ Putting these two results together yields a Nambu rDM EoM in terms of an
 \begin_inset Formula 
 \begin{align}
  & i\hbar\frac{d}{dt}\rho_{ab}=\left[H_{ab}^{\text{BdG}},\rho_{ab}\right]\text{ with }H_{\text{BdG}}=\left(\begin{array}{cc}
-h_{ab}^{\text{HF}} & \Delta_{ab}\\
-\Delta_{ba}^{*} & -h_{ba}^{\text{HF}}
+h_{ab}^{\text{HF}} & \Sigma_{ab}^{\Delta}\\
+\left(\Sigma_{ba}^{\Delta}\right)^{*} & -h_{ba}^{\text{HF}}
 \end{array}\right)
 \end{align}
 
@@ -1004,7 +1010,7 @@ with
 \begin{array}{c}
 \Sigma_{ab}^{H}=\sum_{\gamma}V^{a\gamma}\rho_{\gamma\gamma}^{\text{\text{ee}}}\delta_{ab}\vspace{2mm}\\
 \Sigma_{ab}^{F}=-V^{ab}\rho_{ab}^{\text{ee}}
-\end{array}\quad\text{and}\quad\,\Delta_{ab}=V^{ab}\rho_{ab}^{\text{\text{eh}}}
+\end{array}\quad\text{and}\quad\,\Sigma_{ab}^{\Delta}=V^{ab}\rho_{ab}^{\text{\text{eh}}}
 \end{equation}
 
 \end_inset
@@ -1023,7 +1029,7 @@ Furthermore, for the sake of getting the problem in a tight-binding scheme,
 \boldsymbol{\rho}_{ji}^{\text{he}} & \boldsymbol{\rho}_{ji}^{\text{\text{hh}}}
 \end{array}\right)=\left(\begin{array}{cc|cc}
 \rho_{i\uparrow j\uparrow}^{\text{ee}} & \rho_{i\uparrow j\downarrow}^{\text{ee}} & \rho_{i\uparrow j\uparrow}^{\text{eh}} & \rho_{i\uparrow j\downarrow}^{\text{eh}}\\
-\rho_{i\downarrow j\uparrow}^{\text{ee}} & \rho_{i\downarrow j\downarrow}^{\text{ee}} & \rho_{s\downarrow\uparrow}^{\text{eh}} & \rho_{i\downarrow j\downarrow}^{\text{eh}}\\
+\rho_{i\downarrow j\uparrow}^{\text{ee}} & \rho_{i\downarrow j\downarrow}^{\text{ee}} & \rho_{i\downarrow j\uparrow}^{\text{eh}} & \rho_{i\downarrow j\downarrow}^{\text{eh}}\\
 \hline \rho_{i\uparrow j\uparrow}^{\text{he}} & \rho_{i\uparrow j\downarrow}^{\text{he}} & \rho_{i\uparrow j\uparrow}^{\text{hh}} & \rho_{i\downarrow j\uparrow}^{\text{hh}}\\
 \rho_{i\downarrow j\uparrow}^{\text{he}} & \rho_{i\downarrow j\downarrow}^{\text{he}} & \rho_{i\uparrow j\downarrow}^{\text{hh}} & \rho_{i\downarrow j\downarrow}^{\text{hh}}
 \end{array}\right)
@@ -1044,13 +1050,18 @@ nt, we also have that
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\Sigma_{i\sigma_{i}j\sigma_{j}}^{H}= & \sum_{s}V^{is}\left(\rho_{s\uparrow s\uparrow}^{\text{\text{ee}}}+\rho_{s\downarrow s\downarrow}^{\text{\text{ee}}}\right)\delta_{ij}\delta_{\sigma_{i}\sigma_{j}}\\
-\Sigma_{i\sigma_{i}j\sigma_{j}}^{F}= & -V^{ij}\rho_{i\sigma_{i}j\sigma_{j}}^{\text{ee}}\text{ and }\,\Delta_{i\sigma_{i}j\sigma_{j}}=V^{ij}\rho_{i\sigma_{i}j\sigma_{j}}^{\text{eh}}\nonumber 
+\Sigma_{i\sigma_{i}j\sigma_{j}}^{H}= & \sum_{\ell}V^{i\ell}\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{\text{ee}}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{\text{ee}}}\right)\delta_{ij}\delta_{\sigma_{i}\sigma_{j}},\\
+\Sigma_{i\sigma_{i}j\sigma_{j}}^{F}= & -V^{ij}\rho_{i\sigma_{i}j\sigma_{j}}^{\text{ee}}\text{ and }\,\Sigma_{i\sigma_{i}j\sigma_{j}}^{\Delta}=V^{ij}\rho_{i\sigma_{i}j\sigma_{j}}^{\text{eh}},\nonumber 
 \end{align}
 
 \end_inset
 
-Notice that the Hartree term is exclusively an onsite due to the 
+with 
+\begin_inset Formula $\ell$
+\end_inset
+
+ a dummy site index.
+ Notice that the Hartree term is exclusively an onsite due to the 
 \begin_inset Formula $\delta_{ij}$
 \end_inset
 
@@ -1071,7 +1082,7 @@ we can then write the total self-energy of the system in an elegant and
  compact form as
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{\Sigma}_{ij}=\frac{1}{2}\sum_{s}V^{is}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{ss}\right)\left[\tau_{z}\otimes\sigma_{0}\right]\delta_{ij}-V^{ij}\tilde{\boldsymbol{\rho}}_{ij},
+\boldsymbol{\Sigma}_{ij}=\frac{1}{2}\sum_{\ell}V^{i\ell}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{\ell\ell}\right)\left[\tau_{z}\otimes\sigma_{0}\right]\delta_{ij}-V^{ij}\tilde{\boldsymbol{\rho}}_{ij},
 \end{equation}
 
 \end_inset
@@ -1096,9 +1107,9 @@ with both
 
  such that mean field decoupling gives rise to just the onsite term,
 \begin_inset Formula 
-\[
-\boldsymbol{\Sigma}_{ij}=\frac{1}{2}U\left[\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{ii}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-2\tilde{\boldsymbol{\rho}}_{ij}\right]\delta_{ij}.
-\]
+\begin{equation}
+\boldsymbol{\Sigma}_{ij}=\frac{1}{2}U\left[\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{ii}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-2\tilde{\boldsymbol{\rho}}_{ij}\right]\delta_{ij}.\label{eq:Sigma}
+\end{equation}
 
 \end_inset
 
@@ -1118,24 +1129,24 @@ colback=black!5!white, colframe=black!5!white, breakable
 
 
 \series bold
-Hubbard self-energy calculations
+Hubbard self-energy
 \end_layout
 
 \begin_layout Plain Layout
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{\Sigma}_{i}= & \left(\begin{array}{cc}
-\sum_{s}V^{is}\left(\rho_{s\uparrow\uparrow}^{\text{\text{ee}}}+\rho_{s\downarrow\downarrow}^{\text{\text{ee}}}\right)\mathds{1}-V^{i}\boldsymbol{\rho}_{i}^{\text{\text{ee}}} & V^{i}\boldsymbol{\rho}_{i}^{\text{eh}}\\
-\left[V^{i}\boldsymbol{\rho}_{i}^{\text{eh}}\right]^{T} & -\sigma_{y}\left[\sum_{s}V^{is}\left(\rho_{s\uparrow s\uparrow}^{\text{\text{ee}}}+\rho_{s\downarrow s\downarrow}^{\text{\text{ee}}}\right)\mathds{1}-V^{i}\boldsymbol{\rho}_{i}^{\text{\text{ee}}}\right]^{T}\sigma_{y}
+\sum_{\ell}V^{i\ell}\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{\text{ee}}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{\text{ee}}}\right)\mathds{1}-V^{ij}\boldsymbol{\rho}_{ij}^{\text{\text{ee}}} & V^{ij}\boldsymbol{\rho}_{ij}^{\text{eh}}\\
+\left[V^{ij}\boldsymbol{\rho}_{ij}^{\text{eh}}\right]^{\dagger} & -\left[\sum_{\ell}V^{i\ell}\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{\text{ee}}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{\text{ee}}}\right)\mathds{1}-V^{ij}\boldsymbol{\rho}_{ij}^{\text{\text{ee}}}\right]^{T}
 \end{array}\right)\\
-= & \frac{1}{2}\sum_{s}V^{is}\text{Tr}\left(\tau_{z}\tilde{\boldsymbol{\rho}}_{s}\right)\left(\begin{array}{cc}
+= & \frac{1}{2}\sum_{\ell}V^{i\ell}\text{Tr}\left(\tau_{z}\tilde{\boldsymbol{\rho}}_{\ell\ell}\right)\left(\begin{array}{cc}
 \mathds{1}\\
  & -\mathds{1}
-\end{array}\right)-V^{i}\left(\begin{array}{cc}
-\boldsymbol{\rho}_{i}^{\text{\text{ee}}} & -\boldsymbol{\rho}_{i}^{\text{eh}}\\
--\boldsymbol{\rho}_{i}^{\text{eh}} & -\sigma_{y}\boldsymbol{\rho}_{i}^{\text{\text{ee}}}\sigma_{y}
+\end{array}\right)-V^{ij}\left(\begin{array}{cc}
+\boldsymbol{\rho}_{ij}^{\text{\text{ee}}} & -\boldsymbol{\rho}_{ij}^{\text{eh}}\\
+-\left(\boldsymbol{\rho}_{ji}^{\text{eh}}\right)^{*} & -\boldsymbol{\rho}_{ji}^{\text{\text{ee}}}
 \end{array}\right)\\
-= & \frac{1}{2}\sum_{s}V^{is}\text{Tr}\left(\tau_{z}\tilde{\boldsymbol{\rho}}_{s}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-V^{i}\tilde{\boldsymbol{\rho}}_{i}
+= & \frac{1}{2}\sum_{\ell}V^{i\ell}\text{Tr}\left(\tau_{z}\tilde{\boldsymbol{\rho}}_{\ell\ell}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-V^{ij}\tilde{\boldsymbol{\rho}}_{ij}
 \end{align*}
 
 \end_inset
@@ -1143,12 +1154,12 @@ Hubbard self-energy calculations
 where the trace reads as 
 \begin_inset Formula 
 \[
-\text{Tr}\left(\tau_{z}\bar{\boldsymbol{\rho}}_{s}\right)=\text{Tr}\left(\begin{array}{cc|cc}
-\rho_{s\uparrow\uparrow}^{\text{ee}} & \rho_{s\uparrow\downarrow}^{\text{ee}} & -\rho_{s\uparrow\uparrow}^{\text{eh}} & -\rho_{s\uparrow\downarrow}^{\text{eh}}\\
-\rho_{s\downarrow\uparrow}^{\text{ee}} & \rho_{s\downarrow\downarrow}^{\text{ee}} & -\rho_{s\downarrow\uparrow}^{\text{eh}} & -\rho_{s\downarrow\downarrow}^{\text{eh}}\\
-\hline -\left[\rho_{s\uparrow\uparrow}^{\text{he}}\right] & -\left[\rho_{s\uparrow\downarrow}^{\text{he}}\right] & -\left[-\rho_{s\uparrow\uparrow}^{\text{ee}}\right] & -\left[\rho_{s\downarrow\uparrow}^{\text{ee}}\right]\\
--\left[\rho_{s\downarrow\uparrow}^{\text{he}}\right] & -\left[\rho_{s\downarrow\downarrow}^{\text{he}}\right] & -\left[\rho_{s\uparrow\downarrow}^{\text{ee}}\right] & -\left[-\rho_{s\downarrow\downarrow}^{\text{ee}}\right]
-\end{array}\right)=2\left(\rho_{s\uparrow\uparrow}^{\text{ee}}+\rho_{s\downarrow\downarrow}^{\text{ee}}\right)
+\text{Tr}\left(\tau_{z}\tilde{\boldsymbol{\rho}}_{\ell}\right)=\text{Tr}\left(\begin{array}{cc|cc}
+\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}} & \rho_{\ell\uparrow\ell\downarrow}^{\text{ee}} & -\rho_{\ell\uparrow\ell\uparrow}^{\text{eh}} & -\rho_{\ell\uparrow\ell\downarrow}^{\text{eh}}\\
+\rho_{\ell\downarrow\ell\uparrow}^{\text{ee}} & \rho_{\ell\downarrow\ell\downarrow}^{\text{ee}} & -\rho_{\ell\downarrow\ell\uparrow}^{\text{eh}} & -\rho_{\ell\downarrow\ell\downarrow}^{\text{eh}}\\
+\hline -\left[\rho_{\ell\uparrow\ell\uparrow}^{\text{he}}\right] & -\left[\rho_{\ell\uparrow\ell\downarrow}^{\text{he}}\right] & -\left[-\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}}\right] & -\left[\rho_{\ell\downarrow\ell\uparrow}^{\text{ee}}\right]\\
+-\left[\rho_{\ell\downarrow\ell\uparrow}^{\text{he}}\right] & -\left[\rho_{\ell\downarrow\ell\downarrow}^{\text{he}}\right] & -\left[\rho_{\ell\uparrow\ell\downarrow}^{\text{ee}}\right] & -\left[-\rho_{\ell\downarrow\ell\downarrow}^{\text{ee}}\right]
+\end{array}\right)=2\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{ee}}\right)
 \]
 
 \end_inset
@@ -1158,7 +1169,283 @@ where the trace reads as
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Section
+Gap Equation
+\end_layout
+
+\begin_layout Standard
+The typical textbook gap equation [???] describes the self-consistent pairing
  
+\begin_inset Formula $\Delta$
+\end_inset
+
+ of infinite system in a Hubbard scheme, reading
+\begin_inset Formula 
+\begin{equation}
+\Delta=-\frac{U}{N}\sum_{k}\frac{\Delta}{2E_{k}}\tanh\left(\frac{E_{k}}{2k_{\text{B}}T}\right),
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $U$
+\end_inset
+
+ the onsite Hubbard potential, 
+\begin_inset Formula $E_{k}$
+\end_inset
+
+ the 
+\begin_inset Formula $k$
+\end_inset
+
+-state eigen-energies and 
+\begin_inset Formula $k_{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $T$
+\end_inset
+
+ the Boltzmann constant and temperature.
+\end_layout
+
+\begin_layout Standard
+The main objective of this section is to derive the BCS gap equation from
+ our Hartree-Fock-Bogoliubov approach with the additional generalization
+ of allowing for a Zeeman field and spin orbit coupling, accounting not
+ only for the self-consistent pairing but also the self-consistently induced
+ magnetization and doping.
+\end_layout
+
+\begin_layout Subsection
+Without SOC
+\end_layout
+
+\begin_layout Standard
+Consider the non-interacting Hamiltonian 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ for an infinite nanowire in the presence of an external Zeeman field 
+\begin_inset Formula $V_{\text{Z}}$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{equation}
+H_{0}(k)=\sum_{s}c_{ks}^{\dagger}\left[(\epsilon_{k}-\mu)\delta_{ss^{\prime}}+V_{Z}\sigma_{z}\right]c_{ks^{\prime}},\label{eq:gap_H}
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $c^{\dagger}(c)$
+\end_inset
+
+ fermionic creation (annihilation) operators specified by its spin degree
+ of freedom 
+\begin_inset Formula $s=\uparrow/\downarrow$
+\end_inset
+
+ and momentum 
+\begin_inset Formula $k$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon_{k}$
+\end_inset
+
+ the respective spin independent (hence the 
+\begin_inset Formula $\delta_{ss^{\prime}}$
+\end_inset
+
+) energy and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ the chemical potential.
+ Once more, both 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ are Pauli matrices operating in their respectively spin and electron-hole
+ subspaces the Hamiltonian.
+\end_layout
+
+\begin_layout Standard
+One can reparametrizaze the onsite Hartree-Fock-Bogoliubov self-energy in
+ the Wannier-Hubbard limit in Eq.(
+\begin_inset Formula $\text{\ref{eq:Sigma}}$
+\end_inset
+
+) with the symmetries of Eq.(
+\begin_inset Formula $\text{\ref{eq:rDM}}$
+\end_inset
+
+) in terms of the self-consistently induced magnetization 
+\begin_inset Formula $\delta V_{\text{Z}}$
+\end_inset
+
+, doping 
+\begin_inset Formula $\delta\mu$
+\end_inset
+
+ and pairing 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ (assumed to be real) as 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\Sigma}_{ii}=\left(\delta V_{\text{Z}}\left[\tau_{z}\otimes\sigma_{z}\right]-\delta\mu\left[\tau_{z}\otimes\sigma_{0}\right]\right)-\Delta\left[\tau_{y}\otimes\textcolor{red}{i}\sigma_{y}\right].
+\end{equation}
+
+\end_inset
+
+Comparing this form with Eq.(
+\begin_inset Formula $\text{\ref{eq:rDM}}$
+\end_inset
+
+), we can identify the diagonal and off-diagonal block respectively as 
+\begin_inset Formula 
+\begin{equation}
+-\Delta i\sigma_{y}=U\left(\begin{array}{cc}
+0 & \rho_{i\uparrow i\downarrow}^{\text{eh}}\\
+\rho_{i\downarrow i\uparrow}^{\text{eh}} & 0
+\end{array}\right)\quad\text{and}\quad\delta V_{\text{Z}}\sigma_{z}-\delta\mu\sigma_{0}=\frac{1}{2}U\left(\begin{array}{cc}
+\rho_{i\downarrow i\downarrow}^{\text{ee}} & 0\\
+0 & \rho_{i\uparrow i\uparrow}^{\text{ee}}
+\end{array}\right)
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=black!5!white, colframe=black!5!white, breakable
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us first focus on the pairing term and then on the normal one.
+ Given that 
+\begin_inset Formula $\rho_{i\uparrow j\downarrow}^{\text{eh}}=-\rho_{i\downarrow j\uparrow}^{\text{eh}}$
+\end_inset
+
+ the pairing term becomes even simpler reading 
+\begin_inset Formula $\Delta=U\rho_{i\uparrow i\downarrow}^{\text{eh}}$
+\end_inset
+
+.
+ The superconductive correlation 
+\begin_inset Formula $\rho_{i\uparrow i\downarrow}^{\text{eh}}$
+\end_inset
+
+, which is being described in orbital space, can then be Fourier transformed
+ into the momentum space as
+\begin_inset Formula 
+\begin{align}
+\boldsymbol{\rho}_{ij} & =\frac{1}{N}\sum_{k}\langle\check{\boldsymbol{c}}_{k}^{\dagger}\otimes\check{\boldsymbol{c}}_{k}\rangle e^{\textcolor{red}{i}k(x_{j}-x_{i})}
+\end{align}
+
+\end_inset
+
+with 
+\begin_inset Formula $k$
+\end_inset
+
+ summed over the Brillouin zone and 
+\begin_inset Formula $N$
+\end_inset
+
+ the total number of sites in the system.
+ Furthermore, the fermionic operators 
+\begin_inset Formula $c_{k\uparrow}^{\dagger}/c_{k\downarrow}$
+\end_inset
+
+ can then be represented in terms of the eigenvalues 
+\begin_inset Formula $E_{k\pm}$
+\end_inset
+
+ and (normalized) eigenvectors 
+\begin_inset Formula $(u_{k\pm},\,v_{k\pm})$
+\end_inset
+
+ of the 
+\begin_inset Formula $H_{0}(k)$
+\end_inset
+
+ Hamiltonian in Eq.(
+\begin_inset Formula $\text{\ref{eq:gap_H}}$
+\end_inset
+
+), namely
+\begin_inset Formula 
+\[
+H^{\text{e}\uparrow/h\downarrow}(k)=\left(\begin{array}{cc}
+\tilde{\epsilon}_{k}+V_{\text{Z}} & \Delta\\
+\Delta & -\tilde{\epsilon}_{k}+V_{\text{Z}}
+\end{array}\right)
+\]
+
+\end_inset
+
+Hence, the superconductive correlation reads as
+\begin_inset Formula 
+\[
+\rho_{i\uparrow i\downarrow}^{\text{eh}}=\frac{1}{N}\sum_{k}\left[u_{k+}^{*}v_{k+}f(E_{k})+u_{k-}^{*}v_{k-}f(E_{k-})\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f$
+\end_inset
+
+ is the Fermi-Dirac distribution.
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=black!5!white, colframe=black!5!white, breakable
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
