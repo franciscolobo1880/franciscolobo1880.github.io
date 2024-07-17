@@ -135,7 +135,26 @@ selectfont
 
 \end_inset
 
- Hartree-Fock-Nambu mean-field theory
+ Self-consistent Hartree-Fock-
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fontsize{80pt}{0pt}
+\backslash
+selectfont
+\end_layout
+
+\end_inset
+
+-Bogoliubov theory
 \end_layout
 
 \begin_layout Standard
@@ -241,9 +260,7 @@ vspace{1cm}
 \end_layout
 
 \begin_layout Section
-
-\size largest
-Hartree-Fock-Nambu mean-field theory
+Hartree-Fock-Bogoliubov mean-field theory
 \end_layout
 
 \begin_layout Subsection
@@ -1166,6 +1183,391 @@ where the trace reads as
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Gap Equation
+\end_layout
+
+\begin_layout Standard
+The typical textbook gap equation [???] describes the self-consistent pairing
+ 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ of infinite system in a Hubbard scheme, reading
+\begin_inset Formula 
+\begin{equation}
+\Delta=-\frac{U}{N}\sum_{k}\frac{\Delta}{2E_{k}}\tanh\left(\frac{E_{k}}{2k_{\text{B}}T}\right),
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $U$
+\end_inset
+
+ the onsite Hubbard potential, 
+\begin_inset Formula $E_{k}$
+\end_inset
+
+ the 
+\begin_inset Formula $k$
+\end_inset
+
+-state eigen-energies and 
+\begin_inset Formula $k_{B}$
+\end_inset
+
+ and 
+\begin_inset Formula $T$
+\end_inset
+
+ the Boltzmann constant and temperature.
+\end_layout
+
+\begin_layout Standard
+The main objective of this section is to derive the BCS gap equation from
+ our Hartree-Fock-Bogoliubov approach with the additional generalization
+ of allowing for a Zeeman field and spin orbit coupling, accounting not
+ only for the self-consistent pairing but also the self-consistently induced
+ magnetization and doping.
+\end_layout
+
+\begin_layout Subsection
+Without SOC
+\end_layout
+
+\begin_layout Standard
+Consider the non-interacting Hamiltonian 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ for an infinite nanowire in the presence of an external Zeeman field 
+\begin_inset Formula $V_{\text{Z}}$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{equation}
+H_{0}(k)=\sum_{s}c_{ks}^{\dagger}\left[(\epsilon_{k}-\mu)\delta_{ss^{\prime}}+V_{Z}\sigma_{z}\right]c_{ks^{\prime}},\label{eq:gap_H}
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $c^{\dagger}(c)$
+\end_inset
+
+ fermionic creation (annihilation) operators specified by its spin degree
+ of freedom 
+\begin_inset Formula $s=\uparrow/\downarrow$
+\end_inset
+
+ and momentum 
+\begin_inset Formula $k$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon_{k}$
+\end_inset
+
+ the respective spin independent (hence the 
+\begin_inset Formula $\delta_{ss^{\prime}}$
+\end_inset
+
+) energy and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ the chemical potential.
+ Once more, both 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ are Pauli matrices operating in their respectively spin and electron-hole
+ subspaces the Hamiltonian.
+\end_layout
+
+\begin_layout Standard
+One can reparametrizaze the onsite Hartree-Fock-Bogoliubov self-energy in
+ the Wannier-Hubbard limit in Eq.(
+\begin_inset Formula $\text{\ref{eq:Sigma}}$
+\end_inset
+
+) with the symmetries of Eq.(
+\begin_inset Formula $\text{\ref{eq:rDM}}$
+\end_inset
+
+) in terms of the self-consistently induced magnetization 
+\begin_inset Formula $\delta V_{\text{Z}}$
+\end_inset
+
+, doping 
+\begin_inset Formula $\delta\mu$
+\end_inset
+
+ and pairing 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ (assumed to be real) as 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\Sigma}_{ii}=\left(\delta V_{\text{Z}}\left[\tau_{z}\otimes\sigma_{z}\right]-\delta\mu\left[\tau_{z}\otimes\sigma_{0}\right]\right)-\Delta\left[\tau_{y}\otimes\textcolor{red}{i}\sigma_{y}\right].
+\end{equation}
+
+\end_inset
+
+Comparing this form with Eq.(
+\begin_inset Formula $\text{\ref{eq:rDM}}$
+\end_inset
+
+), we can identify the diagonal and off-diagonal block respectively as 
+\begin_inset Formula 
+\begin{equation}
+-\Delta i\sigma_{y}=U\left(\begin{array}{cc}
+0 & \rho_{i\uparrow i\downarrow}^{\text{eh}}\\
+\rho_{i\downarrow i\uparrow}^{\text{eh}} & 0
+\end{array}\right)\quad\text{and}\quad\delta V_{\text{Z}}\sigma_{z}-\delta\mu\sigma_{0}=\frac{1}{2}U\left(\begin{array}{cc}
+\rho_{i\downarrow i\downarrow}^{\text{ee}} & 0\\
+0 & \rho_{i\uparrow i\uparrow}^{\text{ee}}
+\end{array}\right)
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=black!5!white, colframe=black!5!white, breakable
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us first focus on the pairing term and then on the normal one.
+ Given that 
+\begin_inset Formula $\rho_{i\uparrow j\downarrow}^{\text{eh}}=-\rho_{i\downarrow j\uparrow}^{\text{eh}}$
+\end_inset
+
+ the pairing term becomes even simpler reading 
+\begin_inset Formula $\Delta=U\rho_{i\uparrow i\downarrow}^{\text{eh}}$
+\end_inset
+
+.
+ The superconductive correlation 
+\begin_inset Formula $\rho_{i\uparrow i\downarrow}^{\text{eh}}$
+\end_inset
+
+, which is being described in orbital space, can then be Fourier transformed
+ into the momentum space as
+\begin_inset Formula 
+\begin{align}
+\boldsymbol{\rho}_{ij} & =\frac{1}{N}\sum_{k}\langle\check{\boldsymbol{c}}_{k}^{\dagger}\otimes\check{\boldsymbol{c}}_{k}\rangle e^{\textcolor{red}{i}k(x_{j}-x_{i})}
+\end{align}
+
+\end_inset
+
+with 
+\begin_inset Formula $k$
+\end_inset
+
+ summed over the Brillouin zone and 
+\begin_inset Formula $N$
+\end_inset
+
+ the total number of sites in the system.
+ Furthermore, the fermionic operators 
+\begin_inset Formula $c_{k\uparrow}^{\dagger}/c_{k\downarrow}$
+\end_inset
+
+ can then be represented in terms of the eigenvalues 
+\begin_inset Formula $E_{k\pm}$
+\end_inset
+
+ and (normalized) eigenvectors 
+\begin_inset Formula $(u_{k\pm},\,v_{k\pm})$
+\end_inset
+
+ of the 
+\begin_inset Formula $H_{0}(k)$
+\end_inset
+
+ Hamiltonian in Eq.(
+\begin_inset Formula $\text{\ref{eq:gap_H}}$
+\end_inset
+
+), namely
+\begin_inset Formula 
+\[
+H^{\text{e}\uparrow/h\downarrow}(k)=\left(\begin{array}{cc}
+\tilde{\epsilon}_{k}+V_{\text{Z}} & \Delta\\
+\Delta & -\tilde{\epsilon}_{k}+V_{\text{Z}}
+\end{array}\right)
+\]
+
+\end_inset
+
+Hence, the superconductive correlation reads as
+\begin_inset Formula 
+\[
+\rho_{i\uparrow i\downarrow}^{\text{eh}}=\frac{1}{N}\sum_{k}\left[u_{k+}^{*}v_{k+}f(E_{k})+u_{k-}^{*}v_{k-}f(E_{k-})\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f$
+\end_inset
+
+ is the Fermi-Dirac distribution.
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=black!5!white, colframe=black!5!white, breakable
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Zero temperature approximations
+\end_layout
+
+\begin_layout Standard
+According to Pablo's calculation, the self-consistent gap equation with
+ Zeeman reads as
+\begin_inset Formula 
+\begin{align*}
+\Delta= & -U\sum_{k}\frac{\Delta}{4\tilde{E}_{k}}\left[\tanh\left(\frac{\tilde{V}_{\text{Z}}+\tilde{E}_{k}}{2k_{B}T}\right)-\tanh\left(\frac{\tilde{V}_{\text{Z}}-\tilde{E}_{k}}{2k_{B}T}\right)\right]
+\end{align*}
+
+\end_inset
+
+where the tilded quantities are dressed, already accounting for the 
+\begin_inset Formula $U$
+\end_inset
+
+-induced shifts, i.e 
+\begin_inset Formula $\tilde{\mu}=\mu-\delta\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{V}_{\text{Z}}=V_{\text{Z}}+\delta V_{\text{Z}}$
+\end_inset
+
+, and 
+\begin_inset Formula $E_{k}$
+\end_inset
+
+ the eigenenergies given by 
+\begin_inset Formula $\tilde{E}_{k}=\sqrt{\Delta^{2}+\tilde{\epsilon}_{k}^{2}}$
+\end_inset
+
+ with 
+\begin_inset Formula $\tilde{\epsilon}_{k}=\epsilon_{k}-\tilde{\mu}$
+\end_inset
+
+.
+ Furthermore, the self-consistent equation for the induced Zeeman 
+\begin_inset Formula $\delta V_{\text{Z}}$
+\end_inset
+
+ and chemical potential 
+\begin_inset Formula $\delta\mu$
+\end_inset
+
+ are
+\begin_inset Formula 
+\begin{align*}
+\delta\mu= & \frac{U}{4}+\frac{U}{4N}\sum_{k}\frac{\tilde{\epsilon}_{k}}{2\tilde{E}_{k}}\left[\tanh\left(\frac{\tilde{V}_{\text{Z}}+\tilde{E}_{k}}{2k_{B}T}\right)-\tanh\left(\frac{\tilde{V}_{\text{Z}}-\tilde{E}_{k}}{2k_{B}T}\right)\right]\\
+\delta V_{\text{Z}}= & -\frac{U}{2N}\sum_{k}\frac{\sinh\left(\frac{\tilde{V}_{Z}}{k_{B}T}\right)}{\cosh\left(\frac{\tilde{V}_{Z}}{k_{B}T}\right)+\cosh\left(\frac{\tilde{E}_{k}}{k_{B}T}\right)}
+\end{align*}
+
+\end_inset
+
+Within the zero temperature regime 
+\begin_inset Formula $T\rightarrow0K$
+\end_inset
+
+ one can roughly approximate
+\begin_inset Formula 
+\begin{align*}
+\delta V_{\text{Z}}= & -\frac{U}{2N}\sum_{k}\frac{\sinh\left(\frac{\tilde{V}_{Z}}{k_{B}T}\right)}{\cosh\left(\frac{\tilde{V}_{Z}}{k_{B}T}\right)+\cosh\left(\frac{\tilde{E}_{k}}{k_{B}T}\right)}\\
+\approx & -\frac{U}{2N}\sum_{k}\frac{1}{2}\frac{\sinh\left(1/T\right)}{\cosh\left(1/T\right)}\\
+= & -\frac{U}{2N}\sum_{k}\frac{1}{2}\tanh\left(1/T\right)\overset{T\rightarrow0}{\longrightarrow}-\frac{U}{4N}\sum_{k}1
+\end{align*}
+
+\end_inset
+
+Moreover, and noting that
+\begin_inset Formula 
+\begin{align*}
+\tanh(x) & =\frac{\sinh(x)}{\cosh(x)}=\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}=\frac{1-e^{-2x}}{1+e^{-2x}}\\
+ & \overset{\chi=e^{-2x}}{\longrightarrow}\frac{1-\chi}{1+\chi}\overset{\chi\overset{x\rightarrow\infty}{\longrightarrow}0}{\longrightarrow}1-2\chi+\mathcal{O}(\chi^{2})
+\end{align*}
+
+\end_inset
+
+and thus
+\begin_inset Formula 
+\begin{align*}
+ & \tanh(x+y)-\tanh(x-y)\\
+= & \frac{\tanh(x)+\tanh(y)}{1+\tanh(x)\tanh(y)}-\frac{\tanh(x)+\tanh(-y)}{1+\tanh(x)\tanh(-y)}\\
+\approx & \frac{\left(1-2\chi\right)+\left(1-2\xi\right)}{1+\left(1-2\chi\right)\left(1-2\xi\right)}-\frac{\left(1-2\chi\right)-\left(1-2\xi\right)}{1-\left(1-2\chi\right)\left(1-2\xi\right)}\\
+\approx & 1+\frac{\chi-\xi}{\chi+\xi}=1+\frac{1-e^{2(x-y)}}{1+e^{2(x-y)}}=2\frac{1}{e^{2(x-y)}+1},
+\end{align*}
+
+\end_inset
+
+the remaining self-consistent equation reads as 
+\begin_inset Formula 
+\begin{align*}
+\Delta\approx & -U\sum_{k}\frac{\Delta}{2\tilde{E}_{k}}f\left(\tilde{V}_{\text{Z}}-\tilde{E}_{k}\right),\\
+\delta\mu\approx & \frac{U}{4}+\frac{U}{4N}\sum_{k}\frac{\tilde{\epsilon}_{k}}{\tilde{E}_{k}}f\left(\tilde{V}_{\text{Z}}-\tilde{E}_{k}\right).
+\end{align*}
 
 \end_inset
 
