@@ -1,0 +1,1082 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\useinnertheme{circles}
+
+\definecolor{Logo1}{rgb}{0, 0.4, 0.6}
+\definecolor{Logo2}{rgb}{0.92, 0.9, 0.9}
+
+% cor de titulos
+\setbeamercolor*{palette primary}{bg=Logo1, fg=white}
+% cor do meio
+\setbeamercolor*{palette secondary}{bg=Logo1, fg=white}
+% cor do autor
+\setbeamercolor*{palette tertiary}{bg=Logo1, fg=white} 
+\setbeamercolor*{palette quaternary}{bg=Logo1,fg=white}
+\setbeamercolor{structure}{fg=Logo1}
+\setbeamercolor{section in toc}{fg=Logo1}
+
+% --- Pacotes extra ---
+\usepackage{simpler-wick}
+\usepackage{cancel}
+\usepackage{xfrac}
+\usepackage{comment}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+%\setbeamercolor{block title}{fg=white, bg=orange!85!black}
+\setbeamercolor{block body}{bg=white!90!black}
+
+\setbeamercolor{block title alerted}{fg=white, bg=orange!90!black}
+\setbeamercolor{block body alerted}{bg=orange!20!white}
+
+\setbeamercolor{block title example}{fg=white, bg=Logo1!70!white}
+\setbeamercolor{block body example}{bg=Logo1!10!white}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+%------------------------------------------------------------
+\title[Excitons in hBN]
+{Excitonic properties of hBN from a time-dependent Hartree-Fock mean-field theory}
+
+\author[Francisco Lobo]
+{\Large \textcolor{Logo1}{\textbf{\underline{Student: Francisco Lobo} \\ Advisor: Bruno Amorim \\ Co-advisor: Nuno Peres \\}}}
+\vspace{5mm}
+
+\institute[]{
+  {\includegraphics[scale=0.35]{imagens/partners}}
+}
+
+\date[Master's thesis]
+
+%------------------------------------------------------------
+\begin{document}
+\frame{\titlepage}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+
+\begin{center}
+\Huge \textcolor{Logo1}{\textbf{Introduction}}
+\end{center}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+
+\large \textcolor{Logo1}{\textbf{Main objective:}}
+\pause
+\begin{itemize}
+\item Formulate a general method to calculate excitonic properties
+\pause
+\begin{itemize}
+\item \underline{Excitonic band structure}
+\item \underline{Excitonic wave-functions}
+\pause
+\item Generalized susceptibility
+\item Optical conductivity
+\end{itemize}
+\pause
+\item Apply it to the case of 2D materials such as hBN
+\end{itemize}
+\pause
+$$ $$
+
+\large \textcolor{Logo1}{\textbf{For this, we will need a:}}
+\pause
+\begin{itemize}
+\item \textit{Time-dependent} mean-field theory
+\pause
+\item Expression for the effective two-particle Hamiltonian \vspace{2mm}\\
+\pause
+\normalsize \textcolor{Logo1}{\textbf{Specific to a given:}}
+\begin{itemize}
+\item System's degrees of freedom
+\item Eletronic model for the single-particle states
+\item Electron-electron interaction
+\end{itemize}
+\pause
+\item Numerical implementation of eigenproblem
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+
+\begin{center}
+\Huge \textcolor{Logo1}{\textbf{Theoretical}} \\
+\Huge \textcolor{Logo1}{\textbf{description of}} \\
+\Huge \textcolor{Logo1}{\textbf{excitons}}
+\end{center}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Time-dependent Hartree-Fock mean-field theory}
+\pause
+
+\begin{exampleblock}{Many-body system of electrons}
+\begin{equation*}
+H_\text{eq}=\sum_{\alpha\beta}h_{\alpha\beta}c_{\alpha}^{\dagger}c_{\beta}+\frac{1}{2}\sum_{\alpha\beta\gamma\delta}V_{\gamma\delta}^{\alpha\beta}c_{\alpha}^{\dagger}c_{\beta}^{\dagger}c_{\gamma}c_{\delta}
+\end{equation*}
+\end{exampleblock}
+
+\begin{figure}
+\includegraphics[scale=0.2]{imagens/feynman_V}
+\end{figure}
+\pause
+
+\begin{exampleblock}{External perturbation}
+\begin{equation*}
+H_{\text{ext}}=\sum_{\alpha\beta}B_{\alpha\beta}c_{\alpha}^{\dagger}c_{\beta}F(t)
+\end{equation*}
+\end{exampleblock}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Time-dependent Hartree-Fock mean-field theory}
+
+\begin{exampleblock}{Reduced density matrix}
+\begin{equation*}
+\rho_{ba}(t) = \left\langle c_{a}^{\dagger}(t)c_{b}(t)\right\rangle
+\end{equation*}
+\end{exampleblock}
+\pause
+
+\begin{block}{}
+\begin{equation*}
+\frac{d}{dt}\rho_{ab}(t)=\frac{i}{\hslash}\left\langle [H,c_{b}^{\dagger}(t)]c_{a}(t)\right\rangle +\frac{i}{\hslash}\left\langle c_{b}^{\dagger}(t)[H,c_{a}(t)]\right\rangle
+\end{equation*}
+\end{block}
+\pause
+
+\begin{block}{}
+\begin{align*}
+-i\hslash\frac{d}{dt}\rho_{ab}(t) & =\rho_{a\alpha}(t)\left(h_{\alpha b}+B_{\alpha b}^{i}F^{i}(t)\right)-\left(h_{a\beta}+B_{a\beta}^{i}F^{i}(t)\right)\rho_{\beta b}(t)\nonumber \\
+ & +\frac{1}{2}V_{\gamma b}^{\alpha\beta}\left\langle c_{\alpha}^{\dagger}c_{\beta}^{\dagger}c_{\gamma}c_{a}\right\rangle -\frac{1}{2}V_{b\delta}^{\alpha\beta}\left\langle c_{\alpha}^{\dagger}c_{\beta}^{\dagger}c_{\delta}c_{a}\right\rangle \nonumber \\
+ & +\frac{1}{2}V_{\gamma\delta}^{\alpha a}\left\langle c_{b}^{\dagger}c_{\alpha}^{\dagger}c_{\gamma}c_{\delta}\right\rangle -\frac{1}{2}V_{\gamma\delta}^{a\beta}\left\langle c_{b}^{\dagger}c_{\beta}^{\dagger}c_{\gamma}c_{\delta}\right\rangle
+\end{align*}
+\end{block}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Time-dependent Hartree-Fock mean-field theory}
+
+\begin{exampleblock}{Mean-field decoupling}
+\begin{equation*}
+\left\langle c_{\alpha}^{\dagger}c_{\beta}^{\dagger}c_{\gamma}c_{\delta}\right\rangle \approx -\rho_{\gamma\alpha}(t)\rho_{\delta\beta}(t)+\rho_{a\alpha}(t)\rho_{\gamma\beta}(t)
+\end{equation*}
+\end{exampleblock}
+\pause
+
+\begin{alertblock}{}
+\begin{equation*}
+i\hslash\frac{d}{dt}\boldsymbol{\rho}(t)=[\boldsymbol{h}+\boldsymbol{B}\cdot\boldsymbol{F}(t)+\boldsymbol{\Sigma}^{H}[\boldsymbol{\rho}(t)]+\boldsymbol{\Sigma}^{F}[\boldsymbol{\rho}(t)],\boldsymbol{\rho}(t)]
+\end{equation*}
+\end{alertblock}
+\pause
+
+\begin{columns}
+\column{3cm}
+\begin{figure}
+\includegraphics[scale=0.2]{imagens/sE_H}
+\end{figure}
+
+\column{6cm}
+\begin{alertblock}{Hartree and Fock self-energy terms}
+\begin{equation*}
+\Sigma_{a\gamma}^{H}[\rho(t)-\rho^{(0)}] =V_{\delta\gamma}^{a\alpha}\rho_{\delta\alpha}(t)
+\end{equation*}
+\begin{equation*}
+\Sigma_{a\gamma}^{F}[\rho(t)-\rho^{(0)}] = -W_{\gamma\delta}^{a\alpha}\rho_{\delta\alpha}(t)
+\end{equation*}
+\end{alertblock}
+
+\column{3cm}
+\begin{figure}
+\includegraphics[scale=0.2]{imagens/sE_F}
+\end{figure}
+
+\end{columns}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Time-dependent Hartree-Fock mean-field theory}
+
+\begin{exampleblock}{Linear response in the single-particle eigenbasis at zero temperature }
+\begin{equation*}
+\boldsymbol{\rho}(t)\approx\boldsymbol{\rho}^{(0)}+\boldsymbol{\rho}^{(1)}(t)\quad\left|\right.\quad\begin{array}{c}
+h_{ac}=\epsilon_{a}\delta_{ac}\\
+\rho_{ab}^{(0)}=f_{a}\delta_{ab}
+\end{array}\quad\left|\right.\quad\begin{array}{c}
+f_{o}=1\\
+f_{e}=0
+\end{array}
+\end{equation*}
+\end{exampleblock}
+\pause
+
+\begin{alertblock}{}
+\begin{equation*}
+\left(\hslash\omega\mathbb{\boldsymbol{S}}-\boldsymbol{H}_{\text{e-h}}\right)\boldsymbol{\rho}^{(1)}(\omega)=\mathbb{\boldsymbol{S}}\boldsymbol{\mathcal{J}}(\omega)
+\end{equation*}
+\end{alertblock}
+\pause
+
+\begin{alertblock}{Effective two-particle Hamiltonian}
+\begin{equation*}
+\boldsymbol{H}_{\text{e-h}} = \left[\begin{array}{cc}
+\boldsymbol{R} & \boldsymbol{C}\\
+\boldsymbol{C}^{\dagger} & \boldsymbol{R}^{*}
+\end{array}\right]\overset{\text{TDA}}{\approx} \boldsymbol{R}
+\end{equation*}
+\end{alertblock}
+
+\begin{alertblock}{Resonant Block}
+\begin{equation*}
+\boldsymbol{R}\equiv H_{e_{1}o_{2}}^{e_{3}o_{4}} =\left(\epsilon_{e_{1}}-\epsilon_{o_{2}}\right)\delta_{e_{1}e_{3}}\delta_{o_{2}o_{4}}+\left(V_{o_{2}e_{3}}^{o_{4}e_{1}}-W_{o_{2}e_{3}}^{e_{1}o_{4}}\right)
+\end{equation*}
+\end{alertblock}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Linear response eigenvalue solution}
+\pause
+
+\begin{block}{}
+\begin{equation*}
+\left(\hslash\omega\mathbb{\boldsymbol{S}}-\boldsymbol{H}_{\text{e-h}}\right)\cdot\boldsymbol{\Psi}_{\lambda}=E_{\lambda}\boldsymbol{\Psi}.
+\end{equation*}
+\end{block}
+
+\begin{alertblock}{Excitonic generalized eigen-problem}
+\begin{equation*}
+\boldsymbol{H}_{\text{e-h}}\cdot\boldsymbol{\Psi}_{X}=E_{X}\mathbb{\boldsymbol{S}}\cdot\boldsymbol{\Psi}_{X}
+\end{equation*}
+\end{alertblock}
+\pause
+
+\begin{block}{}
+\begin{equation*}
+\boldsymbol{\rho}^{(1)}(\omega)=\sum_{X}a_{X}(\omega)\boldsymbol{\Psi}_{X}
+\end{equation*}
+\end{block}
+
+\begin{alertblock}{Reduced density matrix solution}
+\begin{equation*}
+\boldsymbol{\rho}^{(1)}(\omega)=\sum_{X}\boldsymbol{\Psi}_{X}\frac{\text{sign}(E_{X})}{\left(\hslash\omega-E_{X}\right)}\boldsymbol{\Psi}_{X}\cdot\mathbb{\boldsymbol{S}}\cdot\mathcal{\boldsymbol{B}}F(\omega)
+\end{equation*}
+\end{alertblock}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+
+\begin{center}
+\Huge \textcolor{Logo1}{\textbf{Excitonic generalized}} \\
+\Huge \textcolor{Logo1}{\textbf{eigen-problem}} \\
+\Huge \textcolor{Logo1}{\textbf{in a crystal}}
+\end{center}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Excitonic generalized eigen-problem in a crystal}
+
+\vspace*{-15mm}
+\begin{columns}
+\column{4.5cm}
+\begin{center}
+\end{center}
+\begin{figure}
+\includegraphics[scale=0.17]{imagens/Xbands}
+\end{figure}
+
+\column{6.5cm}
+\large \textcolor{Logo1}{\textbf{Structure in the Bloch momentum degree of freedom}}
+\begin{exampleblock}{}
+\begin{center}
+$\mathcal{J}_{\left\{ \boldsymbol{k}+\boldsymbol{Q}\right\} c_{1},\boldsymbol{k}v_{2}}(\omega,\boldsymbol{Q}+\boldsymbol{G})$
+\end{center}
+\end{exampleblock}
+\pause
+
+\begin{alertblock}{}
+\vspace*{-3mm}
+\begin{equation*}
+\boldsymbol{H}_{\text{e-h}}\overset{\text{TDA}}{\approx}\boldsymbol{R}_{\boldsymbol{k},\boldsymbol{k}^{\prime}}(\boldsymbol{Q})=H_{\left\{ \boldsymbol{k}+\boldsymbol{Q}\right\} c_{1},\boldsymbol{k}v_{2}}^{\left\{ \boldsymbol{k}^{\prime}+\boldsymbol{Q}\right\} c_{3},\boldsymbol{k}^{\prime}v_{4}}
+\end{equation*}
+\end{alertblock}
+\end{columns}
+\vspace*{-13mm}
+\pause
+
+\begin{figure}
+\includegraphics[scale=0.25]{imagens/allfeynmans}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Structure in the spin degree of freedom}
+\pause
+
+\begin{columns}
+\column{9.5cm}
+\begin{alertblock}{Spin-singlet set of solutions}
+\begin{equation*}
+\left|s\right\rangle=(1/\sqrt{2})\left(\left|c\uparrow,v\uparrow\right\rangle +\left|c\downarrow,v\downarrow\right\rangle \right)
+\end{equation*}
+\begin{equation*}
+R_{\text{s}}=\epsilon-W+2V
+\end{equation*}
+\end{alertblock}
+
+\column{1.5cm}
+\begin{figure}
+\includegraphics[scale=0.16]{imagens/singlet}
+\end{figure}
+\end{columns}
+
+\begin{columns}
+\column{9.5cm}
+\begin{alertblock}{Spin-triplet set of solutions}
+\begin{equation*}
+\left|t\right\rangle=\left|c\uparrow,v\downarrow\right\rangle,\ \left|c\downarrow,v\uparrow\right\rangle,\ 
+(1/\sqrt{2})\left(\left|c\uparrow,v\uparrow\right\rangle -\left|c\downarrow,v\downarrow\right\rangle \right)
+\end{equation*}
+\begin{equation*}
+R_{\text{t}}=\epsilon-W
+\end{equation*}
+\end{alertblock}
+
+\column{1.5cm}
+\begin{figure}
+\includegraphics[scale=0.18]{imagens/triplet}
+\end{figure}
+\end{columns}
+
+\begin{exampleblock}{}
+\begin{equation*}
+\epsilon:=\left(\epsilon_{\{\boldsymbol{k}+\boldsymbol{Q}\}c_{1}}-\epsilon_{\boldsymbol{k}v_{2}}\right),\quad W:=W_{\boldsymbol{k}v_{2},\left\{ \boldsymbol{k}^{\prime}+\boldsymbol{Q}\right\} c_{3}}^{\{\boldsymbol{k}+\boldsymbol{Q}\}c_{1},\boldsymbol{k}^{\prime}v_{4}},\quad V:=V_{\boldsymbol{k}v_{2},\left\{ \boldsymbol{k}^{\prime}+\boldsymbol{Q}\right\} c_{3}}^{\boldsymbol{k}^{\prime}v_{4},\{\boldsymbol{k}+\boldsymbol{Q}\}c_{1}}
+\end{equation*}
+\end{exampleblock}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+
+\begin{center}
+\Huge \textcolor{Logo1}{\textbf{Excitons on}} \\
+\Huge \textcolor{Logo1}{\textbf{hBN structures}}
+\end{center}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Eletronic single-particle states - NN tight-binding model}
+\pause
+
+\begin{columns}
+\column{6.5cm}
+
+\begin{figure}
+\includegraphics[scale=0.21]{imagens/tight}
+\end{figure}
+
+\vspace*{-3mm}
+\begin{exampleblock}{}
+\vspace*{-5mm}
+\begin{equation*}
+H_{\text{TB}}=\sum_{i}\epsilon_{A}a_{\mathbf{R}_{i}}^{\dagger}a_{\mathbf{R}_{i}}+\sum_{i}\epsilon_{B}b_{\mathbf{R}_{i}}^{\dagger}b_{\mathbf{R}_{i}}
+\end{equation*}
+\begin{equation*}
+-t\sum_{\left\langle i,j\right\rangle }\left(a_{\mathbf{R}_{i}}^{\dagger}b_{\mathbf{R}_{i}+\boldsymbol{\delta}_{j}}+b_{\mathbf{R}_{j}}^{\dagger}a_{\mathbf{R}_{i}-\boldsymbol{\delta}_{j}}\right)
+\end{equation*}
+\end{exampleblock}
+\pause
+
+\column{5cm}
+\begin{exampleblock}{}
+\begin{equation*}
+\gamma_{\mathbf{k}}=\sum_{\left\langle j\right\rangle }e^{+i\mathbf{k}\cdot\boldsymbol{\delta}_{j}}
+\end{equation*}
+\end{exampleblock}
+
+\begin{alertblock}{}
+\vspace*{-5mm}
+\begin{equation*}
+H_{\text{TB}}(\boldsymbol{k})=\left[\begin{array}{cc}
+\epsilon_{A} & -t\gamma_{\boldsymbol{k}}\\
+-t\gamma_{\boldsymbol{k}}^{\dagger} & \epsilon_{B}
+\end{array}\right]
+\end{equation*}
+\end{alertblock}
+\pause
+
+\begin{figure}
+\includegraphics[scale=0.25]{imagens/DoS_hBN}
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Electron-electron interaction - Atomistic model}
+\pause
+
+\begin{exampleblock}{}
+\begin{equation*}
+H_{\text{e-e}}=\sum_{\substack{\mathbf{R}_{1}\mathbf{R}_{2}\\
+\varsigma_{1}\varsigma_{2}
+}
+}\mathrm{V}\left((\mathbf{R}_{1}+\mathbf{s}_{\varsigma_{1}})-(\mathbf{R}_{2}+\mathbf{s}_{\varsigma_{2}})\right)c_{\mathbf{R}_{1}\varsigma_{1}}^{\dagger}c_{\mathbf{R}_{2}\varsigma_{2}}^{\dagger}c_{\mathbf{R}_{2}\varsigma_{2}}c_{\mathbf{R}_{1}\varsigma_{1}}
+\end{equation*}
+\end{exampleblock}
+\pause
+
+\begin{figure}
+\includegraphics[scale=0.2]{imagens/feynman_atomistic}
+\end{figure}
+\pause
+
+\begin{columns}
+\column{4cm}
+\begin{alertblock}{Coulomb Potential}
+\vspace*{-4mm}
+\begin{equation*}
+\mathrm{V}_{\text{2D}}(\mathbf{k})=\frac{e^{2}}{2\varepsilon_{0}}\frac{1}{|\mathbf{k}|}
+\end{equation*}
+\end{alertblock}
+
+\column{5cm}
+\begin{alertblock}{Rytova-Keldysh Potential}
+\begin{equation*}
+\mathrm{W}(\mathbf{k})=\frac{e^{2}}{2\varepsilon_{0}}\frac{1}{|\mathbf{k}|}\frac{1}{1+r_{0}|\mathbf{k}|}
+\end{equation*}
+\end{alertblock}
+\end{columns}
+
+\column{2cm}
+\begin{alertblock}{Static limit}
+\begin{equation*}
+\mathrm{W}(\omega=))=\frac{e^{2}}{2\varepsilon_{0}}\frac{1}{|\mathbf{k}|}\frac{1}{1+r_{0}|\mathbf{k}|}
+\end{equation*}
+\end{alertblock}
+\end{columns}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+
+\begin{center}
+\Huge \textcolor{Logo1}{\textbf{Quick recap}}\\
+\vspace{0.5cm}
+\Large \textcolor{Logo1}{\textbf{$\&$}}\\
+\vspace{0.5cm}
+\huge \textcolor{Logo1}{\textbf{Numerical }}\\
+\huge \textcolor{Logo1}{\textbf{implementation}}
+\end{center}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Implementing the electron-hole Hamiltonian}
+\pause
+
+\vspace*{-7mm}
+\begin{figure}
+\includegraphics[scale=0.38]{imagens/recap1}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{Implementing the electron-hole Hamiltonian}
+
+\vspace*{-7mm}
+\begin{figure}
+\includegraphics[scale=0.38]{imagens/recap2}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{Implementing the electron-hole Hamiltonian}
+
+\vspace*{-7mm}
+\begin{figure}
+\includegraphics[scale=0.38]{imagens/recap3}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{Implementing the electron-hole Hamiltonian}
+
+\vspace*{-7mm}
+\begin{figure}
+\includegraphics[scale=0.38]{imagens/recap4}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{Implementing the electron-hole Hamiltonian}
+
+\vspace*{-7mm}
+\begin{figure}
+\includegraphics[scale=0.38]{imagens/recap5}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{Implementing the electron-hole Hamiltonian}
+
+\vspace*{-7mm}
+\begin{figure}
+\includegraphics[scale=0.38]{imagens/recap6}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{Implementing the electron-hole Hamiltonian}
+
+\vspace*{-7mm}
+\begin{figure}
+\includegraphics[scale=0.38]{imagens/recap7}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+
+\begin{center}
+\Huge \textcolor{Logo1}{\textbf{Results for the excitonic}}\\
+\Huge \textcolor{Logo1}{\textbf{energy band-structure}}\\
+\Huge \textcolor{Logo1}{\textbf{and wave-functions}}\\
+\end{center}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{Isolated hBN monolayer: Spin-singlet with $\mathbf{Q}=0$}
+\pause
+
+\begin{figure}
+\includegraphics[scale=0.26]{imagens/EX_Q0_1}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Isolated hBN monolayer: Spin-singlet with $\mathbf{Q}=0$}
+
+\begin{figure}
+\includegraphics[scale=0.26]{imagens/EX_Q0_2}
+\end{figure}
+
+\footnotesize T. Galvani, Phys. Rev. B 94 (2016): \textcolor{red}{$E_\text{bind}=-1.93$ eV}\\
+\footnotesize Quintela, Phys. Status Solidi. B 259(7) (2022): \textcolor{red}{$E_\text{bind}=-1.31$ eV}\\
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Isolated hBN monolayer: Spin-singlet with $\mathbf{Q}=0$}
+
+\textcolor{Logo1}{\textbf{In recriprocal space:}}\\
+\begin{figure}
+\includegraphics[scale=0.25]{imagens/wf_Q0_k}
+\end{figure}
+
+\textcolor{Logo1}{\textbf{In real space:}}\\
+\begin{figure}
+\includegraphics[scale=0.25]{imagens/wf_Q0_R}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Isolated hBN monolayer: band structure}
+\pause
+
+\begin{figure}
+\includegraphics[scale=0.3]{imagens/EX_Q}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{hBN-metal hetero-structure}
+\pause
+
+\vspace*{-2mm}
+\begin{figure}
+\includegraphics[scale=0.15]{imagens/hBN_metal}
+\end{figure}
+\pause
+\vspace*{-3mm}
+
+\begin{columns}
+
+\column{6cm}
+\begin{alertblock}{Metal-screened Rytova-Keldysh}
+\begin{equation*}
+\mathrm{W}_{m}(\mathbf{k})=\frac{e}{2\varepsilon_{0}}\frac{1}{k}\frac{1}{r_{0}k+\frac{1}{2}\frac{e^{kd}}{\sinh(kd)}}
+\end{equation*}
+\end{alertblock}
+\begin{alertblock}{}
+\small
+For metal-screened Coulomb set $r_0=0$
+\end{alertblock}
+
+\column{6cm}
+\begin{figure}
+\includegraphics[scale=0.25]{imagens/metalscreen}
+\end{figure}
+\end{columns}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{hBN-metal hetero-structure: Spin-singlet with $\mathbf{Q}=0$}
+
+\begin{figure}
+\includegraphics[scale=0.32]{imagens/EX_d}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+
+\begin{center}
+\Huge \textcolor{Logo1}{\textbf{Conclusions}}\\
+\vspace{0.5cm}
+\Large \textcolor{Logo1}{\textbf{$\&$}}\\
+\vspace{0.5cm}
+\huge \textcolor{Logo1}{\textbf{Future}}\\
+\huge \textcolor{Logo1}{\textbf{works}}
+\end{center}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Conclusions}
+
+\vspace*{-15mm}
+\Large \textcolor{Logo1}{\begin{center}
+\textbf{Formulated a method to calculate \\
+excitonic energies and wave-function}
+\end{center}}
+
+\normalsize
+\begin{itemize}
+\item Simple yet effective:
+\begin{itemize}
+\item Easy to compute 
+\item Relatively small computational time
+\item Precision up to 2 decimal places (scaling with $\mathbf{k}$-point sampling)
+\item Results within reason when comparing to more challenging techniques %(such as TD-DFT)
+\end{itemize}
+\item Versatile in the:
+\begin{itemize}
+\item System's degrees of freedom %(could account for spin-orbit effects or three-band models with some additional tweaks)
+\item Eletronic model to the single particle eletronic states
+\item Eletron-eletron interaction 
+\item Choice of eletrostatic potential %(different types of screenings) 
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{Future work...}
+
+\vspace*{-15mm}
+\large \textcolor{Logo1}{\begin{center}
+\textbf{Generalized susceptibility}
+\end{center}}
+
+\small
+\begin{equation*}
+\chi_{AB}(\omega)=\frac{\left\langle A\right\rangle (\omega)}{F(\omega)}=\frac{\sum_{ab}A_{ab}\rho_{ba}^{(1)}(\omega)}{F(\omega)}
+\end{equation*}
+\vspace*{-5mm}
+
+\large \textcolor{Logo1}{\begin{center}
+\textbf{Optical conductivity}
+\end{center}}
+\vspace*{-8mm}
+
+\large \textcolor{Logo1}{\begin{center}
+\textbf{Exciton life-times}
+\end{center}}
+\vspace*{-8mm}
+\pause
+
+\large \textcolor{Logo1}{\begin{center}
+\textbf{Dependence on the screening effective radius}
+\end{center}}
+\vspace*{-8mm}
+
+\large \textcolor{Logo1}{\begin{center}
+\textbf{Dependence on the dieletric of the hetero-structure }
+\end{center}}
+\vspace*{-8mm}
+\pause
+
+\large \textcolor{Logo1}{\begin{center}
+\textbf{Three-band model TMDs}
+\end{center}}
+\vspace*{-8mm}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+
+\begin{center}
+\Huge \textcolor{Logo1}{\textbf{Thank you for listening!}} \\
+\Huge \textcolor{Logo1}{\textbf{Any questions?}} \\
+\end{center}
+$$ $$
+$$ $$
+\centering{The author acknowledges funding from Fundação para a Ciência e a Tecnologia (FCT-Portugal) through grant No. EXPL/FIS-MAC/0953/2021.}
+
+\begin{figure}
+\includegraphics[scale=0.1]{imagens/FCT}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{More on the screening of the Hartree and the Fock terms...}
+
+\begin{figure}
+\includegraphics[scale=0.43]{imagens/Dyson}
+\end{figure}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{More on the structure in the spin degree of freedom...}
+
+\vspace*{-2.5cm}
+\begin{block}{}
+\small
+\begin{equation*}
+\left(\hbar\omega\mathds{1}-\left[\begin{array}{cccc}
+R_{\uparrow_{1}\uparrow_{2}}^{\uparrow_{3}\uparrow_{4}} & R_{\uparrow_{1}\uparrow_{2}}^{\uparrow_{3}\downarrow_{4}} & R_{\uparrow_{1}\uparrow_{2}}^{\downarrow_{3}\uparrow_{4}} & R_{\uparrow_{1}\uparrow_{2}}^{\downarrow_{3}\downarrow_{4}}\\
+R_{\uparrow_{1}\downarrow_{2}}^{\uparrow_{3}\uparrow_{4}} & R_{\uparrow_{1}\downarrow_{2}}^{\uparrow_{3}\downarrow_{4}} & R_{\uparrow_{1}\downarrow_{2}}^{\downarrow_{3}\uparrow_{4}} & R_{\uparrow_{1}\downarrow_{2}}^{\downarrow_{3}\downarrow_{4}}\\
+R_{\downarrow_{1}\uparrow_{2}}^{\uparrow_{3}\uparrow_{4}} & R_{\downarrow_{1}\uparrow_{2}}^{\uparrow_{3}\downarrow_{4}} & R_{\downarrow_{1}\uparrow_{2}}^{\downarrow_{3}\uparrow_{4}} & R_{\downarrow_{1}\uparrow_{2}}^{\downarrow_{3}\downarrow_{4}}\\
+R_{\downarrow_{1}\downarrow_{2}}^{\uparrow_{3}\uparrow_{4}} & R_{\downarrow_{1}\downarrow_{2}}^{\uparrow_{3}\downarrow_{4}} & R_{\downarrow_{1}\downarrow_{2}}^{\downarrow_{3}\uparrow_{4}} & R_{\downarrow_{1}\downarrow_{2}}^{\downarrow_{3}\downarrow_{4}}
+\end{array}\right]\right)\left[\begin{array}{c}
+\rho_{c_{3}\uparrow_{3},v_{4}\uparrow_{4}}^{(1)}\\
+\rho_{c_{3}\uparrow_{3},v_{4}\downarrow_{4}}^{(1)}\\
+\rho_{c_{3}\downarrow_{3},v_{4}\uparrow_{4}}^{(1)}\\
+\rho_{c_{3}\downarrow_{3},v_{4}\downarrow_{4}}^{(1)}
+\end{array}\right]=\left[\begin{array}{c}
+\mathcal{J}_{c_{1}\uparrow_{1},v_{2}\uparrow_{2}}\\
+\mathcal{J}_{c_{1}\uparrow_{1},v_{2}\downarrow_{2}}\\
+\mathcal{J}_{c_{1}\downarrow_{1},v_{2}\uparrow_{2}}\\
+\mathcal{J}_{c_{1}\downarrow_{1},v_{2}\downarrow_{2}}
+\end{array}\right]
+\end{equation*}
+\end{block}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{More on the structure in the spin degree of freedom...}
+
+\begin{block}{}
+\small
+\begin{equation*}
+\mathbf{R}=\left[\begin{array}{cccc}
+\epsilon+V-W & 0 & 0 & V\\
+0 & \epsilon-W & 0 & 0\\
+0 & 0 & \epsilon-W & 0\\
+V & 0 & 0 & \epsilon+V-W
+\end{array}\right]\begin{array}{c}
+^{\uparrow\uparrow}\\
+^{\uparrow\downarrow}\\
+^{\downarrow\uparrow}\\
+^{\downarrow\downarrow}
+\end{array}
+\end{equation*}
+\end{block}
+
+\begin{exampleblock}{}
+\begin{equation*}
+\epsilon:=\left(\epsilon_{\{\boldsymbol{k}+\boldsymbol{Q}\}c_{1}}-\epsilon_{\boldsymbol{k}v_{2}}\right),\quad W:=W_{\boldsymbol{k}v_{2},\left\{ \boldsymbol{k}^{\prime}+\boldsymbol{Q}\right\} c_{3}}^{\{\boldsymbol{k}+\boldsymbol{Q}\}c_{1},\boldsymbol{k}^{\prime}v_{4}},\quad V:=V_{\boldsymbol{k}v_{2},\left\{ \boldsymbol{k}^{\prime}+\boldsymbol{Q}\right\} c_{3}}^{\boldsymbol{k}^{\prime}v_{4},\{\boldsymbol{k}+\boldsymbol{Q}\}c_{1}}
+\end{equation*}
+\end{exampleblock}
+
+\begin{block}{}
+\begin{equation*}
+U=\left[\begin{array}{cccc}
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0 & 0
+\end{array}\right]
+\end{equation*}
+\end{block}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{More on the discretization of the linear response problem...}
+
+\vspace*{-3mm}
+\begin{figure}
+\includegraphics[scale=0.3]{imagens/1BZdiscrete}
+\end{figure}
+
+\vspace*{-5mm}
+\begin{exampleblock}{}
+\small
+\begin{equation*}
+\left(\hbar\omega\mathds{1}_{N_{\mathbf{k}}\times N_{\mathbf{k}}}-\left[\begin{array}{c}
+\begin{array}{c}
+\begin{array}{ccc}
+R_{\left\{ \mathbf{k}_{1}+\mathbf{Q}\right\} c_{1},\mathbf{k}_{1}v_{2}}^{\left\{ \mathbf{k}_{1}^{\prime}+\mathbf{Q}\right\} c_{3},\mathbf{k}_{1}^{\prime}v_{4}} & R_{\left\{ \mathbf{k}_{1}+\mathbf{Q}\right\} c_{1},\mathbf{k}_{1}v_{2}}^{\left\{ \mathbf{k}_{2}^{\prime}+\mathbf{Q}\right\} c_{3},\mathbf{k}_{2}^{\prime}v_{4}} & \overset{\mathbf{k}^{\prime}}{\rightarrow}\\
+R_{\left\{ \mathbf{k}_{2}+\mathbf{Q}\right\} c_{1},\mathbf{k}_{2}v_{2}}^{\left\{ \mathbf{k}_{1}^{\prime}+\mathbf{Q}\right\} c_{3},\mathbf{k}_{1}^{\prime}v_{4}} & R_{\left\{ \mathbf{k}_{2}+\mathbf{Q}\right\} c_{1},\mathbf{k}_{2}v_{2}}^{\left\{ \mathbf{k}_{2}^{\prime}+\mathbf{Q}\right\} c_{3},\mathbf{k}_{2}^{\prime}v_{4}} & \overset{\mathbf{k}^{\prime}}{\rightarrow}\\
+\downarrow_{\mathbf{k}} & \downarrow_{\mathbf{k}} & \ddots
+\end{array}\end{array}\end{array}\right]\right)\times
+\end{equation*}
+\begin{equation*}
+\times\left[\begin{array}{c}
+\boldsymbol{\rho}_{\left\{ \mathbf{k}_{1}^{\prime}+\mathbf{Q}\right\} c_{3}\mathbf{k}_{1}^{\prime}v_{4}}^{(1)}\\
+\boldsymbol{\rho}_{\left\{ \mathbf{k}_{2}^{\prime}+\mathbf{Q}\right\} c_{3}\mathbf{k}_{2}^{\prime}v_{4}}^{(1)}\\
+\downarrow_{\mathbf{k}^{\prime}}
+\end{array}\right]=\left[\begin{array}{c}
+\mathcal{J}_{\left\{ \mathbf{k}_{1}+\mathbf{Q}\right\} c_{1},\mathbf{k}_{1}v_{2}}\\
+\mathcal{J}_{\left\{ \mathbf{k}_{2}+\mathbf{Q}\right\} c_{1},\mathbf{k}_{2}v_{2}}\\
+\downarrow_{\mathbf{k}}
+\end{array}\right]
+\end{equation*}
+\end{exampleblock}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{Parameters used}
+
+\begin{columns}
+\column{5cm}
+\large \textcolor{Logo1}{\textbf{Eletronic parameters:}}
+\begin{itemize}
+\item $e^{2}/\varepsilon_{0}=10^{4}/55.3\ \text{eV\AA}$
+\item $\epsilon_{g}=7.8$ eV
+\item $t=3.1$ eV
+\item $a_{0}=1.42\sqrt{3}\ \text{\AA}$
+\item $r_{0}=10\ \text{\AA}$
+\end{itemize}
+
+\column{5cm}
+\large \textcolor{Logo1}{\textbf{Numerical parameters:}}
+\begin{itemize}
+\item $N_{\boldsymbol{k}}=8649$ $\boldsymbol{k}$-points
+\item $|\boldsymbol{k}_{\text{cutoff}}|=1.5\ \text{\AA}$
+\end{itemize}
+\begin{exampleblock}{}
+Tamm-Dancoff Approx.
+\end{exampleblock}
+\end{columns}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{More on the TD Hartree-Fock mean-field theory...}
+
+\begin{columns}
+\column{5cm}
+\begin{exampleblock}{Linear regime}
+\begin{equation*}
+\boldsymbol{\rho}(t)\approx\boldsymbol{\rho}^{(0)}+\boldsymbol{\rho}^{(1)}(t)
+\end{equation*}
+\end{exampleblock}
+\pause
+
+\column{5cm}
+\begin{exampleblock}{Single-particle basis}
+\begin{equation*}
+\begin{array}{c}
+h_{ac}=\epsilon_{a}\delta_{ac}\\
+\rho_{ab}^{(0)}=f_{a}\delta_{ab}
+\end{array}
+\end{equation*}
+\end{exampleblock}
+\end{columns}
+\pause
+
+\begin{alertblock}{Linear response problem}
+\begin{equation*}
+\left(\hbar\omega\delta_{ab}^{\gamma\delta}-H_{ab}^{\gamma\delta}\right)\rho_{ab}^{(1)}(\omega)=J_{ab}(\omega)
+\end{equation*}
+\end{alertblock}
+\pause
+
+\begin{alertblock}{Effective two-particle Hamiltonian}
+\begin{equation*}
+H_{ab}^{\gamma\delta}=\left(\epsilon_{a}-\epsilon_{b}\right)\delta_{a\gamma}\delta_{\delta b}+\left(f_{b}-f_{a}\right)\left(V_{b\gamma}^{\delta a}-W_{b\gamma}^{a\delta}\right)
+\end{equation*}
+\end{alertblock}
+\pause
+
+\begin{alertblock}{Source term}
+\begin{equation*}
+J_{ab}(\omega)=\left(f_{b}-f_{a}\right)B_{ab}^{i}F^{i}(\omega)
+\end{equation*}
+\end{alertblock}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}
+\frametitle{More on the TD Hartree-Fock mean-field theory...}
+
+\begin{exampleblock}{Zero temperature regime}
+At $T=0K$, the occupational degree of freedom can only be classified as either occupied $\left|o\right\rangle$ or empty $\left|e\right\rangle$ meaning that $f_{o}=1$ or $f_{e}=0$.
+\end{exampleblock}
+\pause
+
+\begin{block}{}
+\vspace*{-2mm}
+\small
+\begin{equation*}
+\left(\hslash\omega\mathds{1}-\left[\begin{array}{cccc}
+H_{e_{1}e_{2}}^{e_{3}e_{4}} & H_{e_{1}e_{2}}^{e_{3}o_{4}} & H_{e_{1}e_{2}}^{o_{3}e_{4}} & H_{e_{1}e_{2}}^{o_{3}o_{4}}\\
+H_{e_{1}o_{2}}^{e_{3}e_{4}} & H_{e_{1}o_{2}}^{e_{3}o_{4}} & H_{e_{1}o_{2}}^{o_{3}e_{4}} & H_{e_{1}o_{2}}^{o_{3}o_{4}}\\
+H_{o_{1}e_{2}}^{e_{3}e_{4}} & H_{o_{1}e_{2}}^{e_{3}o_{4}} & H_{o_{1}e_{2}}^{o_{3}e_{4}} & H_{o_{1}e_{2}}^{o_{3}o_{4}}\\
+H_{o_{1}o_{2}}^{e_{3}e_{4}} & H_{o_{1}o_{2}}^{e_{3}o_{4}} & H_{o_{1}o_{2}}^{o_{3}e_{4}} & H_{o_{1}o_{2}}^{o_{3}o_{4}}
+\end{array}\right]\right)\left[\begin{array}{c}
+\rho_{e_{3}e_{4}}^{(1)}(\omega)\\
+\rho_{e_{3}o_{4}}^{(1)}(\omega)\\
+\rho_{o_{3}e_{4}}^{(1)}(\omega)\\
+\rho_{o_{3}o_{4}}^{(1)}(\omega)
+\end{array}\right]=\left[\begin{array}{c}
+\mathcal{J}_{e_{1}e_{2}}(\omega)\\
+\mathcal{J}_{e_{1}o_{2}}(\omega)\\
+\mathcal{J}_{o_{1}e_{2}}(\omega)\\
+\mathcal{J}_{o_{1}o_{2}}(\omega)
+\end{array}\right]
+\end{equation*}
+\end{block}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{More on the TD Hartree-Fock mean-field theory}
+
+\begin{exampleblock}{Zero temperature regime}
+At $T=0K$, the occupational degree of freedom can only be classified as either occupied $\left|o\right\rangle$ or empty $\left|e\right\rangle$ meaning that $f_{o}=1$ or $f_{e}=0$.
+\end{exampleblock}
+
+\begin{block}{}
+\vspace*{-2mm}
+\small
+\begin{equation*}
+\left(\hbar\omega\mathds{1}-\left[\begin{array}{cccc}
+H_{e_{1}e_{2}}^{e_{3}e_{4}} & 0 & 0 & 0\\
+H_{e_{1}o_{2}}^{e_{3}e_{4}} & H_{e_{1}o_{2}}^{e_{3}o_{4}} & H_{e_{1}o_{2}}^{o_{3}e_{4}} & H_{e_{1}o_{2}}^{o_{3}o_{4}}\\
+H_{o_{1}e_{2}}^{e_{3}e_{4}} & H_{o_{1}e_{2}}^{e_{3}o_{4}} & H_{o_{1}e_{2}}^{o_{3}e_{4}} & H_{o_{1}e_{2}}^{o_{3}o_{4}}\\
+0 & 0 & 0 & H_{o_{1}o_{2}}^{o_{3}o_{4}}
+\end{array}\right]\right)\left[\begin{array}{c}
+\rho_{e_{3}e_{4}}^{(1)}(\omega)\\
+\rho_{e_{3}o_{4}}^{(1)}(\omega)\\
+\rho_{o_{3}e_{4}}^{(1)}(\omega)\\
+\rho_{o_{3}o_{4}}^{(1)}(\omega)
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+\mathcal{J}_{e_{1}o_{2}}(\omega)\\
+\mathcal{J}_{o_{1}e_{2}}(\omega)\\
+0
+\end{array}\right]
+\end{equation*}
+\end{block}
+
+\end{frame}
+
+%------------------------------------------------------------
+\begin{frame}[noframenumbering]
+\frametitle{More on the TD Hartree-Fock mean-field theory...}
+
+\begin{exampleblock}{Zero temperature regime}
+At $T=0K$, the occupational degree of freedom can only be classified as either occupied $\left|o\right\rangle$ or empty $\left|e\right\rangle$ meaning that $f_{o}=1$ or $f_{e}=0$.
+\end{exampleblock}
+
+\begin{block}{}
+\begin{equation*}
+\left(\hbar\omega\mathds{1}-\left[\begin{array}{cc}
+H_{e_{1}o_{2}}^{e_{3}o_{4}} & H_{e_{1}o_{2}}^{o_{4}e_{3}}\\
+H_{o_{2}e_{1}}^{e_{3}o_{4}} & H_{o_{2}e_{1}}^{o_{4}e_{3}}
+\end{array}\right]\right)\left[\begin{array}{c}
+\rho_{e_{3}o_{4}}^{(1)}(\omega)\\
+\rho_{o_{4}e_{3}}^{(1)}(\omega)
+\end{array}\right]=\left[\begin{array}{c}
+\mathcal{J}_{e_{1}o_{2}}(\omega)\\
+\mathcal{J}_{o_{2}e_{1}}(\omega)
+\end{array}\right]
+\end{equation*}
+\end{block}
+\pause
+
+\begin{block}{}
+\begin{equation*}
+H_{o_{1}e_{2}}^{o_{4}e_{4}}=-\left(H_{e_{1}o_{2}}^{e_{3}o_{4}}\right)^{*}\quad \text{and}\quad H_{o_{2}e_{1}}^{e_{4}o_{3}}=-\left(H_{e_{1}o_{2}}^{o_{3}e_{4}}\right)^{\dagger}
+\end{equation*}
+\end{block}
+
+\end{frame}
+
+\end{document}

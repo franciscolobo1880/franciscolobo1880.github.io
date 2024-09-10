@@ -1,0 +1,225 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass revtex4-2
+\begin_preamble
+% wick theorem with colors
+\usepackage{simpler-wick}
+\makeatletter
+\pgfkeys{simplerwick,wickcolor/.store in=\swick@color,wickcolor=black}
+\def\swick@end#1#2{
+  \swick@setfalse@#1
+  \tikzexternaldisable
+  \begin{tikzpicture}[remember picture, baseline=(swick-close#1.base)]
+    \node[use as bounding box, inner sep=0pt, outer sep=0pt] (swick-close#1) {$\displaystyle #2$};
+  \end{tikzpicture}
+  \tikz[remember picture, overlay]
+    \draw[\swick@color] ($(swick-open#1.north) + (0, 3pt)$)
+          -- ($(swick-open#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.north) + (0, 3pt)$);
+  \tikzexternalenable}
+\makeatother 
+
+% fancy color boxes
+\usepackage{color}
+\usepackage{tcolorbox}
+\usepackage{environ}
+\usepackage{etoolbox}
+\usepackage{pgf}
+\tcbuselibrary{breakable}
+
+\usepackage{xcolor}
+
+% numbering equations
+%\usepackage{chngcntr}
+%\counterwithin{equation}{section}
+
+\definecolor{green}{RGB}{0, 150, 0}
+
+\usepackage{afterpage}
+\usepackage{upgreek}
+\end_preamble
+\use_default_options true
+\begin_modules
+tcolorbox
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\notefontcolor #dcdcdc
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 1
+\papercolumns 2
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Furthermore, if one considers the orbitals to ultra-localized 
+\begin_inset Formula $V_{\gamma\delta}^{\alpha\beta}\approx V(\mathbf{r}_{\alpha}-\mathbf{r}_{\beta})\delta_{\alpha\delta}\delta_{\beta\gamma}$
+\end_inset
+
+, the total self-energy of the system will amount to
+\begin_inset Formula 
+\[
+\boldsymbol{\Sigma}_{ij}=\frac{1}{2}\sum_{\ell}V^{i\ell}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{\ell\ell}\right)\left[\tau_{z}\otimes\sigma_{0}\right]\delta_{ij}-V^{ij}\tilde{\boldsymbol{\rho}}_{ij},
+\]
+
+\end_inset
+
+with both 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ Pauli matrices operating in their respectively spin and particle-hole subspaces
+, and 
+\begin_inset Formula $\tilde{\boldsymbol{\rho}}_{ij}$
+\end_inset
+
+ a newly defined BdG-symmetric object, 
+\begin_inset Formula 
+\begin{equation}
+\tilde{\boldsymbol{\rho}}_{ij}=\left(\begin{array}{cc}
+\boldsymbol{\rho}_{ij}^{\text{\text{ee}}} & -\boldsymbol{\rho}_{ij}^{\text{eh}}\\
+-\left(\boldsymbol{\rho}_{ji}^{\text{eh}}\right)^{*} & -\boldsymbol{\rho}_{ji}^{\text{\text{ee}}}
+\end{array}\right).
+\end{equation}
+
+\end_inset
+
+Note the bold notation for the underlying spin structure 
+\begin_inset Formula $\left(\uparrow\uparrow,\,\uparrow\downarrow;\,\downarrow\uparrow,\,\downarrow\downarrow\right)$
+\end_inset
+
+.
+ In this Wannier limit the Hartree self-energy stays exclusively onsite.
+ Moreover, if one further considers the limiting case of a spin-
+\begin_inset Formula $1/2$
+\end_inset
+
+ Hubbard model 
+\begin_inset Formula $V^{ij}=U\delta_{ij}$
+\end_inset
+
+, one obtains the purely onsite self-energy
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\Sigma}_{ij}=\frac{1}{2}U\left[\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{ii}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-2\tilde{\boldsymbol{\rho}}_{ij}\right]\delta_{ij}.\label{eq:seU}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\rho_{ab}^{\text{hh}}=-\rho_{ba}^{\text{ee}}+\delta_{ab}$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{ab}^{\text{he}}=(\rho_{ba}^{\text{eh}})^{*}$
+\end_inset
+
+, but also 
+\begin_inset Formula $\rho_{ab}^{\text{ee/hh}}=(\rho_{ba}^{\text{ee/hh}})^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho_{ba}^{\text{eh/he}}=-\rho_{ab}^{\text{eh/he}}$
+\end_inset
+
+.Making explicitly the tight-binding scheme, and denoting in bold the hidden
+ spin structure, it reads explicitly instead as
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\rho}_{ij}=\left(\begin{array}{cc|cc}
+\rho_{i\uparrow j\uparrow}^{\text{ee}} & \rho_{i\uparrow j\downarrow}^{\text{ee}} & \rho_{i\uparrow j\uparrow}^{\text{eh}} & \rho_{i\uparrow j\downarrow}^{\text{eh}}\\
+\rho_{i\downarrow j\uparrow}^{\text{ee}} & \rho_{i\downarrow j\downarrow}^{\text{ee}} & \rho_{i\downarrow j\uparrow}^{\text{eh}} & \rho_{i\downarrow j\downarrow}^{\text{eh}}\\
+\hline \rho_{i\uparrow j\uparrow}^{\text{he}} & \rho_{i\uparrow j\downarrow}^{\text{he}} & \rho_{i\uparrow j\uparrow}^{\text{hh}} & \rho_{i\downarrow j\uparrow}^{\text{hh}}\\
+\rho_{i\downarrow j\uparrow}^{\text{he}} & \rho_{i\downarrow j\downarrow}^{\text{he}} & \rho_{i\uparrow j\downarrow}^{\text{hh}} & \rho_{i\downarrow j\downarrow}^{\text{hh}}
+\end{array}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

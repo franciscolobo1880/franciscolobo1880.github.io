@@ -3525,7 +3525,7 @@ vspace{-4.5mm}
 \frac{\alpha_{\text{R}}}{2\delta_{x}} & \ddots & \ddots & -\frac{\eta}{\delta_{x}^{2}} & \ddots & \ddots &  &  &  &  & \ddots\\
  & \ddots &  &  & \ddots &  &  &  & \\
 \hline\hline \Delta(x_{1}) &  &  &  &  &  & -\frac{2\eta}{\delta_{x}^{2}}+\mu & \frac{\eta}{\delta_{x}^{2}} &  & V_{\text{Z}} & -\frac{\alpha_{\text{R}}}{2\delta_{x}}\\
- & \ddots &  &  &  & undestand & \frac{\eta}{\delta_{x}^{2}} & \ddots & \ddots & \frac{\alpha_{\text{R}}}{2\delta_{x}} & \ddots & \ddots\\
+ & \ddots &  &  &  &  & \frac{\eta}{\delta_{x}^{2}} & \ddots & \ddots & \frac{\alpha_{\text{R}}}{2\delta_{x}} & \ddots & \ddots\\
  &  &  &  &  &  &  & \ddots &  &  & \ddots\\
 \hline  &  &  & \Delta(x_{1}) &  &  & V_{\text{Z}} & \frac{\alpha_{\text{R}}}{2\delta_{x}} &  & -\frac{2\eta}{\delta_{x}^{2}}+\mu & \frac{\eta}{\delta_{x}^{2}}\\
  &  &  &  & \ddots &  & -\frac{\alpha_{\text{R}}}{2\delta_{x}} & \ddots & \ddots & \frac{\eta}{\delta_{x}^{2}} & \ddots & \ddots\\
