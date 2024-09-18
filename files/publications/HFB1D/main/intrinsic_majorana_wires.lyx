@@ -304,1172 +304,11 @@ Ultimately, the significance of this work lies in the results obtained from
 \end_layout
 
 \begin_layout Section
-Nanowire models
+Self-consistent superconductivity
 \end_layout
 
-\begin_layout Standard
-First and foremost, we showcase Oreg-Lutchyn minimal Majorana model [?]
- as our model's groundwork.
- Oreg-Lutchyn minimal model consists of a finite one-dimensional nanowire
- in the presence of an external Zeeman field 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- and spin-orbit coupling (SOC) effect, being described by the Hamiltonian
-\begin_inset Formula 
-\begin{equation}
-\hat{\boldsymbol{H}}_{0}=\sum_{\sigma_{i}\sigma_{j}}c_{\sigma_{i}}^{\dagger}\left(-\eta\partial_{x}^{2}-\mu+\alpha_{\text{R}}i\sigma_{y}\partial_{x}+V_{\text{Z}}\sigma_{z}\right)c_{\sigma_{j}},
-\end{equation}
-
-\end_inset
-
-with 
-\begin_inset Formula $\eta=\hbar^{2}/2m^{*}$
-\end_inset
-
-, 
-\begin_inset Formula $m^{*}$
-\end_inset
-
- the electron's effective mass, and 
-\begin_inset Formula $\mu$
-\end_inset
-
- the chemical potential.
- The SOC effect due an externally applied transverse magnetic field of Rashba
- strength 
-\begin_inset Formula $\alpha_{\text{R}}$
-\end_inset
-
- and the Zeeman splitting 
-\begin_inset Formula $V_{\text{Z}}=g_{J}\mu_{B}B_{x}/2$
-\end_inset
-
- due to a in-plane magnetic field 
-\begin_inset Formula $B_{x}$
-\end_inset
-
-, with 
-\begin_inset Formula $g_{J}$
-\end_inset
-
- the Landé 
-\emph on
-g
-\emph default
-yromagnetic factor of the semiconductor and 
-\begin_inset Formula $\mu_{B}$
-\end_inset
-
- Bohr's magneton.
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
- Furthermore, the minimal model then considers a
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- 
-\begin_inset Formula $s$
-\end_inset
-
--type superconductive (SC) proximity effect of uniform pairing 
-\begin_inset Formula $\Delta_{0}$
-\end_inset
-
- reading as 
-\begin_inset Formula $(\Delta_{0}c_{\uparrow}^{\dagger}c_{\downarrow}^{\dagger}+h.c)/2$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The major step up to the minimal model is that we do not consider an homogeneous
- superconductive proximity effect term but instead self-consistently calculate
- for the induced pairing but also magnetization and doping.
- This is realized in a Hartree-Fock-Bogoliubov mean-field theory derived
- in detail in appendix A.
- The mean-field self-energy is realized as a spin-1/2 Hubbard term in the
- Wannier limit through a Hartree-Fock decoupling of a quartic Hamiltonian
- in a Nambu-spinor scheme.
- The obtained total onsite self-energy reads as
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{\Sigma}_{ij}=\frac{1}{2}U\left[\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{ii}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-2\tilde{\boldsymbol{\rho}}_{ij}\right]\delta_{ij}.\label{eq:Sigma}
-\end{equation}
-
-\end_inset
-
-This term is comprised of both Hartree and Fock self-energies as well as
- the pairing; their Feynman diagrams shown in Fig.(
-\begin_inset Formula $\text{\ref{fig:models}}$
-\end_inset
-
-)(a).
- Within the Nambu tight-binding scheme, defining the spinor 
-\begin_inset Formula $\boldsymbol{\check{c}}_{i}=(c_{i\uparrow}\,\,c_{i\downarrow}\,\,c_{i\uparrow}^{\dagger}\,\,c_{i\downarrow}^{\dagger})$
-\end_inset
-
-, the full Hamiltonian matrix reads explicitly as
-\begin_inset Formula 
-\begin{align}
-\boldsymbol{H} & =\left(f\delta_{ij}-t\delta_{ij\pm1}\right)\left[\tau_{z}\otimes\sigma_{0}\right]+V_{\text{Z}}\left[\tau_{z}\otimes\sigma_{z}\right]\delta_{ij}\nonumber \\
- & +\frac{\alpha_{\text{R}}}{2a_{0}}\delta_{ij\pm1}^{\pm}\left[\tau_{z}\otimes i\sigma_{y}\right]+\boldsymbol{\Sigma}_{ij}\label{eq:H}
-\end{align}
-
-\end_inset
-
-with 
-\begin_inset Formula $f=2t-\mu$
-\end_inset
-
- the band filling (
-\begin_inset Formula $\mu=0$
-\end_inset
-
- and 
-\begin_inset Formula $\mu=2t$
-\end_inset
-
- corresponding to half and zero filling respectively), 
-\begin_inset Formula $t=\eta/a_{0}^{2}$
-\end_inset
-
- the hopping parameter and 
-\begin_inset Formula $a_{0}$
-\end_inset
-
- the real-space lattice spacing.
- The Kronecker delta 
-\begin_inset Formula $\delta_{ij}$
-\end_inset
-
- denotes the on-site terms and 
-\begin_inset Formula $\delta_{ij\pm1}^{\pm}$
-\end_inset
-
- the 1st neighbors hoppings (front and back), and both 
-\begin_inset Formula $\sigma$
-\end_inset
-
- and 
-\begin_inset Formula $\tau$
-\end_inset
-
- are Pauli matrices operating in their respectively spin and particle-hole
- subspaces.
- The BdG symmetric object 
-\begin_inset Formula $\tilde{\boldsymbol{\rho}}_{ij}$
-\end_inset
-
-, related to the Nambu reduced density matrix 
-\begin_inset Formula $\boldsymbol{\rho}_{ij}=\langle\check{\boldsymbol{c}}_{j}^{\dagger}\otimes\check{\boldsymbol{c}}_{i}\rangle$
-\end_inset
-
-, is defined in appendix A in Eq.(
-\begin_inset Formula $\text{\ref{eq:rhotilde}}$
-\end_inset
-
-) and has its underlying spin structure concealed within the bold notation.
- Reiterating, in the Nambu space the significant improvement to the minimal
- model reads as 
-\begin_inset Formula $\Delta_{0}\left[\tau_{y}\otimes\sigma_{y}\right]\delta_{ij}\rightarrow\boldsymbol{\Sigma}_{ij}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-See that the sign of the on-site Hubbard potential 
-\begin_inset Formula $U$
-\end_inset
-
- dictates the system's state: if, on one hand, 
-\begin_inset Formula $U<0$
-\end_inset
-
- then the correlation 
-\begin_inset Formula $\rho_{i\uparrow j\downarrow}^{\text{eh}}$
-\end_inset
-
- is favored and the system turns superconductive but, on the other hand,
- if 
-\begin_inset Formula $U>0$
-\end_inset
-
- then the correlation 
-\begin_inset Formula $(\rho_{i\uparrow j\uparrow}^{\text{ee}}-\rho_{i\downarrow j\downarrow}^{\text{ee}})/2$
-\end_inset
-
- is instead favored and the system turns ferromagnetic.
- However, although 
-\begin_inset Formula $U<0$
-\end_inset
-
- is a prerequisite for a non-zero superconductive correlation it alone does
- not guarantee it; this can be, for example, due to a strong enough Zeeman
- effect that forcefully magnetizes the system.
- 
-\end_layout
-
-\begin_layout Standard
-Schematic models of the hybrid and intrinsic self-consistent Majorana nanowires
- are shown in Fig.(
-\begin_inset Formula $\text{\ref{fig:models}}$
-\end_inset
-
-)(b).
- The intrinsic model is trivially described by Eq.(
-\begin_inset Formula $\text{\ref{eq:H}}$
-\end_inset
-
-), directly incorporating all terms.
- The hybrid system, however, comprises a depleted semiconducting (SM) nanowire
- (bottom in gray) and a doped superconducting (SC) nanowire (top in blue);
- thus 
-\begin_inset Formula $\mu_{\text{SC}}\gg\mu_{\text{SM}}$
-\end_inset
-
-.
- Both nanowires are subject to the same Zeeman field but only the SM exhibits
- spin-orbit coupling.
- Crucially, only the SC nanowire contains the self-consistent Hubbard term
- 
-\begin_inset Formula $U_{\text{SC}}$
-\end_inset
-
- (therewith 
-\begin_inset Formula $U_{\text{SM}}=0$
-\end_inset
-
-), thus serving as the sole source of pairing within the system.
- Nevertheless, due to the proximity of the nanowires, there is a possibility
- for Cooper pairs to tunnel through the SC to the SM, effectively inducing
- superconductivity in the SM.
- This proximity effect is modeled by a hopping with intensity 
-\begin_inset Formula $\tau<t$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/models.svg
-	lyxscale 150
-	scale 80
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Models with DOS and self-energies diagrams 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:models"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For both cases, the real-space lattice spacing was set to 
-\begin_inset Formula $a=10\text{nm}$
-\end_inset
-
-, the SOC Rashba strength to 
-\begin_inset Formula $\alpha=40\text{meV}$
-\end_inset
-
- and the finite nanowire lengths to 
-\begin_inset Formula $L=2000\text{nm}$
-\end_inset
-
- as to avoid to much overlap and hybridization of the Majorana's wavefunctions,
- localized at the edges of the nanowire but exponentially decaying into
- it's center.
- Moreover, we determined that a Hubbard strength of 
-\begin_inset Formula $U=-8\text{meV}$
-\end_inset
-
- is optimal for achieving the largest possible gap rebound possible.
- Likewise, the optimal set of parameters for the hybrid case is 
-\begin_inset Formula $U_{\text{SC}}=-30\text{meV}$
-\end_inset
-
-, 
-\begin_inset Formula $\mu_{\text{SC}}=5\text{meV}$
-\end_inset
-
- and 
-\begin_inset Formula $\tau=0.8t$
-\end_inset
-
-.
- These parameters are experimental feasible when considering an indium arsenide
- (InAs) semiconductor (
-\begin_inset Formula $m^{*}=0.023m_{e}$
-\end_inset
-
-) and an aluminum (Al) superconductor, apart from the exceptionally low
- Fermi energy in the aluminum, typically 
-\begin_inset Formula $\mu_{\text{Al}}\sim11.6\text{eV}$
-\end_inset
-
-.
- Nevertheless, this blunt variation in doping is crucial for facilitating
- interactions between the SC to the SM, as the parallel momentum must be
- conserved across the interface.
- Subsequently, since we do not account for disorder (despite Al being well
- within the dirty limit), that tremendous mismatch in the Al/InAs Fermi
- surfaces would effectively nullify the proximity effect.
-
-\color purple
- why exactly?
-\end_layout
-
-\begin_layout Standard
-As a pertinent aside, despite having the capability to accommodate multiple
- transverse modes, we chose to simplify our analysis by focusing exclusively
- on single-mode nanowires.
- This condition is ensured by maintaining a small radius 
-\begin_inset Formula $R$
-\end_inset
-
- relative to the Fermi wavelength, 
-\begin_inset Formula $R<k_{F}^{-1}$
-\end_inset
-
-.
- In the case of multi-mode nanowires, Majoranas could simultaneously emerge
- at the edges of different modes and destructively interfere (although this
- interference could be mitigated by a sufficiently strong spin-orbit coupling
- in the transverse direction).
-\end_layout
-
-\begin_layout Section
-Results
-\end_layout
-
-\begin_layout Standard
-We mainly focus the analysis on how the spectral gap behaves as a function
- of Zeeman 
-\begin_inset Formula $V_{Z}$
-\end_inset
-
- and chemical potential 
-\begin_inset Formula $\mu$
-\end_inset
-
-, more particularly on the closing and reopening of the symmetry gap, commenting
- on the additional subtlety of self-consistence.
- For both hybrid and intrinsic models, we start by examining the cases of
- infinite length nanowires since these lay out much of the necessary groundwork
- without muddying it with finite length effects.
- Foremost, we identified the appropriate set of parameters, 
-\begin_inset Formula $\{a_{0},\alpha,U\}$
-\end_inset
-
- for intrinsic and 
-\begin_inset Formula $\{a_{0},\alpha_{\text{SM}},U_{\text{SC}},\mu_{\text{SC}},\tau\}$
-\end_inset
-
- for hybrid, by analyzing the band spectrum such as to ensure the visibility
- of the gap rebound and only then proceeded to the phase diagrams 
-\begin_inset Formula $V_{Z}$
-\end_inset
-
- vs 
-\begin_inset Formula $\mu$
-\end_inset
-
- show in Fig.(
-\begin_inset Formula $\text{\ref{fig:intrinsic}}$
-\end_inset
-
-) and Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-).
- In the hybrid analysis, to ensure that the shallow mode (and subsequently
- the gap) refers unequivocally to the SM, one must offset it's band structure
- by 
-\begin_inset Formula $\mu_{\text{shallow}}=2\tau\cos(\pi/3)$
-\end_inset
-
-.
-
-\color purple
- why exactly?
-\end_layout
-
-\begin_layout Standard
-Concerning the self-consistent routine, for the finite case we straightforwardly
- perform a full spectrum diagonalization 
-\begin_inset Formula $\rho=-i(\epsilon+i\eta-H)^{-1}$
-\end_inset
-
- [???] while for the infinite case we perform a Schur's factorization [???]
- where the rDM is calculated through 
-\begin_inset Formula $\rho_{dn}=\frac{1}{2\pi}\int_{-\pi}^{+\pi}d\phi f(H(\phi)-\mu I)e^{idn\phi}$
-\end_inset
-
- with 
-\begin_inset Formula $\phi$
-\end_inset
-
- the Bloch phase and 
-\begin_inset Formula $f$
-\end_inset
-
- the Fermi function at zero temperature.
- As for the fixed-point computations, we utilized the so called Anderson
- acceleration/mixing
-\emph on
- 
-\emph default
-method [???].
-\end_layout
-
-\begin_layout Standard
-Finally, we present in Fig.(
-\begin_inset Formula $\text{\ref{fig:intrinsic}}$
-\end_inset
-
-) and Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-) the self-consistent results for the intrinsic and hybrid nanowires, respective
-ly.
- We begin by examining the hybrid case, initially focusing on the infinite
- nanowire and then moving on to the finite scenario.
- Subsequently, we address the more nuanced intrinsic case emphasizing on
- the differences between those models and the Oreg-Lutchyn minimal model.
-\end_layout
-
-\begin_layout Standard
-In Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(a), we present the spectral gap phase diagram 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- versus 
-\begin_inset Formula $\mu$
-\end_inset
-
-, denoted as 
-\begin_inset Formula $\Omega$
-\end_inset
-
-.
- The diagram reveals two distinct regions demarcated by the Pffafian, the
- signature topological invariant also known as Majorana number 
-\begin_inset Formula $\mathcal{M}$
-\end_inset
-
-; 
-\begin_inset Formula $\mathcal{M}=+1$
-\end_inset
-
- if it's in the trivial phase and 
-\begin_inset Formula $\mathcal{M}=-1$
-\end_inset
-
- if in the topological phase.
- For general non-interacting systems, the fermionic parity 
-\begin_inset Formula $P$
-\end_inset
-
- of the ground state of a Hamiltonian 
-\begin_inset Formula $H$
-\end_inset
-
- can be expressed as form 
-\begin_inset Formula $P(H)=\text{sgn}(\text{Pf}(A))$
-\end_inset
-
-, where 
-\begin_inset Formula $\text{Pf}$
-\end_inset
-
- denotes the Pfaffian of a skew-symmetric matrix 𝐴, given by 
-\begin_inset Formula $(\text{Pf}(A))^{2}=\text{det}(A)$
-\end_inset
-
-.
- The topological region takes the form of a hyperboloid, as predicted by
- the minimal model following the relation 
-\begin_inset Formula $(V_{\text{Z}}/\Delta_{0})^{2}-(\mu/\Delta_{0})^{2}=1$
-\end_inset
-
- under the assumption of a homogeneous pairing potential.
- Note, however, that the hyperboloid in not centered at 
-\begin_inset Formula $\mu=0$
-\end_inset
-
-, as is the case for the minimal model, but is instead rigidly shifted by
- the self-consistently induced doping.
- Is is relevant to note that, due to the particle-hole symmetries inherited
- from the Nambu formalism, there exists a holeonic phase-transition hyperboloid
- that is mirror-symmetric to the one show, appearing at a larger 
-\begin_inset Formula $\mu_{\text{SM}}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Let us focus on the 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- linecut at 
-\begin_inset Formula $\mu_{\text{SM}}\approx-7.8\text{meV}$
-\end_inset
-
-, shown in bright red in Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(c).
- This specific value of 
-\begin_inset Formula $\mu_{\text{SM}}$
-\end_inset
-
-, denoted for reference as 
-\begin_inset Formula $\bar{\mu}_{\text{SM}}$
-\end_inset
-
-, corresponds to the trivial-topological crossing at the edge of the phase
- transition hyperboloid, highlighted by the dashed bright red line in Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(a).
- At 
-\begin_inset Formula $V_{\text{Z}}=0$
-\end_inset
-
- the system is in its trivial phase, with the gap decreasing linearly as
- 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- increases, reaching zero precisely at the white boundary, marked by an
- abrupt change in the Pfaffian.
- This behavior is expected since the gap is always maintained due to pairing,
- but as 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- increases, the system becomes more strongly magnetically induced, effectively
- suppressing 
-\begin_inset Formula $s$
-\end_inset
-
--wave superconductivity within the trivial region.
- After this, the gap unexpectedly reopens, up to the maximum of 
-\begin_inset Formula $\Omega\approx0.3\text{meV}$
-\end_inset
-
-, signaling the topological phrase transition and indicating that the system
- now effectively behaves as a 
-\begin_inset Formula $p$
-\end_inset
-
--wave superconductor.
- Following the rebound, the gap exponentially decays with 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- until it asymptotically approaches zero.
- These results closely mirror those predicted by the Oreg-Lutchyn minimal
- model; however, instead of a exponential decay to zero, we observe a smoother
- asymptotically decay toward the fixed homogeneous pairing value 
-\begin_inset Formula $\Delta_{0}$
-\end_inset
-
-.
- 
-\color purple
-right?
-\color inherit
- This dissimilarity arises from the self-consistent treatment, which, under
- a strong enough Zeeman field, magnetism will always dominate over pairing.
- 
-\end_layout
-
-\begin_layout Standard
-We now redirect our focus over to the 
-\begin_inset Formula $\bar{\mu}_{\text{SM}}$
-\end_inset
-
- linecut at 
-\begin_inset Formula $V_{\text{Z}}=0\text{meV}$
-\end_inset
-
-, shown in bright green in Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(b).
- I the absence of a Zeeman field and with 
-\begin_inset Formula $U_{\text{SC}}<0$
-\end_inset
-
-, the spectral gap can only arise due to the SC induced pairing or direct
- doping.
- Within the lower region of Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(a), the SM is effectively depleted, behaving as an insulation, with the
- gap growing as 
-\begin_inset Formula $\mu_{\text{SM}}$
-\end_inset
-
- decreases.
- However, as 
-\begin_inset Formula $\mu_{\text{SM}}$
-\end_inset
-
- nears 
-\begin_inset Formula $\bar{\mu}_{\text{SM}}$
-\end_inset
-
-, the gap must be supported exclusively by the pairing, leading to a very
- gradual decay as 
-\begin_inset Formula $\mu_{\text{SM}}$
-\end_inset
-
- increases.
- 
-\color purple
-right?
-\end_layout
-
-\begin_layout Standard
-Additionally, the same 
-\begin_inset Formula $\bar{\mu}_{\text{SM}}$
-\end_inset
-
- and 
-\begin_inset Formula $V_{\text{Z}}=0$
-\end_inset
-
- linecuts where recalculated but without SOC (thereby having set the Rashba
- strength 
-\begin_inset Formula $\alpha$
-\end_inset
-
- to zero before self-consistency), being depicted in soft green and soft
- red in Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(b) and (c), respectively.
- Comparing both linecuts, with and without SOC, clearly demonstrates the
- critical role of SOC in the topological phase transition.
- Specifically, as shown in Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(c), without SOC the gap fails to reopen indicating the absence of a phase
- transition.
- The SOC role on the 
-\begin_inset Formula $\mu$
-\end_inset
-
- linecut is not so relevant, indicating just a rigid shift on the phase
- transition hyperboloid and an inward lump at it's center 
-\color purple
-I assume this from the intrinsic results since it seems that the 
-\begin_inset Formula $\alpha=0$
-\end_inset
-
- results did not converge.
-
-\color inherit
- 
-\color purple
-I will check this once I have the actual results.
-\end_layout
-
-\begin_layout Standard
-Furthermore, we compare the 
-\begin_inset Formula $\bar{\mu}_{\text{SM}}$
-\end_inset
-
- and 
-\begin_inset Formula $V_{\text{Z}}=0$
-\end_inset
-
- linecuts without SOC to the analytical gap equation, generalized to account
- for Zeeman but not SOC, derived in appendix B:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\Delta_{0}=2\epsilon_{0}\exp\left(-\sqrt{\frac{\pi^{2}}{2}\frac{\hbar^{2}}{m_{e}e}}\sqrt{\frac{\mu}{m_{0}}}\frac{1}{|U|a_{0}}\right),\label{eq:analDelta-1}
-\end{equation}
-
-\end_inset
-
-It is important to note that Eq.(
-\begin_inset Formula $\text{\ref{eq:analDelta-1}}$
-\end_inset
-
-) assumes 
-\begin_inset Formula $\mu\gg\Delta$
-\end_inset
-
-.
- See that the actual spectral gap 
-\begin_inset Formula $\Omega$
-\end_inset
-
- (show in dashed black) does not always correspond to the pairing potential
- 
-\begin_inset Formula $\Delta_{0}$
-\end_inset
-
-.
- Generally it reads 
-\begin_inset Formula $\Omega=\max(0,|\Delta_{0}|-|V_{\text{Z}}|)$
-\end_inset
-
- since for 
-\begin_inset Formula $|V_{\text{Z}}|>\Delta_{0}$
-\end_inset
-
- the gap has to close although the pairing remains finite.
- Moreover, see that one always needs 
-\begin_inset Formula $\mu>0$
-\end_inset
-
- or else the pairing becomes non-real.
- In the particular case 
-\begin_inset Formula $V_{\text{Z}}=0$
-\end_inset
-
- with 
-\begin_inset Formula $\mu<0$
-\end_inset
-
- the gap must correspond instead to 
-\begin_inset Formula $\Omega=-\mu$
-\end_inset
-
-.
- Comparing Eq.(
-\begin_inset Formula $\text{\ref{eq:analDelta-1}}$
-\end_inset
-
-) to the self-consistent results without SOC in Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(b) 
-\color purple
-we see that...
-\end_layout
-
-\begin_layout Standard
-Moving on to the finite scenario, we shift our focus to the analysis of
- Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(d) and (e).
- As one transitions from the trivial to the topological phase, characterized
- by the closing and reopening of the gap, two zero-energy modes emerge,
- corresponding to Majorana bound states (MBs) localized at each edge of
- the finite nanowire, and exponentially decaying into it's center.
- These states can be identifies by the wavy patterns observed within the
- topological region, arising from the overlap and interface of the Majoranas'
- wavefunctions.
- This oscillatory behavior is further highlighted in Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(e) where the energy spectrum 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- is plotted as a function of 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- at fixed 
-\begin_inset Formula $\bar{\mu}_{\text{SM}}$
-\end_inset
-
-.
- For a given 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- within the topological region, the density of states (DOS) below the topologica
-l minigap of the quasicontinuum would exhibit two peaks near zero energy
- or just the single one at twice the height at the cross.
- Since Majoranas decay exponentially fast from their edge, for sufficiently
- long wires, the interference becomes minimal, and the energy spectrum reflects
- that with a flat line precisely at zero energy.
- 
-\end_layout
-
-\begin_layout Standard
-To highlight once more the crucial role of SOC, we plot in the background
- of Fig.(
-\begin_inset Formula $\text{\ref{fig:hybrid}}$
-\end_inset
-
-)(e), and in light gray, the energy spectrum 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- having set 
-\begin_inset Formula $\alpha=0$
-\end_inset
-
- before self-consistency.
- Without SOC, there is neither a helical gap nor canting of spin, which
- altogether disables the formation of 
-\begin_inset Formula $s$
-\end_inset
-
--wave pairing, thereby effectively suppressing superconductivity within
- the system.
- This suppression is reflected in the energy spectrum, which remains closed
- after the point where the phase transition would occur.
- Additionally, it is important to note that a strong SOC exponentially suppresse
-s Majorana oscillations.
-\end_layout
-
-\begin_layout Standard
-All the results pretending to the finite hybrid nanowire also closely mirror
- the ones predicted by the Oreg-Lutchyn minimal model, but without the unrealist
-ic imposition of a fixed homogeneous pairing potential.
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/hybrid.png
-	lyxscale 40
-	scale 13
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-Self-consistent SC-SM hybrid Majorana nanowire results.
-
-\series default
- 
-\series bold
-(a) 
-\series default
-Zeeman strength 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- versus the SM chemical potential 
-\begin_inset Formula $\mu_{\text{SM}}$
-\end_inset
-
- spectral gap 
-\begin_inset Formula $\Omega$
-\end_inset
-
- phase diagram.
- The white boundary line denotes the abrupt change in the Majorana number
- and marks the trivial-topological phase transition.
- 
-\series bold
-(b)
-\series default
- Spectral gap 
-\begin_inset Formula $\Omega(V_{\text{Z}}=0)$
-\end_inset
-
- vs SM chemical potential 
-\begin_inset Formula $\mu_{\text{SM}}$
-\end_inset
-
-.
- The self-consistent results with SOC are shown in dark green, the ones
- without in soft green The parameters used are: lattice spacing 
-\begin_inset Formula $a=10\text{nm}$
-\end_inset
-
-, finite nanowire length 
-\begin_inset Formula $L=2000\text{nm}$
-\end_inset
-
-, SOC Rashba strength 
-\begin_inset Formula $\alpha=40\text{meV}$
-\end_inset
-
-, SC Hubbard potential strength 
-\begin_inset Formula $U_{\text{SC}}=-30\text{meV}$
-\end_inset
-
-, SC Hubbard chemical potential 
-\begin_inset Formula $\mu_{\text{SC}}=5\text{meV}$
-\end_inset
-
- and SC-SM hopping coupling 
-\begin_inset Formula $\tau=0.8t$
-\end_inset
-
- with effective mass 
-\begin_inset Formula $m^{*}=0.023m_{e}$
-\end_inset
-
-.
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:hybrid"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For the most part the intrinsic results shown in Fig.(
-\begin_inset Formula $\text{\ref{fig:intrinsic}}$
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Standard
-Comparing Eq.(
-\begin_inset Formula $\text{\ref{eq:analDelta-1}}$
-\end_inset
-
-) to the self-consistent results without SOC in Fig.(
-\begin_inset Formula $\text{\ref{fig:intrinsic}}$
-\end_inset
-
-)(c) reveals a strong correspondence; the linear regression fits perfectly
- and the exponential decaying curves has the analytics converging towards
- the numerics as expected.
- The remain deviation could be justified due to assuming 
-\begin_inset Formula $\mu\gg\Delta$
-\end_inset
-
- in the analytics.
- 
-\color purple
-why? 
-\color inherit
-Concerning Fig.(
-\begin_inset Formula $\text{\ref{fig:intrinsic}}$
-\end_inset
-
-)(b), the analytics-numerics correspondence is to be expected due to it's
- simplicity.
- 
-\color purple
-lets see
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Written part
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-insulator part only on intrinsic (?)
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-intrinsic decay more rapid
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-analytics for 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
- linecuts
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-higher peak on hybrid without needing HUGE 
-\begin_inset Formula $V_{\text{Z}}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-captions
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Results
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-infinite hybrid
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/intrinsic.png
-	lyxscale 40
-	scale 13
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Intrinsic self-consistent Hartree-Fock-Bogoliubov nanowire 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:intrinsic"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Conclusions
-\end_layout
-
-\begin_layout Section*
-Acknowledgments
-\end_layout
-
-\begin_layout Standard
-We are deeply grateful to our colleague Rui E.
- Silva who provided useful insight and expertise that greatly assisted the
- research of this paper.
-\end_layout
-
-\begin_layout Section*
-Appendix: Self-consistent superconductivity
-\end_layout
-
-\begin_layout Subsection*
-Appendix A: Hartree-Fock-Bogoliubov mean-field theory 
+\begin_layout Subsection
+Hartree-Fock-Bogoliubov mean-field theory 
 \end_layout
 
 \begin_layout Standard
@@ -1584,8 +423,9 @@ the effective Bogoliubov-de Gennes (BdG) Hamiltonian,
 \end_layout
 
 \begin_layout Standard
-We build upon these analytical results by further considering the approximation
- of ultra-localized orbitals 
+We build upon these results by further realizing the mean-field self-energy
+ as a spin-1/2 Hubbard term in the Wannier limit, i.e considering the approximati
+on of ultra-localized orbitals 
 \begin_inset Formula $V_{kl}^{ij}\approx V^{ij}\delta_{il}\delta_{jk}$
 \end_inset
 
@@ -1597,8 +437,12 @@ We build upon these analytical results by further considering the approximation
 \begin_inset Formula $V^{ij}=U\delta_{ij}$
 \end_inset
 
-.
- Defining a new BdG symmetric object
+ with 
+\begin_inset Formula $U<0$
+\end_inset
+
+ an attractive Hubbard potential.
+ Defining a new BdG symmetric rDM object as
 \begin_inset Formula 
 \begin{equation}
 \tilde{\boldsymbol{\rho}}_{ij}=\left(\begin{array}{cc}
@@ -1609,20 +453,11 @@ We build upon these analytical results by further considering the approximation
 
 \end_inset
 
-related to the Nambu rDM 
-\begin_inset Formula $\boldsymbol{\rho}_{ij}=\langle\check{\boldsymbol{c}}_{j}^{\dagger}\otimes\check{\boldsymbol{c}}_{i}\rangle$
-\end_inset
-
- with 
-\begin_inset Formula $\boldsymbol{\check{c}}_{i}=(c_{i\uparrow}\,\,c_{i\downarrow}\,\,c_{i\uparrow}^{\dagger}\,\,c_{i\downarrow}^{\dagger})$
-\end_inset
-
- and the underlying spin structure concealed within the bold notation allows
- one to write the total onsite self-energy of the system in the compact
+allows one to write the total onsite self-energy of the system in the compact
  form 
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{\Sigma}_{ij}=\frac{1}{2}V^{i\ell}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{\ell\ell}\right)\left[\tau_{z}\otimes\sigma_{0}\right]\delta_{ij}-V^{ij}\tilde{\boldsymbol{\rho}}_{ij},
+\boldsymbol{\Sigma}_{ij}=\frac{1}{2}U\left[\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{ii}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-2\tilde{\boldsymbol{\rho}}_{ij}\right]\delta_{ij}.\label{eq:Sigma}
 \end{equation}
 
 \end_inset
@@ -1645,15 +480,675 @@ with both
 \end_inset
 
  the 1st neighbors hoppings (front and back).
- Note the repeated dummy Einstein site index 
-\begin_inset Formula $\ell$
+ Note that the underlying spin structure is being concealed within the bold
+ notation; the corresponding Nambu-spinor reading 
+\begin_inset Formula $\boldsymbol{\check{c}}_{i}=(c_{i\uparrow}\,\,c_{i\downarrow}\,\,c_{i\uparrow}^{\dagger}\,\,c_{i\downarrow}^{\dagger})$
 \end_inset
 
- concealing the hidden sum.
+.
+\end_layout
+
+\begin_layout Section
+Nanowire models
+\end_layout
+
+\begin_layout Standard
+First and foremost, we showcase Oreg-Lutchyn minimal Majorana model [?]
+ as our model's groundwork.
+ Oreg-Lutchyn minimal model consists of a finite one-dimensional nanowire
+ in the presence of an external Zeeman field 
+\begin_inset Formula $V_{\text{Z}}$
+\end_inset
+
+ and spin-orbit coupling (SOC) effect, being described by the Hamiltonian
+\begin_inset Formula 
+\begin{equation}
+\hat{\boldsymbol{H}}_{0}=\sum_{\sigma_{i}\sigma_{j}}c_{\sigma_{i}}^{\dagger}\left(-\eta\partial_{x}^{2}-\mu+\alpha_{\text{R}}i\sigma_{y}\partial_{x}+V_{\text{Z}}\sigma_{z}\right)c_{\sigma_{j}},
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $\eta=\hbar^{2}/2m^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $m^{*}$
+\end_inset
+
+ the electron's effective mass, and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ the chemical potential.
+ The SOC effect due an externally applied transverse magnetic field of Rashba
+ strength 
+\begin_inset Formula $\alpha_{\text{R}}$
+\end_inset
+
+ and the Zeeman splitting 
+\begin_inset Formula $V_{\text{Z}}=g_{J}\mu_{B}B_{x}/2$
+\end_inset
+
+ due to a in-plane magnetic field 
+\begin_inset Formula $B_{x}$
+\end_inset
+
+, with 
+\begin_inset Formula $g_{J}$
+\end_inset
+
+ the Landé 
+\emph on
+g
+\emph default
+yromagnetic factor of the semiconductor and 
+\begin_inset Formula $\mu_{B}$
+\end_inset
+
+ Bohr's magneton.
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ Furthermore, the minimal model then considers a
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $s$
+\end_inset
+
+-type superconductive (SC) proximity effect of uniform pairing 
+\begin_inset Formula $\Delta_{0}$
+\end_inset
+
+ reading as 
+\begin_inset Formula $(\Delta_{0}c_{\uparrow}^{\dagger}c_{\downarrow}^{\dagger}+h.c)/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The major step up to the minimal model is that we do not consider an homogeneous
+ superconductive proximity effect term but instead self-consistently calculate
+ for the induced pairing (but also magnetization and doping).
+ As derived in the previous section, this is realized in a Hartree-Fock-Bogoliub
+ov mean-field theory.
+ Within the Nambu tight-binding scheme, this correction amounts to the substitut
+ion 
+\begin_inset Formula $\Delta_{0}\left[\tau_{y}\otimes\sigma_{y}\right]\delta_{ij}\rightarrow\boldsymbol{\Sigma}_{ij}$
+\end_inset
+
+, with 
+\begin_inset Formula $\boldsymbol{\Sigma}_{ij}$
+\end_inset
+
+ made explicit in Eq.(
+\begin_inset Formula $\text{\ref{eq:Sigma}}$
+\end_inset
+
+).
+ The full Hamiltonian matrix reads explicitly as
+\begin_inset Formula 
+\begin{align}
+\boldsymbol{H} & =\left(f\delta_{ij}-t\delta_{ij\pm1}\right)\left[\tau_{z}\otimes\sigma_{0}\right]+V_{\text{Z}}\left[\tau_{z}\otimes\sigma_{z}\right]\delta_{ij}\nonumber \\
+ & +\frac{\alpha_{\text{R}}}{2a_{0}}\delta_{ij\pm1}^{\pm}\left[\tau_{z}\otimes i\sigma_{y}\right]+\boldsymbol{\Sigma}_{ij}\label{eq:H}
+\end{align}
+
+\end_inset
+
+with 
+\begin_inset Formula $f=2t-\mu$
+\end_inset
+
+ the band filling (
+\begin_inset Formula $\mu=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu=2t$
+\end_inset
+
+ corresponding to half and zero filling respectively), 
+\begin_inset Formula $t=\eta/a_{0}^{2}$
+\end_inset
+
+ the hopping parameter and 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ the real-space lattice spacing.
+\end_layout
+
+\begin_layout Standard
+Schematic models of the hybrid and intrinsic self-consistent Majorana nanowires
+ are shown in Fig.(
+\begin_inset Formula $\text{\ref{fig:models}}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/models.svg
+	lyxscale 150
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Self-consistent finite nanowire models.
+ (a) Hybrid model.
+
+\series default
+ A depleted semiconducting (SM) nanowire in a doped 
+\begin_inset Formula $s$
+\end_inset
+
+-wave superconducting (SC) nanowire substrate.
+ Both nanowires are subject to an externally applied magnetic field 
+\begin_inset Formula $B$
+\end_inset
+
+ but only the SM exhibits spin-orbit coupling.
+ Crucially, only the SC nanowire contains the self-consistent Hubbard term
+ 
+\begin_inset Formula $U_{\text{SC}}$
+\end_inset
+
+ (therewith 
+\begin_inset Formula $U_{\text{SM}}=0$
+\end_inset
+
+), thus serving as the sole source of pairing within the system.
+ The proximity effect is modeled by a hopping with intensity 
+\begin_inset Formula $\tau<t$
+\end_inset
+
+.
+ Moreover, note that considering 
+\begin_inset Formula $\mu_{\text{SC}}\gg\mu_{\text{SM}}$
+\end_inset
+
+ is crucial for an effective proximity effect because we do not account
+ for disorder and the parallel momentum must be conserved across the interface.
+ 
+\series bold
+(b) Intrinsic model.
+
+\series default
+ Just a doped semiconductor wire (no SC subtract) with strong SOC subjected
+ to an externally applied magnetic field 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ The superconductivity arrives intrinsically due to the self-consistent
+ Hubbard term 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:models"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Remember these talking points:
+\end_layout
+
+\begin_layout Enumerate
+Shallow mode 
+\begin_inset Formula $\mu$
+\end_inset
+
+ shift.
+\end_layout
+
+\begin_layout Enumerate
+Self-consistent routine.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Full spectrum diagonalization for finite case
+\end_layout
+
+\begin_layout Itemize
+Schur's factorization for infinite case
+\end_layout
+
+\begin_layout Itemize
+Anderson acceleration method
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Analytical BCS gap equation:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Furthermore, we compare the 
+\begin_inset Formula $\bar{\mu}_{\text{SM}}$
+\end_inset
+
+ linecuts to the analytical BCS gap equation, generalized to account for
+ Zeeman but not SOC, derived in appendix:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Delta_{0}=2\epsilon_{0}\exp\left(-\sqrt{\frac{\pi^{2}}{2}\frac{\hbar^{2}}{m_{e}e}}\sqrt{\frac{\mu}{m_{0}}}\frac{1}{|U|a_{0}}\right),\label{eq:analDelta-1}
+\end{equation}
+
+\end_inset
+
+It is important to note that Eq.(
+\begin_inset Formula $\text{\ref{eq:analDelta-1}}$
+\end_inset
+
+) assumes 
+\begin_inset Formula $\mu\gg\Delta$
+\end_inset
+
+.
+ See that the actual spectral gap 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ (show in dashed black) does not always correspond to the pairing potential
+ 
+\begin_inset Formula $\Delta_{0}$
+\end_inset
+
+.
+ Generally it reads 
+\begin_inset Formula $\Omega=\max(0,|\Delta_{0}|-|V_{\text{Z}}|)$
+\end_inset
+
+ since for 
+\begin_inset Formula $|V_{\text{Z}}|>\Delta_{0}$
+\end_inset
+
+ the gap has to close although the pairing remains finite.
+ Moreover, see that one always needs 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+ or else the pairing becomes non-real.
+ In the particular case 
+\begin_inset Formula $V_{\text{Z}}=0$
+\end_inset
+
+ with 
+\begin_inset Formula $\mu<0$
+\end_inset
+
+ the gap must correspond instead to 
+\begin_inset Formula $\Omega=-\mu$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Direct analysis from the figure.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Topological invariant, hyperboloid 
+\end_layout
+
+\begin_layout Itemize
+Self-induced dopping shifts 
+\begin_inset Formula $\mu=\mu_{0}^{\text{hyb}}$
+\end_inset
+
+ and 
+\series bold
+
+\begin_inset Formula $\mu=\mu_{0}^{\text{int}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mirror-symmetric holeonic phase-transition hyperboloid
+\end_layout
+
+\begin_layout Itemize
+Insulator region in the phase diagram
+\end_layout
+
+\begin_layout Itemize
+No Majorana oscillation because large 
+\begin_inset Formula $L$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Refer to the multi-mode intrinsic results.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/versus.png
+	lyxscale 40
+	scale 13
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Self-consistent nanowire models results.
+ 
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+The white boundary line denotes the abrupt change in the Majorana number
+ 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ marking the trivial-topological phase transition.
+ Common to all models, we have set the lattice spacing to 
+\begin_inset Formula $a=10\text{nm}$
+\end_inset
+
+, the finite nanowire length to 
+\begin_inset Formula $L=2000\text{nm}$
+\end_inset
+
+, the effective mass to 
+\begin_inset Formula $m^{*}=0.023m_{e}$
+\end_inset
+
+ and the SOC Rashba strength to 
+\begin_inset Formula $\alpha=40\text{meV}$
+\end_inset
+
+.
+ For the hybrid case the SC Hubbard strength is 
+\begin_inset Formula $U_{\text{SC}}=-30\text{meV}$
+\end_inset
+
+ with the SC chemical potential 
+\begin_inset Formula $\mu_{\text{SC}}=5\text{meV}$
+\end_inset
+
+ and SC-SM hopping coupling 
+\begin_inset Formula $\tau=0.8t$
+\end_inset
+
+.
+ For the intrinsic case the Hubbard strength is 
+\begin_inset Formula $U=-8\text{meV}$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hybrid"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Section
+Acknowledgments
+\end_layout
+
+\begin_layout Standard
+We are deeply grateful to our colleague Rui E.
+ Silva and Bruno Amorim who provided useful insight and expertise that greatly
+ assisted the research of this paper.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{10cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.0"
+key "0.0"
+literal "false"
+
+\end_inset
+
+Lutchyn, Roman M., Jay D.
+ Sau, and S.
+ Das Sarma.
+ "Majorana fermions and a topological phase transition in semiconductor-supercon
+ductor heterostructures." Physical review letters 105.7 (2010): 077001.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.1"
+key "0.1"
+literal "false"
+
+\end_inset
+
+Oreg, Yuval, Gil Refael, and Felix Von Oppen.
+ "Helical liquids and Majorana bound states in quantum wires." Physical review
+ letters 105.17 (2010): 177002.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.2"
+key "0.2"
+literal "false"
+
+\end_inset
+
+Chamon, C., et al.
+ "Quantizing Majorana fermions in a superconductor." Physical Review B 81.22
+ (2010): 224515
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.3"
+key "0.3"
+literal "false"
+
+\end_inset
+
+Prada, Elsa, et al.
+ "From Andreev to Majorana bound states in hybrid superconductor–semiconductor
+ nanowires." Nature Reviews Physics 2.10 (2020): 575-594..
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.4"
+key "0.4"
+literal "false"
+
+\end_inset
+
+Avila, J., et al.
+ "Superconducting islands with semiconductor-nanowire-based topological
+ Josephson junctions." arXiv preprint arXiv:2003.02852 (2020).
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.5"
+key "0.5"
+literal "false"
+
+\end_inset
+
+Sau, Jay D., et al.
+ "Generic new platform for topological quantum computation using semiconductor
+ heterostructures." Physical review letters 104.4 (2010): 040502.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.6"
+key "0.6"
+literal "false"
+
+\end_inset
+
+Fu, Liang, and Charles L.
+ Kane.
+ "Superconducting proximity effect and Majorana fermions at the surface
+ of a topological insulator." Physical review letters 100.9 (2008): 096407.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1.1"
+key "1.1"
+literal "false"
+
+\end_inset
+
+Nambu, Yoichiro.
+ "Quasi-particles and gauge invariance in the theory of superconductivity."
+ Physical Review 117.3 (1960): 648.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Appendix
 \end_layout
 
 \begin_layout Subsection*
-Appendix B: Analytical gap equation
+Appendix A: Analytical gap equation
 \end_layout
 
 \begin_layout Standard
@@ -1973,121 +1468,6 @@ It is important to note that the actual spectral gap
 
 .
  
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.0"
-key "0.0"
-literal "false"
-
-\end_inset
-
-Lutchyn, Roman M., Jay D.
- Sau, and S.
- Das Sarma.
- "Majorana fermions and a topological phase transition in semiconductor-supercon
-ductor heterostructures." Physical review letters 105.7 (2010): 077001.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.1"
-key "0.1"
-literal "false"
-
-\end_inset
-
-Oreg, Yuval, Gil Refael, and Felix Von Oppen.
- "Helical liquids and Majorana bound states in quantum wires." Physical review
- letters 105.17 (2010): 177002.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.2"
-key "0.2"
-literal "false"
-
-\end_inset
-
-Chamon, C., et al.
- "Quantizing Majorana fermions in a superconductor." Physical Review B 81.22
- (2010): 224515
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.3"
-key "0.3"
-literal "false"
-
-\end_inset
-
-Prada, Elsa, et al.
- "From Andreev to Majorana bound states in hybrid superconductor–semiconductor
- nanowires." Nature Reviews Physics 2.10 (2020): 575-594..
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.4"
-key "0.4"
-literal "false"
-
-\end_inset
-
-Avila, J., et al.
- "Superconducting islands with semiconductor-nanowire-based topological
- Josephson junctions." arXiv preprint arXiv:2003.02852 (2020).
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.5"
-key "0.5"
-literal "false"
-
-\end_inset
-
-Sau, Jay D., et al.
- "Generic new platform for topological quantum computation using semiconductor
- heterostructures." Physical review letters 104.4 (2010): 040502.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.6"
-key "0.6"
-literal "false"
-
-\end_inset
-
-Fu, Liang, and Charles L.
- Kane.
- "Superconducting proximity effect and Majorana fermions at the surface
- of a topological insulator." Physical review letters 100.9 (2008): 096407.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1.1"
-key "1.1"
-literal "false"
-
-\end_inset
-
-Nambu, Yoichiro.
- "Quasi-particles and gauge invariance in the theory of superconductivity."
- Physical Review 117.3 (1960): 648.
 \end_layout
 
 \end_body

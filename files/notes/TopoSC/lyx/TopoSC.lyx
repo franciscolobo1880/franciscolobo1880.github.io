@@ -1,0 +1,849 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass revtex4-2
+\begin_preamble
+% wick theorem with colors
+\usepackage{simpler-wick}
+\makeatletter
+\pgfkeys{simplerwick,wickcolor/.store in=\swick@color,wickcolor=black}
+\def\swick@end#1#2{
+  \swick@setfalse@#1
+  \tikzexternaldisable
+  \begin{tikzpicture}[remember picture, baseline=(swick-close#1.base)]
+    \node[use as bounding box, inner sep=0pt, outer sep=0pt] (swick-close#1) {$\displaystyle #2$};
+  \end{tikzpicture}
+  \tikz[remember picture, overlay]
+    \draw[\swick@color] ($(swick-open#1.north) + (0, 3pt)$)
+          -- ($(swick-open#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.north) + (0, 3pt)$);
+  \tikzexternalenable}
+\makeatother 
+
+% fancy color boxes
+% \usepackage{xcolor}
+\usepackage{color}
+\usepackage{tcolorbox}
+\usepackage{environ}
+\usepackage{etoolbox}
+\usepackage{pgf}
+\tcbuselibrary{breakable}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{eso-pic}
+
+% numbering equations
+%\usepackage{chngcntr}
+%\counterwithin{equation}{section}
+
+\definecolor{green}{RGB}{0, 150, 0}
+
+\usepackage{afterpage}
+\usepackage{upgreek}
+\end_preamble
+\use_default_options true
+\begin_modules
+tcolorbox
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\notefontcolor #dcdcdc
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 1
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\size largest
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fontsize{30pt}{0pt}
+\backslash
+selectfont
+\end_layout
+
+\end_inset
+
+ Journal notes on: 
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fontsize{35pt}{0pt}
+\backslash
+selectfont
+\end_layout
+
+\end_inset
+
+ Topological superconductivity
+\end_layout
+
+\begin_layout Author
+
+\size largest
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fontsize{25pt}{0pt}
+\backslash
+selectfont
+\end_layout
+
+\end_inset
+
+ by Francisco Lobo
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagecolor{cyan!25!white}
+\backslash
+afterpage{
+\backslash
+nopagecolor}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/lobo/GitHub/franciscolobo1880.github.io/files/notes/TopoSC/assets/cover_framed.jpg
+	display false
+	scale 13
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.05cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/lobo/GitHub/franciscolobo1880.github.io/files/notes/TopoSC/assets/ICMM.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AddToShipoutPictureBG{% 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay,remember picture] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw[line width=25pt]     
+\end_layout
+
+\begin_layout Plain Layout
+
+	($ (current page.north west) + (0.1cm,-0.1cm) $)     rectangle
+\end_layout
+
+\begin_layout Plain Layout
+
+	($ (current page.south east) + (-0.1cm, 0.1cm) $); 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Preface
+\end_layout
+
+\begin_layout Standard
+This logbook is a compilation of subjects that I have been self studying
+ as part of my PhD thesis on "
+\color purple
+Time-dependent
+\color inherit
+" under the supervision of Pablo SanJose, Elsa Prada and Rui Dias and as
+ part of the Quantum Dynamics of Materials (QUDYMA) group at the Instituto
+ de Ciencias de Materiales de Madrid (ICMM-CSIC).
+ The main fields of study are superconducting physics, topology and ultra-fast
+ physics.
+ The core writing of this book is strongly based on Michael Tinkam's "Introducti
+on to superconductivity" as well as Alex Kamenev's "Field Theory of Non-Equilibr
+ium Systems" for the superconducting bit and 
+\color purple
+—
+\color inherit
+.
+ I will try my best to explained in detail the relevant intermediate steps
+ of the calculations that are not shown in original reference.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=350pt, center, colback=green!5!white, colframe=green!75!black
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.45cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ClearShipoutPictureBG
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Introduction to superconductivity
+\end_layout
+
+\begin_layout Section
+London theory
+\end_layout
+
+\begin_layout Section
+BCS theory
+\end_layout
+
+\begin_layout Section
+Ginzburg-Landau theory
+\end_layout
+
+\begin_layout Subsection
+Classic type II superconductors
+\end_layout
+
+\begin_layout Subsection
+Josephson effect
+\end_layout
+
+\begin_layout Section
+Time-dependent Ginzburg-Landau theory
+\end_layout
+
+\begin_layout Part
+Topological superconductivity
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Section
+SSH model
+\end_layout
+
+\begin_layout Section
+Kitaev model
+\end_layout
+
+\begin_layout Section
+Andreev bound states
+\end_layout
+
+\begin_layout Section
+Majorana bound states
+\end_layout
+
+\begin_layout Part
+Compilation of my articles on the topic
+\end_layout
+
+\begin_layout Section
+Hybrid versus intrinsic Majorana nanowires, a self-consistent Hartree-Fock-Bogol
+iubov analysis
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.0"
+key "0.0"
+literal "false"
+
+\end_inset
+
+Lutchyn, Roman M., Jay D.
+ Sau, and S.
+ Das Sarma.
+ "Majorana fermions and a topological phase transition in semiconductor-supercon
+ductor heterostructures." Physical review letters 105.7 (2010): 077001.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.1"
+key "0.1"
+literal "false"
+
+\end_inset
+
+Oreg, Yuval, Gil Refael, and Felix Von Oppen.
+ "Helical liquids and Majorana bound states in quantum wires." Physical review
+ letters 105.17 (2010): 177002.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.2"
+key "0.2"
+literal "false"
+
+\end_inset
+
+Chamon, C., et al.
+ "Quantizing Majorana fermions in a superconductor." Physical Review B 81.22
+ (2010): 224515
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.3"
+key "0.3"
+literal "false"
+
+\end_inset
+
+Prada, Elsa, et al.
+ "From Andreev to Majorana bound states in hybrid superconductor–semiconductor
+ nanowires." Nature Reviews Physics 2.10 (2020): 575-594..
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.4"
+key "0.4"
+literal "false"
+
+\end_inset
+
+Avila, J., et al.
+ "Superconducting islands with semiconductor-nanowire-based topological
+ Josephson junctions." arXiv preprint arXiv:2003.02852 (2020).
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.5"
+key "0.5"
+literal "false"
+
+\end_inset
+
+Sau, Jay D., et al.
+ "Generic new platform for topological quantum computation using semiconductor
+ heterostructures." Physical review letters 104.4 (2010): 040502.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.6"
+key "0.6"
+literal "false"
+
+\end_inset
+
+Fu, Liang, and Charles L.
+ Kane.
+ "Superconducting proximity effect and Majorana fermions at the surface
+ of a topological insulator." Physical review letters 100.9 (2008): 096407.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.7"
+key "0.7"
+literal "false"
+
+\end_inset
+
+ Heredia Cachá, Elsa Prada.
+ "Estados ligados de Majorana en nanohilos semiconductores".
+ Master thesis Universidad Autónoma de Madrid.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1.1"
+key "1.1"
+literal "false"
+
+\end_inset
+
+Nambu, Yoichiro.
+ "Quasi-particles and gauge invariance in the theory of superconductivity."
+ Physical Review 117.3 (1960): 648.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1.2"
+key "1.2"
+literal "false"
+
+\end_inset
+
+Sauls, J.
+ A.
+ "Andreev bound states and their signatures." Philosophical Transactions
+ of the Royal Society A: Mathematical, Physical and Engineering Sciences
+ 376.2125 (2018): 20180140.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1.3"
+key "1.3"
+literal "false"
+
+\end_inset
+
+Hamada, Yuta.
+ Higgs potential and naturalness after the Higgs discovery.
+ Springer, 2017.
+ Appendix E—Quantization of Majorana Field
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1.4"
+key "1.4"
+literal "false"
+
+\end_inset
+
+Peskin, Michael E.
+ An introduction to quantum field theory.
+ CRC press, 2018.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1.6"
+key "1.6"
+literal "false"
+
+\end_inset
+
+A.J.Leggett, University of Illinois, PHYS598 Year 2013 Lecture 24: Topological
+ Superfluids: Majorana Fermions
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1.7"
+key "1.7"
+literal "false"
+
+\end_inset
+
+A.J.Leggett, University of Illinois, PHYS598 Year 2015 Lecture 11: The Bogoliubov–
+de Gennes and Andreev Equations 
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1.8"
+key "1.8"
+literal "false"
+
+\end_inset
+
+Kruchinin, Sergei.
+ Modern aspects of superconductivity: theory of superconductivity.
+ World Scientific, 2021.
+\end_layout
+
+\begin_layout Bibliography
+
+\color darkgray
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "note"
+key "note"
+literal "false"
+
+\end_inset
+
+ Still have many many article to cite here that were in the 0's sections
+ articles.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.1"
+key "2.1"
+literal "false"
+
+\end_inset
+
+Diesch, Simon, et al.
+ "Creation of equal-spin triplet superconductivity at the Al/EuS interface."
+ Nature communications 9.1 (2018): 5248.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.2"
+key "2.2"
+literal "false"
+
+\end_inset
+
+Caroli, C., P.
+ G.
+ De Gennes, and J.
+ Matricon.
+ "Bound fermion states on a vortex line in a type II superconductor." Physics
+ Letters 9.4 (1964): 307-309.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.3"
+key "2.3"
+literal "false"
+
+\end_inset
+
+Luh, Yu.
+ "Bound state in superconductors with paramagnetic impurities." Acta Physica
+ Sinica 21.1 (1965): 75.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.4"
+key "2.4"
+literal "false"
+
+\end_inset
+
+Shiba, Hiroyuki.
+ "Classical spins in superconductors." Progress of theoretical Physics 40.3
+ (1968): 435-451.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.5"
+key "2.5"
+literal "false"
+
+\end_inset
+
+Rusinov, A.
+ I.
+ "Superconductivity near a paramagnetic impurity." JETP Lett.(USSR) 9 (1969).
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.6"
+key "2.6"
+literal "false"
+
+\end_inset
+
+Blonder, G.
+ E., M.
+ M.
+ Tinkham, and K.
+ TM Klapwijk.
+ "Transition from metallic to tunneling regimes in superconducting microconstric
+tions: Excess current, charge imbalance, and supercurrent conversion." Physical
+ Review B 25.7 (1982): 4515.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.7"
+key "2.7"
+literal "false"
+
+\end_inset
+
+Andreev, A.
+ F.
+ "The thermal conductivity of the intermediate state in superconductors."
+ Журнал экспериментальной и теоретической физики 46.5 (1964): 1823-1828.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.8"
+key "2.8"
+literal "false"
+
+\end_inset
+
+Andreev, A.
+ F.
+ "Electron spectrum of the intermediate state of superconductors." Sov.
+ Phys.
+ JETP 22.455 (1966): 18-23.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.9"
+key "2.9"
+literal "false"
+
+\end_inset
+
+Xu, Cenke, and Joel E.
+ Moore.
+ "Stability of the quantum spin Hall effect: Effects of interactions, disorder,
+ and Z 2 topology." Physical Review B 73.4 (2006): 045322.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2.10"
+key "2.10"
+literal "false"
+
+\end_inset
+
+Wu, Congjun, B.
+ Andrei Bernevig, and Shou-Cheng Zhang.
+ "Helical liquid and the edge of quantum spin Hall systems." Physical review
+ letters 96.10 (2006): 106401.
+\end_layout
+
+\end_body
+\end_document

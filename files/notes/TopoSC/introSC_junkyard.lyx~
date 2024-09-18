@@ -1,0 +1,1115 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass revtex4-2
+\begin_preamble
+% wick theorem with colors
+\usepackage{simpler-wick}
+\makeatletter
+\pgfkeys{simplerwick,wickcolor/.store in=\swick@color,wickcolor=black}
+\def\swick@end#1#2{
+  \swick@setfalse@#1
+  \tikzexternaldisable
+  \begin{tikzpicture}[remember picture, baseline=(swick-close#1.base)]
+    \node[use as bounding box, inner sep=0pt, outer sep=0pt] (swick-close#1) {$\displaystyle #2$};
+  \end{tikzpicture}
+  \tikz[remember picture, overlay]
+    \draw[\swick@color] ($(swick-open#1.north) + (0, 3pt)$)
+          -- ($(swick-open#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.north) + (0, 3pt)$);
+  \tikzexternalenable}
+\makeatother 
+
+% fancy color boxes
+\usepackage{color}
+\usepackage{tcolorbox}
+\usepackage{environ}
+\usepackage{etoolbox}
+\usepackage{pgf}
+\tcbuselibrary{breakable}
+
+\usepackage{xcolor}
+
+% numbering equations
+%\usepackage{chngcntr}
+%\counterwithin{equation}{section}
+
+\definecolor{green}{RGB}{0, 150, 0}
+
+\usepackage{afterpage}
+\usepackage{upgreek}
+\end_preamble
+\use_default_options true
+\begin_modules
+tcolorbox
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\notefontcolor #dcdcdc
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 1
+\papercolumns 2
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Ever since Kamerlingh Onnes discovered the "zero resistance state" of metals
+ at very low temperatures in 1911, the superconducting state of matter has
+ fascinated physicists.
+ Notably, Bardeen–Cooper–Schrieffer's (
+\emph on
+BCS
+\emph default
+) theory of superconductivity was a watershed in modern condensed matter
+ physics.
+ It's key feature is 
+\emph on
+pair condensation
+\emph default
+, the macroscopic occupation of a bound state of fermion pairs.
+ The binding of fermions into 
+\emph on
+Cooper pairs
+\emph default
+ typically leads to an energy gap in the fermionic excitation spectrum,
+ while condensation of Cooper pairs leads to the breaking of global 
+\begin_inset Formula $U(1)$
+\end_inset
+
+ gauge symmetry.
+ This symmetry breaking is linked to the spontaneously choosing of an overall
+ phase 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ of the macroscopic wavefunction below the transition temperature 
+\begin_inset Formula $T_{c}$
+\end_inset
+
+ (akin to how a ferromagnet spontaneously picks a magnetization direction)
+ and it's generator is the particle number , being related to the fact that
+ 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ and 
+\begin_inset Formula $N$
+\end_inset
+
+ are canonical conjugate (well, technically only for larger values of 
+\begin_inset Formula $N$
+\end_inset
+
+ but this is ofter the case).
+ In BCS superconductivity considerations, 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ is precisely the (conjugate of the) number of Cooper pairs formed.
+ Furthermore, the symmetry breaking of 
+\begin_inset Formula $U(1)$
+\end_inset
+
+ implies that the fermionic excitations are no longer charge eigenstates,
+ but each is a coherent superposition of a normal-state particle and hole,
+ e.g.
+ 
+\begin_inset Formula $\gamma_{\mathbf{k}\sigma}=u_{\mathbf{k}}\psi_{\mathbf{k}\sigma}+v_{\mathbf{k}}^{*}\psi_{-\mathbf{k}\bar{\sigma}}^{\dagger}$
+\end_inset
+
+, with 
+\begin_inset Formula $\psi/\psi^{\dagger}$
+\end_inset
+
+ the electronic field operators and where 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ are the particle and hole amplitudes (defined by momentum 
+\begin_inset Formula $\mathbf{k}$
+\end_inset
+
+ and spin 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ [
+\begin_inset Formula $\bar{\sigma}$
+\end_inset
+
+ being the flipped spin]) defining the so called 
+\emph on
+Bogoliubov quasi-particles
+\emph default
+ (or 
+\emph on
+Bogoliubons
+\emph default
+) Charge conservation is then maintained by an additional channel for charge
+ transport via the coherent motion of the pair condensate.
+ One can then construct the ground state of the superconductor 
+\begin_inset Formula $\left|\emptyset\right\rangle $
+\end_inset
+
+ (also denoted as 
+\begin_inset Formula $\left|\text{GS}\right\rangle $
+\end_inset
+
+ or 
+\begin_inset Formula $\left|\text{BCS}\right\rangle $
+\end_inset
+
+) from the condition that it contain no Bogoliubons, 
+\begin_inset Formula $\gamma\left|\emptyset\right\rangle =0$
+\end_inset
+
+, wielding a superposition of states with different number of Cooper pairs
+ 
+\begin_inset Formula $\left|\emptyset\right\rangle =\prod_{\mathbf{k}}(u_{\mathbf{k}}-v_{\mathbf{k}}^{*}\psi_{\mathbf{k}\sigma}^{\dagger}\psi_{-\mathbf{k}\bar{\sigma}}^{\dagger})\left|0\right\rangle $
+\end_inset
+
+, with 
+\begin_inset Formula $\left|0\right\rangle $
+\end_inset
+
+ the state containing no electrons.
+\end_layout
+
+\begin_layout Standard
+Expanding beyond BCS, we can distinguish other types of superconductivity
+ by the characteristics of the pair condensation.
+ In BCS superconductors (SCs), the electrons are being Cooper paired with
+ opposite spins, forming a 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $S=0$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ spin-singlet state, but it possible to Cooper pair electrons with parallel
+ spins forming three possible 
+\begin_inset Formula $S=1$
+\end_inset
+
+ spin-triplet states without violating Pauli principle [
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "2.1"
+literal "false"
+
+\end_inset
+
+].
+ Concerning with the orbital component we can also distinguish between different
+ angular momentums 
+\begin_inset Formula $\ell=0(s),\,1(p),\,2(d),\,3(f)$
+\end_inset
+
+ and so on.
+ As a first order approximation, one can match the orbital component to
+ the shapes of spherical harmonics, although, of course, with the caveat
+ that the crystal lattice and Fermiology can make the situation more complex
+ in real materials.
+ Because Fermions obey antisymmetric exchange (switching two electrons correspon
+ds to a sign change), if the spin part of the wavefunction is antisymmetric,
+ as is the case for the singlet case, then the orbital part has to be even,
+ 
+\begin_inset Formula $\ell=0,2,...$
+\end_inset
+
+.
+ Of course, for the same reason, the triplet case must have instead odd
+ orbital part, 
+\begin_inset Formula $\ell=1,3,...$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This different types of SCs can also be discussed in terms of a quantity
+ 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ known as the 
+\emph on
+order parameter
+\emph default
+.
+ For example, in Ginzburh-Landau (GL) theory 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is emblematic of a phenomenological "wavefunction" for the superconducting
+ fluid while in BCS theory it has to do with the "wavefunction" of the Cooper
+ pairs, being named interchangeably as 
+\emph on
+pairing potential
+\emph default
+.
+ Spatial variations of the pairing potential lead to modifications of the
+ coherence amplitudes 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ mentioned above, particularly to a novel scattering dubbed 
+\emph on
+Andreev scattering
+\emph default
+ (or
+\emph on
+ branch conversion scattering
+\emph default
+) [
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "2.7"
+literal "false"
+
+\end_inset
+
+][
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "2.8"
+literal "false"
+
+\end_inset
+
+].
+ Such is the case of states trapped in magnetic flux vortices (so-called
+ Caroli-Matricon-De Gennes states [
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "2.2"
+literal "false"
+
+\end_inset
+
+]), at magnetic domains or impurities (Yu-Shiba-Rusinov states [
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "2.3"
+literal "false"
+
+\end_inset
+
+–
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "2.5"
+literal "false"
+
+\end_inset
+
+]), at weak links between SCs or at normal metal-superconductor contacts
+ [
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "2.6"
+literal "false"
+
+\end_inset
+
+], to name a few.
+ For instances, let use consider a semiconductor-superconductor (SM-SC)
+ interface; when an electron (within the SM) has an energy below the SC
+ gap (i.e forbidden to simply propagate into the SC) hits the SM-SC interface
+ (assumed to be highly transparent, e.g with no oxide or tunnel layer), the
+ incident electron forms a Cooper pair in the superconductor with the 
+\emph on
+retro-reflection
+\emph default
+ of a hole of opposite spin and velocity but equal momentum to the incident
+ electron, as seen the figure below.
+ Of course, through time-reversal symmetry, the process will also work with
+ an incident hole.
+ If the interface is highly transparent, below the SC gap such Andreev process
+ dominates with high probability, whereas in the opposite limit the electron
+ is specularly reflected.
+ In regions of strong spatial variations, multiple Andreev reflection leads
+ to the formation of sub-gap states, 
+\emph on
+Andreev bound states
+\emph default
+ (ABS)
+\emph on
+.
+ 
+\emph default
+The presence of such bound states has important consequences for transport
+ since it implies that a normal metal can carry a dissipationless supercurrent
+ 
+\begin_inset Formula $I_{A}(\varphi)$
+\end_inset
+
+ between two SCs over arbitrarily long lengths, provided that transport
+ is coherent.
+ This is the celebrated 
+\emph on
+DC Josephson effect
+\emph default
+\color purple
+.
+\color inherit
+
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagens/AR.svg
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+(a) Specular reflection (b) retro-reflection (c) Andreev bound states.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:andreev"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With the advent of topological (TP) materials, the existence of new states
+ of matter known collectively as 
+\emph on
+topological superconducting 
+\emph default
+(TP SC) phases have been predicted, arising particularly in 
+\begin_inset Formula $p$
+\end_inset
+
+-wave SCs.
+ Topological SC phases are characterized by the emergence of a rather special
+ type of subgap bound state occurring at topological defects such as vortices,
+ boundaries or domain walls.
+ Importantly, such bound states occur 
+\emph on
+precisely
+\emph default
+ at zero energy, and exhibit electron and hole character with exactly equal
+ probability.
+ The second quantization operators describing these states are thus self-conjuga
+te 
+\begin_inset Formula $\gamma=\gamma^{\dagger}$
+\end_inset
+
+, meaning that they are is its own antiparticle, unlike Dirac fermions,
+ and will effectively behave as fractionalized objects
+\emph on
+, 
+\emph default
+known as
+\emph on
+ anyons
+\emph default
+, obeying non-Abelian anyonic statistics rather than Fermi or Bose statistics.
+ They are in this sense a condensed matter realization of the celebrated
+ states known as Majorana fermions (MFs).
+ As opposed to standard Andreev bound states, which can be pushed out of
+ the gap by continuous deformations of the Hamiltonian, Majorana bound states
+ (MBSs) cannot be removed from zero energy by any local perturbation or
+ local noise that does not close the gap.
+ This robust zero-energy pinning is a consequence of the bulk-boundary correspon
+dence principle of band topology, which predicts that at the boundaries
+ between materials with different topological indices, edge states must
+ appear that are protected against perturbations by the topology of the
+ bulk.
+\end_layout
+
+\begin_layout Standard
+In this notes, heavily inspired mainly by Lutchyn's article "Majorana Fermions
+ and a Topological Phase Transition in Semiconductor-Superconductor Heterostruct
+ures"[
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "0.0"
+literal "false"
+
+\end_inset
+
+], and Oreg's article "Helical liquids and Majorana bound states in quantum
+ wires"[
+\begin_inset CommandInset citation
+LatexCommand keyonly
+key "0.1"
+literal "false"
+
+\end_inset
+
+], we study a specific experimental setup for the direct observation of
+ this Majoranas fermions in one of the simplest proposed solid state systems:
+ a 1D semiconductor-superconductor (SM-SC) heterostructure as shown in Fig.(
+\begin_inset Formula $\text{\ref{fig:SMSC}}$
+\end_inset
+
+).
+
+\color purple
+ 
+\color inherit
+This 
+\begin_inset Formula $s$
+\end_inset
+
+-wave SC proposal realizes the conceptual 1D 
+\begin_inset Formula $p$
+\end_inset
+
+-wave superconductivity Kitaev model.
+ We show that in this suitable geometry, as the (gate controlled) chemical
+ potential 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and the (externally applied) magnetic field 
+\begin_inset Formula $B_{x}$
+\end_inset
+
+ is tuned, the SC state in the SM undergoes a phase transition from a topologica
+l SC state containing Majorana modes at the junction to an ordinary SC state
+ with no Majorana modes at the junction.
+ For a small chemical potential in the nanowire, the combination of the
+ spin-orbit interaction and the Zeeman field, by virtue of the SC proximity
+ effect, generates
+\color darkgray
+ a helical phase similar to that of topological insulators (propagating
+ edge states with spin-momentum locking) but with broken time-reversal symmetry.
+
+\color inherit
+ Moreover, we show that the supercurrent circling through the SM-SC heterostruct
+ure exhibits unusual behavior due to the presence of MFs in the system.
+ In particular, the spectrum of Andreev states has an odd number of crossings
+ at zero energy in the topological (TP) phase and even number of crossings
+ in the TP trivial phase.
+ Odd number of crossings is associated with the presence of MFs in the system
+ leading to 
+\begin_inset Formula $4\pi-$
+\end_inset
+
+periodic Andreev energy spectrum.
+ Thus, this difference in the spectrum allows the distinction between TP
+ SCs and conventional SCs.
+ The remarkable feature of the present proposal is that by tuning 
+\begin_inset Formula $\mu$
+\end_inset
+
+ or 
+\begin_inset Formula $B_{x}$
+\end_inset
+
+ across this phase boundary, one can contrast different qualitative dependence
+ of the Andreev energy spectrum on magnetic flux.
+\end_layout
+
+\begin_layout Section
+Theoretical model
+\end_layout
+
+\begin_layout Subsection
+Majorana wire description
+\end_layout
+
+\begin_layout Standard
+Consider the system show in Fig.(
+\begin_inset Formula $\text{\ref{fig:SMSC}}$
+\end_inset
+
+).
+ This system consists of a finite 1D semiconductor nanowire along the 
+\begin_inset Formula $\hat{\mathbf{x}}$
+\end_inset
+
+ direction centered at 
+\begin_inset Formula $x=0$
+\end_inset
+
+, embedded into two different superconducting materials of pairing 
+\begin_inset Formula $\Delta_{L}=\Delta_{0}e^{i\varphi}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta_{R}=\Delta_{0}$
+\end_inset
+
+, along a length 
+\begin_inset Formula $L$
+\end_inset
+
+ on both sides, having an exposed length 
+\begin_inset Formula $2\ell$
+\end_inset
+
+ in-between.
+ To enclose our system there are insulators enclosing it on both sides,
+ typically just vacuum.
+ We have, therefore, two outer edges (the contact points SC-I) and two inner
+ edges (the contact points N-SC), denoted with the red dots, where Majorana
+ states could form; Furthermore, we apply a tunable magnetic field 
+\begin_inset Formula $B_{x}$
+\end_inset
+
+ to our system and top-gate the wire in order to control it's chemical potential
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ We further consider the realistic complication that the SO coupling and
+ the Zeeman field are largely confined to the normal part of the nanowire.
+ Also, to ensure that only one 1D mode is occupied, we consider the nanowire
+ radius small compared to the Fermi wavelength 
+\begin_inset Formula $R\lesssim k_{F}^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Realistically, the wire could be considered to be infinite if the exposed
+ length 
+\begin_inset Formula $\ell$
+\end_inset
+
+ is much larger that the SC coherence length 
+\begin_inset Formula $\ell\gg\xi$
+\end_inset
+
+.
+ We, however, are interested specifically in the finite case where 
+\begin_inset Formula $\ell\ll\xi$
+\end_inset
+
+.
+ For example, in the special case where 
+\begin_inset Formula $\varphi=0$
+\end_inset
+
+ with 
+\begin_inset Formula $\ell\rightarrow0$
+\end_inset
+
+, the order parameter will be constant along the whole system effectively
+ closing the inner edges, as illustrated in Fig.(
+\begin_inset Formula $\text{\ref{fig:infSCnw}}$
+\end_inset
+
+).
+ One the other hand, if one considers 
+\begin_inset Formula $\varphi\neq0$
+\end_inset
+
+, the system will essentially behave as if a Josephson junction.
+ In this former case one could expect the formation of subgap Andreev bound
+ states in the topological trivial phase, as discussed in the introduction.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagens/MW.svg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Side view of the Majorana nanowire.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SMSC"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The Hamiltonian describing the kinetic energy of the SM electrons with the
+ gate controlled chemical potential (in natural units 
+\begin_inset Formula $c=1$
+\end_inset
+
+) is simply
+\begin_inset Formula 
+\begin{equation}
+H_{\text{K}}=\psi_{\alpha}^{\dagger}\left(-\eta\partial_{x}^{2}-\mu\right)\psi_{\beta}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ are generic degrees of freedom of a given electron state 
+\begin_inset Formula $\psi(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $\eta=\nicefrac{\hbar²}{2m^{*}}$
+\end_inset
+
+with 
+\begin_inset Formula $m^{*}$
+\end_inset
+
+ the effective mass of the electrons.
+\end_layout
+
+\begin_layout Standard
+Furthermore, let us consider the SM wire to have a strong spin-orbit coupling
+ (SOC).
+ Because of this, we must account for the Rashba effect, a momentum-dependent
+ splitting of spin bands similar to the splitting of particles and anti-particle
+s in the Dirac Hamiltonian.
+ This splitting is a combined effect of SOC and asymmetry of the crystal
+ potential, for example by an externally applied field along the direction
+ perpendicular to the nanowire.
+ The main effect of the 
+\emph on
+s
+\emph default
+ymmetry 
+\emph on
+b
+\emph default
+reaking potential is the opening of a band gap 
+\begin_inset Formula $\Delta_{\text{sb}}$
+\end_inset
+
+ in the SM bands and the following hybridization of those.
+ In a simplistic toy model, we can describe the Rashba Hamiltonian density
+ as the coupling of an effective relativistic magnetic field 
+\begin_inset Formula $\mathbf{B}=-\left(\boldsymbol{v}\times\mathbf{E}\right)$
+\end_inset
+
+ in the 
+\begin_inset Formula $\hat{\mathbf{z}}$
+\end_inset
+
+ direction to the electron's spin as,
+\begin_inset Formula 
+\begin{equation}
+H_{\text{R}}=\psi_{\alpha}^{\dagger}\left(i\alpha_{\text{R}}\sigma_{y}\partial_{x}\right)\psi_{\beta}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\left(\hat{\mathbf{z}}\times\nabla\right)\cdot\boldsymbol{\sigma}=\sigma_{y}\partial_{x}$
+\end_inset
+
+, with 
+\begin_inset Formula $\alpha_{\text{R}}$
+\end_inset
+
+ the Rashba interaction strength and 
+\begin_inset Formula $\boldsymbol{\sigma}=\left(\sigma_{x},\,\sigma_{y},\,\sigma_{z}\right)$
+\end_inset
+
+ the Pauli matrices vector.
+ One can then estimate the value of this constant, for example, in a tight-bindi
+ng (TB) approach, describing the hybridization in term of hoppings from
+ a site at 
+\begin_inset Formula $\mathbf{r}_{\alpha}$
+\end_inset
+
+ with spin 
+\begin_inset Formula $\sigma_{\alpha}$
+\end_inset
+
+ in some state 
+\begin_inset Formula $\tilde{\tilde{\alpha}}$
+\end_inset
+
+ to a site at 
+\begin_inset Formula $\mathbf{r}_{\beta}$
+\end_inset
+
+ with spin 
+\begin_inset Formula $\sigma_{\beta}$
+\end_inset
+
+ in some other state 
+\begin_inset Formula $\tilde{\tilde{\beta}}$
+\end_inset
+
+, 
+\begin_inset Formula $t_{\alpha\beta}=\langle\sigma_{\alpha}\mathbf{r}_{\alpha}\tilde{\tilde{\alpha}}|H_{\text{R}}|\sigma_{\beta}\mathbf{r}_{\beta}\tilde{\tilde{\beta}}\rangle$
+\end_inset
+
+.
+ Notice that, using the tilde hat notation we specify that both the site
+ and spin indices were taken from all the other possible generic degrees
+ of freedom (one tilde for one degree of freedom specified), 
+\begin_inset Formula $|\alpha\rangle\equiv|\sigma_{\alpha}\mathbf{r}_{\alpha}\tilde{\tilde{\alpha}}\rangle=|\sigma_{\alpha}\rangle\otimes|\mathbf{r}_{\alpha}\rangle\otimes|\tilde{\tilde{\alpha}}\rangle$
+\end_inset
+
+.
+ This notation will be used throughout the notes, so that 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ always denotes 
+\emph on
+all 
+\emph default
+of the degrees of freedom while the tilded ones imply all but the ones made
+ explicit subsequently.
+ This will become relevant further in the notes, when dealing with Nambu
+ spinors.
+ In a 1D nearest neighbor approximation with constant hopping term 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+, we have 
+\begin_inset Formula $t_{\alpha,\beta}^{\text{NN}}=t_{0}\langle\tilde{\tilde{\alpha}}|H_{\text{R}}|\tilde{\tilde{\beta}}\rangle\delta_{\sigma\sigma^{\prime}}$
+\end_inset
+
+.
+ The Rashba interaction strength can then be understood as a second order
+ perturbation energy, in which, for example, a spin-up hole in state 
+\begin_inset Formula $|\uparrow\tilde{\alpha}\rangle$
+\end_inset
+
+ hops to his nearest neighbor in a state 
+\begin_inset Formula $|\uparrow\tilde{\beta}\rangle$
+\end_inset
+
+ and then uses the spin–orbit coupling to spin-flip 
+\begin_inset Formula $|\downarrow\tilde{\beta}\rangle$
+\end_inset
+
+ with amplitude 
+\begin_inset Formula $\Delta_{\text{SO}}$
+\end_inset
+
+.
+ Hence, we have that 
+\begin_inset Formula $(\alpha_{\text{R}})_{\alpha\beta}\approx a_{0}t_{0}\Delta_{\text{SO}}/\Delta_{\text{sb}}\langle\tilde{\tilde{\alpha}}|H_{\text{R}}|\tilde{\tilde{\beta}}\rangle\equiv\alpha_{0}^{\text{R}}\langle\tilde{\tilde{\alpha}}|H_{\text{R}}|\tilde{\tilde{\beta}}\rangle$
+\end_inset
+
+ with 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ the Bravais lattice length.
+ 
+\color gray
+If one considers a very large system, the wave function will behave approximatel
+y as a plane-wave effectively averaging the locality of the hoppings, and
+ thus one could set the Rashba interaction strength as simply a constant
+ 
+\begin_inset Formula $\left(\alpha_{\text{R}}\right)_{\alpha\beta}\rightarrow\alpha_{\text{R}}$
+\end_inset
+
+.
+ Either way, since we will just be working with a homogeneous nanowire,
+ there is no distinct site states, hence 
+\begin_inset Formula $(\alpha_{\text{R}})_{\alpha\beta}\rightarrow\alpha_{\text{R}}$
+\end_inset
+
+ regardless.
+\end_layout
+
+\begin_layout Standard
+As an additional term to our nanowire system, we next consider spin-splitting
+ of the levels due to Zeeman effects as a result of an external perturbation
+ of an in-plane magnetic field 
+\begin_inset Formula $B_{x}$
+\end_inset
+
+.
+ This term is straightforwardly described as
+\begin_inset Formula 
+\begin{equation}
+H_{\text{Z}}=\psi_{\alpha}^{\dagger}\left(V_{\text{Z}}\sigma_{x}\right)\psi_{\beta}
+\end{equation}
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+with
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $V_{\text{Z}}\equiv V_{x}=g_{J}\mu_{B}B_{x}/2$
+\end_inset
+
+ the Zeeman interaction strength, 
+\begin_inset Formula $g_{J}$
+\end_inset
+
+ the Landé 
+\emph on
+g
+\emph default
+yromagnetic factor of the semiconductor and 
+\begin_inset Formula $\mu_{B}$
+\end_inset
+
+ Bohr's magneton.
+\end_layout
+
+\begin_layout Standard
+With the isolated nanowire model built, we are left to account for the supercond
+uctivity proximity effects.
+ Foremost, we specify the superconductor to be of 
+\begin_inset Formula $s$
+\end_inset
+
+-type.
+ In nontrivial topological cases, the order parameter has a vortex profile
+ 
+\begin_inset Formula $\Delta(x)=\Delta_{0}(x)e^{i\varphi(x)}$
+\end_inset
+
+, with 
+\begin_inset Formula $\Delta_{0}(x)$
+\end_inset
+
+ the magnitude of the superconducting energy gap, roughly represents the
+ energy required to break a Cooper pair, and 
+\begin_inset Formula $\varphi(x)$
+\end_inset
+
+ a factor that the superconducting wavefunction acquires spontaneously below
+ the transition temperature 
+\begin_inset Formula $T_{c}$
+\end_inset
+
+ due to the 
+\begin_inset Formula $U(1)$
+\end_inset
+
+ symmetry breaking.
+ For our 
+\begin_inset Formula $s$
+\end_inset
+
+-wave SCs, the superconducting gap has isotropic magnitudes and phases,
+ hence we set 
+\begin_inset Formula $\Delta_{0}(x)\equiv\Delta_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi(x)\equiv\varphi$
+\end_inset
+
+.
+ We can then describe the proximity effects between the SM and SCs as Cooper
+ pairs tunneling into the nanowire inducing a pairing potential of the form
+\begin_inset Formula 
+\begin{equation}
+\Delta(x)=\Delta_{0}\Theta(x-L)+\Delta_{0}e^{i\varphi}\Theta(-x-L)\label{eq:OP}
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ the Heaviside function.
+ These correlations can then be described with the Hamiltonian density
+\begin_inset Formula 
+\begin{equation}
+\mathcal{H}_{\text{SC}}=\frac{1}{2}\Delta(x)\psi_{\tilde{\alpha}\uparrow}^{*}\psi_{\tilde{\alpha}\downarrow}^{*}+c.c.\label{eq:H_SC}
+\end{equation}
+
+\end_inset
+
+Finally, the Hamiltonian density describing the whole system is given by
+ 
+\begin_inset Formula $\mathcal{H}=(\mathcal{H}_{\text{K}}+\mathcal{H}_{\text{R}}+\mathcal{H}_{\text{Z}})+\mathcal{H}_{\text{SC}}=\mathcal{H}_{\text{SM}}+\mathcal{H}_{\text{SC}}$
+\end_inset
+
+, reading explicitly 
+\begin_inset Formula 
+\begin{align}
+\mathcal{H} & =\psi_{\alpha}^{*}\left(-\eta\partial_{x}^{2}-\mu+i\alpha_{\text{R}}\sigma_{y}\partial_{x}+V_{\text{Z}}\sigma_{x}\right)\psi_{\beta}+\frac{1}{2}\Delta\psi_{\tilde{\alpha}\uparrow}^{*}\psi_{\tilde{\beta}\downarrow}^{*}+\frac{1}{2}\Delta^{*}\psi_{\tilde{\alpha}\downarrow}\psi_{\tilde{\beta}\uparrow}\label{eq:H_nw}
+\end{align}
+
+\end_inset
+
+where we omitted the spacial dependency in 
+\begin_inset Formula $\Delta\equiv\Delta(x)$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
