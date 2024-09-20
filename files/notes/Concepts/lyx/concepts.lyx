@@ -302,9 +302,6 @@ LatexCommand tableofcontents
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -321,7 +318,7 @@ ClearShipoutPictureBG
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage clearpage
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -332,30 +329,58 @@ Models
 \end_layout
 
 \begin_layout Subsection
+Crystalline 
+\end_layout
+
+\begin_layout Subsubsection
+Kronig-Penney Model
+\end_layout
+
+\begin_layout Subsection
+Magnetism
+\end_layout
+
+\begin_layout Subsubsection
+Jaynes-Cummings model
+\end_layout
+
+\begin_layout Subsubsection
+Heisenberg model
+\end_layout
+
+\begin_layout Subsubsection
 Ising model
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Anderson model
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
+Aubry-Andre model
+\end_layout
+
+\begin_layout Subsubsection
 Hubbard model
 \end_layout
 
 \begin_layout Subsection
+Superconductivity
+\end_layout
+
+\begin_layout Subsubsection
 SSH model
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Kane-Mele model
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Kitaev model
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Oreg-Lutchyn model 
 \end_layout
 
@@ -364,11 +389,19 @@ Materials
 \end_layout
 
 \begin_layout Subsection
+2D materials
+\end_layout
+
+\begin_layout Subsubsection
 Graphene
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Bernal bilayer graphene
+\end_layout
+
+\begin_layout Subsubsection
+Twisted bilayer graphene
 \end_layout
 
 \begin_layout Subsection
@@ -388,30 +421,42 @@ Effects
 \end_layout
 
 \begin_layout Subsection
+Magnetism
+\end_layout
+
+\begin_layout Subsubsection
+Friedel oscillations
+\end_layout
+
+\begin_layout Subsubsection
 Kondo effect
 \end_layout
 
 \begin_layout Subsection
-Friedel oscillations
+Superconductivity
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Josephson effect
 \end_layout
 
 \begin_layout Subsection
+Topological superconductivity
+\end_layout
+
+\begin_layout Subsubsection
 Integer quantum Hall effect
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Quantum spin Hall effect
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Quantum anomalous Hall effect
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Fraction Hall effect
 \end_layout
 
@@ -420,19 +465,55 @@ Theories
 \end_layout
 
 \begin_layout Subsection
+Linear response theory
+\end_layout
+
+\begin_layout Subsection
+Superconductivity
+\end_layout
+
+\begin_layout Subsubsection
 London theory
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 BCS theory
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Ginzburg-Landau theory
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Time-dependent Ginzburg-Landau theory
+\end_layout
+
+\begin_layout Section
+Quasiparticles
+\end_layout
+
+\begin_layout Subsection
+Phonon
+\end_layout
+
+\begin_layout Subsection
+Exciton
+\end_layout
+
+\begin_layout Subsection
+Polariton
+\end_layout
+
+\begin_layout Subsection
+Plasmon
+\end_layout
+
+\begin_layout Subsection
+Magnon
+\end_layout
+
+\begin_layout Subsection
+Skyrmions
 \end_layout
 
 \end_body
