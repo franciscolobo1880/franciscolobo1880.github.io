@@ -140,7 +140,7 @@ selectfont
 
 \end_inset
 
- Logbook notes on: 
+ Journal notes on: 
 \begin_inset Newline linebreak
 \end_inset
 
@@ -295,67 +295,6 @@ end{tikzpicture}}
 
 \end_layout
 
-\begin_layout Part*
-Preface
-\end_layout
-
-\begin_layout Standard
-This logbook is a compilation of subjects that I have been self studying
- as part of my PhD thesis on "
-\color purple
-Time-dependent
-\color inherit
-" under the supervision of Pablo SanJose, Elsa Prada and Rui Dias and as
- part of the Quantum Dynamics of Materials (QUDYMA) group at the Instituto
- de Ciencias de Materiales de Madrid (ICMM-CSIC).
- The main fields of study are superconducting physics, topology and ultra-fast
- physics.
- The core writing of this book is strongly based on Michael Tinkam's "Introducti
-on to superconductivity" as well as Alex Kamenev's "Field Theory of Non-Equilibr
-ium Systems" for the superconducting bit and 
-\color purple
-—
-\color inherit
-.
- I will try my best to explained in detail the relevant intermediate steps
- of the calculations that are not shown in original reference.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex Color Box
-status open
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-width=350pt, center, colback=green!5!white, colframe=green!75!black
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-0.45cm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -379,470 +318,92 @@ ClearShipoutPictureBG
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
+\begin_layout Section
+Preliminary topics
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
+\begin_layout Subsection
+Landau Fermi Liquid
 \end_layout
 
-\begin_layout Part
+\begin_layout Subsection
+Graphene
+\end_layout
+
+\begin_layout Section
 Introduction to superconductivity
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 London theory
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 BCS theory
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Ginzburg-Landau theory
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Classic type II superconductors
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Josephson effect
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Time-dependent Ginzburg-Landau theory
 \end_layout
 
-\begin_layout Part
+\begin_layout Section
 Topological superconductivity
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Introduction
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
+Topological models in condensed matter
+\end_layout
+
+\begin_layout Subsubsection
 SSH model
 \end_layout
 
-\begin_layout Section
-Kitaev model
+\begin_layout Subsubsection
+Integer quantum Hall effect
 \end_layout
 
-\begin_layout Section
-Andreev bound states
+\begin_layout Subsubsection
+Quantum spin Hall effect
 \end_layout
 
-\begin_layout Section
-Majorana bound states
+\begin_layout Subsubsection
+Quantum anomalous Hall effect
 \end_layout
 
-\begin_layout Part
-Compilation of my articles on the topic
+\begin_layout Subsubsection
+Fraction Hall effect
 \end_layout
 
-\begin_layout Section
-Hybrid versus intrinsic Majorana nanowires, a self-consistent Hartree-Fock-Bogol
-iubov analysis
+\begin_layout Subsubsection
+Kane-Mele model
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
+\begin_layout Subsubsection
+Kitaev model (conceptual)
 \end_layout
 
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.0"
-key "0.0"
-literal "false"
-
-\end_inset
-
-Lutchyn, Roman M., Jay D.
- Sau, and S.
- Das Sarma.
- "Majorana fermions and a topological phase transition in semiconductor-supercon
-ductor heterostructures." Physical review letters 105.7 (2010): 077001.
+\begin_layout Subsubsection
+Oreg-Lutchyn model 
 \end_layout
 
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.1"
-key "0.1"
-literal "false"
-
-\end_inset
-
-Oreg, Yuval, Gil Refael, and Felix Von Oppen.
- "Helical liquids and Majorana bound states in quantum wires." Physical review
- letters 105.17 (2010): 177002.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.2"
-key "0.2"
-literal "false"
-
-\end_inset
-
-Chamon, C., et al.
- "Quantizing Majorana fermions in a superconductor." Physical Review B 81.22
- (2010): 224515
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.3"
-key "0.3"
-literal "false"
-
-\end_inset
-
-Prada, Elsa, et al.
- "From Andreev to Majorana bound states in hybrid superconductor–semiconductor
- nanowires." Nature Reviews Physics 2.10 (2020): 575-594..
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.4"
-key "0.4"
-literal "false"
-
-\end_inset
-
-Avila, J., et al.
- "Superconducting islands with semiconductor-nanowire-based topological
- Josephson junctions." arXiv preprint arXiv:2003.02852 (2020).
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.5"
-key "0.5"
-literal "false"
-
-\end_inset
-
-Sau, Jay D., et al.
- "Generic new platform for topological quantum computation using semiconductor
- heterostructures." Physical review letters 104.4 (2010): 040502.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.6"
-key "0.6"
-literal "false"
-
-\end_inset
-
-Fu, Liang, and Charles L.
- Kane.
- "Superconducting proximity effect and Majorana fermions at the surface
- of a topological insulator." Physical review letters 100.9 (2008): 096407.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "0.7"
-key "0.7"
-literal "false"
-
-\end_inset
-
- Heredia Cachá, Elsa Prada.
- "Estados ligados de Majorana en nanohilos semiconductores".
- Master thesis Universidad Autónoma de Madrid.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1.1"
-key "1.1"
-literal "false"
-
-\end_inset
-
-Nambu, Yoichiro.
- "Quasi-particles and gauge invariance in the theory of superconductivity."
- Physical Review 117.3 (1960): 648.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1.2"
-key "1.2"
-literal "false"
-
-\end_inset
-
-Sauls, J.
- A.
- "Andreev bound states and their signatures." Philosophical Transactions
- of the Royal Society A: Mathematical, Physical and Engineering Sciences
- 376.2125 (2018): 20180140.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1.3"
-key "1.3"
-literal "false"
-
-\end_inset
-
-Hamada, Yuta.
- Higgs potential and naturalness after the Higgs discovery.
- Springer, 2017.
- Appendix E—Quantization of Majorana Field
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1.4"
-key "1.4"
-literal "false"
-
-\end_inset
-
-Peskin, Michael E.
- An introduction to quantum field theory.
- CRC press, 2018.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1.6"
-key "1.6"
-literal "false"
-
-\end_inset
-
-A.J.Leggett, University of Illinois, PHYS598 Year 2013 Lecture 24: Topological
- Superfluids: Majorana Fermions
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1.7"
-key "1.7"
-literal "false"
-
-\end_inset
-
-A.J.Leggett, University of Illinois, PHYS598 Year 2015 Lecture 11: The Bogoliubov–
-de Gennes and Andreev Equations 
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "1.8"
-key "1.8"
-literal "false"
-
-\end_inset
-
-Kruchinin, Sergei.
- Modern aspects of superconductivity: theory of superconductivity.
- World Scientific, 2021.
-\end_layout
-
-\begin_layout Bibliography
-
-\color darkgray
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "note"
-key "note"
-literal "false"
-
-\end_inset
-
- Still have many many article to cite here that were in the 0's sections
- articles.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.1"
-key "2.1"
-literal "false"
-
-\end_inset
-
-Diesch, Simon, et al.
- "Creation of equal-spin triplet superconductivity at the Al/EuS interface."
- Nature communications 9.1 (2018): 5248.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.2"
-key "2.2"
-literal "false"
-
-\end_inset
-
-Caroli, C., P.
- G.
- De Gennes, and J.
- Matricon.
- "Bound fermion states on a vortex line in a type II superconductor." Physics
- Letters 9.4 (1964): 307-309.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.3"
-key "2.3"
-literal "false"
-
-\end_inset
-
-Luh, Yu.
- "Bound state in superconductors with paramagnetic impurities." Acta Physica
- Sinica 21.1 (1965): 75.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.4"
-key "2.4"
-literal "false"
-
-\end_inset
-
-Shiba, Hiroyuki.
- "Classical spins in superconductors." Progress of theoretical Physics 40.3
- (1968): 435-451.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.5"
-key "2.5"
-literal "false"
-
-\end_inset
-
-Rusinov, A.
- I.
- "Superconductivity near a paramagnetic impurity." JETP Lett.(USSR) 9 (1969).
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.6"
-key "2.6"
-literal "false"
-
-\end_inset
-
-Blonder, G.
- E., M.
- M.
- Tinkham, and K.
- TM Klapwijk.
- "Transition from metallic to tunneling regimes in superconducting microconstric
-tions: Excess current, charge imbalance, and supercurrent conversion." Physical
- Review B 25.7 (1982): 4515.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.7"
-key "2.7"
-literal "false"
-
-\end_inset
-
-Andreev, A.
- F.
- "The thermal conductivity of the intermediate state in superconductors."
- Журнал экспериментальной и теоретической физики 46.5 (1964): 1823-1828.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.8"
-key "2.8"
-literal "false"
-
-\end_inset
-
-Andreev, A.
- F.
- "Electron spectrum of the intermediate state of superconductors." Sov.
- Phys.
- JETP 22.455 (1966): 18-23.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.9"
-key "2.9"
-literal "false"
-
-\end_inset
-
-Xu, Cenke, and Joel E.
- Moore.
- "Stability of the quantum spin Hall effect: Effects of interactions, disorder,
- and Z 2 topology." Physical Review B 73.4 (2006): 045322.
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-label "2.10"
-key "2.10"
-literal "false"
-
-\end_inset
-
-Wu, Congjun, B.
- Andrei Bernevig, and Shou-Cheng Zhang.
- "Helical liquid and the edge of quantum spin Hall systems." Physical review
- letters 96.10 (2006): 106401.
+\begin_layout Subsubsection
+Topological insulators
 \end_layout
 
 \end_body

@@ -413,7 +413,7 @@ First we calculate the commutator with
 \begin_inset Formula $c_{b}^{\dagger}$
 \end_inset
 
- making use of the following commutator properties.
+ making use of the fermionic anti-commutator properties.
  We obtain
 \begin_inset Formula 
 \begin{align*}
@@ -965,7 +965,7 @@ Furthermore, for the sake of getting the problem in a tight-binding scheme,
 \begin{equation}
 \boldsymbol{\rho}_{ij}=\left(\begin{array}{cc}
 \boldsymbol{\rho}_{ij}^{\text{\text{ee}}} & \boldsymbol{\rho}_{ij}^{\text{eh}}\\
-\boldsymbol{\rho}_{ji}^{\text{he}} & \boldsymbol{\rho}_{ji}^{\text{\text{hh}}}
+\boldsymbol{\rho}_{ij}^{\text{he}} & \boldsymbol{\rho}_{ij}^{\text{\text{hh}}}
 \end{array}\right)=\left(\begin{array}{cc|cc}
 \rho_{i\uparrow j\uparrow}^{\text{ee}} & \rho_{i\uparrow j\downarrow}^{\text{ee}} & \rho_{i\uparrow j\uparrow}^{\text{eh}} & \rho_{i\uparrow j\downarrow}^{\text{eh}}\\
 \rho_{i\downarrow j\uparrow}^{\text{ee}} & \rho_{i\downarrow j\downarrow}^{\text{ee}} & \rho_{i\downarrow j\uparrow}^{\text{eh}} & \rho_{i\downarrow j\downarrow}^{\text{eh}}\\
@@ -1005,23 +1005,10 @@ with
 \end_inset
 
 .
- If we now define a new object related to the Nambu rDM but specifically
- having the same symmetries as the Nambu Hamiltonian, this being
+ The total self-energy of the system in an elegant and compact form as
 \begin_inset Formula 
 \begin{equation}
-\tilde{\boldsymbol{\rho}}_{ij}=\left(\begin{array}{cc}
-\boldsymbol{\rho}_{ij}^{\text{\text{ee}}} & -\boldsymbol{\rho}_{ij}^{\text{eh}}\\
--\left(\boldsymbol{\rho}_{ji}^{\text{eh}}\right)^{*} & -\boldsymbol{\rho}_{ji}^{\text{\text{ee}}}
-\end{array}\right),
-\end{equation}
-
-\end_inset
-
-we can then write the total self-energy of the system in an elegant and
- compact form as
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{\Sigma}_{ij}=\frac{1}{2}\sum_{\ell}V^{i\ell}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{\ell\ell}\right)\left[\tau_{z}\otimes\sigma_{0}\right]\delta_{ij}-V^{ij}\tilde{\boldsymbol{\rho}}_{ij},
+\boldsymbol{\Sigma}_{ij}=\sum_{\ell}V^{i\ell}\left[\frac{1}{2}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\boldsymbol{\rho}_{\ell\ell}\right)+1\right]\delta_{ij}\mathds{1}+V^{ij}\left(-\boldsymbol{\rho}_{ij}^{\text{ee}}+\boldsymbol{\rho}_{ij}^{\text{eh}}\right),
 \end{equation}
 
 \end_inset
@@ -1037,6 +1024,26 @@ with both
  as Pauli matrices but operating in their respectively spin and electron-hole
  subspaces the Hamiltonian.
  
+\end_layout
+
+\begin_layout Standard
+In the limiting case of a spin-
+\begin_inset Formula $1/2$
+\end_inset
+
+ Hubbard model one considers 
+\begin_inset Formula $V^{ij}=U\delta_{ij}$
+\end_inset
+
+ such that mean field decoupling gives rise to just the onsite term,
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\Sigma}_{ii}=U\delta_{ij}\left(\left[\frac{1}{2}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\boldsymbol{\rho}_{ii}\right)+1\right]\mathds{1}-\boldsymbol{\rho}_{ii}^{\text{ee}}+\boldsymbol{\rho}_{ii}^{\text{eh}}\right).\label{eq:Sigma}
+\end{equation}
+
+\end_inset
+
+
 \begin_inset Flex Color Box
 status open
 
@@ -1058,83 +1065,59 @@ Hubbard self-energy
 \begin_layout Plain Layout
 \begin_inset Formula 
 \begin{align*}
-\boldsymbol{\Sigma}_{i}= & \left(\begin{array}{cc}
-\sum_{\ell}V^{i\ell}\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{\text{ee}}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{\text{ee}}}\right)\mathds{1}-V^{ij}\boldsymbol{\rho}_{ij}^{\text{\text{ee}}} & V^{ij}\boldsymbol{\rho}_{ij}^{\text{eh}}\\
-\left[V^{ij}\boldsymbol{\rho}_{ij}^{\text{eh}}\right]^{\dagger} & -\left[\sum_{\ell}V^{i\ell}\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{\text{ee}}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{\text{ee}}}\right)\mathds{1}-V^{ij}\boldsymbol{\rho}_{ij}^{\text{\text{ee}}}\right]^{T}
+\boldsymbol{\Sigma}_{ij}= & \boldsymbol{\Sigma}_{ij}^{H}+\boldsymbol{\Sigma}_{ij}^{H}+\boldsymbol{\Sigma}_{ij}^{\Delta}=\left(\begin{array}{cc}
+\left(\Sigma_{i\uparrow j\uparrow}^{H}+\Sigma_{i\uparrow j\uparrow}^{H}+\Sigma_{i\uparrow j\uparrow}^{\Delta}\right) & \left(\Sigma_{i\uparrow j\downarrow}^{H}+\Sigma_{i\uparrow j\downarrow}^{H}+\Sigma_{i\uparrow j\downarrow}^{\Delta}\right)\\
+\left(\Sigma_{i\downarrow j\uparrow}^{H}+\Sigma_{i\downarrow j\uparrow}^{H}+\Sigma_{i\downarrow j\uparrow}^{\Delta}\right) & \left(\Sigma_{i\downarrow j\downarrow}^{H}+\Sigma_{i\downarrow j\downarrow}^{H}+\Sigma_{i\downarrow j\downarrow}^{\Delta}\right)
 \end{array}\right)\\
-= & \frac{1}{2}\sum_{\ell}V^{i\ell}\text{Tr}\left(\tau_{z}\tilde{\boldsymbol{\rho}}_{\ell\ell}\right)\left(\begin{array}{cc}
-\mathds{1}\\
- & -\mathds{1}
+= & \left(\begin{array}{cc}
+\sum_{\ell}V^{i\ell}\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{\text{ee}}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{\text{ee}}}\right)\delta_{ij}-V^{ij}\rho_{i\uparrow j\uparrow}^{\text{ee}}+V^{ij}\rho_{i\uparrow j\uparrow}^{\text{eh}} & -V^{ij}\rho_{i\uparrow j\downarrow}^{\text{ee}}+V^{ij}\rho_{i\uparrow j\downarrow}^{\text{eh}}\\
+-V^{ij}\rho_{i\downarrow j\uparrow}^{\text{ee}}+V^{ij}\rho_{i\downarrow j\uparrow}^{\text{eh}} & \sum_{\ell}V^{i\ell}\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{\text{ee}}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{\text{ee}}}\right)\delta_{ij}-V^{ij}\rho_{i\downarrow j\downarrow}^{\text{ee}}+V^{ij}\rho_{i\downarrow j\downarrow}^{\text{eh}}
+\end{array}\right)\\
+= & \sum_{\ell}V^{i\ell}\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{\text{ee}}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{\text{ee}}}\right)\left(\begin{array}{cc}
+\delta_{ij}\\
+ & \delta_{ij}
 \end{array}\right)-V^{ij}\left(\begin{array}{cc}
-\boldsymbol{\rho}_{ij}^{\text{\text{ee}}} & -\boldsymbol{\rho}_{ij}^{\text{eh}}\\
--\left(\boldsymbol{\rho}_{ji}^{\text{eh}}\right)^{*} & -\boldsymbol{\rho}_{ji}^{\text{\text{ee}}}
+\rho_{i\uparrow j\uparrow}^{\text{ee}} & \rho_{i\uparrow j\downarrow}^{\text{ee}}\\
+\rho_{i\downarrow j\uparrow}^{\text{ee}} & \rho_{i\downarrow j\downarrow}^{\text{ee}}
+\end{array}\right)+V^{ij}\left(\begin{array}{cc}
+\rho_{i\uparrow j\uparrow}^{\text{eh}} & \rho_{i\uparrow j\downarrow}^{\text{eh}}\\
+\rho_{i\downarrow j\uparrow}^{\text{eh}} & \rho_{i\downarrow j\downarrow}^{\text{eh}}
 \end{array}\right)\\
-= & \frac{1}{2}\sum_{\ell}V^{i\ell}\text{Tr}\left(\tau_{z}\tilde{\boldsymbol{\rho}}_{\ell\ell}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-V^{ij}\tilde{\boldsymbol{\rho}}_{ij}
+= & \sum_{\ell}V^{i\ell}\left[\frac{1}{2}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\boldsymbol{\rho}_{\ell\ell}\right)+1\right]\delta_{ij}\mathds{1}+V^{ij}\left(-\boldsymbol{\rho}_{ij}^{\text{ee}}+\boldsymbol{\rho}_{ij}^{\text{eh}}\right)
 \end{align*}
 
 \end_inset
 
-where the trace reads as 
+where we used that
 \begin_inset Formula 
-\[
-\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{\ell}\right)=\text{Tr}\left(\begin{array}{cc|cc}
-\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}} & \rho_{\ell\uparrow\ell\downarrow}^{\text{ee}} & -\rho_{\ell\uparrow\ell\uparrow}^{\text{eh}} & -\rho_{\ell\uparrow\ell\downarrow}^{\text{eh}}\\
-\rho_{\ell\downarrow\ell\uparrow}^{\text{ee}} & \rho_{\ell\downarrow\ell\downarrow}^{\text{ee}} & -\rho_{\ell\downarrow\ell\uparrow}^{\text{eh}} & -\rho_{\ell\downarrow\ell\downarrow}^{\text{eh}}\\
-\hline -\left[\rho_{\ell\uparrow\ell\uparrow}^{\text{he}}\right] & -\left[\rho_{\ell\uparrow\ell\downarrow}^{\text{he}}\right] & -\left[-\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}}\right] & -\left[\rho_{\ell\downarrow\ell\uparrow}^{\text{ee}}\right]\\
--\left[\rho_{\ell\downarrow\ell\uparrow}^{\text{he}}\right] & -\left[\rho_{\ell\downarrow\ell\downarrow}^{\text{he}}\right] & -\left[\rho_{\ell\uparrow\ell\downarrow}^{\text{ee}}\right] & -\left[-\rho_{\ell\downarrow\ell\downarrow}^{\text{ee}}\right]
-\end{array}\right)=2\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{ee}}\right)
-\]
+\begin{align*}
+\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\boldsymbol{\rho}_{\ell\ell}\right) & =\text{Tr}\left(\begin{array}{cc|cc}
+\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}} & \rho_{\ell\uparrow\ell\downarrow}^{\text{ee}} & \rho_{\ell\uparrow\ell\uparrow}^{\text{eh}} & \rho_{\ell\uparrow\ell\downarrow}^{\text{eh}}\\
+\rho_{\ell\downarrow\ell\uparrow}^{\text{ee}} & \rho_{\ell\downarrow\ell\downarrow}^{\text{ee}} & \rho_{\ell\downarrow\ell\uparrow}^{\text{eh}} & \rho_{\ell\downarrow\ell\downarrow}^{\text{eh}}\\
+\hline \rho_{\ell\uparrow\ell\uparrow}^{\text{he}} & \rho_{\ell\uparrow\ell\downarrow}^{\text{he}} & -\left[-\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}}+1\right] & -\left[-\rho_{\ell\downarrow\ell\uparrow}^{\text{ee}}+1\right]\\
+\rho_{\ell\downarrow\ell\uparrow}^{\text{he}} & \rho_{\ell\downarrow\ell\downarrow}^{\text{he}} & -\left[-\rho_{\ell\uparrow\ell\downarrow}^{\text{ee}}+1\right] & -\left[-\rho_{\ell\downarrow\ell\downarrow}^{\text{ee}}+1\right]
+\end{array}\right)=2\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{ee}}-1\right)
+\end{align*}
 
 \end_inset
 
+and thus 
+\begin_inset Formula $\left(\rho_{\ell\uparrow\ell\uparrow}^{\text{ee}}+\rho_{\ell\downarrow\ell\downarrow}^{\text{ee}}\right)=\frac{1}{2}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\boldsymbol{\rho}_{\ell\ell}\right)+1$
+\end_inset
 
+.
+ 
 \end_layout
 
-\end_inset
-
-In the limiting case of a spin-
-\begin_inset Formula $1/2$
-\end_inset
-
- Hubbard model one considers 
+\begin_layout Plain Layout
+Within the Hubbard consideration 
 \begin_inset Formula $V^{ij}=U\delta_{ij}$
 \end_inset
 
- such that mean field decoupling gives rise to just the onsite term,
-\begin_inset Formula 
-\begin{equation}
-\boldsymbol{\Sigma}_{ij}=\frac{1}{2}U\left[\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{ii}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-2\tilde{\boldsymbol{\rho}}_{ij}\right]\delta_{ij}.\label{eq:Sigma}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset Flex Color Box
-status open
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-colback=black!5!white, colframe=black!5!white, breakable
-\end_layout
-
-\end_inset
-
-
-\series bold
-Self-energy matrix
-\series default
-
+ it simplifies to
 \begin_inset Formula 
 \[
-\boldsymbol{\Sigma}_{ii}=-U\left(\begin{array}{c|c||c|c}
--\left(2\rho_{\uparrow\uparrow}^{\text{ee}}+\rho_{\downarrow\downarrow}^{\text{ee}}\right) & -\rho_{\uparrow\downarrow}^{\text{ee}} & \rho_{\uparrow\uparrow}^{\text{eh}} & \rho_{\uparrow\downarrow}^{\text{eh}}\\
-\hline -\rho_{\downarrow\uparrow}^{\text{ee}} & -\left(\rho_{\uparrow\uparrow}^{\text{ee}}+2\rho_{\downarrow\downarrow}^{\text{ee}}\right) & \rho_{\downarrow\uparrow}^{\text{eh}} & \rho_{\downarrow\downarrow}^{\text{eh}}\\
-\hline\hline \rho_{\uparrow\uparrow}^{\text{he}} & \rho_{\uparrow\downarrow}^{\text{he}} & \rho_{\downarrow\downarrow}^{\text{ee}} & \rho_{\downarrow\uparrow}^{\text{ee}}\\
-\hline \rho_{\downarrow\uparrow}^{\text{he}} & \rho_{\downarrow\downarrow}^{\text{he}} & \rho_{\uparrow\downarrow}^{\text{ee}} & \rho_{\uparrow\uparrow}^{\text{ee}}
-\end{array}\right).
+\boldsymbol{\Sigma}_{ii}=U\delta_{ij}\left(\left[\frac{1}{2}\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\boldsymbol{\rho}_{ii}\right)+1\right]\mathds{1}-\boldsymbol{\rho}_{ii}^{\text{ee}}+\boldsymbol{\rho}_{ii}^{\text{eh}}\right).
 \]
 
 \end_inset

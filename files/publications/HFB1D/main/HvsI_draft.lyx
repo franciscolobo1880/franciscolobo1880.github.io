@@ -270,7 +270,7 @@ the effective Bogoliubov-de Gennes (BdG) Hamiltonian,
 \begin{array}{c}
 \Sigma_{ab}^{H}=\sum_{\gamma\delta}V_{b\gamma}^{\delta a}\rho_{\gamma\delta}^{\text{ee}}\vspace{2mm}\\
 \Sigma_{ab}^{F}=-\sum_{\gamma\delta}V_{b\gamma}^{a\delta}\rho_{\gamma\delta}^{\text{ee}}
-\end{array}\quad\text{and}\quad\,\Delta_{ab}=\sum_{\gamma\delta}V_{\delta\gamma}^{ab}\rho_{\gamma\delta}^{\text{eh}}
+\end{array}\quad\text{and}\quad\,\Sigma_{ab}^{\Delta}=\sum_{\gamma\delta}V_{\delta\gamma}^{ab}\rho_{\gamma\delta}^{\text{eh}}
 \end{equation}
 
 \end_inset
@@ -710,6 +710,19 @@ name "fig:hybrid"
 Somewhat worthy, but better if you write it.
  Here are some not so obvious small talking points such that you don't forget
  them:
+\end_layout
+
+\begin_layout Enumerate
+Mention zero-temperature somewhere
+\end_layout
+
+\begin_layout Enumerate
+Bruno mentioned to me after the presentation that the 
+\begin_inset Formula $\tilde{\rho}$
+\end_inset
+
+ form could be more elegant, so maybe I will look into it.
+ 
 \end_layout
 
 \begin_layout Enumerate
