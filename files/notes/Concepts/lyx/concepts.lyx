@@ -327,84 +327,112 @@ ClearShipoutPictureBG
 
 \end_layout
 
-\begin_layout Subsection*
-Landau Fermi Liquid
+\begin_layout Section
+Models
 \end_layout
 
-\begin_layout Subsection*
-Graphene
+\begin_layout Subsection
+Ising model
 \end_layout
 
-\begin_layout Subsection*
-London theory
+\begin_layout Subsection
+Anderson model
 \end_layout
 
-\begin_layout Subsection*
-BCS theory
+\begin_layout Subsection
+Hubbard model
 \end_layout
 
-\begin_layout Subsection*
-Ginzburg-Landau theory
-\end_layout
-
-\begin_layout Subsection*
-Classic type II superconductors
-\end_layout
-
-\begin_layout Subsection*
-Josephson effect
-\end_layout
-
-\begin_layout Subsection*
-Time-dependent Ginzburg-Landau theory
-\end_layout
-
-\begin_layout Subsection*
-Introduction
-\end_layout
-
-\begin_layout Subsection*
-Topological models in condensed matter
-\end_layout
-
-\begin_layout Subsection*
+\begin_layout Subsection
 SSH model
 \end_layout
 
-\begin_layout Subsection*
-Integer quantum Hall effect
-\end_layout
-
-\begin_layout Subsection*
-Quantum spin Hall effect
-\end_layout
-
-\begin_layout Subsection*
-Quantum anomalous Hall effect
-\end_layout
-
-\begin_layout Subsection*
-Fraction Hall effect
-\end_layout
-
-\begin_layout Subsection*
+\begin_layout Subsection
 Kane-Mele model
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Kitaev model
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Oreg-Lutchyn model 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section
+Materials
+\end_layout
+
+\begin_layout Subsection
+Graphene
+\end_layout
+
+\begin_layout Subsection
+Bernal bilayer graphene
+\end_layout
+
+\begin_layout Subsection
+Kondo insulators
+\end_layout
+
+\begin_layout Subsection
+Type II superconductors
+\end_layout
+
+\begin_layout Subsection
 Topological insulators
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Section
+Effects
+\end_layout
+
+\begin_layout Subsection
+Kondo effect
+\end_layout
+
+\begin_layout Subsection
 Friedel oscillations
+\end_layout
+
+\begin_layout Subsection
+Josephson effect
+\end_layout
+
+\begin_layout Subsection
+Integer quantum Hall effect
+\end_layout
+
+\begin_layout Subsection
+Quantum spin Hall effect
+\end_layout
+
+\begin_layout Subsection
+Quantum anomalous Hall effect
+\end_layout
+
+\begin_layout Subsection
+Fraction Hall effect
+\end_layout
+
+\begin_layout Section
+Theories
+\end_layout
+
+\begin_layout Subsection
+London theory
+\end_layout
+
+\begin_layout Subsection
+BCS theory
+\end_layout
+
+\begin_layout Subsection
+Ginzburg-Landau theory
+\end_layout
+
+\begin_layout Subsection
+Time-dependent Ginzburg-Landau theory
 \end_layout
 
 \end_body
