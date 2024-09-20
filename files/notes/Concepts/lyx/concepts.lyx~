@@ -296,11 +296,6 @@ end{tikzpicture}}
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
 
 \end_layout
 
@@ -433,14 +428,6 @@ Ginzburg-Landau theory
 
 \begin_layout Subsection
 Time-dependent Ginzburg-Landau theory
-\end_layout
-
-\begin_layout Section
-Topological superconductivity
-\end_layout
-
-\begin_layout Subsection
-Topological models in condensed matter
 \end_layout
 
 \end_body
