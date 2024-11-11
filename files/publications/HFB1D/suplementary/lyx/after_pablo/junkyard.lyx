@@ -1,0 +1,197 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass revtex4-2
+\begin_preamble
+% wick theorem with colors
+\usepackage{simpler-wick}
+\makeatletter
+\pgfkeys{simplerwick,wickcolor/.store in=\swick@color,wickcolor=black}
+\def\swick@end#1#2{
+  \swick@setfalse@#1
+  \tikzexternaldisable
+  \begin{tikzpicture}[remember picture, baseline=(swick-close#1.base)]
+    \node[use as bounding box, inner sep=0pt, outer sep=0pt] (swick-close#1) {$\displaystyle #2$};
+  \end{tikzpicture}
+  \tikz[remember picture, overlay]
+    \draw[\swick@color] ($(swick-open#1.north) + (0, 3pt)$)
+          -- ($(swick-open#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.north) + (0, 3pt)$);
+  \tikzexternalenable}
+\makeatother 
+
+% fancy color boxes
+% \usepackage{xcolor}
+\usepackage{color}
+\usepackage{tcolorbox}
+\usepackage{environ}
+\usepackage{etoolbox}
+\usepackage{pgf}
+\tcbuselibrary{breakable}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{eso-pic}
+
+% numbering equations
+%\usepackage{chngcntr}
+%\counterwithin{equation}{section}
+
+\definecolor{antiquewhite}{rgb}{0.98, 0.92, 0.84}
+\definecolor{green}{RGB}{0, 150, 0}
+
+\usepackage{afterpage}
+\usepackage{upgreek}
+\end_preamble
+\use_default_options true
+\begin_modules
+tcolorbox
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\notefontcolor #dcdcdc
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 1
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\series bold
+Why is this wrong?
+\end_layout
+
+\begin_layout Standard
+The Nambu rDM in this rotated basis follows as
+\begin_inset Formula 
+\begin{align}
+\boldsymbol{\mathring{\rho}}_{ij} & =\langle\boldsymbol{\mathring{c}}_{j}^{\dagger}\otimes\boldsymbol{\mathring{c}}_{i}\rangle\nonumber \\
+ & =\left(\begin{array}{cc}
+\langle\boldsymbol{c}_{j}^{\dagger}\otimes[i\sigma_{y}\boldsymbol{c}_{i}]\rangle & \langle[i\sigma_{y}\boldsymbol{c}_{j}]\otimes[i\sigma_{y}\boldsymbol{c}_{i}]\rangle\\
+\langle\boldsymbol{c}_{j}^{\dagger}\otimes\boldsymbol{c}_{i}^{\dagger}\rangle & \langle[i\sigma_{y}\boldsymbol{c}_{j}]\otimes\boldsymbol{c}_{i}^{\dagger}\rangle
+\end{array}\right)\nonumber \\
+ & =\left(\begin{array}{cc|cc}
+\rho_{ee}^{i\downarrow j\uparrow} & \rho_{ee}^{i\downarrow j\downarrow} & \rho_{eh}^{i\downarrow j\downarrow} & -\rho_{eh}^{i\downarrow j\uparrow}\\
+-\rho_{ee}^{i\uparrow j\uparrow} & -\rho_{ee}^{i\uparrow j\downarrow} & -\rho_{eh}^{i\uparrow j\downarrow} & \rho_{eh}^{i\uparrow j\uparrow}\\
+\hline \rho_{he}^{i\uparrow j\uparrow} & \rho_{he}^{i\uparrow j\downarrow} & \rho_{hh}^{i\uparrow j\downarrow} & -\rho_{hh}^{i\uparrow j\uparrow}\\
+\rho_{he}^{i\downarrow j\uparrow} & \rho_{he}^{i\downarrow j\downarrow} & \rho_{hh}^{i\downarrow j\downarrow} & -\rho_{hh}^{i\downarrow j\uparrow}
+\end{array}\right)\nonumber \\
+ & =\left(\begin{array}{cc}
+i\sigma_{y}\boldsymbol{\rho}_{ee}^{ij} & \textcolor{red}{?}\\
+\boldsymbol{\rho}_{he}^{ij} & \left(i\sigma_{y}\boldsymbol{\rho}_{hh}^{ij}\right)^{T}
+\end{array}\right)\equiv\left(\begin{array}{cc}
+\boldsymbol{\varrho}_{ee}^{ij} & \boldsymbol{\varrho}_{eh}^{ij}\\
+\boldsymbol{\varrho}_{he}^{ij} & \boldsymbol{\varrho}_{hh}^{ij}
+\end{array}\right)\label{eq:ro-1}
+\end{align}
+
+\end_inset
+
+one can also obtain the rotated basis':
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{\varrho}_{ee}^{ij} & =i\sigma_{y}\boldsymbol{\rho}_{ee}^{ij}\\
+ & =i\sigma_{y}\left(\boldsymbol{\rho}_{ee}^{ji}\right)^{\dagger}\\
+ & =\left(\boldsymbol{\rho}_{ee}^{ji}(-i\sigma_{y})\right)^{\dagger}\\
+ & =\textcolor{red}{?}
+\end{align*}
+
+\end_inset
+
+and
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{\varrho}_{hh}^{ij} & =\left(i\sigma_{y}\boldsymbol{\rho}_{hh}^{ij}\right)^{T}\\
+ & =\left(i\sigma_{y}\left(\delta_{ij}\mathds{1}-\left(\boldsymbol{\rho}_{ee}^{ji}\right)^{T}\right)\right)^{T}\\
+ & =\delta_{ij}\mathds{1}\left(i\sigma_{y}\right)^{T}-\left(\boldsymbol{\rho}_{ee}^{ji}\right)^{T}\left(i\sigma_{y}\right)^{T}\\
+ & =-i\sigma_{y}\delta_{ij}-\left(i\sigma_{y}\boldsymbol{\rho}_{ee}^{ji}\right)^{T}\\
+ & =-i\sigma_{y}\delta_{ij}-\left(\boldsymbol{\varrho}_{ee}^{ji}\right)^{T}
+\end{align*}
+
+\end_inset
+
+and thus
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{\varrho}_{ee}^{ij}= & \textcolor{red}{?}\\
+\boldsymbol{\varrho}_{eh}^{ij}= & \textcolor{red}{?}\\
+\boldsymbol{\varrho}_{hh}^{ij}= & -i\sigma_{y}\delta_{ij}-\left(\boldsymbol{\varrho}_{ee}^{ji}\right)^{T}\\
+\boldsymbol{\varrho}_{he}^{ij}= & \textcolor{red}{?}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
