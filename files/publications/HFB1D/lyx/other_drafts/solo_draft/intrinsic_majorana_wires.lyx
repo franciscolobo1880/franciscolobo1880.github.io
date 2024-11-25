@@ -1,0 +1,1474 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass revtex4-2
+\begin_preamble
+% wick theorem with colors
+\usepackage{simpler-wick}
+\makeatletter
+\pgfkeys{simplerwick,wickcolor/.store in=\swick@color,wickcolor=black}
+\def\swick@end#1#2{
+  \swick@setfalse@#1
+  \tikzexternaldisable
+  \begin{tikzpicture}[remember picture, baseline=(swick-close#1.base)]
+    \node[use as bounding box, inner sep=0pt, outer sep=0pt] (swick-close#1) {$\displaystyle #2$};
+  \end{tikzpicture}
+  \tikz[remember picture, overlay]
+    \draw[\swick@color] ($(swick-open#1.north) + (0, 3pt)$)
+          -- ($(swick-open#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.north) + (0, 3pt)$);
+  \tikzexternalenable}
+\makeatother 
+
+% fancy color boxes
+\usepackage{color}
+\usepackage{tcolorbox}
+\usepackage{environ}
+\usepackage{etoolbox}
+\usepackage{pgf}
+\tcbuselibrary{breakable}
+
+\usepackage{xcolor}
+
+% numbering equations
+%\usepackage{chngcntr}
+%\counterwithin{equation}{section}
+
+\definecolor{green}{RGB}{0, 150, 0}
+
+\usepackage{afterpage}
+\usepackage{upgreek}
+\end_preamble
+\use_default_options true
+\begin_modules
+tcolorbox
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\notefontcolor #dcdcdc
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 1
+\papercolumns 2
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+Hybrid versus intrinsic Majorana nanowires, a self-consistent Hartree-Fock-Bogol
+iubov analysis
+\end_layout
+
+\begin_layout Author
+Francisco Lobo
+\begin_inset Formula $¹$
+\end_inset
+
+, Elsa Prada
+\begin_inset Formula $¹$
+\end_inset
+
+, Pablo San-Jose
+\begin_inset Formula $¹$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Affiliation
+\begin_inset Formula $¹$
+\end_inset
+
+Instituto de Ciencia de Materiales de Madrid (ICMM), CSIC, Madrid, Spain
+ 
+\end_layout
+
+\begin_layout Date
+July 2, 2024
+\end_layout
+
+\begin_layout Abstract
+We theoretically investigate and compare hybrid versus intrinsic Majorana
+ nanowires in a self-consistent Hartree-Fock-Bogoliubov theory.
+ The mean-field self-energy is realized as a spin-1/2 Hubbard term in the
+ Wannier limit through a Hartree-Fock decoupling of a quartic Hamiltonian
+ in a Nambu-spinor scheme.
+ This approach improves on Oreg-Lutchyn minimal model because the pairing
+ is calculated self-consistently, rather than relying on an homogeneous
+ proximity effect.
+ We discuss beyond minimal models how the combined effect of spin-orbit
+ coupling and Zeeman field tangled with the emergent self-consistent superconduc
+tivity triggers a trivial-topological phase transition, along with the role
+ of finite length on the emergence of Majorana oscillations.
+ We show that, in theory, Majoranas can still emerge in both hybrid and
+ intrinsic self-consistent nanowires establishing evidence for a more experiment
+ally grounded Majorana platform.
+ when considering the more approach.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Majorana bound states, or simply Majoranas, are non-Abelian quasiparticles
+ [??] that emerge at the edges of one-dimensional topological superconductors
+ [??].
+ Among the various proposed platforms that could support Majoranas [??],
+ the Oreg-Lutchyn minimal model [??] has arguably received the most attention.
+ This system relies on hybrid superconductor-semiconductor (SC-SM) heterostructu
+res which can undergo a trivial-topological phase transition under the influence
+ of an applied Zeeman field if the SM is characterized by a strong enough
+ spin-orbit coupling (SOC).
+ The simplistic proposition of this model is that one considers an homogeneous
+ uniform pairing induced into the SM purely due to proximity effects with
+ the SC.
+ Having artificially set a pairing's value 
+\begin_inset Formula $\Delta_{0}$
+\end_inset
+
+ throughout the whole SM wire, one can straightforwardly induce the topological
+ phase transition just by the tuning of the Zeeman field 
+\begin_inset Formula $V_{\text{Z}}$
+\end_inset
+
+ and chemical potential 
+\begin_inset Formula $\mu$
+\end_inset
+
+, occurring exactly at the critical value 
+\begin_inset Formula $V_{\text{Z}}=\sqrt{\mu^{2}+\Delta_{0}^{2}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The pairing plays two crucial roles.
+ For starters, it opens a gap at the outer wings of the energy dispersion
+ 
+\begin_inset Formula $\epsilon(k)$
+\end_inset
+
+
+\color blue
+ 
+\color inherit
+where the Zeeman field is unimportant.
+ Secondly, it shapes the now smaller gap, in the proximity the symmetry
+ point 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+, commonly known as minigap.
+ The former role eliminates the possibility of high-momentum gapless excitations
+, thus leaving only the chiral states near the minigap as low energy excitation.
+ This minigap can be shown to be effectively 
+\begin_inset Formula $p$
+\end_inset
+
+-wave, and hence topologically non-trivial [??].
+ The latter role allows us to tune the topological phase transition, signaled
+ by the closing and reopening of the minigap, and by the emergence of topologica
+l protected Majorana zero energy modes in the edges on the nanowire.
+\end_layout
+
+\begin_layout Standard
+During the last two decades, several measurement schemes of increasing complexit
+y have been pursued to unequivocally confirm the emergence of MBSs, including
+ tunneling [??], Coulomb [??] and quantum-dot-assisted spectroscopies [??].
+ In pristine Oreg-Lutchyn nanowires, a way to identify Majoranas was proposed
+ already in 2012 [??].
+ Despite such experimental efforts, interpreting experimental data on the
+ matter proved to be extremely challenging [??], even polemic [??], especially
+ when parsing out the complex phenomena that emerge in realistic hybrid
+ systems such as the effects of interaction [??], disorder [??] and material
+ inhomogeneity [??].
+ As the field progresses, the goal remains to establish a clear and unambiguous
+ signature of Majoranas that can withstand the scrutiny of complex, real
+ world systems.
+ Given these challenges, there is growing interest in exploring alternative
+ approaches such as intrinsic nanowires, which could inherently host 
+\begin_inset Formula $p$
+\end_inset
+
+-wave type topological phases without the need for hybridization with a
+ superconductor, thus minimizing the complexities associated with hybrid
+ structures.
+ Moreover, to more accurately capture interaction effects and enhance the
+ robustness of theoretical models versus experiment, it is crucial to adopt
+ a self-consistent approach.
+ 
+\end_layout
+
+\begin_layout Standard
+To realize Majorana states in intrinsic nanowires, it is essential that
+ the system exhibits inherent superconductivity, as this is a fundamental
+ prerequisite.
+ Following Oreg-Lutchyn's approach, we model the system as an 
+\begin_inset Formula $s$
+\end_inset
+
+-wave trivial SC, described according to BCS theory.
+ As an inherent mean-field theory, we consider a stochastic many-body problem
+ where all particles interactions are averaged into an (attractive) effective
+ interaction, allowing the formation and condensation of Cooper pairs.
+ One then solves self-consistently for this effective interaction leading
+ to a spatially varying pairing potential (as opposed to uniform).
+ In particular, we do this in a fixed-point routine within a Nambu-spinor
+ scheme, reducing the interacting Hamiltonian to an effective Bogoliubov-de-Genn
+es (BdG) Hamiltonian (which accounts for both normal and anomalous terms)
+ with an exclusively onsite Hubbard self-energy term.
+ It's the strength of this Hubbard potential 
+\begin_inset Formula $U$
+\end_inset
+
+ that dictates the state of the system through self-consistency.
+ 
+\end_layout
+
+\begin_layout Standard
+Ultimately, the significance of this work lies in the results obtained from
+ the self-energy calculations and the possibility of using intrinsic nanowires,
+ providing a more comprehensive and realistic description of experimental
+ nanowires compared to the simplified Oreg-Lutchyn (hybrid) model.
+\end_layout
+
+\begin_layout Section
+Self-consistent superconductivity
+\end_layout
+
+\begin_layout Subsection
+Hartree-Fock-Bogoliubov mean-field theory 
+\end_layout
+
+\begin_layout Standard
+Consider a generic tight-binding quartic Hamiltonian,
+\begin_inset Formula 
+\begin{align}
+\hat{H} & =\sum_{\alpha\beta}h_{\alpha\beta}c_{\alpha}^{\dagger}c_{\beta}+\frac{1}{2}\sum_{\alpha\beta\gamma\delta}V_{\gamma\delta}^{\alpha\beta}c_{\alpha}^{\dagger}c_{\beta}^{\dagger}c_{\gamma}c_{\delta},
+\end{align}
+
+\end_inset
+
+with 
+\begin_inset Formula $c_{\alpha}^{\dagger}(c_{\alpha})$
+\end_inset
+
+ fermionic creation (annihilation) operators of site and spin degree of
+ freedom 
+\begin_inset Formula $\alpha=(i,\sigma_{i})$
+\end_inset
+
+, and 
+\begin_inset Formula $V_{\gamma\delta}^{\alpha\beta}$
+\end_inset
+
+ a spinless electrostatic potential tensor of symmetries 
+\begin_inset Formula $V_{\gamma\delta}^{\alpha\beta}=V_{\delta\gamma}^{\beta\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $(V_{\gamma\delta}^{\alpha\beta})^{*}=V_{\alpha\beta}^{\gamma\delta}$
+\end_inset
+
+ following directly from 
+\begin_inset Formula $V(\mathbf{r}-\mathbf{r}^{\prime})=V(\mathbf{r}^{\prime}-\mathbf{r})$
+\end_inset
+
+.
+ We fabricate a doubling of the degrees of freedom by introducing the Nambu-spin
+or 
+\begin_inset Formula $\check{c}_{a}=(c_{a}\,\,c_{a}^{\dagger})$
+\end_inset
+
+, constraining a particle-hole symmetry.
+ In this Nambu representation the system's reduced density matrix (rDM)
+ corresponds to the tensor product 
+\begin_inset Formula $\rho_{ab}=\langle\check{c}_{b}^{\dagger}\otimes\check{c}_{a}\rangle$
+\end_inset
+
+, reading explicitly as
+\begin_inset Formula 
+\begin{align}
+\rho_{ab} & =\left(\begin{array}{cc}
+\langle c_{b}^{\dagger}c_{a}\rangle & \langle c_{b}c_{a}\rangle\\
+\langle c_{b}^{\dagger}c_{a}^{\dagger}\rangle & \langle c_{b}c_{a}^{\dagger}\rangle
+\end{array}\right)=\left(\begin{array}{cc}
+\rho_{ab}^{\text{ee}} & \rho_{ab}^{\text{eh}}\\
+\rho_{ab}^{\text{he}} & \rho_{ab}^{\text{hh}}
+\end{array}\right),
+\end{align}
+
+\end_inset
+
+with it's terms relating to each other directly from the fermionic anti-commutat
+or properties.
+ 
+\end_layout
+
+\begin_layout Standard
+Performing a mean-field Hartree-Fock decoupling as follows 
+\begin_inset Formula $\langle c_{\alpha}^{\dagger}c_{\beta}^{\dagger}c_{\gamma}c_{\delta}\rangle\approx\mathfrak{\rho}_{\beta\alpha}^{\text{he}}\mathfrak{\rho}_{\delta\gamma}^{\text{eh}}-\rho_{\gamma\alpha}^{\text{ee}}\rho_{\delta\beta}^{\text{ee}}+\rho_{\delta\alpha}^{\text{ee}}\rho_{\gamma\beta}^{\text{ee}}$
+\end_inset
+
+, the Nambu rDM equation of motion can be shown to read simply as 
+\begin_inset Formula $i\hbar\dot{\rho}_{ab}=\left[H_{ab}^{\text{BdG}},\rho_{ab}\right]$
+\end_inset
+
+ with
+\begin_inset Formula 
+\begin{equation}
+H_{ab}^{\text{BdG}}=\left(\begin{array}{cc}
+h_{ab}^{\text{HF}} & \Sigma_{ab}^{\Delta}\\
+\left(\Sigma_{ba}^{\Delta}\right)^{*} & -h_{ba}^{\text{HF}}
+\end{array}\right)
+\end{equation}
+
+\end_inset
+
+the effective Bogoliubov-de Gennes (BdG) Hamiltonian, 
+\begin_inset Formula $h_{\text{HF}}(\rho)=h+\boldsymbol{\Sigma}_{H}(\rho)+\boldsymbol{\Sigma}_{F}(\rho)$
+\end_inset
+
+ the Hartree-Fock Hamiltonian, having defined the Hartree, Fock and pairing
+ self-energies as 
+\begin_inset Formula $\Sigma_{ab}^{H}=\sum_{\gamma\delta}V_{b\gamma}^{\delta a}\rho_{\gamma\delta}^{\text{ee}}$
+\end_inset
+
+, 
+\begin_inset Formula $\Sigma_{ab}^{F}=-\sum_{\gamma\delta}V_{b\gamma}^{a\delta}\rho_{\gamma\delta}^{\text{ee}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma_{ab}^{\Delta}=\sum_{\gamma\delta}V_{\delta\gamma}^{ab}\rho_{\gamma\delta}^{\text{eh}}$
+\end_inset
+
+.
+ Note the pairing symmetry 
+\begin_inset Formula $\Sigma_{ab}^{\Delta}=-\Sigma_{ba}^{\Delta}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We build upon these results by further realizing the mean-field self-energy
+ as a spin-1/2 Hubbard term in the Wannier limit, i.e considering the approximati
+on of ultra-localized orbitals 
+\begin_inset Formula $V_{kl}^{ij}\approx V^{ij}\delta_{il}\delta_{jk}$
+\end_inset
+
+ with a spinless potential 
+\begin_inset Formula $V^{i\sigma_{i}j\sigma_{j}}=V^{ij}$
+\end_inset
+
+, followed by the exclusion of all offsite term contribution through 
+\begin_inset Formula $V^{ij}=U\delta_{ij}$
+\end_inset
+
+ with 
+\begin_inset Formula $U<0$
+\end_inset
+
+ an attractive Hubbard potential.
+ Defining a new BdG symmetric rDM object as
+\begin_inset Formula 
+\begin{equation}
+\tilde{\boldsymbol{\rho}}_{ij}=\left(\begin{array}{cc}
+\boldsymbol{\rho}_{ij}^{\text{\text{ee}}} & -\boldsymbol{\rho}_{ij}^{\text{eh}}\\
+-\left(\boldsymbol{\rho}_{ji}^{\text{eh}}\right)^{*} & -\boldsymbol{\rho}_{ji}^{\text{\text{ee}}}
+\end{array}\right),\label{eq:rhotilde}
+\end{equation}
+
+\end_inset
+
+allows one to write the total onsite self-energy of the system in the compact
+ form 
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\Sigma}_{ij}=\frac{1}{2}U\left[\text{Tr}\left(\left[\tau_{z}\otimes\sigma_{0}\right]\tilde{\boldsymbol{\rho}}_{ii}\right)\left[\tau_{z}\otimes\sigma_{0}\right]-2\tilde{\boldsymbol{\rho}}_{ij}\right]\delta_{ij}.\label{eq:Sigma}
+\end{equation}
+
+\end_inset
+
+with both 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ being Pauli matrices operating in their respectively spin and electron-hole
+ subspaces and the Kronecker deltas 
+\begin_inset Formula $\delta_{ij}$
+\end_inset
+
+ denoting on-site terms and 
+\begin_inset Formula $\delta_{ij\pm1}^{\pm}$
+\end_inset
+
+ the 1st neighbors hoppings (front and back).
+ Note that the underlying spin structure is being concealed within the bold
+ notation; the corresponding Nambu-spinor reading 
+\begin_inset Formula $\boldsymbol{\check{c}}_{i}=(c_{i\uparrow}\,\,c_{i\downarrow}\,\,c_{i\uparrow}^{\dagger}\,\,c_{i\downarrow}^{\dagger})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Nanowire models
+\end_layout
+
+\begin_layout Standard
+First and foremost, we showcase Oreg-Lutchyn minimal Majorana model [?]
+ as our model's groundwork.
+ Oreg-Lutchyn minimal model consists of a finite one-dimensional nanowire
+ in the presence of an external Zeeman field 
+\begin_inset Formula $V_{\text{Z}}$
+\end_inset
+
+ and spin-orbit coupling (SOC) effect, being described by the Hamiltonian
+\begin_inset Formula 
+\begin{equation}
+\hat{\boldsymbol{H}}_{0}=\sum_{\sigma_{i}\sigma_{j}}c_{\sigma_{i}}^{\dagger}\left(-\eta\partial_{x}^{2}-\mu+\alpha_{\text{R}}i\sigma_{y}\partial_{x}+V_{\text{Z}}\sigma_{z}\right)c_{\sigma_{j}},
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $\eta=\hbar^{2}/2m^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $m^{*}$
+\end_inset
+
+ the electron's effective mass, and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ the chemical potential.
+ The SOC effect due an externally applied transverse magnetic field of Rashba
+ strength 
+\begin_inset Formula $\alpha_{\text{R}}$
+\end_inset
+
+ and the Zeeman splitting 
+\begin_inset Formula $V_{\text{Z}}=g_{J}\mu_{B}B_{x}/2$
+\end_inset
+
+ due to a in-plane magnetic field 
+\begin_inset Formula $B_{x}$
+\end_inset
+
+, with 
+\begin_inset Formula $g_{J}$
+\end_inset
+
+ the Landé 
+\emph on
+g
+\emph default
+yromagnetic factor of the semiconductor and 
+\begin_inset Formula $\mu_{B}$
+\end_inset
+
+ Bohr's magneton.
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ Furthermore, the minimal model then considers a
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $s$
+\end_inset
+
+-type superconductive (SC) proximity effect of uniform pairing 
+\begin_inset Formula $\Delta_{0}$
+\end_inset
+
+ reading as 
+\begin_inset Formula $(\Delta_{0}c_{\uparrow}^{\dagger}c_{\downarrow}^{\dagger}+h.c)/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The major step up to the minimal model is that we do not consider an homogeneous
+ superconductive proximity effect term but instead self-consistently calculate
+ for the induced pairing (but also magnetization and doping).
+ As derived in the previous section, this is realized in a Hartree-Fock-Bogoliub
+ov mean-field theory.
+ Within the Nambu tight-binding scheme, this correction amounts to the substitut
+ion 
+\begin_inset Formula $\Delta_{0}\left[\tau_{y}\otimes\sigma_{y}\right]\delta_{ij}\rightarrow\boldsymbol{\Sigma}_{ij}$
+\end_inset
+
+, with 
+\begin_inset Formula $\boldsymbol{\Sigma}_{ij}$
+\end_inset
+
+ made explicit in Eq.(
+\begin_inset Formula $\text{\ref{eq:Sigma}}$
+\end_inset
+
+).
+ The full Hamiltonian matrix reads explicitly as
+\begin_inset Formula 
+\begin{align}
+\boldsymbol{H} & =\left(f\delta_{ij}-t\delta_{ij\pm1}\right)\left[\tau_{z}\otimes\sigma_{0}\right]+V_{\text{Z}}\left[\tau_{z}\otimes\sigma_{z}\right]\delta_{ij}\nonumber \\
+ & +\frac{\alpha_{\text{R}}}{2a_{0}}\delta_{ij\pm1}^{\pm}\left[\tau_{z}\otimes i\sigma_{y}\right]+\boldsymbol{\Sigma}_{ij}\label{eq:H}
+\end{align}
+
+\end_inset
+
+with 
+\begin_inset Formula $f=2t-\mu$
+\end_inset
+
+ the band filling (
+\begin_inset Formula $\mu=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu=2t$
+\end_inset
+
+ corresponding to half and zero filling respectively), 
+\begin_inset Formula $t=\eta/a_{0}^{2}$
+\end_inset
+
+ the hopping parameter and 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ the real-space lattice spacing.
+\end_layout
+
+\begin_layout Standard
+Schematic models of the hybrid and intrinsic self-consistent Majorana nanowires
+ are shown in Fig.(
+\begin_inset Formula $\text{\ref{fig:models}}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/models.svg
+	lyxscale 150
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Self-consistent finite nanowire models.
+ (a) Hybrid model.
+
+\series default
+ A depleted semiconducting (SM) nanowire in a doped 
+\begin_inset Formula $s$
+\end_inset
+
+-wave superconducting (SC) nanowire substrate.
+ Both nanowires are subject to an externally applied magnetic field 
+\begin_inset Formula $B$
+\end_inset
+
+ but only the SM exhibits spin-orbit coupling.
+ Crucially, only the SC nanowire contains the self-consistent Hubbard term
+ 
+\begin_inset Formula $U_{\text{SC}}$
+\end_inset
+
+ (therewith 
+\begin_inset Formula $U_{\text{SM}}=0$
+\end_inset
+
+), thus serving as the sole source of pairing within the system.
+ The proximity effect is modeled by a hopping with intensity 
+\begin_inset Formula $\tau<t$
+\end_inset
+
+.
+ Moreover, note that considering 
+\begin_inset Formula $\mu_{\text{SC}}\gg\mu_{\text{SM}}$
+\end_inset
+
+ is crucial for an effective proximity effect because we do not account
+ for disorder and the parallel momentum must be conserved across the interface.
+ 
+\series bold
+(b) Intrinsic model.
+
+\series default
+ Just a doped semiconductor wire (no SC subtract) with strong SOC subjected
+ to an externally applied magnetic field 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ The superconductivity arrives intrinsically due to the self-consistent
+ Hubbard term 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:models"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Remember these talking points:
+\end_layout
+
+\begin_layout Enumerate
+Shallow mode 
+\begin_inset Formula $\mu$
+\end_inset
+
+ shift.
+\end_layout
+
+\begin_layout Enumerate
+Self-consistent routine.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Full spectrum diagonalization for finite case
+\end_layout
+
+\begin_layout Itemize
+Schur's factorization for infinite case
+\end_layout
+
+\begin_layout Itemize
+Anderson acceleration method
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Analytical BCS gap equation:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Furthermore, we compare the 
+\begin_inset Formula $\bar{\mu}_{\text{SM}}$
+\end_inset
+
+ linecuts to the analytical BCS gap equation, generalized to account for
+ Zeeman but not SOC, derived in appendix:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Delta_{0}=2\epsilon_{0}\exp\left(-\sqrt{\frac{\pi^{2}}{2}\frac{\hbar^{2}}{m_{e}e}}\sqrt{\frac{\mu}{m_{0}}}\frac{1}{|U|a_{0}}\right),\label{eq:analDelta-1}
+\end{equation}
+
+\end_inset
+
+It is important to note that Eq.(
+\begin_inset Formula $\text{\ref{eq:analDelta-1}}$
+\end_inset
+
+) assumes 
+\begin_inset Formula $\mu\gg\Delta$
+\end_inset
+
+.
+ See that the actual spectral gap 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ (show in dashed black) does not always correspond to the pairing potential
+ 
+\begin_inset Formula $\Delta_{0}$
+\end_inset
+
+.
+ Generally it reads 
+\begin_inset Formula $\Omega=\max(0,|\Delta_{0}|-|V_{\text{Z}}|)$
+\end_inset
+
+ since for 
+\begin_inset Formula $|V_{\text{Z}}|>\Delta_{0}$
+\end_inset
+
+ the gap has to close although the pairing remains finite.
+ Moreover, see that one always needs 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+ or else the pairing becomes non-real.
+ In the particular case 
+\begin_inset Formula $V_{\text{Z}}=0$
+\end_inset
+
+ with 
+\begin_inset Formula $\mu<0$
+\end_inset
+
+ the gap must correspond instead to 
+\begin_inset Formula $\Omega=-\mu$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Direct analysis from the figure.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Topological invariant, hyperboloid 
+\end_layout
+
+\begin_layout Itemize
+Self-induced dopping shifts 
+\begin_inset Formula $\mu=\mu_{0}^{\text{hyb}}$
+\end_inset
+
+ and 
+\series bold
+
+\begin_inset Formula $\mu=\mu_{0}^{\text{int}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mirror-symmetric holeonic phase-transition hyperboloid
+\end_layout
+
+\begin_layout Itemize
+Insulator region in the phase diagram
+\end_layout
+
+\begin_layout Itemize
+No Majorana oscillation because large 
+\begin_inset Formula $L$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Refer to the multi-mode intrinsic results.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/versus.png
+	lyxscale 40
+	scale 13
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Self-consistent nanowire models results.
+ 
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+The white boundary line denotes the abrupt change in the Majorana number
+ 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ marking the trivial-topological phase transition.
+ Common to all models, we have set the lattice spacing to 
+\begin_inset Formula $a=10\text{nm}$
+\end_inset
+
+, the finite nanowire length to 
+\begin_inset Formula $L=2000\text{nm}$
+\end_inset
+
+, the effective mass to 
+\begin_inset Formula $m^{*}=0.023m_{e}$
+\end_inset
+
+ and the SOC Rashba strength to 
+\begin_inset Formula $\alpha=40\text{meV}$
+\end_inset
+
+.
+ For the hybrid case the SC Hubbard strength is 
+\begin_inset Formula $U_{\text{SC}}=-30\text{meV}$
+\end_inset
+
+ with the SC chemical potential 
+\begin_inset Formula $\mu_{\text{SC}}=5\text{meV}$
+\end_inset
+
+ and SC-SM hopping coupling 
+\begin_inset Formula $\tau=0.8t$
+\end_inset
+
+.
+ For the intrinsic case the Hubbard strength is 
+\begin_inset Formula $U=-8\text{meV}$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hybrid"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Section
+Acknowledgments
+\end_layout
+
+\begin_layout Standard
+We are deeply grateful to our colleague Rui E.
+ Silva and Bruno Amorim who provided useful insight and expertise that greatly
+ assisted the research of this paper.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{10cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.0"
+key "0.0"
+literal "false"
+
+\end_inset
+
+Lutchyn, Roman M., Jay D.
+ Sau, and S.
+ Das Sarma.
+ "Majorana fermions and a topological phase transition in semiconductor-supercon
+ductor heterostructures." Physical review letters 105.7 (2010): 077001.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.1"
+key "0.1"
+literal "false"
+
+\end_inset
+
+Oreg, Yuval, Gil Refael, and Felix Von Oppen.
+ "Helical liquids and Majorana bound states in quantum wires." Physical review
+ letters 105.17 (2010): 177002.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.2"
+key "0.2"
+literal "false"
+
+\end_inset
+
+Chamon, C., et al.
+ "Quantizing Majorana fermions in a superconductor." Physical Review B 81.22
+ (2010): 224515
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.3"
+key "0.3"
+literal "false"
+
+\end_inset
+
+Prada, Elsa, et al.
+ "From Andreev to Majorana bound states in hybrid superconductor–semiconductor
+ nanowires." Nature Reviews Physics 2.10 (2020): 575-594..
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.4"
+key "0.4"
+literal "false"
+
+\end_inset
+
+Avila, J., et al.
+ "Superconducting islands with semiconductor-nanowire-based topological
+ Josephson junctions." arXiv preprint arXiv:2003.02852 (2020).
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.5"
+key "0.5"
+literal "false"
+
+\end_inset
+
+Sau, Jay D., et al.
+ "Generic new platform for topological quantum computation using semiconductor
+ heterostructures." Physical review letters 104.4 (2010): 040502.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "0.6"
+key "0.6"
+literal "false"
+
+\end_inset
+
+Fu, Liang, and Charles L.
+ Kane.
+ "Superconducting proximity effect and Majorana fermions at the surface
+ of a topological insulator." Physical review letters 100.9 (2008): 096407.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1.1"
+key "1.1"
+literal "false"
+
+\end_inset
+
+Nambu, Yoichiro.
+ "Quasi-particles and gauge invariance in the theory of superconductivity."
+ Physical Review 117.3 (1960): 648.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Appendix
+\end_layout
+
+\begin_layout Subsection*
+Appendix A: Analytical gap equation
+\end_layout
+
+\begin_layout Standard
+The main objective of this section is to derive the typical textbook BCS
+ gap equation for an infinite system without Zeeman or SOC [??] from our
+ Hartree-Fock-Bogoliubov approach.
+ We generalize the result for a Zeeman field, accounting not only for the
+ self-consistent pairing but also the self-consistently induced magnetization
+ and doping.
+ We will not, however, account for SOC effects.
+\end_layout
+
+\begin_layout Standard
+Foremost, let us reparametrize the self-energy of Eq.(
+\begin_inset Formula $\text{\ref{eq:Sigma}}$
+\end_inset
+
+) in terms of the self-consistently induced magnetization 
+\begin_inset Formula $\delta V_{\text{Z}}$
+\end_inset
+
+, doping 
+\begin_inset Formula $\delta\mu$
+\end_inset
+
+ and pairing 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ (assumed to be real) as 
+\begin_inset Formula $\boldsymbol{\Sigma}_{ii}=\left(\delta V_{\text{Z}}\left[\tau_{z}\otimes\sigma_{z}\right]-\delta\mu\left[\tau_{z}\otimes\sigma_{0}\right]\right)-\Delta\left[\tau_{y}\otimes\sigma_{y}\right]$
+\end_inset
+
+.
+ Comparing this rewritten form with the original one, we can identifying
+ the off-diagonal block 
+\begin_inset Formula $\Sigma_{ii}^{\text{he}}$
+\end_inset
+
+ as being 
+\begin_inset Formula $-i\Delta\sigma_{y}=U\rho_{i\uparrow i\downarrow}^{\text{eh}}$
+\end_inset
+
+, noting that 
+\begin_inset Formula $\rho_{i\uparrow i\downarrow}^{\text{eh}}=-\rho_{i\downarrow i\uparrow}^{\text{eh}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In another context, consider the Hamiltonian (no SOC) 
+\begin_inset Formula $H_{0}(k)=\sum_{s}c_{ks}^{\dagger}\left[(\epsilon_{k}-\mu)\delta_{ss^{\prime}}+V_{Z}\sigma_{z}\right]c_{ks^{\prime}}$
+\end_inset
+
+ with 
+\begin_inset Formula $s$
+\end_inset
+
+ spin and 
+\begin_inset Formula $k$
+\end_inset
+
+ momentum.
+ For the Hamiltonian at hand we have 
+\begin_inset Formula $\rho_{k\uparrow\downarrow}^{\text{eh}}=\frac{1}{N}\sum_{k}\left[u_{k+}^{*}v_{k+}f(\tilde{E}_{k+})+u_{k-}^{*}v_{k-}f(\tilde{E}_{k-})\right]$
+\end_inset
+
+ where 
+\begin_inset Formula $\tilde{E}_{k\pm}=\tilde{V}_{\text{Z}}\pm\tilde{E}_{k}$
+\end_inset
+
+ with 
+\begin_inset Formula $\tilde{E}_{k}=\sqrt{\Delta^{2}+\tilde{\epsilon}_{k}^{2}}$
+\end_inset
+
+ (no 
+\begin_inset Formula $\pm$
+\end_inset
+
+ subindex) are its eigenvalues and 
+\begin_inset Formula $(u_{k\pm},\,v_{k\pm})$
+\end_inset
+
+ the (normalized) eigenvectors of the 
+\begin_inset Formula $\uparrow\downarrow$
+\end_inset
+
+ block; 
+\begin_inset Formula $\tilde{\epsilon}_{k}=\epsilon_{k}-\tilde{\mu}$
+\end_inset
+
+, 
+\begin_inset Formula $\tilde{\mu}=\mu+\delta\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{V}_{\text{Z}}=V_{\text{Z}}+\delta V_{\text{Z}}$
+\end_inset
+
+ already account for the 
+\begin_inset Formula $U$
+\end_inset
+
+-induced shift and 
+\begin_inset Formula $f$
+\end_inset
+
+ is the Fermi-Dirac distribution.
+ It is critical to realized that is in this generalization we have additional,
+ implicit, self-consistent condition for both 
+\begin_inset Formula $\delta V_{\text{Z}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta\mu$
+\end_inset
+
+.
+ These are obtained in a similar fashion to the pairing term but considering
+ instead the diagonal elements of 
+\begin_inset Formula $\boldsymbol{\Sigma}_{ii}$
+\end_inset
+
+.
+ The self-consistent system of three equation for pairing 
+\begin_inset Formula $\Delta$
+\end_inset
+
+, induced magnetization 
+\begin_inset Formula $\delta V_{\text{Z}}$
+\end_inset
+
+ and doping 
+\begin_inset Formula $\delta\mu$
+\end_inset
+
+ read as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{widetext}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+\Delta= & -U\sum_{k}\frac{\Delta}{4\tilde{E}_{k}}\left[\tanh\left(\frac{\tilde{V}_{\text{Z}}+\tilde{E}_{k}}{2k_{B}T}\right)-\tanh\left(\frac{\tilde{V}_{\text{Z}}-\tilde{E}_{k}}{2k_{B}T}\right)\right]\label{eq:gap}\\
+\delta V_{\text{Z}}= & -\frac{U}{2N}\sum_{k}\frac{\sinh\left(\frac{\tilde{V}_{Z}}{k_{B}T}\right)}{\cosh\left(\frac{\tilde{V}_{Z}}{k_{B}T}\right)+\cosh\left(\frac{\tilde{E}_{k}-\tilde{V}_{\text{Z}}}{k_{B}T}\right)}\\
+\delta\mu= & \frac{U}{4}+\frac{U}{4N}\sum_{k}\frac{\tilde{\epsilon}_{k}}{2\tilde{E}_{k}}\left[\tanh\left(\frac{\tilde{V}_{\text{Z}}+\tilde{E}_{k}}{2k_{B}T}\right)-\tanh\left(\frac{\tilde{V}_{\text{Z}}-\tilde{E}_{k}}{2k_{B}T}\right)\right]
+\end{align}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{widetext}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+See that, if one ignores in Eq.(
+\begin_inset Formula $\text{\ref{eq:gap}}$
+\end_inset
+
+) Zeeman all together, 
+\begin_inset Formula $V_{\text{Z}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta V_{\text{Z}}$
+\end_inset
+
+, but also the self-consistently doping 
+\begin_inset Formula $\delta\mu$
+\end_inset
+
+ it reduces to the traditional gap equation [??] as intended.
+ Note that this has a nonzero solution only if the interaction is attractive
+ i.e 
+\begin_inset Formula $U<0$
+\end_inset
+
+.
+ Although these analytical expressions can be obtained, the generalized
+ analytical solution of the self-consistent system of equation is neither
+ trivial nor worth the trouble for our purposes.
+ We can, however, solve the conventional gap equation in the zero-temperature,
+ small-gap limit, which offers a sufficiently accurate analytical comparison
+ to our numerical results.
+ Thereby, we approximate the dispersion to 
+\begin_inset Formula $\epsilon_{k}=\pm v_{\text{F}}(k\mp k_{\text{F}})$
+\end_inset
+
+ with 
+\begin_inset Formula $v_{\text{F}}$
+\end_inset
+
+ and 
+\begin_inset Formula $k_{\text{F}}$
+\end_inset
+
+ the Fermi velocity and wavevector respectively, and mutate the 
+\begin_inset Formula $\frac{1}{N}\sum_{k}$
+\end_inset
+
+ sum into an integral over 
+\begin_inset Formula $\epsilon_{k}$
+\end_inset
+
+, introducing also a fitted phenomenological cutoff 
+\begin_inset Formula $\epsilon_{0}$
+\end_inset
+
+.
+ In the limit where 
+\begin_inset Formula $\Delta\ll\epsilon_{0}$
+\end_inset
+
+ and for 
+\begin_inset Formula $U<0$
+\end_inset
+
+ the gap equation simplifies to
+\begin_inset Formula 
+\begin{equation}
+\Delta=2\epsilon_{0}\exp\left(-\sqrt{\frac{\pi^{2}}{2}\frac{\hbar^{2}}{m_{e}e}}\sqrt{\frac{\mu}{m_{0}}}\frac{1}{|U|a_{0}}\right).\label{eq:analDelta}
+\end{equation}
+
+\end_inset
+
+Even though we neglected Zeeman this solution is still valid for finite
+ 
+\begin_inset Formula $|V_{\text{Z}}|\le\Delta$
+\end_inset
+
+ since the tanh factors remain equal to 1 throughout the integration interval.
+ Nevertheless, the generalization of Eq.(
+\begin_inset Formula $\text{\ref{eq:analDelta}}$
+\end_inset
+
+) for 
+\begin_inset Formula $|V_{\text{Z}}|>\Delta$
+\end_inset
+
+ can be found from Eq.(
+\begin_inset Formula $\text{\ref{eq:gap}}$
+\end_inset
+
+) within the same regime of approximation and expressed in terms of the
+ previous 
+\begin_inset Formula $\Delta_{0}\equiv\Delta(V_{\text{Z}}=0)$
+\end_inset
+
+ solution as 
+\begin_inset Formula 
+\begin{equation}
+\Delta=\frac{1}{2\epsilon_{0}}\sqrt{\Delta_{0}\left(2\left|V_{\text{Z}}\right|-\Delta_{0}\right)}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is important to note that the actual spectral gap 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ does not always correspond to the pairing potential 
+\begin_inset Formula $\Delta_{0}$
+\end_inset
+
+.
+ Generally it reads 
+\begin_inset Formula $\Omega=\max(0,|\Delta_{0}|-|V_{\text{Z}}|)$
+\end_inset
+
+ since for 
+\begin_inset Formula $|V_{\text{Z}}|>\Delta_{0}$
+\end_inset
+
+ the gap has to close although the pairing remains finite.
+ Moreover, see that one always needs 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+ or else the pairing becomes non-real.
+ In the particular case 
+\begin_inset Formula $V_{\text{Z}}=0$
+\end_inset
+
+ with 
+\begin_inset Formula $\mu<0$
+\end_inset
+
+ the gap must correspond instead to 
+\begin_inset Formula $\Omega=-\mu$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_body
+\end_document
