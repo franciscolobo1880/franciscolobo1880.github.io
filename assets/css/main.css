@@ -3314,3 +3314,195 @@ input, select, textarea {
 			}
 
 	}
+
+/* ------------------ FROM HERE ON OUT IT'S THINGS I MYSELF WROTE ------------------ */
+
+/* General container styling */
+.figure-container {
+    position: relative;
+    max-width: 600px; /* Controls image width */
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #ddd; /* Optional border for clarity */
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual figure styling */
+.figure {
+    display: none; /* Hide figures by default */
+}
+
+.figure.active {
+    display: block; /* Show the active figure */
+}
+
+.figure img {
+    width: 100%; /* Ensure images are responsive */
+    height: auto;
+    display: block;
+}
+
+/* Caption styling */
+.caption {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 5px;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Transparent toggle arrow */
+.arrow-toggle {
+    position: absolute;
+    top: 100%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    color: #1d7256;;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+.arrow-toggle:hover {
+    background: #1d7256;;
+    color: white;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 150px; /* Fixed width */
+    background-color: #a80000; /* Background color */
+    color: white; /* Text color */
+    text-align: center;
+    padding: 8px 10px; /* Uniform padding */
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+
+    /* Prevent text from breaking */
+    white-space: nowrap; /* Forces text to stay on one line */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Optional: Adds "..." if text overflows */
+
+    /* Positioning */
+    position: absolute;
+    top: 125%; /* Tooltip appears above */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+/* Tooltip hover effect */
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Inherit container styles for the map container */
+.map-container {
+    margin: 0 auto;
+    max-width: calc(100% - 4.5em);
+    width: 45em;
+    position: relative; /* Ensure absolute positioning of pins */
+}
+
+.map-container.xsmall {
+    width: 11.25em;
+}
+
+.map-container.small {
+    width: 22.5em;
+}
+
+.map-container.medium {
+    width: 33.75em;
+}
+
+.map-container.large {
+    width: 56.25em;
+}
+
+.map-container.xlarge {
+    width: 67.5em;
+}
+
+.map-container.max {
+    width: 100%;
+}
+
+/* Map image styling inside the map-container */
+.map-container img {
+    width: 100%;   /* Make the image take up 100% of the container's width */
+    height: auto;  /* Maintain the image's aspect ratio */
+    display: block; /* Remove any unwanted space below the image */
+}
+
+/* Pin styling for the map */
+.pin {
+    position: absolute;
+    font-family: "Font Awesome 5 Free"; /* Ensure Font Awesome font is used */
+    font-weight: 900; /* Required for solid icons */
+    font-size: 20px;  /* Adjust the size of the pin */
+    color: #1d7256;/* You can customize the color of the pin */
+    transform: translate(-50%, -50%);  /* Center the pin on the coordinates */
+}
+
+/* Pin Tooltip container */
+.pin-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Tooltip text for pins */
+.pin-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px; /* Fixed width to make the box large */
+    background-color: #a80000; /* Background color */
+    color: white; /* Text color */
+    text-align: center; /* Left-align the text */
+    padding: 10px; /* Increased padding for better readability */
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    
+    /* Make sure text is not bold */
+    font-weight: normal;
+    
+    /* Allow text to wrap, no ellipsis */
+    white-space: normal; /* Allows text to wrap to the next line */
+    overflow: hidden; /* Prevents overflow of the tooltip */
+    
+    /* Positioning */
+    position: absolute;
+	z-index: 100;
+    bottom: 125%; /* Tooltip appears below the pin */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Tooltip hover effect for pins */
+.pin-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+	z-index: 100;
+}
+

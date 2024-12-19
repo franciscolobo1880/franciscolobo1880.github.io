@@ -1,0 +1,289 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass revtex4-2
+\begin_preamble
+% wick theorem with colors
+\usepackage{simpler-wick}
+\makeatletter
+\pgfkeys{simplerwick,wickcolor/.store in=\swick@color,wickcolor=black}
+\def\swick@end#1#2{
+  \swick@setfalse@#1
+  \tikzexternaldisable
+  \begin{tikzpicture}[remember picture, baseline=(swick-close#1.base)]
+    \node[use as bounding box, inner sep=0pt, outer sep=0pt] (swick-close#1) {$\displaystyle #2$};
+  \end{tikzpicture}
+  \tikz[remember picture, overlay]
+    \draw[\swick@color] ($(swick-open#1.north) + (0, 3pt)$)
+          -- ($(swick-open#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.base) + (0, \swick@offset) + #1*(0, \swick@sep)$)
+          -- ($(swick-close#1.north) + (0, 3pt)$);
+  \tikzexternalenable}
+\makeatother 
+
+% fancy color boxes
+% \usepackage{xcolor}
+\usepackage{color}
+\usepackage{tcolorbox}
+\usepackage{environ}
+\usepackage{etoolbox}
+\usepackage{pgf}
+\tcbuselibrary{breakable}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{eso-pic}
+
+% numbering equations
+%\usepackage{chngcntr}
+%\counterwithin{equation}{section}
+
+\definecolor{antiquewhite}{rgb}{0.98, 0.92, 0.84}
+\definecolor{green}{RGB}{0, 150, 0}
+
+\usepackage{afterpage}
+\usepackage{upgreek}
+\end_preamble
+\use_default_options true
+\begin_modules
+tcolorbox
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\notefontcolor #dcdcdc
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 1
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsubsection
+Alternate Nambu basis
+\end_layout
+
+\begin_layout Standard
+One may define the Nambu spinor differently.
+ For example, instead of 
+\begin_inset Formula $\boldsymbol{\check{c}}_{i}^{\dagger}$
+\end_inset
+
+ in Eq.(
+\begin_inset Formula $\text{\ref{eq:c}}$
+\end_inset
+
+), there is also common to encounter the so-called rotated basis where
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=yellow!10!white, colframe=yellow!10!white, breakable
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{equation}
+\boldsymbol{\mathring{c}}_{i}^{\dagger}=\left(\begin{array}{cc}
+\boldsymbol{c}_{i}^{\dagger} & [i\sigma_{y}\boldsymbol{c}_{i}]\end{array}\right)=\left(\begin{array}{cccc}
+c_{i\uparrow}^{\dagger} & c_{i\downarrow}^{\dagger} & c_{i\downarrow} & -c_{i\uparrow}\end{array}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+These relate to the previous choice of basis as
+\begin_inset Formula 
+\begin{align}
+\boldsymbol{\mathring{c}}_{i}= & \mathcal{U}\boldsymbol{\check{c}}_{i}\Leftrightarrow\boldsymbol{\check{c}}_{i}=\mathcal{U}^{\dagger}\boldsymbol{\mathring{c}}_{i}\\
+\boldsymbol{\mathring{c}}_{i}^{\dagger}= & \boldsymbol{\check{c}}_{i}^{\dagger}\mathcal{U}^{\dagger}\Leftrightarrow\boldsymbol{\check{c}}_{i}^{\dagger}=\boldsymbol{\mathring{c}}_{i}^{\dagger}\mathcal{U}
+\end{align}
+
+\end_inset
+
+with 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ is a unitary matrix (i.e 
+\begin_inset Formula $\mathcal{U}^{\dagger}\mathcal{U}=\mathcal{U}\mathcal{U}^{\dagger}=\mathds{1}$
+\end_inset
+
+) reading
+\begin_inset Formula 
+\begin{equation}
+\mathcal{U}=\left(\begin{array}{cc}
+\mathds{1} & 0\\
+0 & i\sigma_{y}
+\end{array}\right)=\left(\begin{array}{cc|cc}
++1 & 0 & 0 & 0\\
+0 & +1 & 0 & 0\\
+\hline 0 & 0 & 0 & +1\\
+0 & 0 & -1 & 0
+\end{array}\right)
+\end{equation}
+
+\end_inset
+
+ The Nambu rDMs relate as
+\begin_inset Formula 
+\[
+\mathring{\boldsymbol{\rho}}_{ij}=\langle\boldsymbol{\mathring{c}}_{j}^{\dagger}\otimes\boldsymbol{\mathring{c}}_{i}\rangle=\langle\boldsymbol{\check{c}}_{i}^{\dagger}\mathcal{U}^{\dagger}\otimes\mathcal{U}\boldsymbol{\check{c}}_{i}\rangle=\mathcal{U}\boldsymbol{\check{\rho}}_{ij}\mathcal{U}^{\dagger}
+\]
+
+\end_inset
+
+
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=red!10!white, colframe=red!10!white, breakable
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+From the basis transformation I get that
+\begin_inset Formula 
+\begin{equation}
+\mathring{\boldsymbol{\rho}}_{ij}=\mathcal{U}\boldsymbol{\check{\rho}}_{ij}\mathcal{U}^{\dagger}=\left(\begin{array}{cc|cc}
+\rho_{ee}^{i\uparrow j\uparrow} & \rho_{ee}^{i\uparrow j\downarrow} & -\rho_{eh}^{i\uparrow j\downarrow} & \rho_{eh}^{i\uparrow j\uparrow}\\
+\rho_{ee}^{i\downarrow j\uparrow} & \rho_{ee}^{i\downarrow j\downarrow} & -\rho_{eh}^{i\downarrow j\downarrow} & \rho_{eh}^{i\downarrow j\uparrow}\\
+\hline -\rho_{he}^{i\downarrow j\uparrow} & -\rho_{he}^{i\downarrow j\downarrow} & \rho_{hh}^{i\downarrow j\downarrow} & -\rho_{hh}^{i\downarrow j\uparrow}\\
+\rho_{he}^{i\uparrow j\uparrow} & \rho_{he}^{i\uparrow j\downarrow} & -\rho_{hh}^{i\uparrow j\downarrow} & \rho_{hh}^{i\uparrow j\uparrow}
+\end{array}\right),
+\end{equation}
+
+\end_inset
+
+however, I can also see that
+\begin_inset Formula 
+\begin{align}
+\boldsymbol{\mathring{\rho}}_{ij} & =\langle\boldsymbol{\mathring{c}}_{j}^{\dagger}\otimes\boldsymbol{\mathring{c}}_{i}\rangle\nonumber \\
+ & =\left(\begin{array}{cc}
+\langle\boldsymbol{c}_{j}^{\dagger}\otimes[i\sigma_{y}\boldsymbol{c}_{i}]\rangle & \langle[i\sigma_{y}\boldsymbol{c}_{j}]\otimes[i\sigma_{y}\boldsymbol{c}_{i}]\rangle\\
+\langle\boldsymbol{c}_{j}^{\dagger}\otimes\boldsymbol{c}_{i}^{\dagger}\rangle & \langle[i\sigma_{y}\boldsymbol{c}_{j}]\otimes\boldsymbol{c}_{i}^{\dagger}\rangle
+\end{array}\right)\nonumber \\
+ & =\left(\begin{array}{cc|cc}
+\rho_{ee}^{i\downarrow j\uparrow} & \rho_{ee}^{i\downarrow j\downarrow} & \rho_{eh}^{i\downarrow j\downarrow} & -\rho_{eh}^{i\downarrow j\uparrow}\\
+-\rho_{ee}^{i\uparrow j\uparrow} & -\rho_{ee}^{i\uparrow j\downarrow} & -\rho_{eh}^{i\uparrow j\downarrow} & \rho_{eh}^{i\uparrow j\uparrow}\\
+\hline \rho_{he}^{i\uparrow j\uparrow} & \rho_{he}^{i\uparrow j\downarrow} & \rho_{hh}^{i\uparrow j\downarrow} & -\rho_{hh}^{i\uparrow j\uparrow}\\
+\rho_{he}^{i\downarrow j\uparrow} & \rho_{he}^{i\downarrow j\downarrow} & \rho_{hh}^{i\downarrow j\downarrow} & -\rho_{hh}^{i\downarrow j\uparrow}
+\end{array}\right)\label{eq:ro}
+\end{align}
+
+\end_inset
+
+What did I do wrong on Eq.(
+\begin_inset Formula $\text{\ref{eq:ro}}$
+\end_inset
+
+)?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
