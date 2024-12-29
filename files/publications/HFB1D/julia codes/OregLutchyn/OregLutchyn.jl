@@ -8,23 +8,8 @@ begin
     using Statistics
     using CairoMakie
     CairoMakie.activate!(type = "png")
-    path = "/home/lobo/GitHub/franciscolobo1880.github.io/files/publications/HFB1D/suplementary/julia/OregLutchyn/"
+    path = "/home/lobo/GitHub/franciscolobo1880.github.io/files/publications/HFB1D/julia codes/OregLutchyn/"
 end;
-
-using CairoMakie
-
-fig = Figure()
-
-# Create a heatmap
-ax, hm = heatmap(fig[1, 1], rand(10, 10))
-
-# Create a horizontal colorbar
-cb_grid = fig[2, 1] = GridLayout(tellwidth=false) # Nest a grid layout for better control
-cb = Colorbar(cb_grid[1, 1], hm, vertical=false)  # Add the colorbar
-Label(cb_grid[1, 2], "Title on Right", rotation=90, valign=:center, halign=:center) # Add title
-
-fig
-
 
 # ----- Building Oreg-Lutchyn's Majorana nanowire -----
 begin
@@ -33,13 +18,13 @@ begin
     const σyτy = @SMatrix[0 0 0 -1; 0 0 1 0; 0 1 0 0; -1 0 0 0]
     const σyτz = @SMatrix[0 -im 0 0; im 0 0 0; 0 0 0 im; 0 0 -im 0]
     const σzτz = @SMatrix[1 0 0 0; 0 -1 0 0; 0 0 -1 0; 0 0 0 1]
-end
+end;
 
 @with_kw struct Params @deftype Float64
     L  = Inf    # nm
     a0 = 10.0   # nm
     m0 = 0.023  # InAs
-end
+end;
 
 build_OregLutchyn_wire(; kw...) = build_OregLutchyn_wire(Params(; kw...))
 function build_OregLutchyn_wire(p::Params)
@@ -66,49 +51,24 @@ begin
     hfin = build_OregLutchyn_wire(L=2000.0)
     Pfaffian(μ, Δ0) = sqrt(μ^2+Δ0^2)
     
-    
     ks  = subdiv(-π, π, 1000)
-    Vzs = range(0.0, 1.5, 100)
-    μs  = range(-2.5, 2.5, 100) 
-    params = (; α=40.0, Δ0=0.5, μ=0.0, Vz=0.0)
-end
-
-# ----- Plotting phase diagram and spectrum -----
-begin
-    fig = Figure(size=(900, 700))
-
-    # - band gap phase diagram -
-    Ωfin = [abs.(real.(energies(spectrum(hfin(;params..., α=10.0, Vz, μ); solver=ES.ShiftInvert(ES.ArnoldiMethod(nev = 1), 0)))))[1] for Vz in Vzs, μ in μs]
-    #Ωinf = [Quantica.gap(hinf(; params..., Vz, μ)) for Vz in Vzs, μ in μs]
-    ax = Axis(fig[1, 1], xlabel=L"V_\text{Z}\text{ (meV)}", ylabel = L"μ\ \text{(meV)}", titlesize=22.5, xlabelsize=22.5, ylabelsize=22.5, xminorticks=IntervalsBetween(5), yminorticks=IntervalsBetween(5), xminorticksvisible=true, yminorticksvisible=true)
-    hm = heatmap!(ax, Vzs, μs, Ωfin, colormap=cgrad(:inferno), colorrange=(0,0.401), highclip=cgrad(:inferno)[end])    
-    bar = Colorbar(fig[0, 1], hm, vertical=false, label=L"Ω\text{ (meV)}", labelsize=22.5)    
-    lines!(Pfaffian.(μs, params.Δ0), μs, color=:white, linestyle=:dash) 
-    xlims!(Vzs[begin], Vzs[end])
-
-    # - band spectrum -
-    BSP = bands(hfin, Vzs; mapping=Vz -> ftuple(;params..., α=10.0, Vz), solver=ES.ShiftInvert(ES.ArnoldiMethod(nev = 50), 0))
-    ax = Axis(fig[1, 2], xlabel=L"V_\text{Z}\text{ (meV)}", ylabel=L"ϵ\text{ (meV)}", xlabelsize=22.5, ylabelsize=22.5, xgridvisible=false, xminorticks=IntervalsBetween(5), yminorticks=IntervalsBetween(5), xminorticksvisible=true, yminorticksvisible=true, yminorgridvisible=true)
-    qplot!(BSP, color=:black, hide=:nodes)
-    ylims!(-0.60, 0.60)
-    xlims!(Vzs[begin], Vzs[end])
-    
-    rowsize!(fig.layout, 1, Aspect(1, 1.0))
-    resize_to_layout!(fig)
-    display(fig)
-    #save(path*"PD_BSP.png", fig)
+    Vzs = range(0.0, 1.0, 144)
+    μs  = range(-1.0, 1.0, 144) 
+    params = (; α=40.0, Δ0=0.4, μ=0.0, Vz=0.0)
 end
 
 # ----- Plotting band structure -----
+BTS = bands(hinf(;params..., Vz=0.5), ks)
 begin
-    BTS = bands(hinf(;params..., Vz=0.5), ks)
-    fig = Figure(size=(600,500))
-    ax = Axis(fig[1,1], ylabel=L"ϵ\text{ (meV)}", xlabel=L"k \text{ (nm)}^{-1}", xlabelsize=20, ylabelsize=20, xticks=([-π, -π/2, 0, π/2, π], ["-π", "-π/2", "0", "π/2", "π"]), yticks=(-60:10:60, string.(-60:10:60)))
-    qplot!(BTS, color=:black, hide=:nodes)
+    fig = Figure(size=(600, 500))
+    ax = Axis(fig[1,1], ylabel=L"ϵ\text{ (meV)}", xlabel=L"k \text{ (nm)}^{-1}", xlabelsize=25, ylabelsize=25)
+    qplot!(BTS; color=:black, hide=:nodes, font=100)
     xlims!(-0.5, 0.5)
     ylims!(-2, 2)
+    hidexdecorations!(ax; label=false, grid=false)
+    hideydecorations!(ax; label=false, grid=false)
     display(fig)    
-    #save(path*"BST.png", fig)
+    save(path*"OL_bands.png", fig)
 end
 begin
     fig = Figure(size=(600,500))
@@ -122,3 +82,33 @@ begin
     end
 end
 
+# ----- Plotting phase diagram-----
+Ωs = [Quantica.gap(hinf(;params..., Δ0=0.4, Vz=Vz, μ=μ); nev=2) for Vz in Vzs, μ in μs]
+begin
+    fig = Figure(size=(620, 500))
+    ax = Axis(fig[1, 1], xlabel=L"V_\text{Z}\text{ (meV)}", ylabel = L"μ\ \text{(meV)}", xlabelsize=25, ylabelsize=25)
+    hm = heatmap!(ax, Vzs, μs, Ωs, colormap=cgrad(:inferno), colorrange=(0,0.401), highclip=cgrad(:inferno)[end])    
+    bar = Colorbar(fig[1, 2], hm, label=L"Ω\text{ (meV)}", labelsize=25, ticksvisible=false, ticklabelsvisible=false)    
+    lines!(Pfaffian.(μs, params.Δ0), μs, color=:white, linestyle=:dash) 
+    hlines!(ax, 0.0, linestyle=Linestyle([0, 15, 20]), color=:red)
+    xlims!(Vzs[begin], Vzs[end])
+    hidexdecorations!(ax; label=false, grid=false)
+    hideydecorations!(ax; label=false, grid=false)
+    display(fig)
+    save(path*"OL_phasediagram.png", fig)
+end
+
+# ----- Plotting spectrum versus Zeeman -----
+BSP = bands(hfin, Vzs; mapping=Vz -> ftuple(;params..., α=10, Vz), solver=ES.ShiftInvert(ES.ArnoldiMethod(nev = 100), 0))
+begin
+    fig = Figure(size=(900, 500))
+    ax = Axis(fig[1, 1], xlabel=L"V_\text{Z}\text{ (meV)}", ylabel=L"ϵ\text{ (meV)}", xlabelsize=25, ylabelsize=25)
+    hlines!(ax, 0.0, color=:gray90)
+    qplot!(BSP, color=:black, hide=:nodes)
+    ylims!(-0.4, 0.4)
+    xlims!(Vzs[begin], Vzs[end])
+    hidexdecorations!(ax; label=false)
+    hideydecorations!(ax; label=false)
+    display(fig)
+    save(path*"OL_spectrum.png", fig)
+end
