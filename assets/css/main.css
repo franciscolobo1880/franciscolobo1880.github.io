@@ -3792,44 +3792,26 @@ input, select, textarea {
     display: block;
 }
 
-/* Pin styling */
-.pin {
-    position: absolute;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 20px;
-    color: #06402B;
-    transform: translate(-50%, -50%);
+.conference-inline {
+  margin-top: 2em;
+  font: inherit;
+  font-size: 1em;
+  line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em; /* space between items */
 }
 
-/* Tooltip map wrapper */
-.pin-tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
+.conference-inline .icon {
+  color: #629677;
+  margin-right: 0.25em;
 }
 
-/* Tooltip map content */
-.pin-tooltip .tooltip-text {
-    visibility: hidden;
-    width: 200px;
-    background-color: #629677;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    white-space: normal;
-    overflow: hidden;
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    z-index: 100;
+.conference-inline a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
 }
 
-.pin-tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
+
