@@ -3814,4 +3814,40 @@ input, select, textarea {
   color: inherit;
 }
 
+.icon.solid.APS {
+  display: inline-block;
+  width: 1.5em;               /* size of the icon relative to text */
+  height: 1em;
+  vertical-align: middle;   /* aligns nicely with the link text */
+
+  background-image: url('../../website/others/APS_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon.solid.arXiv {
+  display: inline-block;
+  width: 1.5em;               /* size of the icon relative to text */
+  height: 1em;
+  vertical-align: middle;   /* aligns nicely with the link text */
+
+  background-image: url('../../website/others/arXiv_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon.solid.UM {
+  display: inline-block;
+  width: 1em;               /* size of the icon relative to text */
+  height: 1em;
+  vertical-align: middle;   /* aligns nicely with the link text */
+
+  background-image: url('../../website/others/UM_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 
