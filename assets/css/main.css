@@ -3803,7 +3803,7 @@ input, select, textarea {
 }
 
 .conference-inline .icon {
-  color: #496F58;
+  color: #636363;
   margin-right: 0.25em;
 }
 
@@ -3820,7 +3820,7 @@ input, select, textarea {
   height: 1em;
   vertical-align: middle;   /* aligns nicely with the link text */
 
-  background-image: url('../../website/others/APS_icon.svg');
+  background-image: url('../../website/assets/APS_icon.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -3832,7 +3832,7 @@ input, select, textarea {
   height: 1em;
   vertical-align: middle;   /* aligns nicely with the link text */
 
-  background-image: url('../../website/others/arXiv_icon.svg');
+  background-image: url('../../website/assets/arXiv_icon.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -3844,7 +3844,19 @@ input, select, textarea {
   height: 1em;
   vertical-align: middle;   /* aligns nicely with the link text */
 
-  background-image: url('../../website/others/UM_icon.svg');
+  background-image: url('../../website/assets/UM_icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon.solid.WS {
+  display: inline-block;
+  width: 1em;               /* size of the icon relative to text */
+  height: 1em;
+  vertical-align: middle;   /* aligns nicely with the link text */
+
+  background-image: url('../../website/assets/WS_icon.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
