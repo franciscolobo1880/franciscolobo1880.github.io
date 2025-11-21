@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Francisco Lobo - Publications</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/publications.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+    <link rel="icon" type="image/png" href="content/photos/fabicon.png">
+</head>
+<body class="publications-page">
+    <div class="publications-container">
+        <div class="sidebar-left"></div>
+        
+        <main class="publications-main">
+            <!-- Header Banner -->
+            <section class="publications-header">
+                <h1>Publications</h1>
+                <p>Papers, preprints, books, thesis, logs and notes</p>
+            </section>
+
+            <!-- Sticky Navigation - UPDATED STRUCTURE -->
+            <div class="publications-nav">
+                <nav>
+                    <!-- Home icon on the left -->
+                    <div class="home-nav">
+                        <a href="index.html" aria-label="Home">
+                            <i class="fas fa-home"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Centered main navigation -->
+                    <div class="main-nav">
+                        <ul>
+                            <li><a href="aboutme.html">About Me</a></li>
+                            <li><a href="publications.html" class="active">Publications</a></li>
+                            <li><a href="collaborations.html">Collaborations</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Empty spacer for balance -->
+                    <div class="nav-spacer"></div>
+                </nav>
+            </div>
+
+            <!-- Content Wrapper -->
+            <div class="publications-content-wrapper">
+                <section class="publications-controls">
+                    <!-- Search Bar with Results Count -->
+                    <div class="search-container">
+                        <input type="text" id="publication-search" placeholder="Search...">
+                        <span class="results-count" id="results-count">Loading...</span>
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+
+                    <!-- Type Toggle (6 options) - Preprints selected by default -->
+                    <div class="filter-container">
+                        <div class="type-toggle-container" data-selected="preprints">
+                            <div class="type-toggle-slider"></div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="publication-type" id="type-papers" value="papers">
+                                <label for="type-papers" class="type-toggle-label">Papers</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="publication-type" id="type-preprints" value="preprints" checked>
+                                <label for="type-preprints" class="type-toggle-label">Preprints</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="publication-type" id="type-thesis" value="thesis">
+                                <label for="type-thesis" class="type-toggle-label">Thesis</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="publication-type" id="type-books" value="books">
+                                <label for="type-books" class="type-toggle-label">Books</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="publication-type" id="type-logs" value="logs">
+                                <label for="type-logs" class="type-toggle-label">Logs</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="publication-type" id="type-notes" value="notes">
+                                <label for="type-notes" class="type-toggle-label">Notes</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year Range Filter -->
+                    <div class="year-filter-container">
+                        <div class="year-slider-container">
+                            <div class="year-range-wrapper">
+                                <div class="year-slider-track"></div>
+                                <div class="year-slider-range"></div>
+                                <div class="year-ticks" id="year-ticks">
+                                    <!-- Ticks will be generated by JavaScript -->
+                                </div>
+                                <input type="range" id="year-min" min="2020" max="2025" value="2020" step="1">
+                                <input type="range" id="year-max" min="2020" max="2025" value="2025" step="1">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="publications-content">
+                    <div id="publications-list">
+                        <!-- Publications will be dynamically loaded here -->
+                        <div style="padding: 20px; text-align: center; border: 1px dashed #ccc;">
+                            <p>Publications loading... Check console for details.</p>
+                        </div>
+                    </div>
+                    <div id="no-results" class="no-results" style="display: none;">
+                        <p>No publications found matching your criteria.</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <div class="sidebar-right"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Francisco Lobo. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/dependencies/jquery.min.js"></script>
+    <script src="assets/js/dependencies/breakpoints.min.js"></script>
+    <script src="assets/js/dependencies/browser.min.js"></script>
+    <script src="assets/js/dependencies/util.js"></script>
+    <script src="assets/js/dependencies/jquery.scrollex.min.js"></script>
+    <script src="assets/js/dependencies/jquery.scrolly.min.js"></script>
+    <script src="assets/js/colors.js"></script>
+    <script src="assets/js/publications.js"></script>
+</body>
+</html>

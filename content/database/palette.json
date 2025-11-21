@@ -1,0 +1,17 @@
+{
+  "palette_dark_green": "#102820",
+  "palette_transparent_dark_green": "rgba(16, 40, 32, 0.2)",
+
+  "palette_pure_white": "#FFFFFF",
+  "palette_transparent_white": "rgba(255, 255, 255, 0.05)",
+  "palette_less_transparent_white": "rgba(255, 255, 255, 0.1)",
+
+  "palette_pure_black": "#000000",
+
+  "palette_toasted_yellow": "#F7D002",
+  "palette_transparent_toasted_yellow": "rgba(247, 208, 2, 0.2)",
+
+  "palette_darker_grey": "#3b3b3bff",
+  "palette_dark_grey": "#4a4a4aff",
+  "palette_lighter_grey": "#555555ff"
+}

@@ -1,0 +1,254 @@
+/* ===== HOME PAGE ===== */
+
+body.home {
+  background-color: var(--color-home-background);
+  background-image: url('../../content/photos/home_background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+body.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-home-overlay);
+  z-index: 1;
+}
+
+body.home header,
+body.home footer {
+  display: none;
+}
+
+body.home main {
+  padding: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  max-width: none;
+  position: relative;
+  z-index: 2;
+}
+
+body.home .hero {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  width: 100%;
+  max-width: 700px;
+}
+
+.hero-text {
+  margin-bottom: 4em;
+}
+
+body.home .hero h1 {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-home-text);
+  font-size: 4.5em;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+  letter-spacing: -0.02em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.home .hero p {
+  color: var(--color-home-text);
+  font-size: 1.8em;
+  font-weight: 300;
+  margin-bottom: 0;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8em;
+  width: 100%;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em 3em;
+  background: var(--color-button-background);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--color-button-text);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-button-border);
+  width: 100%;
+}
+
+.nav-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0.95;
+  text-decoration: none;
+  background: var(--color-button-hover-background);
+  color: var(--color-button-hover-text);
+  border-color: var(--color-button-hover-border);
+}
+
+.nav-button span {
+  font-size: 1.4em;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  text-align: left;
+  flex: 1;
+  transition: color 0.3s ease;
+}
+
+.nav-button:hover span {
+  color: var(--color-button-hover-text);
+}
+
+.nav-button-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: var(--color-button-icon-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.nav-button-icon i {
+  font-size: 1.6em;
+  color: var(--color-button-icon-text);
+  transition: color 0.3s ease;
+}
+
+.nav-button:hover .nav-button-icon {
+  background-color: var(--color-button-hover-icon);
+  transform: scale(1.1);
+}
+
+.nav-button:hover .nav-button-icon i {
+  color: var(--color-button-icon-text);
+}
+
+/* ===== HOME RESPONSIVE DESIGN ===== */
+
+@media screen and (min-width: 1200px) {
+  body.home main {
+    max-width: 900px;
+  }
+  
+  body.home .hero {
+    max-width: 800px;
+  }
+  
+  body.home .hero h1 {
+    font-size: 5em;
+  }
+  
+  body.home .hero p {
+    font-size: 2em;
+  }
+  
+  .nav-button {
+    padding: 2.2em 3.5em;
+  }
+  
+  .nav-button span {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body.home main {
+    padding: 2em;
+  }
+  
+  body.home .hero h1 {
+    font-size: 3.2em;
+  }
+  
+  body.home .hero p {
+    font-size: 1.5em;
+  }
+  
+  .hero-text {
+    margin-bottom: 3em;
+  }
+  
+  .nav-buttons {
+    gap: 1.5em;
+  }
+  
+  .nav-button {
+    padding: 1.8em 2.5em;
+  }
+  
+  .nav-button span {
+    font-size: 1.3em;
+  }
+  
+  .nav-button-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body.home main {
+    padding: 1.5em;
+  }
+  
+  body.home .hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 0.3em;
+  }
+  
+  body.home .hero p {
+    font-size: 1.2em;
+  }
+  
+  .hero-text {
+    margin-bottom: 2.5em;
+  }
+  
+  .nav-buttons {
+    gap: 1.2em;
+  }
+  
+  .nav-button {
+    padding: 1.5em 2em;
+  }
+  
+  .nav-button span {
+    font-size: 1.2em;
+  }
+  
+  .nav-button-icon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .nav-button-icon i {
+    font-size: 1.4em;
+  }
+}

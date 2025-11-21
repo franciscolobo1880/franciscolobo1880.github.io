@@ -1,0 +1,21 @@
+{
+
+    "Lobo:MSc23":{
+            "name": "Excitonic properties of hBN from a time-dependent Hartree-Fock mean-field theory",
+            "local_link": "/content/pdfs/thesis/Lobo:MSc23/Lobo:MSc23.pdf",
+            "authors": ["Francisco Lobo", "Nuno Peres", "Bruno Amorim"],
+            "date": "08/2023",
+            "slides_presentation_link" : "/content/pdfs/thesis/Lobo:MSc23/Lobo:MSc23_slides_presentation.pdf",
+            "poster_presentation_link" : "/content/pdfs/thesis/Lobo:MSc23/Lobo:MSc23_poster.pdf"
+        },
+
+    "Lobo:BSc21":{
+            "name": "Dark Solitons and Breathers as solutions of the NonLinear Schrödinger Equation",
+            "local_link": "/content/pdfs/thesis/Lobo:BSc21/Lobo:BSc21.pdf",
+            "authors": ["Francisco Lobo", "Yuliy Bludov"],
+            "date": "08/2021",
+            "slides_presentation_link" : "/content/pdfs/thesis/Lobo:BSc21/Lobo:BSc21_slides_presentation.pdf",
+            "poster_presentation_link" : "/content/pdfs/thesis/Lobo:BSc21/Lobo:BSc21_poster.pdf"
+        }
+    
+}

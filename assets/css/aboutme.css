@@ -1,0 +1,362 @@
+/* ===== ABOUT ME PAGE ===== */
+
+/* Import all publications styles as base */
+@import url('publications.css');
+
+/* Override specific styles for About Me content */
+
+/* About Me Introduction Section */
+.about-intro {
+  margin-bottom: 3em;
+  padding: 2em;
+  background-color: var(--color-about-me-intro-background);
+  border: 2px solid var(--color-about-me-intro-border);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.about-intro:hover {
+  border-color: var(--color-about-me-intro-border-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.intro-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5em;
+}
+
+.intro-image {
+  flex-shrink: 0;
+}
+
+/* NON-INTERACTIVE CIRCULAR IMAGE */
+.intro-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-about-me-image-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.intro-text {
+  flex: 1;
+}
+
+.intro-text h2 {
+  color: var(--color-card-title);
+  font-size: 2em;
+  margin-bottom: 1em;
+  font-family: 'Playfair Display', serif;
+}
+
+.intro-text p {
+  color: var(--color-card-text);
+  font-size: 1.1em;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Academic Background Section */
+.academic-journey {
+  margin-bottom: 3em;
+}
+
+.academic-journey h2 {
+  color: var(--color-card-title);
+  font-size: 2em;
+  margin-bottom: 1.5em;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+#career-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.career-item {
+  background-color: var(--color-about-me-career-background);
+  border: 2px solid var(--color-about-me-career-border);
+  border-radius: 8px;
+  padding: 1.5em;
+  transition: all 0.3s ease;
+}
+
+.career-item:hover {
+  border-color: var(--color-about-me-career-border-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.career-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.career-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.career-title {
+  flex: 1;
+}
+
+.career-title h3 {
+  color: var(--color-card-title);
+  font-size: 1.4em;
+  margin-bottom: 0.5em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+.career-institution-info {
+  color: var(--color-card-text);
+  font-size: 1em;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.career-institution-info p {
+  margin-bottom: 0.3em;
+  font-size: 1em;
+}
+
+.career-institution-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* Style links in career institution */
+.career-institution-info a {
+  color: var(--color-about-me-career-link);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-about-me-career-link);
+  transition: border-color 0.3s ease;
+}
+
+.career-institution-info a:hover {
+  border-bottom: 2px dotted var(--color-about-me-career-link);
+  text-decoration: none;
+}
+
+.career-period {
+  background-color: var(--color-about-me-career-period-bg);
+  color: var(--color-about-me-career-period-text);
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1.1em;
+  white-space: nowrap;
+}
+
+.career-location {
+  color: var(--color-card-text);
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.career-location i {
+  opacity: 0.7;
+}
+
+/* Social Links Section */
+.social-links {
+  margin-bottom: 2em;
+}
+
+.social-links h2 {
+  color: var(--color-card-title);
+  font-size: 2em;
+  margin-bottom: 1.5em;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+#socials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+}
+
+.social-item {
+  background-color: var(--color-about-me-social-background);
+  border: 2px solid var(--color-about-me-social-border);
+  border-radius: 8px;
+  padding: 1em;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em;
+}
+
+.social-item:hover {
+  border-color: var(--color-about-me-social-border-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-about-me-social-icon-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.social-icon i {
+  font-size: 1.2em;
+  color: var(--color-pure-white);
+}
+
+.social-item:hover .social-icon {
+  background-color: var(--color-about-me-social-icon-hover-bg);
+  transform: scale(1.1);
+}
+
+.social-content {
+  flex: 1;
+}
+
+.social-name {
+  color: var(--color-card-title);
+  font-weight: 400;
+  font-size: 1em;
+  margin-bottom: 0;
+  text-align: center;
+  white-space: pre-line; /* This allows line breaks */
+}
+
+/* Loading messages */
+.loading-message {
+  text-align: center;
+  color: var(--color-about-me-loading-text);
+  font-style: italic;
+  padding: 2em;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media screen and (max-width: 768px) {
+  .intro-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5em;
+  }
+  
+  .intro-image img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+  
+  .intro-text h2 {
+    font-size: 1.6em;
+  }
+  
+  .intro-text p {
+    font-size: 1em;
+  }
+  
+  .academic-journey h2,
+  .social-links h2 {
+    font-size: 1.6em;
+  }
+  
+  .career-main-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8em;
+  }
+  
+  .career-title h3 {
+    font-size: 1.2em;
+  }
+  
+  .career-period {
+    align-self: flex-start;
+    font-size: 1em;
+    padding: 0.4em 0.8em;
+  }
+  
+  #socials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  
+  .about-intro,
+  .career-item {
+    padding: 1.5em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .intro-image img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .intro-text h2 {
+    font-size: 1.4em;
+  }
+  
+  .intro-text p {
+    font-size: 0.9em;
+  }
+  
+  .academic-journey h2,
+  .social-links h2 {
+    font-size: 1.4em;
+  }
+  
+  .career-title h3 {
+    font-size: 1.1em;
+  }
+  
+  .career-period {
+    font-size: 0.9em;
+  }
+  
+  #socials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+  }
+  
+  .social-item {
+    padding: 0.8em;
+    gap: 0.6em;
+  }
+  
+  .social-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .social-icon i {
+    font-size: 1.1em;
+  }
+  
+  .social-name {
+    font-size: 0.9em;
+  }
+  
+  .about-intro,
+  .career-item {
+    padding: 1.2em;
+  }
+}

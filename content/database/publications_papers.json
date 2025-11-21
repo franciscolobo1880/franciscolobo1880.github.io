@@ -1,0 +1,17 @@
+{
+
+    "Lobo:PRB25":{
+            "name": "Exponential suppression of the topological gap in self-consistent intrinsic Majorana nanowires",
+            "local_link": "/content/pdfs/papers/Lobo:PRB25/Lobo:PRB2025.pdf",
+            "journal_link": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.195415",
+            "arXiv_link": "https://arxiv.org/abs/2412.15174",
+            "authors": ["Francisco Lobo", "Pablo San-Jose", "Elsa Prada"],
+            "journal": "Physical Review B (PRB)",
+            "date": "05/2025",
+            "github_repository_link" : "https://github.com/pablosanjose/arxiv_2412_15174",
+            "supplementary_notes_link" : "/content/pdfs/papers/Lobo:PRB25/Lobo:PRB25_supplementary_notes.pdf",
+            "slides_presentation_link" : "/content/pdfs/papers/Lobo:PRB25/Lobo:PRB25_slides_presentation.pdf",
+            "poster_presentation_link" : ""
+        }
+    
+}

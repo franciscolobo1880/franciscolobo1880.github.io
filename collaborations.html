@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Francisco Lobo - Collaborations</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="assets/css/lib/leaflet.css">
+    <!-- MarkerCluster CSS -->
+    <link rel="stylesheet" href="assets/css/lib/MarkerCluster.css">
+    <link rel="stylesheet" href="assets/css/lib/MarkerCluster.Default.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/collaborations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+    <link rel="icon" type="image/png" href="content/photos/fabicon.png">
+</head>
+<body class="publications-page">
+    <div class="publications-container">
+        <div class="sidebar-left"></div>
+        
+        <main class="publications-main">
+            <!-- Header Banner -->
+            <section class="publications-header">
+                <h1>Collaborations</h1>
+                <p>Conferences, visits, and networks</p>
+            </section>
+
+            <!-- Sticky Navigation -->
+            <div class="publications-nav">
+                <nav>
+                    <!-- Home icon on the left -->
+                    <div class="home-nav">
+                        <a href="index.html" aria-label="Home">
+                            <i class="fas fa-home"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Centered main navigation -->
+                    <div class="main-nav">
+                        <ul>
+                            <li><a href="aboutme.html">About Me</a></li>
+                            <li><a href="publications.html">Publications</a></li>
+                            <li><a href="collaborations.html" class="active">Collaborations</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Empty spacer for balance -->
+                    <div class="nav-spacer"></div>
+                </nav>
+            </div>
+
+            <!-- Content Wrapper -->
+            <div class="publications-content-wrapper">
+                <!-- Interactive Statistics Summary - NOW ON TOP -->
+                <div class="collaboration-stats">
+                    <div class="stat-item" id="conferences-stat" data-type="conferences">
+                        <div class="stat-number" id="conferences-count">0</div>
+                        <div class="stat-label">Attended Conferences</div>
+                    </div>
+                    <div class="stat-item" id="visits-stat" data-type="visits">
+                        <div class="stat-number" id="visits-count">0</div>
+                        <div class="stat-label">Research Visits</div>
+                    </div>
+                </div>
+
+                <!-- Interactive Map Container -->
+                <div class="map-container">
+                    <div id="world-map" style="height: 500px; width: 100%;"></div>
+                </div>
+
+                <!-- Selected Pin Info Display - ONLY APPEARS ON CLICK -->
+                <div id="pin-info" class="pin-info-display" style="display: none;">
+                    <h3 id="info-title"></h3>
+                    
+                    <!-- Main Info -->
+                    <p id="info-location"></p>
+                    <p id="info-date"></p>
+                    <p id="info-type"></p>
+                    
+                    <!-- Action Buttons -->
+                    <div class="info-actions">
+                        <div id="conference-website" class="info-button" style="display: none;">
+                            <a href="#" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i> Conference website
+                            </a>
+                        </div>
+                        <div id="visit-website" class="info-button" style="display: none;">
+                            <a href="#" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i> Visit website
+                            </a>
+                        </div>
+                        <div id="presented-work" class="info-button" style="display: none;">
+                            <a id="publication-link" href="#">
+                                <i class="fas fa-file-alt"></i> Presented work
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="sidebar-right"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Francisco Lobo. All rights reserved.</p>
+    </footer>
+
+    <!-- Dependencies -->
+    <script src="assets/js/dependencies/jquery.min.js"></script>
+    <script src="assets/js/dependencies/breakpoints.min.js"></script>
+    <script src="assets/js/dependencies/browser.min.js"></script>
+    <script src="assets/js/dependencies/util.js"></script>
+    <script src="assets/js/dependencies/jquery.scrollex.min.js"></script>
+    <script src="assets/js/dependencies/jquery.scrolly.min.js"></script>
+    
+    <!-- Leaflet and MarkerCluster -->
+    <script src="assets/js/lib/leaflet.js"></script>
+    <script src="assets/js/lib/leaflet.markercluster.js"></script>
+    
+    <!-- Custom scripts -->
+    <script src="assets/js/colors.js"></script>
+    <script src="assets/js/collaborations.js"></script>
+</body>
+</html>

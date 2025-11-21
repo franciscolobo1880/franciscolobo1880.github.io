@@ -1,0 +1,21 @@
+{
+
+    "ConjugateGradient":{
+            "name": "Conjugate Gradient Method",
+            "local_link": "/content/pdfs/notes/ConjugateGradient.pdf",
+            "date": "12/2022"
+        },
+
+    "HFB01":{
+            "name": "Hartree-Fock-Bogoliubov mean-field theory",
+            "local_link": "/content/pdfs/papers/Lobo:PRB25/Lobo:PRB25_supplementary_notes.pdf",
+            "date": "12/2022"
+        },
+
+    "Graphene01":{
+            "name": "Graphene",
+            "local_link": "/content/pdfs/notes/Graphene01.pdf",
+            "date": "12/2022"
+        }
+    
+}
