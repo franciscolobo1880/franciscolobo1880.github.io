@@ -4,9 +4,12 @@
         "conference_name": "Superconductor Semiconductor Hybrids",
         "conference_date": "February, 2026",
         "conference_place": "Villard-de-Lans, France",
-        "conference_coordinates": "45.0667, 5.0333",
+        "coordinates": "45.0667, 5.0333",
         "conference_link": "https://iwssh.sciencesconf.org/",
-        "conference_presented_work": ""
+        "conference_presented_work": {
+            "from": "publications_papers.json",
+            "work": ""
+        }
     },
 
     "Madrid25":{
@@ -14,9 +17,12 @@
         "conference_name": "Emergence of Quantum Phases",
         "conference_date": "October, 2025",
         "conference_place": "Madrid, Spain",
-        "conference_coordinates": "40.4168, -3.7038",
+        "coordinates": "40.4168, -3.7038",
         "conference_link": "https://wp.icmm.csic.es/emergence/",
-        "conference_presented_work": "Lobo:PRB25"
+        "conference_presented_work": {
+            "from": "publications_papers.json",
+            "work": "Lobo:PRB25"
+        }
     },
 
     "SanSebastian25":{
@@ -24,9 +30,12 @@
         "conference_name": "Quantum Designer's Special Edition",
         "conference_date": "July, 2025",
         "conference_place": "San Sebastián, Spain",
-        "conference_coordinates": "43.3183, -1.9759",
+        "coordinates": "43.3183, -1.9759",
         "conference_link": "https://www.uik.eus/en/activity/quantum-designers-special-edition-100-years-quantum-qd100",
-        "conference_presented_work": "Lobo:PRB25"
+        "conference_presented_work": {
+            "from": "publications_papers.json",
+            "work": "Lobo:PRB25"
+        }
     },
 
     "Copenhagen25":{
@@ -34,29 +43,38 @@
         "conference_name": "Superconductor-Semiconductor Hybrids",
         "conference_date": "June, 2025",
         "conference_place": "København, Denmark",
-        "conference_coordinates": "55.6761, 12.5683",
+        "coordinates": "55.6761, 12.5683",
         "conference_link": "https://qdev.nbi.ku.dk/calender/workshop-on-superconductor-semiconductor-hybrids-2025/",
-        "conference_presented_work": "Lobo:PRB25"
+        "conference_presented_work": {
+            "from": "publications_papers.json",
+            "work": "Lobo:PRB25"
+        }
     },
 
     "Anaheim25":{
-        "conference_medium": "oral",
+        "conference_medium": "talk",
         "conference_name": "March Meeting",
         "conference_date": "March, 2025",
         "conference_place": "Anaheim, USA",
-        "conference_coordinates": "33.8353, -117.9145",
+        "coordinates": "33.8353, -117.9145",
         "conference_link": "https://www.aps.org/events/2025/joint-meeting",
-        "conference_presented_work": "Lobo:PRB25"
+        "conference_presented_work": {
+            "from": "publications_papers.json",
+            "work": "Lobo:PRB25"
+        }
     },
 
     "Braga24":{
-        "conference_medium": "oral",
+        "conference_medium": "talk",
         "conference_name": "CMD31",
         "conference_date": "September, 2024",
         "conference_place": "Braga, Portugal",
-        "conference_coordinates": "41.5455, -8.4295",
+        "coordinates": "41.5455, -8.4295",
         "conference_link": "https://cmd31.sci-meet.net/",
-        "conference_presented_work": "Lobo:PRB25"
+        "conference_presented_work": {
+            "from": "publications_papers.json",
+            "work": "Lobo:PRB25"
+        }
     },
 
     "Porto24":{
@@ -64,9 +82,12 @@
         "conference_name": "Quantum Matter",
         "conference_date": "October, 2024",
         "conference_place": "Porto, Portugal",
-        "conference_coordinates": "41.1579, -8.6291",
+        "coordinates": "41.1579, -8.6291",
         "conference_link": "https://quantummatterpt.weebly.com/",
-        "conference_presented_work": "Lobo:MSc23"
+        "conference_presented_work": {
+            "from": "publications_thesis.json",
+            "work": "Lobo:MSc23"
+        }
     },
 
     "Evora23":{
@@ -74,19 +95,25 @@
         "conference_name": "Workshop on Criticality",
         "conference_date": "October, 2023",
         "conference_place": "Évora, Portugal",
-        "conference_coordinates": "38.6560, -8.0051",
+        "coordinates": "38.6560, -8.0051",
         "conference_link": "https://www.cdnbqs.uevora.pt/Web-2023/webpage/index.php",
-        "conference_presented_work": "Lobo:MSc23"
+        "conference_presented_work": {
+            "from": "publications_thesis.json",
+            "work": "Lobo:MSc23"
+        }
     },
 
     "Milano23":{
-        "conference_medium": "oral",
+        "conference_medium": "talk",
         "conference_name": "CMD30 FisMat",
         "conference_date": "September, 2023",
         "conference_place": "Milano, Italy",
-        "conference_coordinates": "45.4642, 9.1900",
+        "coordinates": "45.4642, 9.1900",
         "conference_link": "https://semilab.com/events/cmd30-fismat-2023",
-        "conference_presented_work": "Lobo:MSc23"
+        "conference_presented_work": {
+            "from": "publications_thesis.json",
+            "work": "Lobo:MSc23"
+        }
     },
 
     "Madrid23":{
@@ -94,9 +121,12 @@
         "conference_name": "Emergence of Quantum Phases",
         "conference_date": "October, 2023",
         "conference_place": "Madrid, Spain",
-        "conference_coordinates": "40.4168, -3.7038",
+        "coordinates": "40.4168, -3.7038",
         "conference_link": "https://wp.icmm.csic.es/emergence/",
-        "conference_presented_work": "Lobo:MSc23"
+        "conference_presented_work": {
+            "from": "publications_thesis.json",
+            "work": "Lobo:MSc23"
+        }
     },
 
     "Tomar22":{
@@ -104,9 +134,12 @@
         "conference_name": "Quantum Matter Summer School",
         "conference_date": "September, 2022",
         "conference_place": "Tomar, Portugal",
-        "conference_coordinates": "39.5987, -8.4073",
+        "coordinates": "39.5987, -8.4073",
         "conference_link": "https://sites.google.com/view/qm-ss2022",
-        "conference_presented_work": "Lobo:MSc23"
+        "conference_presented_work": {
+            "from": "publications_thesis.json",
+            "work": "Lobo:MSc23"
+        }
     },
 
     "Toodler21":{
@@ -114,8 +147,11 @@
         "conference_name": "Toddler's School on Quantum Matter",
         "conference_date": "March, 2021",
         "conference_place": "Online",
-        "conference_coordinates": "",
+        "coordinates": "",
         "conference_link": "https://qm2021.sci-meet.net/",
-        "conference_presented_work": "Lobo:MSc23"
+        "conference_presented_work": {
+            "from": "publications_thesis.json",
+            "work": "Lobo:MSc23"
+        }
     }
 }

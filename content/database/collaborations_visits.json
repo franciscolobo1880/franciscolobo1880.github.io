@@ -1,5 +1,12 @@
 {
-
-
-
+    "Aalto26":{
+        "visit_institute": "Aalto University",
+        "visit_institute_link": "https://www.aalto.fi/en",
+        "visit_topic": "Quantics and Tensor Trains",
+        "visit_date": "April, 2026",
+        "visit_place": "Helsinki, Finland",
+        "coordinates": "60.16952, 24.93545",
+        "visit_collaborator01": "Lado",
+        "visit_collaborator02": "Antão"
+    }
 }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/publications.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
     <link rel="icon" type="image/png" href="content/photos/fabicon.png">
 </head>
@@ -35,6 +36,7 @@
                     <div class="main-nav">
                         <ul>
                             <li><a href="aboutme.html">About Me</a></li>
+                            <li><a href="curriculum.html">Curriculum</a></li>
                             <li><a href="publications.html" class="active">Publications</a></li>
                             <li><a href="collaborations.html">Collaborations</a></li>
                         </ul>
@@ -55,17 +57,17 @@
                         <i class="fas fa-search search-icon"></i>
                     </div>
 
-                    <!-- Type Toggle (6 options) - Preprints selected by default -->
+                    <!-- Type Toggle (6 options) - Preprints first, then Papers -->
                     <div class="filter-container">
                         <div class="type-toggle-container" data-selected="preprints">
                             <div class="type-toggle-slider"></div>
                             <div class="type-toggle-option">
-                                <input type="radio" name="publication-type" id="type-papers" value="papers">
-                                <label for="type-papers" class="type-toggle-label">Papers</label>
-                            </div>
-                            <div class="type-toggle-option">
                                 <input type="radio" name="publication-type" id="type-preprints" value="preprints" checked>
                                 <label for="type-preprints" class="type-toggle-label">Preprints</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="publication-type" id="type-papers" value="papers">
+                                <label for="type-papers" class="type-toggle-label">Papers</label>
                             </div>
                             <div class="type-toggle-option">
                                 <input type="radio" name="publication-type" id="type-thesis" value="thesis">

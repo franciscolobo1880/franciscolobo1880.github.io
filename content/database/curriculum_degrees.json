@@ -1,0 +1,47 @@
+{
+    "PhD27":{
+        "career_type": "PhD degree",
+        "career_dates": "2023-2027",
+        "career_field": "Condensed Matter Physics",
+        "career_university": "Universidad Autónoma de Madrid (UAM)",
+        "career_university_link": "https://www.uam.es/uam/inicio",
+        "career_university_city": "Madrid, Portugal",
+        "career_university_coordinates": "41.5597, -8.3985",
+        "career_institution": "Instituto de Ciencia de Materiales de Madrid (ICMM-CSIC)",
+        "career_institution_link": "https://www.icmm.csic.es/",
+        "career_institution_city": "Madrid, Spain",
+        "career_institution_coordinates": "40.4530, -3.6883",
+        "career_team": "Quantum Dynamics of Materials (QUDYMA)",
+        "career_team_link": "https://qudyma.github.io/"
+    },
+
+    "MSc23":{
+        "career_type": "Master of science degree",
+        "career_dates": "2021-2023",
+        "career_field": "Physics",
+        "career_university": "Universidade do Minho (UM)",
+        "career_university_link": "https://www.uminho.pt/",
+        "career_university_city": "Braga, Portugal",
+        "career_university_coordinates": "41.5597, -8.3985",
+        "career_institution": "",
+        "career_institution_link": "",
+        "career_institution_city": "",
+        "career_institution_coordinates": "",
+        "career_team": ""
+    },
+
+    "BSc21":{
+        "career_type": "Bachelor of science degree",
+        "career_dates": "2018-2021",
+        "career_field": "Physics",
+        "career_university": "Universidade do Minho (UM)",
+        "career_university_link": "https://www.uminho.pt/",
+        "career_university_city": "Braga, Portugal",
+        "career_university_coordinates": "41.5597, -8.3985",
+        "career_institution": "",
+        "career_institution_link": "",
+        "career_institution_city": "",
+        "career_institution_coordinates": "",
+        "career_team": ""
+    }
+}

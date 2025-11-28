@@ -227,7 +227,7 @@ body.publications-page > header {
   position: absolute;
   top: 4px;
   left: 4px;
-  width: calc(16.666% - 4px);
+  width: calc(16.666% - 2px);
   height: calc(100% - 8px);
   background-color: var(--color-publication-toggle-slider);
   border-radius: 21px;
@@ -265,28 +265,29 @@ body.publications-page > header {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.type-toggle-container[data-selected="papers"] .type-toggle-slider {
+/* Updated slider positions - Preprints first, then Papers */
+.type-toggle-container[data-selected="preprints"] .type-toggle-slider {
   transform: translateX(0);
 }
 
-.type-toggle-container[data-selected="preprints"] .type-toggle-slider {
-  transform: translateX(calc(100% + 4px));
+.type-toggle-container[data-selected="papers"] .type-toggle-slider {
+  transform: translateX(calc(100% + 2px));
 }
 
 .type-toggle-container[data-selected="thesis"] .type-toggle-slider {
-  transform: translateX(calc(200% + 8px));
+  transform: translateX(calc(200% + 4px));
 }
 
 .type-toggle-container[data-selected="books"] .type-toggle-slider {
-  transform: translateX(calc(300% + 12px));
+  transform: translateX(calc(300% + 6px));
 }
 
 .type-toggle-container[data-selected="logs"] .type-toggle-slider {
-  transform: translateX(calc(400% + 16px));
+  transform: translateX(calc(400% + 8px));
 }
 
 .type-toggle-container[data-selected="notes"] .type-toggle-slider {
-  transform: translateX(calc(500% + 20px));
+  transform: translateX(calc(500% + 10px));
 }
 
 /* YEAR SLIDER */
@@ -432,7 +433,7 @@ body.publications-page > header {
 }
 
 .publication-title {
-  font-size: 1.2em;
+  font-size: 0.9em;
   font-weight: 600;
   color: var(--color-card-title);
   margin-bottom: 0.6em;
@@ -510,6 +511,27 @@ body.publications-page > header {
   margin-right: 0.3em;
 }
 
+/* BibTeX button styling */
+.publication-link.bibtex-button {
+  position: relative;
+}
+
+.publication-link.bibtex-button:hover::after {
+  content: "Click to copy BibTeX";
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-darker-grey);
+  color: white;
+  padding: 0.3em 0.6em;
+  border-radius: 4px;
+  font-size: 0.75em;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+}
+
 .no-results {
   text-align: center;
   padding: 2em;
@@ -546,7 +568,7 @@ body.publications-page footer {
   }
   
   .publications-content-wrapper {
-    padding: 2.5em 4em 4em 4em;
+    padding: 3em 4em 4em 4em;
   }
   
   .publications-header {
@@ -556,21 +578,28 @@ body.publications-page footer {
 
 @media screen and (max-width: 768px) {
   body.publications-page {
-    background-color: var(--color-content-border);
+    font-size: 0.9em;
   }
   
   .publications-container {
     flex-direction: column;
-    max-width: 100%;
   }
   
   .sidebar-left,
   .sidebar-right {
+    width: 100%;
+    min-height: auto;
+    height: 20px;
     display: none;
   }
   
+  .publications-main {
+    width: 100%;
+    margin: 0;
+  }
+  
   .publications-header {
-    padding: 2em 1em 1.5em 1em;
+    padding: 2.5em 1.5em 2em 1.5em;
   }
   
   .publications-header h1 {
@@ -583,20 +612,18 @@ body.publications-page footer {
   }
   
   .publications-content-wrapper {
-    padding: 1.5em 1.5em 2em 1.5em;
+    padding: 1.5em;
   }
   
   .publications-nav nav {
-    padding: 0 1em;
-    justify-content: center;
-  }
-  
-  .home-nav {
-    display: none;
+    padding: 0 1.5em;
+    flex-direction: column;
+    gap: 1em;
   }
   
   .main-nav ul {
     gap: 1.5em;
+    flex-wrap: wrap;
     justify-content: center;
   }
   
@@ -605,90 +632,53 @@ body.publications-page footer {
     padding: 0.4em 0.6em;
   }
   
-  .nav-spacer {
-    display: none;
+  .type-toggle-container {
+    flex-direction: column;
+    height: auto;
+    padding: 8px;
+    border-radius: 12px;
+  }
+  
+  .type-toggle-option {
+    margin-bottom: 4px;
   }
   
   .type-toggle-label {
-    font-size: 0.7em;
-    padding: 0.6em 0.2em;
-  }
-  
-  #publication-search {
-    padding: 0.8em 11em 0.8em 0.8em;
-  }
-  
-  .results-count {
-    right: 4em;
-    font-size: 0.8em;
-  }
-  
-  .year-ticks {
-    left: 1em;
-    right: 1em;
-  }
-  
-  .year-tick-label {
-    font-size: 0.65em;
-  }
-  
-  .publication-links {
-    gap: 0.4em;
-    justify-content: flex-start;
-  }
-  
-  .publication-link {
-    padding: 0.3em 0.6em;
-    font-size: 0.8em;
-    flex-shrink: 0;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .publications-content-wrapper {
-    padding: 1em 1em 1.5em 1em;
-  }
-  
-  .publications-header {
-    padding: 1.5em 0.5em 1em 0.5em;
-  }
-  
-  .publications-header h1 {
-    font-size: 1.6em;
-    margin-bottom: 0.5em;
-  }
-  
-  .publications-header p {
+    padding: 0.8em;
     font-size: 0.9em;
+    text-align: left;
+    border-radius: 8px;
   }
   
-  .publications-nav {
-    padding: 0.5em 0;
+  .type-toggle-slider {
+    width: calc(100% - 8px);
+    height: 44px;
+    top: auto;
+    transition: transform 0.3s ease;
   }
   
-  .publications-nav nav {
-    padding: 0 0.5em;
-    justify-content: center;
+  .type-toggle-container[data-selected="preprints"] .type-toggle-slider {
+    transform: translateY(0);
   }
   
-  .home-nav {
-    display: none;
+  .type-toggle-container[data-selected="papers"] .type-toggle-slider {
+    transform: translateY(48px);
   }
   
-  .main-nav ul {
-    gap: 0.8em;
-    flex-wrap: wrap;
-    justify-content: center;
+  .type-toggle-container[data-selected="thesis"] .type-toggle-slider {
+    transform: translateY(96px);
   }
   
-  .main-nav ul li a {
-    font-size: 0.8em;
-    padding: 0.3em 0.4em;
+  .type-toggle-container[data-selected="books"] .type-toggle-slider {
+    transform: translateY(144px);
   }
   
-  .type-toggle-label {
-    font-size: 0.65em;
-    padding: 0.5em 0.15em;
+  .type-toggle-container[data-selected="logs"] .type-toggle-slider {
+    transform: translateY(192px);
+  }
+  
+  .type-toggle-container[data-selected="notes"] .type-toggle-slider {
+    transform: translateY(240px);
   }
   
   .publication-item {
@@ -697,38 +687,85 @@ body.publications-page footer {
   }
   
   .publication-title {
-    font-size: 1.1em;
-  }
-  
-  #publication-search {
-    padding: 0.8em 10em 0.8em 0.8em;
-  }
-  
-  .results-count {
-    right: 3.5em;
-    font-size: 0.7em;
-  }
-  
-  .year-ticks {
-    left: 1.5em;
-    right: 1.5em;
-  }
-  
-  .year-tick-label {
-    font-size: 0.6em;
+    font-size: 0.85em;
   }
   
   .publication-links {
-    gap: 0.3em;
+    gap: 0.4em;
   }
   
   .publication-link {
-    padding: 0.25em 0.5em;
-    font-size: 0.75em;
+    font-size: 0.8em;
+    padding: 0.3em 0.6em;
   }
   
-  body.publications-page footer {
-    padding: 0.5em;
+  #publication-search {
+    padding: 0.7em 8em 0.7em 0.7em;
+    font-size: 0.9em;
+  }
+  
+  .results-count {
+    font-size: 0.75em;
+    right: 2em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .publications-header {
+    padding: 2em 1em 1.5em 1em;
+  }
+  
+  .publications-header h1 {
+    font-size: 1.8em;
+  }
+  
+  .publications-content-wrapper {
+    padding: 1em;
+  }
+  
+  .publications-nav nav {
+    padding: 0 1em;
+  }
+  
+  .main-nav ul {
+    gap: 1em;
+  }
+  
+  .main-nav ul li a {
+    font-size: 0.85em;
+    padding: 0.3em 0.5em;
+  }
+  
+  .publication-item {
+    padding: 1em;
+    margin-bottom: 1em;
+  }
+  
+  .publication-title {
     font-size: 0.8em;
+  }
+  
+  .publication-meta p {
+    font-size: 0.85em;
+  }
+  
+  .publication-link {
+    font-size: 0.75em;
+    padding: 0.25em 0.5em;
+  }
+  
+  #publication-search {
+    padding: 0.6em 7em 0.6em 0.6em;
+    font-size: 0.85em;
+  }
+  
+  .results-count {
+    font-size: 0.7em;
+    right: 1.5em;
+  }
+  
+  .search-icon {
+    font-size: 1em;
+    right: 0.6em;
   }
 }

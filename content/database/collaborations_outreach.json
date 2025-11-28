@@ -1,0 +1,10 @@
+{
+    "Example":{
+        "outreach_medium": "presentation",
+        "outreach_name": "Superconductivity",
+        "outreach_date": "February, 2026",
+        "outreach_place": "Villard-de-Lans, France",
+        "coordinates": "45.0667, 5.0333",
+        "outreach_link": "https://iwssh.sciencesconf.org/"
+    }
+}

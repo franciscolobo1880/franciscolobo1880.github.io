@@ -41,6 +41,7 @@
                     <div class="main-nav">
                         <ul>
                             <li><a href="aboutme.html">About Me</a></li>
+                            <li><a href="curriculum.html">Curriculum</a></li>
                             <li><a href="publications.html">Publications</a></li>
                             <li><a href="collaborations.html" class="active">Collaborations</a></li>
                         </ul>
@@ -53,15 +54,27 @@
 
             <!-- Content Wrapper -->
             <div class="publications-content-wrapper">
-                <!-- Interactive Statistics Summary - NOW ON TOP -->
+                <!-- Interactive Statistics Summary -->
                 <div class="collaboration-stats">
-                    <div class="stat-item" id="conferences-stat" data-type="conferences">
-                        <div class="stat-number" id="conferences-count">0</div>
-                        <div class="stat-label">Attended Conferences</div>
+                    <div class="stat-item" id="talks-stat" data-type="talks">
+                        <div class="stat-number" id="talks-count">0</div>
+                        <div class="stat-label">Conference Talks</div>
+                    </div>
+                    <div class="stat-item" id="posters-stat" data-type="posters">
+                        <div class="stat-number" id="posters-count">0</div>
+                        <div class="stat-label">Conference Posters</div>
+                    </div>
+                    <div class="stat-item" id="invited-stat" data-type="invited">
+                        <div class="stat-number" id="invited-count">0</div>
+                        <div class="stat-label">Invited Talks</div>
                     </div>
                     <div class="stat-item" id="visits-stat" data-type="visits">
                         <div class="stat-number" id="visits-count">0</div>
                         <div class="stat-label">Research Visits</div>
+                    </div>
+                    <div class="stat-item" id="outreach-stat" data-type="outreach">
+                        <div class="stat-number" id="outreach-count">0</div>
+                        <div class="stat-label">Outreach</div>
                     </div>
                 </div>
 
@@ -78,24 +91,62 @@
                     <p id="info-location"></p>
                     <p id="info-date"></p>
                     <p id="info-type"></p>
-                    
-                    <!-- Action Buttons -->
-                    <div class="info-actions">
-                        <div id="conference-website" class="info-button" style="display: none;">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i> Conference website
-                            </a>
-                        </div>
-                        <div id="visit-website" class="info-button" style="display: none;">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i> Visit website
-                            </a>
-                        </div>
-                        <div id="presented-work" class="info-button" style="display: none;">
-                            <a id="publication-link" href="#">
-                                <i class="fas fa-file-alt"></i> Presented work
-                            </a>
-                        </div>
+                    <div id="info-collaborators"></div>
+                    <div id="info-papers"></div>
+                </div>
+
+                <!-- Conference Talks Container -->
+                <div class="content-section" id="talks-section" style="display: none;">
+                    <div class="section-header">
+                        <h2><i class="fas fa-microphone"></i> Conference Talks</h2>
+                        <p class="section-subtitle">Oral presentations at conferences</p>
+                    </div>
+                    <div id="talks-grid" class="activities-grid">
+                        <div class="loading-message">Loading conference talks...</div>
+                    </div>
+                </div>
+
+                <!-- Conference Posters Container -->
+                <div class="content-section" id="posters-section" style="display: none;">
+                    <div class="section-header">
+                        <h2><i class="fas fa-image"></i> Conference Posters</h2>
+                        <p class="section-subtitle">Poster presentations at conferences</p>
+                    </div>
+                    <div id="posters-grid" class="activities-grid">
+                        <div class="loading-message">Loading conference posters...</div>
+                    </div>
+                </div>
+
+                <!-- Invited Talks Container -->
+                <div class="content-section" id="invited-section" style="display: none;">
+                    <div class="section-header">
+                        <h2><i class="fas fa-star"></i> Invited Talks</h2>
+                        <p class="section-subtitle">Invited presentations and keynotes</p>
+                    </div>
+                    <div id="invited-grid" class="activities-grid">
+                        <div class="loading-message">Loading invited talks...</div>
+                    </div>
+                </div>
+
+                <!-- Research Visits Container -->
+                <div class="content-section" id="visits-section" style="display: none;">
+                    <div class="section-header">
+                        <h2><i class="fas fa-plane"></i> Research Visits</h2>
+                        <p class="section-subtitle">Research stays at international institutions</p>
+                    </div>
+                    <div id="visits-grid" class="activities-grid">
+                        <div class="loading-message">Loading research visits...</div>
+                    </div>
+                </div>
+
+                <!-- Outreach Container -->
+                <div class="content-section" id="outreach-section" style="display: none;">
+                    <div class="section-header">
+                        <h2><i class="fas fa-users"></i> Outreach</h2>
+                        <p class="section-subtitle">Science communication and public engagement</p>
+                    </div>
+                    <div id="outreach-grid" class="activities-grid">
+                        <div class="loading-message">Loading outreach activities...</div>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@
             <!-- Header Banner -->
             <section class="publications-header">
                 <h1>About Me</h1>
-                <p>Academic journey, contacts and socials</p>
+                <p>Personal introduction and interests</p>
             </section>
 
             <!-- Sticky Navigation -->
@@ -35,6 +35,7 @@
                     <div class="main-nav">
                         <ul>
                             <li><a href="aboutme.html" class="active">About Me</a></li>
+                            <li><a href="curriculum.html">Curriculum</a></li>
                             <li><a href="publications.html">Publications</a></li>
                             <li><a href="collaborations.html">Collaborations</a></li>
                         </ul>
@@ -45,36 +46,108 @@
                 </nav>
             </div>
 
+            <!-- Subsection Navigation -->
+            <div class="subsection-nav">
+                <nav>
+                    <ul>
+                        <li><a href="#welcome-text" class="subsection-link">Welcome</a></li>
+                        <li><a href="#research-interests" class="subsection-link">Research Interests</a></li>
+                        <li><a href="#software-competencies" class="subsection-link">Software Competencies</a></li>
+                        <li><a href="#contacts-socials" class="subsection-link">Contacts & Socials</a></li>
+                        <li><a href="#photos" class="subsection-link">Photos</a></li>
+                    </ul>
+                </nav>
+            </div>
+
             <!-- Content Wrapper -->
             <div class="publications-content-wrapper">
-                <!-- About Me Introduction -->
-                <section class="about-intro">
-                    <div class="intro-content">
-                        <div class="intro-image">
-                            <img id="profile-image" src="content/photos/profile.jpg" alt="Francisco Lobo" />
-                        </div>
-                        <div class="intro-text">
-                            <h2>Welcome!</h2>
-                            <p id="intro-paragraph">
-                                Loading introduction...
-                            </p>
+                <!-- Welcome Text Section -->
+                <section id="welcome-text" class="subsection">
+                    <div class="subsection-header">
+                        <h2>Welcome</h2>
+                        <p class="subsection-subtitle">Personal introduction and background</p>
+                    </div>
+                    <div class="about-intro">
+                        <div class="intro-content">
+                            <div class="intro-image">
+                                <img id="profile-image" src="content/photos/profile.jpg" alt="Francisco Lobo" />
+                            </div>
+                            <div class="intro-text">
+                                <h2>Welcome!</h2>
+                                <p id="intro-paragraph">
+                                    Loading introduction...
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Academic Background -->
-                <section class="academic-journey">
-                    <h2><span>Academic Background</span></h2>
-                    <div id="career-timeline">
-                        <div class="loading-message">Loading academic background...</div>
+                <!-- Section Separator -->
+                <div class="section-separator"></div>
+
+                <!-- Research Interests Section -->
+                <section id="research-interests" class="subsection">
+                    <div class="subsection-header">
+                        <h2>Research Interests</h2>
+                        <p class="subsection-subtitle">Areas of scientific focus and expertise</p>
+                    </div>
+                    <div id="research-grid">
+                        <div class="loading-message">Loading research interests...</div>
                     </div>
                 </section>
 
-                <!-- Social Links -->
-                <section class="social-links">
-                    <h2><span>Contacts and socials</span></h2>
+                <!-- Section Separator -->
+                <div class="section-separator"></div>
+
+                <!-- Software Competencies Section -->
+                <section id="software-competencies" class="subsection">
+                    <div class="subsection-header">
+                        <h2>Software Competencies</h2>
+                        <p class="subsection-subtitle">Technical skills and programming expertise</p>
+                    </div>
+                    <div id="software-grid">
+                        <div class="loading-message">Loading software competencies...</div>
+                    </div>
+                </section>
+
+                <!-- Section Separator -->
+                <div class="section-separator"></div>
+
+                <!-- Contacts & Socials Section -->
+                <section id="contacts-socials" class="subsection">
+                    <div class="subsection-header">
+                        <h2>Contacts & Socials</h2>
+                        <p class="subsection-subtitle">Professional networks and communication channels</p>
+                    </div>
                     <div id="socials-grid">
                         <div class="loading-message">Loading social links...</div>
+                    </div>
+                </section>
+
+                <!-- Section Separator -->
+                <div class="section-separator"></div>
+
+                <!-- Photos Section -->
+                <section id="photos" class="subsection">
+                    <div class="subsection-header">
+                        <h2>Photos</h2>
+                        <p class="subsection-subtitle">Personal moments and memories</p>
+                    </div>
+                    <div class="photos-container">
+                        <!-- Left Arrow -->
+                        <button class="photo-nav-btn photo-nav-prev" id="photo-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <!-- Photo Display -->
+                        <div class="photo-display">
+                            <img id="current-photo" src="content/photos/Photo01.png" alt="Photo" />
+                        </div>
+                        
+                        <!-- Right Arrow -->
+                        <button class="photo-nav-btn photo-nav-next" id="photo-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </section>
             </div>

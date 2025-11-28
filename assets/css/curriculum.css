@@ -1,0 +1,270 @@
+/* ===== CURRICULUM PAGE ===== */
+
+/* Import all publications styles as base */
+@import url('publications.css');
+
+/* Override specific styles for Curriculum content */
+
+/* Subsection Navigation - NO CAPS */
+.subsection-nav {
+  background-color: var(--color-menu-background);
+  border-top: 2px solid var(--color-menu-border);
+  border-bottom: 2px solid var(--color-menu-border);
+  padding: 0.8em 0;
+  margin-bottom: 2em;
+  position: sticky;
+  top: 70px; /* Below main nav */
+  z-index: 999;
+}
+
+.subsection-nav nav {
+  display: flex;
+  justify-content: center;
+}
+
+.subsection-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+.subsection-nav li {
+  margin: 0;
+}
+
+.subsection-nav a {
+  color: var(--color-menu-nav-link);
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 500;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  /* REMOVED text-transform: uppercase; */
+  letter-spacing: 0.3px;
+}
+
+.subsection-nav a:hover {
+  background-color: var(--color-menu-nav-hover-bg);
+  color: var(--color-menu-nav-link-hover);
+}
+
+.subsection-nav a.active {
+  background-color: var(--color-menu-nav-active-bg);
+  color: var(--color-menu-nav-link-hover);
+}
+
+/* Section Separators - DARKER GREY */
+.section-separator {
+  height: 2px;
+  background-color: var(--color-darker-grey);
+  margin: 3em 0;
+  border-radius: 1px;
+}
+
+/* Subsection Styling */
+.subsection {
+  padding-top: 2em;
+  margin-bottom: 2em;
+}
+
+/* Subsection Headers with Subtitles */
+.subsection-header {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.subsection-header h2 {
+  color: var(--color-card-title);
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  font-family: 'Playfair Display', serif;
+}
+
+.subsection-subtitle {
+  color: var(--color-card-text);
+  font-size: 1em;
+  font-style: italic;
+  opacity: 0.8;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Timeline Styling */
+#degrees-timeline,
+#contracts-timeline,
+#awards-timeline,
+#teaching-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.career-item {
+  background-color: var(--color-about-me-career-background);
+  border: 2px solid var(--color-about-me-career-border);
+  border-radius: 8px;
+  padding: 1.5em;
+  transition: all 0.3s ease;
+}
+
+.career-item:hover {
+  border-color: var(--color-about-me-career-border-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.career-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.career-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.career-title {
+  flex: 1;
+}
+
+.career-title h3 {
+  color: var(--color-card-title);
+  font-size: 1.4em;
+  margin-bottom: 0.5em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+.career-institution-info {
+  color: var(--color-card-text);
+  font-size: 1em;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.career-institution-info p {
+  margin-bottom: 0.3em;
+  font-size: 1em;
+}
+
+.career-institution-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* Style links in career institution */
+.career-institution-info a {
+  color: var(--color-about-me-career-link);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-about-me-career-link);
+  transition: border-color 0.3s ease;
+}
+
+.career-institution-info a:hover {
+  border-bottom: 2px dotted var(--color-about-me-career-link);
+  text-decoration: none;
+}
+
+.career-period {
+  background-color: var(--color-about-me-career-period-bg);
+  color: var(--color-about-me-career-period-text);
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1.1em;
+  white-space: nowrap;
+}
+
+.career-location {
+  color: var(--color-card-text);
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.career-location i {
+  opacity: 0.7;
+}
+
+/* Loading messages */
+.loading-message {
+  text-align: center;
+  color: var(--color-about-me-loading-text);
+  font-style: italic;
+  padding: 2em;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media screen and (max-width: 768px) {
+  .subsection-nav ul {
+    gap: 1em;
+    justify-content: center;
+  }
+  
+  .subsection-nav a {
+    font-size: 0.8em;
+    padding: 0.4em 0.8em;
+  }
+  
+  .subsection-header h2 {
+    font-size: 1.6em;
+  }
+  
+  .career-main-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8em;
+  }
+  
+  .career-title h3 {
+    font-size: 1.2em;
+  }
+  
+  .career-period {
+    align-self: flex-start;
+    font-size: 1em;
+    padding: 0.4em 0.8em;
+  }
+  
+  .career-item {
+    padding: 1.5em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .subsection-nav ul {
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+  }
+  
+  .subsection-nav a {
+    font-size: 0.75em;
+    padding: 0.3em 0.6em;
+  }
+  
+  .subsection-header h2 {
+    font-size: 1.4em;
+  }
+  
+  .career-title h3 {
+    font-size: 1.1em;
+  }
+  
+  .career-period {
+    font-size: 0.9em;
+  }
+  
+  .career-item {
+    padding: 1.2em;
+  }
+}

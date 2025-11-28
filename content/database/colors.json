@@ -5,7 +5,8 @@
   "color_footer_text": "palette_pure_white",
   "color_link_color": "palette_pure_white",
   "color_pure_white": "palette_pure_white",
-  "color_border_color": "palette_dark_green",
+  "color_darker_grey": "palette_darker_grey",
+  "color_border_color": "palette_pure_white",
   "color_content_border": "palette_dark_green",
 
   "comment_home": "=== HOME PAGE COLORS ===",
