@@ -54,100 +54,66 @@
 
             <!-- Content Wrapper -->
             <div class="publications-content-wrapper">
-                <!-- Interactive Statistics Summary -->
-                <div class="collaboration-stats">
-                    <div class="stat-item" id="talks-stat" data-type="talks">
-                        <div class="stat-number" id="talks-count">0</div>
-                        <div class="stat-label">Conference Talks</div>
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="collaboration-search" placeholder="Search...">
+                    <div class="results-count" id="results-count">0 results</div>
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+
+                <!-- Type Toggle -->
+                <div class="filter-container">
+                    <div class="type-toggle-container" data-selected="talks">
+                        <div class="type-toggle-slider"></div>
+                        <div class="type-toggle-option">
+                            <input type="radio" id="type-talks" name="collaboration-type" value="talks" checked>
+                            <label for="type-talks" class="type-toggle-label">Talks</label>
+                        </div>
+                        <div class="type-toggle-option">
+                            <input type="radio" id="type-posters" name="collaboration-type" value="posters">
+                            <label for="type-posters" class="type-toggle-label">Posters</label>
+                        </div>
+                        <div class="type-toggle-option">
+                            <input type="radio" id="type-invited" name="collaboration-type" value="invited">
+                            <label for="type-invited" class="type-toggle-label">Invited Talks</label>
+                        </div>
+                        <div class="type-toggle-option">
+                            <input type="radio" id="type-visits" name="collaboration-type" value="visits">
+                            <label for="type-visits" class="type-toggle-label">Research Visits</label>
+                        </div>
+                        <div class="type-toggle-option">
+                            <input type="radio" id="type-outreach" name="collaboration-type" value="outreach">
+                            <label for="type-outreach" class="type-toggle-label">Outreach</label>
+                        </div>
                     </div>
-                    <div class="stat-item" id="posters-stat" data-type="posters">
-                        <div class="stat-number" id="posters-count">0</div>
-                        <div class="stat-label">Conference Posters</div>
-                    </div>
-                    <div class="stat-item" id="invited-stat" data-type="invited">
-                        <div class="stat-number" id="invited-count">0</div>
-                        <div class="stat-label">Invited Talks</div>
-                    </div>
-                    <div class="stat-item" id="visits-stat" data-type="visits">
-                        <div class="stat-number" id="visits-count">0</div>
-                        <div class="stat-label">Research Visits</div>
-                    </div>
-                    <div class="stat-item" id="outreach-stat" data-type="outreach">
-                        <div class="stat-number" id="outreach-count">0</div>
-                        <div class="stat-label">Outreach</div>
+                </div>
+
+                <!-- Year Filter -->
+                <div class="year-filter-container">
+                    <div class="year-slider-container">
+                        <div class="year-range-wrapper">
+                            <div class="year-slider-track"></div>
+                            <div class="year-slider-range"></div>
+                            <input type="range" id="year-min" min="2021" max="2026" value="2021" step="1">
+                            <input type="range" id="year-max" min="2021" max="2026" value="2026" step="1">
+                        </div>
+                        <div class="year-ticks" id="year-ticks"></div>
                     </div>
                 </div>
 
                 <!-- Interactive Map Container -->
                 <div class="map-container">
-                    <div id="world-map" style="height: 500px; width: 100%;"></div>
+                    <div id="world-map" style="height: 400px; width: 100%;"></div>
                 </div>
 
-                <!-- Selected Pin Info Display - ONLY APPEARS ON CLICK -->
-                <div id="pin-info" class="pin-info-display" style="display: none;">
-                    <h3 id="info-title"></h3>
-                    
-                    <!-- Main Info -->
-                    <p id="info-location"></p>
-                    <p id="info-date"></p>
-                    <p id="info-type"></p>
-                    <div id="info-collaborators"></div>
-                    <div id="info-papers"></div>
+                <!-- Results Display -->
+                <div id="collaborations-list">
+                    <!-- Results will be dynamically inserted here -->
                 </div>
 
-                <!-- Conference Talks Container -->
-                <div class="content-section" id="talks-section" style="display: none;">
-                    <div class="section-header">
-                        <h2><i class="fas fa-microphone"></i> Conference Talks</h2>
-                        <p class="section-subtitle">Oral presentations at conferences</p>
-                    </div>
-                    <div id="talks-grid" class="activities-grid">
-                        <div class="loading-message">Loading conference talks...</div>
-                    </div>
-                </div>
-
-                <!-- Conference Posters Container -->
-                <div class="content-section" id="posters-section" style="display: none;">
-                    <div class="section-header">
-                        <h2><i class="fas fa-image"></i> Conference Posters</h2>
-                        <p class="section-subtitle">Poster presentations at conferences</p>
-                    </div>
-                    <div id="posters-grid" class="activities-grid">
-                        <div class="loading-message">Loading conference posters...</div>
-                    </div>
-                </div>
-
-                <!-- Invited Talks Container -->
-                <div class="content-section" id="invited-section" style="display: none;">
-                    <div class="section-header">
-                        <h2><i class="fas fa-star"></i> Invited Talks</h2>
-                        <p class="section-subtitle">Invited presentations and keynotes</p>
-                    </div>
-                    <div id="invited-grid" class="activities-grid">
-                        <div class="loading-message">Loading invited talks...</div>
-                    </div>
-                </div>
-
-                <!-- Research Visits Container -->
-                <div class="content-section" id="visits-section" style="display: none;">
-                    <div class="section-header">
-                        <h2><i class="fas fa-plane"></i> Research Visits</h2>
-                        <p class="section-subtitle">Research stays at international institutions</p>
-                    </div>
-                    <div id="visits-grid" class="activities-grid">
-                        <div class="loading-message">Loading research visits...</div>
-                    </div>
-                </div>
-
-                <!-- Outreach Container -->
-                <div class="content-section" id="outreach-section" style="display: none;">
-                    <div class="section-header">
-                        <h2><i class="fas fa-users"></i> Outreach</h2>
-                        <p class="section-subtitle">Science communication and public engagement</p>
-                    </div>
-                    <div id="outreach-grid" class="activities-grid">
-                        <div class="loading-message">Loading outreach activities...</div>
-                    </div>
+                <!-- No Results Message -->
+                <div id="no-results" class="no-results" style="display: none;">
+                    <p>No collaborations found matching your criteria.</p>
                 </div>
             </div>
         </main>

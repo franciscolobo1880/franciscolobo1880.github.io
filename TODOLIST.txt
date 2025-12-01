@@ -10,9 +10,24 @@ Secret preprints, only acessable with password.
 
 Make the type of font editable
 
+Remove title and subtitles all together on the top, but leave a bit of space still.
+
+Some splash of color, header bar of a different color, instead of darker grey.
+
+No white lines on the header bars
+
+Think of a simplified phone version or delete it all together and just a put "Check it on the browser".
+
+No white line on the footer.
+Thinner footer and no text
+
+Make the web tab always be just "Francisco Lobo"
+
 ----- HOME -----
 
-Home is not fitting screen properly
+Home is not fitting screen properly.
+
+Single color static background in home
 
 ----- ABOUTME -----
 
@@ -28,7 +43,20 @@ Make Quantica.jl actually have a link and something that makes it different from
 
 ----- CURRICULUM -----
 
-Make the subsections separation line thicker
+Make the subsections separation line thicker.
+
+Make currriculum subtitle shorter: Degrees, Contracts.
+
+Have just welcome, contacts and photos in about me. Anything else to curriculum. 
+Research interest should have subitems, each container ocupying the full line.
+
+Research subtitle should instead be 
+"Throughout my career, my research has dealt with the following topics:"
+
+Bolsa Mestrado só como "Bolsa de investigação para mestrado"
+
+In Academic Degrees, put the advisors names and link to the work in the publications page! 
+Also, maybe put the location on the right side (same for the others)
 
 ----- PUBLICATIONS -----
 
@@ -36,6 +64,28 @@ Toggle slider bug
 
 Make the copypaste BibTeX have the right formatting
 
+Logs and Notes need a simple text explaining what they are and that there have errors and are incomplete. 
+So, make a container telling that above the results containers would be nice. 
+Actually, would be nice to have something that differentiates better between those two, 
+maybe a different color toggle or a separeted toggle slider. 
+A subtitle saying "Published works" and "Personal works"
+
+Put Books first then Thesis in the publications tab
+
+Make the year slide bar default be the last year.
+
+Put a container like citations that says "X recent citations" that links to something like this:
+ https://badge.dimensions.ai/details/id/pub.1189202228/citations. This should be automatic, of course.
+
 ----- COLLABORATIONS -----
 
-Working link of presented work in collaborations page
+Remove the clickable pins and square that appears.
+
+Collaborations collaborations still not loading properly from the publications_authors json. 
+It should appear as, for example,  "Tiago Antão" as a underlined dotted link to it's google scholar 
+profile which is identified by the tag "Antão". 
+
+Make the year slide bar default correspond only to the last last year. 
+Also the year slider bar is slighlty misformatted. The one in publication is perfect, I want it like that. 
+Well, besides the toggle slider bug that makes the toggle slider go a little bit to the left 
+in the toggle bar slider on the left slide.
