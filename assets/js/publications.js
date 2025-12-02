@@ -153,7 +153,7 @@ $(document).ready(function() {
                 local_link: item.local_link || null,
                 journal_link: null,
                 arxiv_link: null,
-                github_link: null,
+                github_link: item.github_repository_link || null,
                 supplementary_link: null,
                 slides_link: item.slides_presentation_link || null,
                 poster_link: item.poster_presentation_link || null,

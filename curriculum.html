@@ -46,70 +46,73 @@
                 </nav>
             </div>
 
-            <!-- Subsection Navigation -->
-            <div class="subsection-nav">
-                <nav>
-                    <ul>
-                        <li><a href="#academic-degrees" class="subsection-link">Academic Degrees</a></li>
-                        <li><a href="#contracts-fellowships" class="subsection-link">Contracts & Fellowships</a></li>
-                        <li><a href="#awards" class="subsection-link">Awards</a></li>
-                        <li><a href="#teaching" class="subsection-link">Teaching</a></li>
-                    </ul>
-                </nav>
-            </div>
-
             <!-- Content Wrapper -->
             <div class="publications-content-wrapper">
-                <!-- Academic Degrees Section -->
-                <section id="academic-degrees" class="subsection">
-                    <div class="subsection-header">
-                        <h2>Academic Degrees</h2>
-                        <p class="subsection-subtitle">Educational background and qualifications</p>
+                <!-- Search and Filter Controls -->
+                <section class="publications-controls">
+                    <!-- Search Bar with Results Count -->
+                    <div class="search-container">
+                        <input type="text" id="publication-search" placeholder="Search...">
+                        <span class="results-count" id="results-count">Loading...</span>
+                        <i class="fas fa-search search-icon"></i>
                     </div>
-                    <div id="degrees-timeline">
-                        <div class="loading-message">Loading academic degrees...</div>
+
+                    <!-- Type Toggle (6 options in new order: Research, Degrees, Group, Contracts, Teaching, Awards) -->
+                    <div class="filter-container">
+                        <div class="type-toggle-container" data-selected="research">
+                            <div class="type-toggle-slider"></div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="curriculum-type" id="type-research" value="research" checked>
+                                <label for="type-research" class="type-toggle-label">Research</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="curriculum-type" id="type-degrees" value="degrees">
+                                <label for="type-degrees" class="type-toggle-label">Degrees</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="curriculum-type" id="type-group" value="group">
+                                <label for="type-group" class="type-toggle-label">Group</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="curriculum-type" id="type-contracts" value="contracts">
+                                <label for="type-contracts" class="type-toggle-label">Contracts</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="curriculum-type" id="type-teaching" value="teaching">
+                                <label for="type-teaching" class="type-toggle-label">Teaching</label>
+                            </div>
+                            <div class="type-toggle-option">
+                                <input type="radio" name="curriculum-type" id="type-awards" value="awards">
+                                <label for="type-awards" class="type-toggle-label">Awards</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year Range Filter -->
+                    <div class="year-filter-container">
+                        <div class="year-slider-container">
+                            <div class="year-range-wrapper">
+                                <div class="year-slider-track">
+                                    <div class="year-slider-range"></div>
+                                    <input type="range" id="year-min" min="2018" max="2027" value="2018">
+                                    <input type="range" id="year-max" min="2018" max="2027" value="2027">
+                                </div>
+                                <div id="year-ticks" class="year-ticks"></div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
-                <!-- Section Separator -->
-                <div class="section-separator"></div>
-
-                <!-- Contracts & Fellowships Section -->
-                <section id="contracts-fellowships" class="subsection">
-                    <div class="subsection-header">
-                        <h2>Contracts & Fellowships</h2>
-                        <p class="subsection-subtitle">Research positions and funding awards</p>
+                <!-- Main Content -->
+                <section class="publications-content">
+                    <div id="curriculum-list">
+                        <!-- Curriculum items will be dynamically loaded here -->
+                        <div style="padding: 20px; text-align: center; border: 1px dashed #ccc;">
+                            <p>Curriculum loading... Check console for details.</p>
+                        </div>
                     </div>
-                    <div id="contracts-timeline">
-                        <div class="loading-message">Loading contracts and fellowships...</div>
-                    </div>
-                </section>
-
-                <!-- Section Separator -->
-                <div class="section-separator"></div>
-
-                <!-- Awards Section -->
-                <section id="awards" class="subsection">
-                    <div class="subsection-header">
-                        <h2>Awards</h2>
-                        <p class="subsection-subtitle">Recognition and honors received</p>
-                    </div>
-                    <div id="awards-timeline">
-                        <div class="loading-message">Loading awards...</div>
-                    </div>
-                </section>
-
-                <!-- Section Separator -->
-                <div class="section-separator"></div>
-
-                <!-- Teaching Section -->
-                <section id="teaching" class="subsection">
-                    <div class="subsection-header">
-                        <h2>Teaching</h2>
-                        <p class="subsection-subtitle">Educational and mentoring experience</p>
-                    </div>
-                    <div id="teaching-timeline">
-                        <div class="loading-message">Loading teaching experience...</div>
+                    <div id="no-results" class="no-results" style="display: none;">
+                        <p>No curriculum items found matching your criteria.</p>
                     </div>
                 </section>
             </div>

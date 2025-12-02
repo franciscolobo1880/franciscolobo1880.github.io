@@ -1,50 +1,29 @@
 $(document).ready(function() {
     let socialsData = {};
-    let researchData = {};
-    let softwareData = {};
     let textData = {};
     let photosData = {};
+    let workflowData = {};
     let currentPhotoIndex = 0;
     let totalPhotos = 0;
 
     console.log('About Me page loaded, starting data fetch...');
 
-    // Load JSON files including text and photos
+    // Load JSON files (added workflow)
     Promise.all([
         fetch('content/database/aboutme_socials.json')
             .then(response => {
                 console.log('Socials response:', response.status, response.statusText);
-                if (!response.ok) throw new Error(`Socials: ${response.status}`);
+                if (!response.ok) throw new Error('Failed to load socials');
                 return response.json();
             })
             .catch(err => {
                 console.error('Error loading socials data:', err);
                 return {};
             }),
-        fetch('content/database/aboutme_research.json')
-            .then(response => {
-                console.log('Research response:', response.status, response.statusText);
-                if (!response.ok) throw new Error(`Research: ${response.status}`);
-                return response.json();
-            })
-            .catch(err => {
-                console.error('Error loading research data:', err);
-                return {};
-            }),
-        fetch('content/database/aboutme_softwares.json')
-            .then(response => {
-                console.log('Software response:', response.status, response.statusText);
-                if (!response.ok) throw new Error(`Software: ${response.status}`);
-                return response.json();
-            })
-            .catch(err => {
-                console.error('Error loading software data:', err);
-                return {};
-            }),
         fetch('content/database/aboutme_text.json')
             .then(response => {
                 console.log('Text response:', response.status, response.statusText);
-                if (!response.ok) throw new Error(`Text: ${response.status}`);
+                if (!response.ok) throw new Error('Failed to load text');
                 return response.json();
             })
             .catch(err => {
@@ -54,42 +33,47 @@ $(document).ready(function() {
         fetch('content/database/aboutme_photos.json')
             .then(response => {
                 console.log('Photos response:', response.status, response.statusText);
-                if (!response.ok) throw new Error(`Photos: ${response.status}`);
+                if (!response.ok) throw new Error('Failed to load photos');
                 return response.json();
             })
             .catch(err => {
                 console.error('Error loading photos data:', err);
                 return {};
+            }),
+        fetch('content/database/aboutme_workflow.json')
+            .then(response => {
+                console.log('Workflow response:', response.status, response.statusText);
+                if (!response.ok) throw new Error('Failed to load workflow');
+                return response.json();
             })
-    ]).then(([socials, research, software, text, photos]) => {
+            .catch(err => {
+                console.error('Error loading workflow data:', err);
+                return {};
+            })
+    ]).then(([socials, text, photos, workflow]) => {
         console.log('About Me data loaded successfully!');
         console.log('Socials data:', socials);
-        console.log('Research data:', research);
-        console.log('Software data:', software);
         console.log('Text data:', text);
         console.log('Photos data:', photos);
+        console.log('Workflow data:', workflow);
         
         socialsData = socials;
-        researchData = research;
-        softwareData = software;
         textData = text;
         photosData = photos;
+        workflowData = workflow;
         
         // Calculate total photos from the photos data
         totalPhotos = Object.keys(photosData).length;
         
         setupIntroduction();
-        renderResearchInterests();
-        renderSoftwareCompetencies();
         renderSocialLinks();
+        renderWorkflow();
         setupPhotoGallery();
-        setupSubsectionNavigation();
         
     }).catch(error => {
         console.error('CRITICAL ERROR loading About Me data:', error);
-        $('#research-grid').html('<div class="loading-message" style="color: red;">Error loading research data: ' + error.message + '</div>');
-        $('#software-grid').html('<div class="loading-message" style="color: red;">Error loading software data: ' + error.message + '</div>');
         $('#socials-grid').html('<div class="loading-message" style="color: red;">Error loading social links: ' + error.message + '</div>');
+        $('#workflow-content').html('<div class="loading-message" style="color: red;">Error loading workflow: ' + error.message + '</div>');
         $('#photos .photo-display').html('<div class="loading-message" style="color: red;">Error loading photos: ' + error.message + '</div>');
     });
 
@@ -107,58 +91,7 @@ $(document).ready(function() {
         const profileImage = $('#profile-image');
         profileImage.attr('src', 'content/photos/CV_photo.jpeg');
         profileImage.on('error', function() {
-            console.log('CV_photo.jpeg not found, checking alternatives...');
-            $(this).attr('src', 'content/photos/CV_photo.jpg');
-        });
-    }
-
-    function renderResearchInterests() {
-        const container = $('#research-grid');
-        container.empty();
-
-        if (!researchData || Object.keys(researchData).length === 0) {
-            container.html('<div class="loading-message">No research interests data available.</div>');
-            return;
-        }
-
-        // Simply display each research topic
-        Object.keys(researchData).forEach(key => {
-            const researchTopic = researchData[key]; // Just the text like "Topology", "2D crystals"
-            
-            const researchHtml = `
-                <div class="research-item">
-                    <p class="research-name">${researchTopic}</p>
-                </div>
-            `;
-            container.append(researchHtml);
-        });
-    }
-
-    function renderSoftwareCompetencies() {
-        const container = $('#software-grid');
-        container.empty();
-
-        if (!softwareData || Object.keys(softwareData).length === 0) {
-            container.html('<div class="loading-message">No software data available.</div>');
-            return;
-        }
-
-        // Display each software with logo (like social links)
-        Object.keys(softwareData).forEach(key => {
-            const softwareName = softwareData[key]; // "Github", "Inkscape", "JavaScript", etc.
-            const iconClass = getSoftwareIcon(softwareName);
-            
-            const softwareHtml = `
-                <div class="software-item">
-                    <div class="software-icon">
-                        <i class="${iconClass}"></i>
-                    </div>
-                    <div class="software-content">
-                        <div class="software-name">${softwareName}</div>
-                    </div>
-                </div>
-            `;
-            container.append(softwareHtml);
+            $(this).attr('src', 'content/photos/profile.jpg');
         });
     }
 
@@ -197,58 +130,70 @@ $(document).ready(function() {
         `;
     }
 
-    function getSoftwareIcon(softwareName) {
-        const lowerName = softwareName.toLowerCase();
+    function renderWorkflow() {
+        const container = $('#workflow-content');
+        container.empty();
+
+        if (!workflowData || !workflowData.Workflow) {
+            container.html('<div class="loading-message">No workflow data available.</div>');
+            return;
+        }
+
+        // Create workflow container using the curriculum styles
+        const workflowHtml = createWorkflowItem({
+            id: 'workflow',
+            type: 'workflow',
+            ...workflowData.Workflow
+        });
         
-        const iconMap = {
-            'github': 'fab fa-github',
-            'git': 'fab fa-git',
-            'inkscape': 'fas fa-pencil-ruler',
-            'javascript': 'fab fa-js-square',
-            'js': 'fab fa-js-square',
-            'latex': 'fas fa-file-code',
-            'mathematica': 'fas fa-superscript',
-            'matlab': 'fas fa-calculator',
-            'julia': 'fas fa-code',
-            'python': 'fab fa-python',
-            'html': 'fab fa-html5',
-            'css': 'fab fa-css3-alt',
-            'node': 'fab fa-node-js',
-            'react': 'fab fa-react',
-            'vue': 'fab fa-vuejs',
-            'angular': 'fab fa-angular',
-            'docker': 'fab fa-docker',
-            'linux': 'fab fa-linux',
-            'ubuntu': 'fab fa-ubuntu',
-            'windows': 'fab fa-windows',
-            'apple': 'fab fa-apple',
-            'android': 'fab fa-android',
-            'photoshop': 'fas fa-palette',
-            'illustrator': 'fas fa-palette',
-            'figma': 'fab fa-figma',
-            'sketch': 'fas fa-vector-square',
-            'adobe': 'fab fa-adobe',
-            'blender': 'fas fa-cube',
-            'unity': 'fab fa-unity',
-            'unreal': 'fas fa-gamepad',
-            'wordpress': 'fab fa-wordpress',
-            'php': 'fab fa-php',
-            'mysql': 'fas fa-database',
-            'postgresql': 'fas fa-database',
-            'mongodb': 'fas fa-leaf',
-            'firebase': 'fas fa-fire',
-            'aws': 'fab fa-aws',
-            'google cloud': 'fab fa-google',
-            'azure': 'fab fa-microsoft'
-        };
+        container.append(workflowHtml);
+    }
+
+    function createWorkflowItem(item) {
+        console.log('Creating workflow item:', item);
         
-        for (const key in iconMap) {
-            if (lowerName.includes(key)) {
-                return iconMap[key];
-            }
+        let workflowSections = '';
+        
+        // Create sections for each workflow type (same as curriculum.js)
+        if (item['Coding']) {
+            workflowSections += createWorkflowSection('Coding', item['Coding']);
+        }
+        if (item['Writing']) {
+            workflowSections += createWorkflowSection('Writing', item['Writing']);
+        }
+        if (item['Presenting']) {
+            workflowSections += createWorkflowSection('Presenting', item['Presenting']);
         }
         
-        return 'fas fa-code'; // Default programming icon
+        return `
+            <div class="workflow-container">
+                ${workflowSections}
+            </div>
+        `;
+    }
+
+    function createWorkflowSection(title, content) {
+        // Process content to handle markdown-like formatting and create hoverable containers
+        // Handle Quantica.jl link extraction from the JSON format
+        let processedContent = content.replace(/\*([^*]+)\*/g, (match, text) => {
+            // Check if this contains a URL in parentheses
+            const urlMatch = text.match(/^(.+?)\s*\(([^)]+)\)$/);
+            if (urlMatch) {
+                const linkText = urlMatch[1].trim();
+                const url = urlMatch[2].trim();
+                return `<a href="${url}" class="workflow-highlight quantica-link" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+            }
+            return `<span class="workflow-highlight">${text}</span>`;
+        }).replace(/\n/g, '<br>');
+        
+        return `
+            <div class="workflow-section">
+                <h3 class="workflow-title">${title}</h3>
+                <div class="workflow-content">
+                    <p>${processedContent}</p>
+                </div>
+            </div>
+        `;
     }
 
     function setupPhotoGallery() {
@@ -256,154 +201,83 @@ $(document).ready(function() {
             $('#photos .photo-display').html('<div class="loading-message">No photos available.</div>');
             return;
         }
-        
-        currentPhotoIndex = 1; // Start with photo 1
-        updatePhotoDisplay();
-        
-        // Setup navigation buttons
+
+        // Set up navigation buttons
         $('#photo-prev').on('click', function() {
-            currentPhotoIndex = currentPhotoIndex <= 1 ? totalPhotos : currentPhotoIndex - 1;
+            currentPhotoIndex = (currentPhotoIndex - 1 + totalPhotos) % totalPhotos;
             updatePhotoDisplay();
         });
-        
+
         $('#photo-next').on('click', function() {
-            currentPhotoIndex = currentPhotoIndex >= totalPhotos ? 1 : currentPhotoIndex + 1;
+            currentPhotoIndex = (currentPhotoIndex + 1) % totalPhotos;
             updatePhotoDisplay();
         });
+
+        // Initialize first photo
+        updatePhotoDisplay();
     }
 
     function updatePhotoDisplay() {
-        // Format photo index with leading zero (Photo01, Photo02, etc.)
-        const photoKey = `Photo${currentPhotoIndex.toString().padStart(2, '0')}`;
-        const photoSrc = `content/photos/${photoKey}.png`;
-        const photoCaption = photosData[photoKey] || `Photo ${currentPhotoIndex}`;
+        const photoKeys = Object.keys(photosData);
+        if (photoKeys.length === 0) return;
+
+        const currentPhotoKey = photoKeys[currentPhotoIndex];
+        const currentPhotoData = photosData[currentPhotoKey];
         
         // Update image
-        $('#current-photo').attr('src', photoSrc);
+        const photoImg = $('#current-photo');
+        const photoPath = `content/photos/${currentPhotoKey}.png`;
         
-        // Update or create caption
-        let captionElement = $('#photo-caption');
-        if (captionElement.length === 0) {
-            // Create caption element if it doesn't exist
-            captionElement = $('<p id="photo-caption" class="photo-caption"></p>');
-            $('.photo-display').append(captionElement);
-        }
-        captionElement.text(photoCaption);
-        
-        // Handle image load errors
-        $('#current-photo').off('error').on('error', function() {
-            console.log(`${photoKey}.png not found, trying .jpg...`);
+        photoImg.attr('src', photoPath);
+        photoImg.attr('alt', currentPhotoData || 'Photo');
+
+        // Handle image load error
+        photoImg.off('error').on('error', function() {
+            // Try with .jpg extension if .png fails
+            const jpgPath = `content/photos/${currentPhotoKey}.jpg`;
+            $(this).attr('src', jpgPath);
             
-            // Try .jpg extension
-            const jpgSrc = `content/photos/${photoKey}.jpg`;
-            $(this).attr('src', jpgSrc);
-            
+            // If jpg also fails, show placeholder
             $(this).off('error').on('error', function() {
-                console.log(`${photoKey} not found in any format, trying next...`);
-                // If both png and jpg fail, try next photo
-                currentPhotoIndex = currentPhotoIndex >= totalPhotos ? 1 : currentPhotoIndex + 1;
-                if (currentPhotoIndex <= totalPhotos) {
-                    updatePhotoDisplay();
-                } else {
-                    // If all photos fail, show error
-                    $('.photo-display').html('<div class="loading-message">No photos found.</div>');
-                }
+                $(this).attr('src', 'content/photos/placeholder.png');
             });
         });
-    }
 
-    function setupSubsectionNavigation() {
-        $('.subsection-link').on('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = $(this).attr('href');
-            const targetSection = $(targetId);
-            
-            if (targetSection.length) {
-                // Remove active class from all links
-                $('.subsection-link').removeClass('active');
-                // Add active class to clicked link
-                $(this).addClass('active');
-                
-                // Smooth scroll to target
-                $('html, body').animate({
-                    scrollTop: targetSection.offset().top - 150 // Account for sticky headers
-                }, 600);
-            }
-        });
+        // Add/update caption if it exists
+        let captionHtml = '';
+        if (currentPhotoData && currentPhotoData.trim()) {
+            captionHtml = `<p class="photo-caption">${currentPhotoData}</p>`;
+        }
         
-        // Update active link on scroll
-        $(window).on('scroll', function() {
-            updateActiveSubsectionLink();
-        });
-    }
-
-    function updateActiveSubsectionLink() {
-        const scrollTop = $(window).scrollTop() + 200; // Offset for headers
-        
-        $('.subsection').each(function() {
-            const sectionTop = $(this).offset().top;
-            const sectionBottom = sectionTop + $(this).outerHeight();
-            const sectionId = '#' + $(this).attr('id');
-            
-            if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
-                $('.subsection-link').removeClass('active');
-                $(`.subsection-link[href="${sectionId}"]`).addClass('active');
-            }
-        });
+        // Remove existing caption and add new one
+        $('.photo-caption').remove();
+        if (captionHtml) {
+            $('.photo-display').append(captionHtml);
+        }
     }
 
     function formatSocialNameWithBreaks(socialType) {
-        const words = socialType.split(' ');
-        if (words.length > 1) {
-            return words.join('\n');
-        }
-        return socialType;
+        // Add line breaks for long social media names
+        return socialType.replace(' Scholar', '\nScholar').replace(' email', '\nemail');
     }
 
     function getSocialIcon(socialType) {
         const lowerType = socialType.toLowerCase();
-        
-        const iconMap = {
-            'google scholar': 'fas fa-graduation-cap',
-            'scholar': 'fas fa-graduation-cap',
-            'orcid': 'fab fa-orcid',
-            'researchgate': 'fab fa-researchgate',
-            'research gate': 'fab fa-researchgate',
-            'linkedin': 'fab fa-linkedin',
-            'github': 'fab fa-github',
-            'twitter': 'fab fa-twitter',
-            'x': 'fab fa-x-twitter',
-            'email': 'fas fa-envelope',
-            'mail': 'fas fa-envelope',
-            'personal email': 'fas fa-envelope',
-            'personal': 'fas fa-envelope',
-            'website': 'fas fa-globe',
-            'personal website': 'fas fa-globe',
-            'instagram': 'fab fa-instagram',
-            'facebook': 'fab fa-facebook',
-            'youtube': 'fab fa-youtube',
-            'arxiv': 'fas fa-archive',
-            'scopus': 'fas fa-search',
-            'web of science': 'fas fa-microscope',
-            'publons': 'fas fa-user-graduate',
-            'institute': 'fas fa-university',
-            'university': 'fas fa-university',
-            'institution': 'fas fa-university'
-        };
-        
-        for (const key in iconMap) {
-            if (lowerType.includes(key)) {
-                return iconMap[key];
-            }
-        }
-        
+        if (lowerType.includes('email')) return 'fas fa-envelope';
+        if (lowerType.includes('linkedin')) return 'fab fa-linkedin';
+        if (lowerType.includes('github')) return 'fab fa-github';
+        if (lowerType.includes('scholar')) return 'fas fa-graduation-cap';
+        if (lowerType.includes('orcid')) return 'fab fa-orcid';
+        if (lowerType.includes('researchgate')) return 'fab fa-researchgate';
+        if (lowerType.includes('twitter')) return 'fab fa-twitter';
+        if (lowerType.includes('facebook')) return 'fab fa-facebook';
+        if (lowerType.includes('instagram')) return 'fab fa-instagram';
+        if (lowerType.includes('youtube')) return 'fab fa-youtube';
+        if (lowerType.includes('cv')) return 'fas fa-file-pdf';
         return 'fas fa-link';
     }
 
     function formatSocialName(id) {
-        return id.split('_')
-                 .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                 .join(' ');
+        return id.replace(/([A-Z])/g, ' $1').trim();
     }
 });

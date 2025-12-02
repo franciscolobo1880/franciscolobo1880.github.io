@@ -5,266 +5,429 @@
 
 /* Override specific styles for Curriculum content */
 
-/* Subsection Navigation - NO CAPS */
-.subsection-nav {
-  background-color: var(--color-menu-background);
-  border-top: 2px solid var(--color-menu-border);
-  border-bottom: 2px solid var(--color-menu-border);
-  padding: 0.8em 0;
-  margin-bottom: 2em;
-  position: sticky;
-  top: 70px; /* Below main nav */
-  z-index: 999;
+/* Updated slider positions for 6-option toggle (new order: Research, Degrees, Group, Contracts, Teaching, Awards) */
+.type-toggle-container[data-selected="research"] .type-toggle-slider {
+    left: 0%;
+    width: 16.667%;
 }
 
-.subsection-nav nav {
-  display: flex;
-  justify-content: center;
+.type-toggle-container[data-selected="degrees"] .type-toggle-slider {
+    left: 16.667%;
+    width: 16.667%;
 }
 
-.subsection-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 2em;
-  flex-wrap: wrap;
+.type-toggle-container[data-selected="group"] .type-toggle-slider {
+    left: 33.333%;
+    width: 16.667%;
 }
 
-.subsection-nav li {
-  margin: 0;
+.type-toggle-container[data-selected="contracts"] .type-toggle-slider {
+    left: 50%;
+    width: 16.667%;
 }
 
-.subsection-nav a {
-  color: var(--color-menu-nav-link);
-  text-decoration: none;
-  font-size: 0.9em;
-  font-weight: 500;
-  padding: 0.5em 1em;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  /* REMOVED text-transform: uppercase; */
-  letter-spacing: 0.3px;
+.type-toggle-container[data-selected="teaching"] .type-toggle-slider {
+    left: 66.667%;
+    width: 16.667%;
 }
 
-.subsection-nav a:hover {
-  background-color: var(--color-menu-nav-hover-bg);
-  color: var(--color-menu-nav-link-hover);
+.type-toggle-container[data-selected="awards"] .type-toggle-slider {
+    left: 83.333%;
+    width: 16.667%;
 }
 
-.subsection-nav a.active {
-  background-color: var(--color-menu-nav-active-bg);
-  color: var(--color-menu-nav-link-hover);
+/* FIXED year slider tick alignment */
+.year-ticks {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
 
-/* Section Separators - DARKER GREY */
-.section-separator {
-  height: 2px;
-  background-color: var(--color-darker-grey);
-  margin: 3em 0;
-  border-radius: 1px;
+.year-tick {
+    position: absolute;
+    width: 2px;
+    height: 12px;
+    background: var(--color-publication-year-tick);
+    top: -6px;
+    transform: translateX(-50%);
 }
 
-/* Subsection Styling */
-.subsection {
-  padding-top: 2em;
-  margin-bottom: 2em;
+.year-tick-label {
+    position: absolute;
+    top: 25px;
+    transform: translateX(-50%);
+    font-size: 0.65em;
+    color: var(--color-publication-year-tick-label);
+    font-weight: 500;
+    white-space: nowrap;
+    max-width: 30px;
+    text-align: center;
+    z-index: 1;
+    pointer-events: none;
 }
 
-/* Subsection Headers with Subtitles */
-.subsection-header {
-  text-align: center;
-  margin-bottom: 2em;
+/* Ensure year labels don't overlap with slider thumbs - FIXED POSITIONING */
+.year-slider-track {
+    position: relative;
+    height: 6px;
+    background: var(--color-publication-slider-track);
+    border-radius: 3px;
+    margin: 0 10px;
 }
 
-.subsection-header h2 {
-  color: var(--color-card-title);
-  font-size: 2em;
-  margin-bottom: 0.5em;
-  font-family: 'Playfair Display', serif;
+.year-slider-range {
+    position: absolute;
+    height: 100%;
+    background: var(--color-publication-slider-range);
+    border-radius: 3px;
+    z-index: 2;
 }
 
-.subsection-subtitle {
-  color: var(--color-card-text);
-  font-size: 1em;
-  font-style: italic;
-  opacity: 0.8;
-  margin: 0;
-  font-weight: 400;
+#year-min, #year-max {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border-radius: 4px;
+    outline: none;
+    z-index: 10;
+    cursor: pointer;
 }
 
-/* Timeline Styling */
-#degrees-timeline,
-#contracts-timeline,
-#awards-timeline,
-#teaching-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
+#year-min::-webkit-slider-thumb,
+#year-max::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--color-publication-slider-thumb);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--color-publication-slider-thumb-border);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 15;
+}
+
+#year-min::-webkit-slider-thumb:hover,
+#year-max::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Timeline Styling - Override publications styles for career items */
+#curriculum-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .career-item {
-  background-color: var(--color-about-me-career-background);
-  border: 2px solid var(--color-about-me-career-border);
-  border-radius: 8px;
-  padding: 1.5em;
-  transition: all 0.3s ease;
+    background-color: var(--color-about-me-career-background);
+    border: 2px solid var(--color-about-me-career-border);
+    border-radius: 8px;
+    padding: 1.5em;
+    transition: all 0.3s ease;
+    margin-bottom: 1em;
 }
 
 .career-item:hover {
-  border-color: var(--color-about-me-career-border-hover);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+    border-color: var(--color-about-me-career-border-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .career-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
 }
 
 .career-main-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
 .career-title {
-  flex: 1;
+    flex: 1;
 }
 
 .career-title h3 {
-  color: var(--color-card-title);
-  font-size: 1.4em;
-  margin-bottom: 0.5em;
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
+    color: var(--color-card-title);
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
 }
 
-.career-institution-info {
-  color: var(--color-card-text);
-  font-size: 1em;
-  line-height: 1.4;
-  margin-bottom: 0;
+.career-details {
+    color: var(--color-card-text);
+    font-size: 1em;
+    line-height: 1.5;
 }
 
-.career-institution-info p {
-  margin-bottom: 0.3em;
-  font-size: 1em;
+.career-details p {
+    margin-bottom: 0.4em;
+    font-size: 1em;
 }
 
-.career-institution-info p:last-child {
-  margin-bottom: 0;
+.career-details p:last-child {
+    margin-bottom: 0;
 }
 
-/* Style links in career institution */
-.career-institution-info a {
-  color: var(--color-about-me-career-link);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--color-about-me-career-link);
-  transition: border-color 0.3s ease;
+.career-details strong {
+    color: var(--color-card-title);
+    font-weight: 600;
 }
 
-.career-institution-info a:hover {
-  border-bottom: 2px dotted var(--color-about-me-career-link);
-  text-decoration: none;
+/* Style links in career details */
+.career-details a {
+    color: var(--color-about-me-career-link);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-about-me-career-link);
+    transition: border-color 0.3s ease;
+}
+
+.career-details a:hover {
+    border-bottom: 2px dotted var(--color-about-me-career-link);
+    text-decoration: none;
 }
 
 .career-period {
-  background-color: var(--color-about-me-career-period-bg);
-  color: var(--color-about-me-career-period-text);
-  padding: 0.5em 1em;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 1.1em;
-  white-space: nowrap;
+    background-color: var(--color-about-me-career-period-bg);
+    color: var(--color-about-me-career-period-text);
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 1.1em;
+    white-space: nowrap;
 }
 
 .career-location {
-  color: var(--color-card-text);
-  font-size: 0.95em;
-  display: flex;
-  align-items: center;
-  gap: 0.3em;
+    color: var(--color-card-text);
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    margin-top: 0.5em;
+    font-style: italic;
 }
 
 .career-location i {
-  opacity: 0.7;
+    opacity: 0.7;
+}
+
+/* Research items - Enhanced for keyword tags */
+.research-item {
+    background-color: var(--color-about-me-career-background);
+    border: 2px solid var(--color-about-me-career-border);
+    border-radius: 8px;
+    padding: 1.5em;
+    transition: all 0.3s ease;
+    margin-bottom: 1em;
+}
+
+.research-item:hover {
+    border-color: var(--color-about-me-career-border-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.research-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.research-name {
+    color: var(--color-card-title);
+    font-size: 1.3em;
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+}
+
+.research-subtopics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.research-tag {
+    background-color: var(--color-about-me-social-icon-bg);
+    color: var(--color-pure-white);
+    padding: 0.3em 0.8em;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.research-tag:hover {
+    background-color: var(--color-about-me-social-icon-hover-bg);
+    transform: scale(1.05);
+}
+
+/* Group items - Simple styling */
+.group-item {
+    background-color: var(--color-about-me-intro-background);
+    border: 2px solid var(--color-about-me-intro-border);
+    border-radius: 8px;
+    padding: 1.5em;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.group-item:hover {
+    border-color: var(--color-about-me-intro-border-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.group-name {
+    color: var(--color-card-title);
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: 400;
+    text-align: center;
 }
 
 /* Loading messages */
 .loading-message {
-  text-align: center;
-  color: var(--color-about-me-loading-text);
-  font-style: italic;
-  padding: 2em;
+    text-align: center;
+    color: var(--color-about-me-loading-text);
+    font-style: italic;
+    padding: 2em;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
 
 @media screen and (max-width: 768px) {
-  .subsection-nav ul {
-    gap: 1em;
-    justify-content: center;
-  }
-  
-  .subsection-nav a {
-    font-size: 0.8em;
-    padding: 0.4em 0.8em;
-  }
-  
-  .subsection-header h2 {
-    font-size: 1.6em;
-  }
-  
-  .career-main-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8em;
-  }
-  
-  .career-title h3 {
-    font-size: 1.2em;
-  }
-  
-  .career-period {
-    align-self: flex-start;
-    font-size: 1em;
-    padding: 0.4em 0.8em;
-  }
-  
-  .career-item {
-    padding: 1.5em;
-  }
+    .career-main-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8em;
+    }
+    
+    .career-title h3 {
+        font-size: 1.2em;
+    }
+    
+    .career-period {
+        align-self: flex-start;
+        font-size: 1em;
+        padding: 0.4em 0.8em;
+    }
+    
+    .career-item {
+        padding: 1.5em;
+    }
+    
+    .career-details p {
+        font-size: 0.95em;
+    }
+    
+    .research-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8em;
+    }
+    
+    .research-name {
+        font-size: 1.1em;
+    }
+    
+    .research-tag {
+        font-size: 0.8em;
+        padding: 0.25em 0.6em;
+    }
+    
+    .group-item {
+        padding: 1.2em;
+    }
+    
+    .group-name {
+        font-size: 1.1em;
+    }
+    
+    .year-tick-label {
+        font-size: 0.6em;
+        max-width: 25px;
+    }
+
+    .year-slider-track {
+        margin: 0 5px;
+    }
+
+    #year-min::-webkit-slider-thumb,
+    #year-max::-webkit-slider-thumb {
+        width: 16px;
+        height: 16px;
+    }
 }
 
 @media screen and (max-width: 480px) {
-  .subsection-nav ul {
-    flex-direction: column;
-    gap: 0.5em;
-    align-items: center;
-  }
-  
-  .subsection-nav a {
-    font-size: 0.75em;
-    padding: 0.3em 0.6em;
-  }
-  
-  .subsection-header h2 {
-    font-size: 1.4em;
-  }
-  
-  .career-title h3 {
-    font-size: 1.1em;
-  }
-  
-  .career-period {
-    font-size: 0.9em;
-  }
-  
-  .career-item {
-    padding: 1.2em;
-  }
+    .career-title h3 {
+        font-size: 1.1em;
+    }
+    
+    .career-period {
+        font-size: 0.9em;
+    }
+    
+    .career-item {
+        padding: 1.2em;
+    }
+    
+    .career-details p {
+        font-size: 0.9em;
+    }
+    
+    .research-name {
+        font-size: 1em;
+    }
+    
+    .research-tag {
+        font-size: 0.75em;
+        padding: 0.2em 0.5em;
+    }
+    
+    .group-item {
+        padding: 1em;
+    }
+    
+    .group-name {
+        font-size: 1em;
+    }
+    
+    .year-tick-label {
+        font-size: 0.55em;
+        max-width: 20px;
+    }
+
+    #year-min::-webkit-slider-thumb,
+    #year-max::-webkit-slider-thumb {
+        width: 14px;
+        height: 14px;
+    }
 }

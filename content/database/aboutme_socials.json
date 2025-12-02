@@ -6,7 +6,7 @@
     },
 
     "googlescholar":{
-        "social_type": "Google Scholar",
+        "social_type": "Scholar",
         "social_identifier": "ra6MTs0AAAAJ",
         "social_link": "https://scholar.google.com/citations?user=ra6MTs0AAAAJ&hl=pt-PT"
     },
@@ -18,7 +18,7 @@
     },
 
     "personal_email":{
-        "social_type": "Personal email",
+        "social_type": "Email",
         "social_identifier": "franciscolobo1880@gmail.com",
         "social_link": "mailto:franciscolobo1880@gmail.com"
     },
@@ -27,17 +27,5 @@
         "social_type": "Institute",
         "social_identifier": "",
         "social_link": "https://www.icmm.csic.es/index.php/en/lobo-ribeiro-francisco-ricardo"
-    },
-
-    "institutional_email":{
-        "social_type": "Institutional email",
-        "social_identifier": "f.lobo@csic.es",
-        "social_link": "mailto:f.lobo@csic.es"
-    },
-
-    "linkedin":{
-        "social_type": "Linkedin",
-        "social_identifier": "",
-        "social_link": "https://www.linkedin.com/in/francisco-lobo-97b1b9315/"
     }
 }

@@ -6,7 +6,8 @@
             "authors": ["Francisco Lobo", "Nuno Peres", "Bruno Amorim"],
             "date": "08/2023",
             "slides_presentation_link" : "/content/pdfs/thesis/Lobo:MSc23/Lobo:MSc23_slides_presentation.pdf",
-            "poster_presentation_link" : "/content/pdfs/thesis/Lobo:MSc23/Lobo:MSc23_poster.pdf"
+            "poster_presentation_link" : "/content/pdfs/thesis/Lobo:MSc23/Lobo:MSc23_poster.pdf",
+            "github_repository_link" : "https://github.com/franciscolobo1880/MSc_thesis"
         },
 
     "Lobo:BSc21":{
@@ -15,7 +16,8 @@
             "authors": ["Francisco Lobo", "Yuliy Bludov"],
             "date": "08/2021",
             "slides_presentation_link" : "/content/pdfs/thesis/Lobo:BSc21/Lobo:BSc21_slides_presentation.pdf",
-            "poster_presentation_link" : "/content/pdfs/thesis/Lobo:BSc21/Lobo:BSc21_poster.pdf"
+            "poster_presentation_link" : "/content/pdfs/thesis/Lobo:BSc21/Lobo:BSc21_poster.pdf",
+            "github_repository_link" : ""
         }
     
 }

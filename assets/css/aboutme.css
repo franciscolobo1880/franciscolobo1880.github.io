@@ -5,92 +5,12 @@
 
 /* Override specific styles for About Me content */
 
-/* Subsection Navigation - NO CAPS */
-.subsection-nav {
-  background-color: var(--color-menu-background);
-  border-top: 2px solid var(--color-menu-border);
-  border-bottom: 2px solid var(--color-menu-border);
-  padding: 0.8em 0;
-  margin-bottom: 2em;
-  position: sticky;
-  top: 70px; /* Below main nav */
-  z-index: 999;
-}
-
-.subsection-nav nav {
-  display: flex;
-  justify-content: center;
-}
-
-.subsection-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 2em;
-  flex-wrap: wrap;
-}
-
-.subsection-nav li {
-  margin: 0;
-}
-
-.subsection-nav a {
-  color: var(--color-menu-nav-link);
-  text-decoration: none;
-  font-size: 0.9em;
-  font-weight: 500;
-  padding: 0.5em 1em;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  /* REMOVED text-transform: uppercase; */
-  letter-spacing: 0.3px;
-}
-
-.subsection-nav a:hover {
-  background-color: var(--color-menu-nav-hover-bg);
-  color: var(--color-menu-nav-link-hover);
-}
-
-.subsection-nav a.active {
-  background-color: var(--color-menu-nav-active-bg);
-  color: var(--color-menu-nav-link-hover);
-}
-
-/* Section Separators - DARKER GREY */
+/* Section Separators - DARKER GREY - SYMMETRIC MARGINS */
 .section-separator {
   height: 2px;
   background-color: var(--color-darker-grey);
-  margin: 3em 0;
+  margin: 3em 0; /* Made symmetric - 3em top and bottom */
   border-radius: 1px;
-}
-
-/* Subsection Styling */
-.subsection {
-  padding-top: 2em;
-  margin-bottom: 2em;
-}
-
-/* Subsection Headers with Subtitles */
-.subsection-header {
-  text-align: center;
-  margin-bottom: 2em;
-}
-
-.subsection-header h2 {
-  color: var(--color-card-title);
-  font-size: 2em;
-  margin-bottom: 0.5em;
-  font-family: 'Playfair Display', serif;
-}
-
-.subsection-subtitle {
-  color: var(--color-card-text);
-  font-size: 1em;
-  font-style: italic;
-  opacity: 0.8;
-  margin: 0;
-  font-weight: 400;
 }
 
 /* About Me Introduction Section */
@@ -100,6 +20,7 @@
   border: 2px solid var(--color-about-me-intro-border);
   border-radius: 15px;
   transition: all 0.3s ease;
+  margin-bottom: 0; /* Removed margin since separator handles spacing */
 }
 
 .about-intro:hover {
@@ -144,87 +65,9 @@
   margin-bottom: 0;
 }
 
-/* Research Interests & Software Competencies Sections */
-#research-interests,
-#software-competencies {
-  margin-bottom: 3em;
-}
-
-#research-grid,
-#software-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1em;
-}
-
-.research-item,
-.software-item {
-  background-color: var(--color-about-me-intro-background);
-  border: 2px solid var(--color-about-me-intro-border);
-  border-radius: 8px;
-  padding: 1.5em;
-  text-align: center;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8em;
-}
-
-.research-item:hover,
-.software-item:hover {
-  border-color: var(--color-about-me-intro-border-hover);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-}
-
-/* Research Items - Simple Text Only */
-.research-name {
-  color: var(--color-card-title);
-  font-size: 1.1em;
-  margin: 0;
-  font-weight: 400;
-  text-align: center;
-}
-
-/* Software Items - With Icons Like Social Links */
-.software-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background-color: var(--color-about-me-social-icon-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-
-.software-icon i {
-  font-size: 1.2em;
-  color: var(--color-pure-white);
-}
-
-.software-item:hover .software-icon {
-  background-color: var(--color-about-me-social-icon-hover-bg);
-  transform: scale(1.1);
-}
-
-.software-content {
-  flex: 1;
-}
-
-.software-name {
-  color: var(--color-card-title);
-  font-weight: 400;
-  font-size: 1em;
-  margin: 0;
-  text-align: center;
-}
-
 /* Social Links Section */
 #contacts-socials {
-  margin-bottom: 3em;
+  margin-bottom: 0; /* Removed margin since separator handles spacing */
 }
 
 #socials-grid {
@@ -289,9 +132,86 @@
   white-space: pre-line;
 }
 
-/* Photos Section - Updated for no visible container and fixed arrow positions */
+/* Workflow Section - Using curriculum styles */
+#workflow-section {
+  margin-bottom: 0; /* Removed margin since separator handles spacing */
+}
+
+/* Workflow Container and Sections */
+.workflow-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.workflow-section {
+    background-color: var(--color-about-me-intro-background);
+    border: 2px solid var(--color-about-me-intro-border);
+    border-radius: 12px;
+    padding: 2em;
+    transition: all 0.3s ease;
+}
+
+.workflow-section:hover {
+    border-color: var(--color-about-me-intro-border-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.workflow-title {
+    color: var(--color-card-title);
+    font-size: 1.4em;
+    margin-bottom: 1em;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.workflow-content {
+    color: var(--color-card-text);
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+.workflow-content p {
+    margin-bottom: 0;
+}
+
+/* Hoverable highlights for items in asterisks */
+.workflow-highlight {
+    background-color: var(--color-about-me-social-icon-bg);
+    color: var(--color-pure-white);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: default;
+    display: inline-block;
+    margin: 0 0.1em;
+}
+
+.workflow-highlight:hover {
+    background-color: var(--color-about-me-social-icon-hover-bg);
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Special styling for Quantica.jl link */
+.workflow-highlight.quantica-link {
+    color: var(--color-pure-white);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.workflow-highlight.quantica-link:hover {
+    color: var(--color-pure-white);
+    text-decoration: none;
+    background-color: var(--color-about-me-social-icon-hover-bg);
+}
+
+/* Photos Section */
 #photos {
-  margin-bottom: 3em;
+  margin-bottom: 0.5em;
 }
 
 .photos-container {
@@ -299,15 +219,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2em 80px; /* Add horizontal padding to account for fixed arrow positions */
-  background-color: var(--color-primary-background); /* Same as page background - invisible */
-  border: none; /* Remove border */
-  border-radius: 0; /* Remove border radius */
-  min-height: 400px; /* Ensure minimum height for arrow positioning */
+  padding: 0.2em 80px; /* Reduced from 0.5em to 0.2em */
+  background-color: var(--color-primary-background);
+  border: none;
+  border-radius: 0;
+  min-height: 450px;
 }
 
 .photo-nav-btn {
-  position: absolute; /* Fixed positioning */
+  position: absolute;
   background-color: var(--color-about-me-social-icon-bg);
   border: 2px solid var(--color-about-me-social-border);
   border-radius: 50%;
@@ -320,47 +240,48 @@
   transition: all 0.3s ease;
   color: var(--color-pure-white);
   font-size: 1.2em;
-  top: 50%; /* Center vertically */
-  transform: translateY(-50%); /* Adjust for perfect centering */
-  z-index: 10; /* Ensure arrows are above image */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
 }
 
 .photo-nav-btn:hover {
   background-color: var(--color-about-me-social-icon-hover-bg);
   border-color: var(--color-about-me-intro-border-hover);
-  transform: translateY(-50%) scale(1.1); /* Maintain vertical centering on hover */
+  transform: translateY(-50%) scale(1.1);
 }
 
 /* Left arrow fixed position */
 .photo-nav-prev {
-  left: 20px; /* Fixed distance from container edge */
+  left: 20px;
 }
 
 /* Right arrow fixed position */
 .photo-nav-next {
-  right: 20px; /* Fixed distance from container edge */
+  right: 20px;
 }
 
 .photo-display {
   flex: 1;
   max-width: 600px;
   text-align: center;
-  position: relative; /* Ensure proper stacking context */
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1em;
+  gap: 1.5em;
 }
 
 .photo-display img {
   max-width: 100%;
+  width: auto;
   height: auto;
-  max-height: 500px; /* Limit maximum height */
+  max-height: 400px;
   border-radius: 12px;
   border: 3px solid var(--color-about-me-image-border);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  object-fit: contain; /* Maintain aspect ratio */
+  object-fit: contain;
 }
 
 .photo-display img:hover {
@@ -378,6 +299,7 @@
   margin: 0;
   opacity: 0.85;
   padding: 0 1em;
+  margin-top: 1em;
 }
 
 /* Loading messages */
@@ -391,18 +313,9 @@
 /* ===== RESPONSIVE DESIGN ===== */
 
 @media screen and (max-width: 768px) {
-  .subsection-nav ul {
-    gap: 1em;
-    justify-content: center;
-  }
-  
-  .subsection-nav a {
-    font-size: 0.8em;
-    padding: 0.4em 0.8em;
-  }
-  
   .intro-content {
     flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 1.5em;
   }
@@ -410,36 +323,71 @@
   .intro-image img {
     width: 150px;
     height: 150px;
-    margin: 0 auto;
   }
   
   .intro-text h2 {
     font-size: 1.6em;
   }
   
-  .intro-text p {
+  #socials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8em;
+  }
+  
+  .social-item {
+    padding: 0.8em;
+  }
+  
+  .social-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .social-icon i {
+    font-size: 1.1em;
+  }
+  
+  .social-name {
+    font-size: 0.9em;
+  }
+  
+  .section-separator {
+    margin: 2.5em 0;
+  }
+  
+  .workflow-section {
+    padding: 1.5em;
+  }
+  
+  .workflow-title {
+    font-size: 1.2em;
+  }
+  
+  .workflow-content {
     font-size: 1em;
   }
   
-  .subsection-header h2 {
-    font-size: 1.6em;
-  }
-  
-  #research-grid,
-  #software-grid,
-  #socials-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  .workflow-highlight {
+    padding: 0.15em 0.3em;
+    font-size: 0.95em;
   }
   
   .photos-container {
-    padding: 1.5em 70px; /* Reduce padding on smaller screens */
-    min-height: 300px;
+    padding: 0.2em 60px;
+    min-height: 400px;
+  }
+  
+  .photo-display {
+    gap: 1.2em;
+  }
+  
+  .photo-display img {
+    max-height: 350px;
   }
   
   .photo-nav-btn {
     width: 45px;
     height: 45px;
-    font-size: 1.1em;
   }
   
   .photo-nav-prev {
@@ -449,38 +397,11 @@
   .photo-nav-next {
     right: 15px;
   }
-  
-  .photo-display img {
-    max-height: 350px;
-  }
-  
-  .photo-caption {
-    font-size: 0.85em;
-    max-width: 400px;
-  }
-  
-  .about-intro,
-  .research-item,
-  .software-item {
-    padding: 1.5em;
-  }
 }
 
 @media screen and (max-width: 480px) {
-  .subsection-nav ul {
-    flex-direction: column;
-    gap: 0.5em;
-    align-items: center;
-  }
-  
-  .subsection-nav a {
-    font-size: 0.75em;
-    padding: 0.3em 0.6em;
-  }
-  
-  .intro-image img {
-    width: 120px;
-    height: 120px;
+  .about-intro {
+    padding: 1.5em;
   }
   
   .intro-text h2 {
@@ -488,77 +409,55 @@
   }
   
   .intro-text p {
-    font-size: 0.9em;
+    font-size: 1em;
   }
   
-  .subsection-header h2 {
-    font-size: 1.4em;
-  }
-  
-  #research-grid,
-  #software-grid,
   #socials-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0.8em;
-  }
-  
-  .research-name,
-  .software-name {
-    font-size: 0.9em;
-  }
-  
-  .social-item,
-  .software-item {
-    padding: 0.8em;
+    grid-template-columns: 1fr;
     gap: 0.6em;
   }
   
-  .social-icon,
-  .software-icon {
-    width: 35px;
-    height: 35px;
+  .social-item {
+    padding: 0.6em;
   }
   
-  .social-icon i,
-  .software-icon i {
+  .section-separator {
+    margin: 2em 0;
+  }
+  
+  .workflow-section {
+    padding: 1.2em;
+  }
+  
+  .workflow-title {
     font-size: 1.1em;
   }
   
-  .social-name {
+  .workflow-content {
+    font-size: 0.95em;
+  }
+  
+  .workflow-highlight {
+    padding: 0.1em 0.25em;
     font-size: 0.9em;
   }
   
   .photos-container {
-    padding: 1.2em 60px;
-    min-height: 250px;
+    padding: 0.2em 50px;
+    min-height: 350px;
+  }
+  
+  .photo-display {
+    gap: 1em;
+  }
+  
+  .photo-display img {
+    max-height: 300px;
   }
   
   .photo-nav-btn {
     width: 40px;
     height: 40px;
     font-size: 1em;
-  }
-  
-  .photo-nav-prev {
-    left: 10px;
-  }
-  
-  .photo-nav-next {
-    right: 10px;
-  }
-  
-  .photo-display img {
-    max-height: 250px;
-  }
-  
-  .photo-caption {
-    font-size: 0.8em;
-    max-width: 300px;
-  }
-  
-  .about-intro,
-  .research-item,
-  .software-item {
-    padding: 1.2em;
   }
 }

@@ -1,0 +1,9 @@
+{
+
+     "Workflow":{ 
+          "Coding": "I am proficient in *Julia (https://julialang.org/)*, which serves as my primary programming language. Moreover, I am specially proficient in the *Quantica.jl (https://pablosanjose.github.io/Quantica.jl/stable/)* package. Regarding other scientific programming languages, I have prior experience with *Python (https://www.python.org/)* and *Mathematica (https://www.wolfram.com/mathematica/)*. Concerning my workflow, I utilize *GitHub (https://github.com/)* as my primary cloud-based code management system, employing GitBranches within *VSCode (https://code.visualstudio.com/)* to facilitate structured collaboration through commits and pull operations.",
+          "Writing": "I am fully proficient in *LaTeX*, which serves as my primary writing language, both for collaborative work in *Overleaf* and for personal notes in *LyX*.",
+          "Presenting": "I am proficient in *Inkscape*, which serves s my primary media editing software, whether for creating slide presentations, posters, or producing figures for publications. I also have an interest in learning *Blender* to extend my work into 3D."
+     }
+
+}

@@ -1,0 +1,54 @@
+{
+
+     "NumericalMethods":{
+          "title": "Numerical Methods",
+          "subtopics":[
+               "Diagonalization methods", 
+               "Fixedpoint methods",
+               "Anderson acelleration", 
+               "Minimization methods", 
+               "Conjugate Gradient methods",
+               "Numerical methods"
+          ]
+     },
+
+     "Topology":{ 
+          "title": "Topology",
+          "subtopics":[
+               "Topological superconductors",
+               "Topology"
+          ]
+     },
+
+     "Superconductivity":{ 
+          "title": "Superconductivity",
+          "subtopics":[
+               "Topological superconductors", 
+               "Diffusive superconductivity", 
+               "Usadel formalism",
+               "Ballistic superconductivity", 
+               "Einlenberger formalism",
+               "Hartree-Fock-Bogoliubov theory",
+               "Superconductivity"
+          ]
+     },
+
+     "2DCrystals":{ 
+          "title": "2D Crystals",
+          "subtopics":[
+               "Graphene", 
+               "Hexagonal Boron Nitride",
+               "Excitons",
+               "2D crystals"
+          ]
+     },
+
+     "ManyBodyPhysics":{ 
+          "title": "Many-body physics",
+          "subtopics":[
+               "Green's function formalism",
+               "Many-body physics"
+          ]
+     }
+
+}

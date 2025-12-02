@@ -23,6 +23,8 @@ Thinner footer and no text
 
 Make the web tab always be just "Francisco Lobo"
 
+Rename "publications_authors" to just "authors".
+
 ----- HOME -----
 
 Home is not fitting screen properly.
@@ -31,32 +33,12 @@ Single color static background in home
 
 ----- ABOUTME -----
 
-Remove welcome title and subsection overall
-
-Actual software competencies logos
-
-Photo section a bit small
-
-Make the subsections separation line thicker
-
-Make Quantica.jl actually have a link and something that makes it different from the otehrs
-
 ----- CURRICULUM -----
 
-Make the subsections separation line thicker.
-
-Make currriculum subtitle shorter: Degrees, Contracts.
-
-Have just welcome, contacts and photos in about me. Anything else to curriculum. 
-Research interest should have subitems, each container ocupying the full line.
-
-Research subtitle should instead be 
-"Throughout my career, my research has dealt with the following topics:"
-
-Bolsa Mestrado só como "Bolsa de investigação para mestrado"
-
 In Academic Degrees, put the advisors names and link to the work in the publications page! 
-Also, maybe put the location on the right side (same for the others)
+
+Degrees is misformatted.
+Years bar is misformatted.
 
 ----- PUBLICATIONS -----
 

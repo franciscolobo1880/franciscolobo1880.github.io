@@ -1,13 +1,39 @@
 $(document).ready(function() {
-    let degreesData = {};
-    let contractsData = {};
-    let awardsData = {};
-    let teachingData = {};
+    let allCurriculumItems = [];
+    let filteredCurriculumItems = [];
+    let allYears = [];
+    let authorsData = {};
 
     console.log('Curriculum page loaded, starting data fetch...');
 
-    // Load JSON files
+    // Parse URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlType = urlParams.get('type');
+    
+    console.log('URL parameters:', { type: urlType });
+
+    // Load JSON files (removed workflow)
     Promise.all([
+        fetch('content/database/curriculum_research.json')
+            .then(response => {
+                console.log('Research response:', response.status, response.statusText);
+                if (!response.ok) throw new Error(`Research: ${response.status}`);
+                return response.json();
+            })
+            .catch(err => {
+                console.error('Error loading research data:', err);
+                return {};
+            }),
+        fetch('content/database/curriculum_group.json')
+            .then(response => {
+                console.log('Group response:', response.status, response.statusText);
+                if (!response.ok) throw new Error(`Group: ${response.status}`);
+                return response.json();
+            })
+            .catch(err => {
+                console.error('Error loading group data:', err);
+                return {};
+            }),
         fetch('content/database/curriculum_degrees.json')
             .then(response => {
                 console.log('Degrees response:', response.status, response.statusText);
@@ -47,189 +73,408 @@ $(document).ready(function() {
             .catch(err => {
                 console.error('Error loading teaching data:', err);
                 return {};
+            }),
+        fetch('content/database/publications_authors.json')
+            .then(response => {
+                console.log('Authors response:', response.status, response.statusText);
+                if (!response.ok) throw new Error(`Authors: ${response.status}`);
+                return response.json();
             })
-    ]).then(([degrees, contracts, awards, teaching]) => {
+            .catch(err => {
+                console.error('Error loading authors data:', err);
+                return {};
+            })
+    ]).then(([research, group, degrees, contracts, awards, teaching, authors]) => {
         console.log('Curriculum data loaded successfully!');
+        console.log('Research data:', research);
+        console.log('Group data:', group);
         console.log('Degrees data:', degrees);
         console.log('Contracts data:', contracts);
         console.log('Awards data:', awards);
         console.log('Teaching data:', teaching);
+        console.log('Authors data:', authors);
         
-        degreesData = degrees;
-        contractsData = contracts;
-        awardsData = awards;
-        teachingData = teaching;
+        allCurriculumItems = [];
+        authorsData = authors;
         
-        renderDegreesTimeline();
-        renderContractsTimeline();
-        renderAwardsTimeline();
-        renderTeachingTimeline();
-        setupSubsectionNavigation();
+        // Process research
+        console.log('Processing research...', Object.keys(research));
+        Object.keys(research).forEach(key => {
+            const item = research[key];
+            console.log('Processing research:', key, item);
+            allCurriculumItems.push({
+                id: key,
+                type: 'research',
+                name: createMainTitle(item, 'research'),
+                searchText: createSearchText(item, 'research'),
+                dates: '',
+                ...item
+            });
+        });
+        
+        // Process group
+        console.log('Processing group...', Object.keys(group));
+        Object.keys(group).forEach(key => {
+            const item = group[key];
+            console.log('Processing group:', key, item);
+            allCurriculumItems.push({
+                id: key,
+                type: 'group',
+                name: createMainTitle(item, 'group'),
+                searchText: createSearchText(item, 'group'),
+                dates: '',
+                ...item
+            });
+        });
+        
+        // Process degrees
+        console.log('Processing degrees...', Object.keys(degrees));
+        Object.keys(degrees).forEach(key => {
+            const item = degrees[key];
+            console.log('Processing degree:', key, item);
+            allCurriculumItems.push({
+                id: key,
+                type: 'degrees',
+                name: createMainTitle(item, 'degrees'),
+                searchText: createSearchText(item, 'degrees'),
+                dates: item.degree_dates || '',
+                ...item
+            });
+        });
+        
+        // Process contracts
+        console.log('Processing contracts...', Object.keys(contracts));
+        Object.keys(contracts).forEach(key => {
+            const item = contracts[key];
+            console.log('Processing contract:', key, item);
+            allCurriculumItems.push({
+                id: key,
+                type: 'contracts',
+                name: createMainTitle(item, 'contracts'),
+                searchText: createSearchText(item, 'contracts'),
+                dates: item.dates || '',
+                contract_type: item.type,
+                from: item.from,
+                from_link: item.from_link,
+                reference: item.reference,
+                at: item.at,
+                at_link: item.at_link,
+                at_city: item.at_city
+            });
+        });
+        
+        // Process awards
+        console.log('Processing awards...', Object.keys(awards));
+        Object.keys(awards).forEach(key => {
+            const item = awards[key];
+            console.log('Processing award:', key, item);
+            allCurriculumItems.push({
+                id: key,
+                type: 'awards',
+                name: createMainTitle(item, 'awards'),
+                searchText: createSearchText(item, 'awards'),
+                dates: item.dates || item.period || '',
+                ...item
+            });
+        });
+        
+        // Process teaching
+        console.log('Processing teaching...', Object.keys(teaching));
+        Object.keys(teaching).forEach(key => {
+            const item = teaching[key];
+            console.log('Processing teaching:', key, item);
+            allCurriculumItems.push({
+                id: key,
+                type: 'teaching',
+                name: createMainTitle(item, 'teaching'),
+                searchText: createSearchText(item, 'teaching'),
+                dates: item.dates || item.period || '',
+                ...item
+            });
+        });
+        
+        console.log('FINAL PROCESSED CURRICULUM:', allCurriculumItems);
+        console.log('Total items:', allCurriculumItems.length);
+        
+        // Set initial filter based on URL parameter or default to research
+        const initialType = urlType || 'research';
+        $(`#type-${initialType}`).prop('checked', true);
+        $('.type-toggle-container').attr('data-selected', initialType);
+        
+        setupFilters();
+        setupSearch();
+        updateYearRange();
+        generateYearTicks();
+        updateSliderRange();
+        
+        // Apply initial filter
+        applyFilters();
         
     }).catch(error => {
         console.error('CRITICAL ERROR loading Curriculum data:', error);
-        showErrorMessage('#degrees-timeline', 'Error loading degrees data: ' + error.message);
-        showErrorMessage('#contracts-timeline', 'Error loading contracts data: ' + error.message);
-        showErrorMessage('#awards-timeline', 'Error loading awards data: ' + error.message);
-        showErrorMessage('#teaching-timeline', 'Error loading teaching data: ' + error.message);
+        $('#curriculum-list').html('<p style="color: red; padding: 20px;">Error loading curriculum: ' + error.message + '</p>');
+        $('#results-count').text('Error loading data');
     });
 
-    function renderDegreesTimeline() {
-        renderTimeline('#degrees-timeline', degreesData, 'No academic degrees data available.');
-    }
-
-    function renderContractsTimeline() {
-        renderTimeline('#contracts-timeline', contractsData, 'No contracts and fellowships data available.');
-    }
-
-    function renderAwardsTimeline() {
-        // Check if awards data is empty (just {})
-        if (!awardsData || Object.keys(awardsData).length === 0) {
-            $('#awards-timeline').html('<div class="loading-message">No awards data available.</div>');
-            return;
+    function createMainTitle(item, type) {
+        switch (type) {
+            case 'research':
+                return item.title || item.name || item.id;
+            case 'group':
+                return item.name || item.title || item.id;
+            case 'degrees':
+                const degreeType = item.degree_type || '';
+                const degreeName = item.degree_name || '';
+                return `${degreeType} ${degreeName}`.trim() || item.title || item.id;
+            case 'contracts':
+                return item.type || item.title || item.id;
+            case 'awards':
+                return item.title || item.name || item.id;
+            case 'teaching':
+                return item.title || item.name || item.id;
+            default:
+                return item.title || item.name || 'Item';
         }
-        renderTimeline('#awards-timeline', awardsData, 'No awards data available.');
     }
 
-    function renderTeachingTimeline() {
-        // Check if teaching data is empty (just {})
-        if (!teachingData || Object.keys(teachingData).length === 0) {
-            $('#teaching-timeline').html('<div class="loading-message">No teaching data available.</div>');
-            return;
+    function createSearchText(item, type) {
+        let searchTerms = [];
+        
+        // Add main identifiers
+        searchTerms.push(item.id || '');
+        
+        switch (type) {
+            case 'research':
+                searchTerms.push(item.title || item.name || '');
+                if (item.subtopics && Array.isArray(item.subtopics)) {
+                    searchTerms.push(...item.subtopics);
+                }
+                break;
+            case 'group':
+                searchTerms.push(item.name || '');
+                break;
+            case 'degrees':
+                searchTerms.push(item.degree_type || '');
+                searchTerms.push(item.degree_name || '');
+                searchTerms.push(item.degree_university || '');
+                searchTerms.push(item.degree_institution || '');
+                searchTerms.push(item.degree_team || '');
+                searchTerms.push(item.degree_field || '');
+                if (item.degree_advisors && Array.isArray(item.degree_advisors)) {
+                    searchTerms.push(...item.degree_advisors);
+                }
+                break;
+            case 'contracts':
+                searchTerms.push(item.type || '');
+                searchTerms.push(item.from || '');
+                searchTerms.push(item.reference || '');
+                searchTerms.push(item.at || '');
+                searchTerms.push(item.at_city || '');
+                break;
+            case 'awards':
+                searchTerms.push(item.title || '');
+                searchTerms.push(item.institution || '');
+                searchTerms.push(item.description || '');
+                searchTerms.push(item.location || '');
+                break;
+            case 'teaching':
+                searchTerms.push(item.title || '');
+                searchTerms.push(item.institution || '');
+                searchTerms.push(item.course || '');
+                searchTerms.push(item.level || '');
+                searchTerms.push(item.students || '');
+                break;
         }
-        renderTimeline('#teaching-timeline', teachingData, 'No teaching data available.');
+        
+        return searchTerms.filter(term => term).join(' ').toLowerCase();
     }
 
-    function renderTimeline(containerId, data, emptyMessage) {
-        const container = $(containerId);
+    function renderCurriculumItems() {
+        console.log('RENDERING CURRICULUM ITEMS:', filteredCurriculumItems.length);
+        const container = $('#curriculum-list');
+        const noResultsElement = $('#no-results');
+        
+        // Clear everything immediately
         container.empty();
+        noResultsElement.hide();
 
-        if (!data || Object.keys(data).length === 0) {
-            container.html(`<div class="loading-message">${emptyMessage}</div>`);
+        if (filteredCurriculumItems.length === 0) {
+            console.log('NO CURRICULUM ITEMS TO SHOW');
+            noResultsElement.show();
+            updateResultsCount();
             return;
         }
 
-        // Convert to array and sort by start year (most recent first)
-        const items = Object.keys(data).map(key => ({
-            id: key,
-            ...data[key]
-        })).sort((a, b) => {
-            const yearA = extractStartYear(a.career_dates || a.dates);
-            const yearB = extractStartYear(b.career_dates || b.dates);
-            return yearB - yearA; // Most recent first
-        });
-
-        items.forEach(item => {
-            const itemHtml = createCareerItem(item);
+        // Render items immediately
+        filteredCurriculumItems.forEach((item) => {
+            console.log('Creating curriculum item:', item);
+            const itemHtml = createCurriculumItem(item);
             container.append(itemHtml);
         });
+        
+        updateResultsCount();
+    }
+
+    function createCurriculumItem(item) {
+        console.log('Creating item:', item);
+        
+        // Handle research items (keyword tags)
+        if (item.type === 'research') {
+            return createResearchItem(item);
+        }
+        
+        if (item.type === 'group') {
+            return `
+                <div class="group-item" data-id="${item.id}">
+                    <div class="group-name">${item.name}</div>
+                </div>
+            `;
+        }
+        
+        // Handle other types (degrees, contracts, awards, teaching) with full career item structure
+        return createCareerItem(item);
+    }
+
+    function createResearchItem(item) {
+        // Create research item with subtopics as tags if available
+        let subtopicsHtml = '';
+        if (item.subtopics && Array.isArray(item.subtopics)) {
+            const nonEmptySubtopics = item.subtopics.filter(topic => topic && topic.trim());
+            if (nonEmptySubtopics.length > 0) {
+                subtopicsHtml = `
+                    <div class="research-subtopics">
+                        ${nonEmptySubtopics.map(topic => `<span class="research-tag">${topic}</span>`).join('')}
+                    </div>
+                `;
+            }
+        }
+        
+        return `
+            <div class="research-item" data-id="${item.id}">
+                <div class="research-header">
+                    <div class="research-name">${item.title || item.name}</div>
+                </div>
+                ${subtopicsHtml}
+            </div>
+        `;
     }
 
     function createCareerItem(item) {
-        console.log('Creating item:', item); // Debug log
+        console.log('Creating career item:', item);
         
         // Handle different JSON structures
-        let mainTitle, organizationInfo, instituteInfo, referenceInfo, location, dates;
+        let mainTitle, organizationInfo, instituteInfo, teamInfo, referenceInfo, location, dates;
 
-        // Check if this is new contracts structure (has 'type' field)
-        if (item.type) {
-            // New contracts structure
-            mainTitle = item.type || 'Fellowship/Contract';
-
-            // Organization that grants the fellowship
-            organizationInfo = item.from ? 
-                (item.from_link ? 
-                    `<p><strong>From:</strong> <a href="${item.from_link}" target="_blank" rel="noopener noreferrer">${item.from}</a></p>` : 
-                    `<p><strong>From:</strong> ${item.from}</p>`) : 
-                '';
-
-            // Institution where the fellowship is conducted
-            instituteInfo = item.at ? 
-                (item.at_link ? 
-                    `<p><strong>At:</strong> <a href="${item.at_link}" target="_blank" rel="noopener noreferrer">${item.at}</a></p>` : 
-                    `<p><strong>At:</strong> ${item.at}</p>`) : 
-                '';
-
-            // Reference number
-            referenceInfo = item.reference ? 
-                `<p><strong>Reference:</strong> ${item.reference}</p>` : 
-                '';
-
-            location = item.at_city;
-            dates = item.dates || 'Period';
-
-        } else if (item.contract_name) {
-            // Old contracts structure (fallback)
-            mainTitle = item.contract_topic ? 
-                `${item.contract_name} in ${item.contract_topic}` : 
-                item.contract_name || 'Contract';
-
-            organizationInfo = '';
+        // Check if this is contracts type
+        if (item.type === 'contracts') {
+            // Contracts structure
+            mainTitle = item.contract_type || 'Fellowship/Contract';
             
-            instituteInfo = item.contract_place ? 
-                (item.contract_place_link ? 
-                    `<p><strong>Institute:</strong> <a href="${item.contract_place_link}" target="_blank" rel="noopener noreferrer">${item.contract_place}</a></p>` : 
-                    `<p><strong>Institute:</strong> ${item.contract_place}</p>`) : 
-                '';
+            // From information
+            const fromText = item.from || '';
+            const fromLink = item.from_link || '';
+            organizationInfo = fromLink ? 
+                `<p><strong>From:</strong> <a href="${fromLink}" target="_blank">${fromText}</a></p>` :
+                `<p><strong>From:</strong> ${fromText}</p>`;
 
+            // At information  
+            const atText = item.at || '';
+            const atLink = item.at_link || '';
+            instituteInfo = atLink ?
+                `<p><strong>At:</strong> <a href="${atLink}" target="_blank">${atText}</a></p>` :
+                `<p><strong>At:</strong> ${atText}</p>`;
+
+            // Reference information
+            const referenceText = item.reference || '';
+            referenceInfo = referenceText ? `<p><strong>Reference:</strong> ${referenceText}</p>` : '';
+
+            teamInfo = '';
+            location = item.at_city || '';
+            dates = item.dates || '';
+
+        } else if (item.type === 'degrees') {
+            // COMPLETE Degrees structure - EXACTLY as requested
+            const degreeType = item.degree_type || '';
+            const degreeField = item.degree_field || '';
+            mainTitle = `${degreeType}`.trim();
+            if (degreeField) {
+                mainTitle += ` in ${degreeField}`;
+            }
+
+            // University information - COMPLETE FORMAT AS REQUESTED
+            const university = item.degree_university || '';
+            const universityLink = item.degree_university_link || '';
+            organizationInfo = '';
+            if (university) {
+                organizationInfo = universityLink ?
+                    `<p><strong>University:</strong> <a href="${universityLink}" target="_blank">${university}</a></p>` :
+                    `<p><strong>University:</strong> ${university}</p>`;
+            }
+
+            // Institute information - AS REQUESTED
+            const institution = item.degree_institution || '';
+            const institutionLink = item.degree_institution_link || '';
+            instituteInfo = '';
+            if (institution) {
+                instituteInfo = institutionLink ?
+                    `<p><strong>Institute:</strong> <a href="${institutionLink}" target="_blank">${institution}</a></p>` :
+                    `<p><strong>Institute:</strong> ${institution}</p>`;
+            }
+
+            // Team information - AS REQUESTED
+            const team = item.degree_team || '';
+            const teamLink = item.degree_team_link || '';
+            teamInfo = '';
+            if (team) {
+                teamInfo = teamLink ?
+                    `<p><strong>Team:</strong> <a href="${teamLink}" target="_blank">${team}</a></p>` :
+                    `<p><strong>Team:</strong> ${team}</p>`;
+            }
+
+            // Advisors with links to Google Scholar - COMPLETE FORMAT AS REQUESTED
             referenceInfo = '';
-            location = item.contract_place_city;
-            dates = item.contract_dates || 'Period';
+            if (item.degree_advisors && Array.isArray(item.degree_advisors)) {
+                const advisorLinks = item.degree_advisors.map(advisorName => {
+                    const advisorData = authorsData[advisorName];
+                    if (advisorData && advisorData.google_scholar_link) {
+                        return `<a href="${advisorData.google_scholar_link}" target="_blank">${advisorData.name || advisorName}</a>`;
+                    }
+                    return advisorName;
+                });
+                referenceInfo = `<p><strong>Advisor${advisorLinks.length > 1 ? 's' : ''}:</strong> ${advisorLinks.join(', ')}</p>`;
+            }
 
-        } else if (item.career_type) {
-            // Degrees structure
-            mainTitle = item.career_field ? 
-                `${item.career_type} in ${item.career_field}` : 
-                item.career_type || 'Position';
-
-            organizationInfo = item.career_university ? 
-                (item.career_university_link ? 
-                    `<p><strong>University:</strong> <a href="${item.career_university_link}" target="_blank" rel="noopener noreferrer">${item.career_university}</a></p>` : 
-                    `<p><strong>University:</strong> ${item.career_university}</p>`) : 
-                '';
-
-            instituteInfo = item.career_institution && item.career_institution.trim() ? 
-                (item.career_institution_link ? 
-                    `<p><strong>Institute:</strong> <a href="${item.career_institution_link}" target="_blank" rel="noopener noreferrer">${item.career_institution}</a></p>` : 
-                    `<p><strong>Institute:</strong> ${item.career_institution}</p>`) : 
-                '';
-
-            referenceInfo = item.career_team && item.career_team.trim() ? 
-                (item.career_team_link ? 
-                    `<p><strong>Team:</strong> <a href="${item.career_team_link}" target="_blank" rel="noopener noreferrer">${item.career_team}</a></p>` : 
-                    `<p><strong>Team:</strong> ${item.career_team}</p>`) : 
-                '';
-
-            location = item.career_institution_city || item.career_university_city;
-            dates = item.career_dates || 'Period';
+            // Location - AS REQUESTED: Madrid, Spain format
+            const city = item.degree_university_city || item.degree_institution_city || '';
+            location = city;
+            
+            // Dates - AS REQUESTED
+            dates = item.degree_dates || '';
 
         } else {
-            // Generic fallback structure (for awards, teaching, etc.)
+            // Default structure for awards, teaching, etc.
             mainTitle = item.title || item.name || 'Item';
-            organizationInfo = '';
-            instituteInfo = '';
+            organizationInfo = item.institution ? `<p><strong>Institution:</strong> ${item.institution}</p>` : '';
+            instituteInfo = item.description ? `<p>${item.description}</p>` : '';
+            teamInfo = '';
             referenceInfo = '';
-            location = item.location || item.city;
-            dates = item.dates || item.period || 'Period';
-
-            // Add any description if available
-            if (item.description) {
-                instituteInfo = `<p><strong>Description:</strong> ${item.description}</p>`;
-            }
+            location = item.location || '';
+            dates = item.dates || item.period || '';
         }
 
         const locationInfo = location ? 
             `<div class="career-location"><i class="fas fa-map-marker-alt"></i> ${location}</div>` : '';
         
         return `
-            <div class="career-item">
+            <div class="career-item" data-id="${item.id}">
                 <div class="career-content">
                     <div class="career-main-info">
                         <div class="career-title">
                             <h3>${mainTitle}</h3>
-                            <div class="career-institution-info">
+                            <div class="career-details">
                                 ${organizationInfo}
                                 ${instituteInfo}
+                                ${teamInfo}
                                 ${referenceInfo}
                             </div>
                         </div>
@@ -249,48 +494,137 @@ $(document).ready(function() {
         return yearMatch ? parseInt(yearMatch[1]) : 0;
     }
 
-    function showErrorMessage(containerId, message) {
-        $(containerId).html(`<div class="loading-message" style="color: red;">${message}</div>`);
-    }
-
-    function setupSubsectionNavigation() {
-        $('.subsection-link').on('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = $(this).attr('href');
-            const targetSection = $(targetId);
-            
-            if (targetSection.length) {
-                // Remove active class from all links
-                $('.subsection-link').removeClass('active');
-                // Add active class to clicked link
-                $(this).addClass('active');
-                
-                // Smooth scroll to target
-                $('html, body').animate({
-                    scrollTop: targetSection.offset().top - 150 // Account for sticky headers
-                }, 600);
-            }
-        });
-        
-        // Update active link on scroll
-        $(window).on('scroll', function() {
-            updateActiveSubsectionLink();
+    function setupFilters() {
+        // Type filter change
+        $('input[name="curriculum-type"]').on('change', function() {
+            const selectedValue = $(this).val();
+            $('.type-toggle-container').attr('data-selected', selectedValue);
+            applyFilters();
         });
     }
 
-    function updateActiveSubsectionLink() {
-        const scrollTop = $(window).scrollTop() + 200; // Offset for headers
-        
-        $('.subsection').each(function() {
-            const sectionTop = $(this).offset().top;
-            const sectionBottom = sectionTop + $(this).outerHeight();
-            const sectionId = '#' + $(this).attr('id');
-            
-            if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
-                $('.subsection-link').removeClass('active');
-                $(`.subsection-link[href="${sectionId}"]`).addClass('active');
-            }
+    function setupSearch() {
+        // Fixed to use correct ID that matches the HTML
+        $('#publication-search').on('input', function() {
+            applyFilters();
         });
+    }
+
+    function updateYearRange() {
+        allYears = [...new Set(allCurriculumItems.map(item => extractStartYear(item.dates)))].filter(year => year > 0);
+        allYears.sort((a, b) => a - b);
+        
+        const minYear = allYears[0] || 2018;
+        const maxYear = allYears[allYears.length - 1] || 2027;
+        
+        $('#year-min, #year-max').attr('min', minYear).attr('max', maxYear);
+        $('#year-min').val(minYear);
+        $('#year-max').val(maxYear);
+        
+        console.log('Year range updated:', minYear, 'to', maxYear);
+    }
+
+    function generateYearTicks() {
+        const ticksContainer = $('#year-ticks');
+        ticksContainer.empty();
+        
+        const minYear = parseInt($('#year-min').attr('min'));
+        const maxYear = parseInt($('#year-max').attr('max'));
+        
+        // Generate ticks and labels separately to prevent overlap
+        for (let year = minYear; year <= maxYear; year++) {
+            const position = ((year - minYear) / (maxYear - minYear)) * 100;
+            
+            // Create tick mark
+            const tick = $(`<div class="year-tick" style="left: ${position}%"></div>`);
+            ticksContainer.append(tick);
+            
+            // Create label
+            const label = $(`<div class="year-tick-label" style="left: ${position}%">${year}</div>`);
+            ticksContainer.append(label);
+        }
+    }
+
+    function updateSliderRange() {
+        const minVal = parseInt($('#year-min').val());
+        const maxVal = parseInt($('#year-max').val());
+        const minYear = parseInt($('#year-min').attr('min'));
+        const maxYear = parseInt($('#year-max').attr('max'));
+        
+        const minPercent = ((minVal - minYear) / (maxYear - minYear)) * 100;
+        const maxPercent = ((maxVal - minYear) / (maxYear - minYear)) * 100;
+        
+        $('.year-slider-range').css({
+            'left': minPercent + '%',
+            'width': (maxPercent - minPercent) + '%'
+        });
+        
+        $('#year-min, #year-max').on('input', function() {
+            updateSliderRange();
+            applyFilters();
+        });
+    }
+
+    function updateResultsCount() {
+        const count = filteredCurriculumItems.length;
+        $('#results-count').text(`${count} result${count !== 1 ? 's' : ''}`);
+    }
+
+    function applyFilters() {
+        console.log('APPLYING FILTERS...');
+        
+        const selectedType = $('input[name="curriculum-type"]:checked').val();
+        const searchTerm = $('#publication-search').val().toLowerCase().trim();
+        const minYear = parseInt($('#year-min').val());
+        const maxYear = parseInt($('#year-max').val());
+        
+        console.log('Filter parameters:', { selectedType, searchTerm, minYear, maxYear });
+        
+        // Start with all curriculum items
+        let filtered = [...allCurriculumItems];
+        
+        // Apply type filter
+        if (selectedType) {
+            filtered = filtered.filter(item => {
+                console.log('Checking type filter:', item.type, 'vs', selectedType);
+                return item.type === selectedType;
+            });
+        }
+        
+        // Apply search filter
+        if (searchTerm) {
+            filtered = filtered.filter(item => {
+                const matches = item.searchText.includes(searchTerm);
+                if (matches) {
+                    console.log('Search match:', item.id, 'for term:', searchTerm);
+                }
+                return matches;
+            });
+        }
+        
+        // Apply year filter (skip for research and group items which have no dates)
+        if (selectedType !== 'research' && selectedType !== 'group') {
+            filtered = filtered.filter(item => {
+                const itemYear = extractStartYear(item.dates);
+                if (itemYear === 0) return true; // Include items without dates
+                return itemYear >= minYear && itemYear <= maxYear;
+            });
+        }
+        
+        console.log(`FINAL FILTERED RESULTS: ${filtered.length} curriculum items`);
+        
+        // Sort by date (most recent first), but keep research and group items in original order
+        filtered.sort((a, b) => {
+            if (a.type === 'research' || a.type === 'group' || 
+                b.type === 'research' || b.type === 'group') {
+                return 0; // Keep original order for research and group
+            }
+            const yearA = extractStartYear(a.dates);
+            const yearB = extractStartYear(b.dates);
+            return yearB - yearA;
+        });
+        
+        filteredCurriculumItems = filtered;
+        renderCurriculumItems();
     }
 });
