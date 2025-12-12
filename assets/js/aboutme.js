@@ -78,7 +78,7 @@ $(document).ready(function() {
     });
 
     function setupIntroduction() {
-        // Load text from JSON
+        // Load text from JSON and process markdown-like formatting
         const welcomeText = textData.welcome_text || `
             I am a passionate researcher in condensed matter physics, currently pursuing my PhD at ICMM-CSIC in Madrid. 
             My work focuses on quantum dynamics and many-body systems within the QUDYMA research group. 
@@ -86,13 +86,31 @@ $(document).ready(function() {
             through computational modeling and theoretical analysis.
         `;
         
-        $('#intro-paragraph').text(welcomeText.trim());
+        // Process the welcome text with the same formatting as workflow content
+        const processedWelcomeText = processMarkdownFormatting(welcomeText.trim());
+        
+        $('#intro-paragraph').html(processedWelcomeText);
         
         const profileImage = $('#profile-image');
         profileImage.attr('src', 'content/photos/CV_photo.jpeg');
         profileImage.on('error', function() {
             $(this).attr('src', 'content/photos/profile.jpg');
         });
+    }
+
+    function processMarkdownFormatting(content) {
+        // Process content to handle markdown-like formatting and create hoverable containers
+        // Same logic as workflow processing
+        return content.replace(/\*([^*]+)\*/g, (match, text) => {
+            // Check if this contains a URL in parentheses
+            const urlMatch = text.match(/^(.+?)\s*\(([^)]+)\)$/);
+            if (urlMatch) {
+                const linkText = urlMatch[1].trim();
+                const url = urlMatch[2].trim();
+                return `<a href="${url}" class="workflow-highlight quantica-link" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+            }
+            return `<span class="workflow-highlight">${text}</span>`;
+        }).replace(/\n/g, '<br>');
     }
 
     function renderSocialLinks() {
@@ -173,18 +191,8 @@ $(document).ready(function() {
     }
 
     function createWorkflowSection(title, content) {
-        // Process content to handle markdown-like formatting and create hoverable containers
-        // Handle Quantica.jl link extraction from the JSON format
-        let processedContent = content.replace(/\*([^*]+)\*/g, (match, text) => {
-            // Check if this contains a URL in parentheses
-            const urlMatch = text.match(/^(.+?)\s*\(([^)]+)\)$/);
-            if (urlMatch) {
-                const linkText = urlMatch[1].trim();
-                const url = urlMatch[2].trim();
-                return `<a href="${url}" class="workflow-highlight quantica-link" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
-            }
-            return `<span class="workflow-highlight">${text}</span>`;
-        }).replace(/\n/g, '<br>');
+        // Process content using the shared formatting function
+        const processedContent = processMarkdownFormatting(content);
         
         return `
             <div class="workflow-section">
