@@ -3,8 +3,8 @@
     "Kokkeler:PRL25":{
         "publication_type": "paper",
         "name": "Fluxoid solitons in superconducting tapered tubes and bottlenecks",
-        "local_link": "",
-        "journal_link": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.195415",
+        "local_link": "/content/pdfs/publications/papers/Kokkeler_PRL_25/Kokkeler_PRL_25.pdf",
+        "journal_link": "https://journals.aps.org/prl/abstract/10.1103/qb8l-cj9j",
         "arXiv_link": "https://arxiv.org/abs/2510.20892",
         "authors": ["Kokkeler", "Uldemolins", "Lobo", "Bergeret", "SanJose", "Prada"],
         "journal": "Physical Review Letters (PRL)",
@@ -13,7 +13,7 @@
         "supplementary_notes_link" : "",
         "slides_presentation_link" : "",
         "poster_presentation_link" : "",
-        "bibtex": "",
+        "bibtex": "@article{qb8l-cj9j,\n title = {Fluxoid Solitons in Superconducting Tapered Tubes and Bottlenecks},\n author = {Kokkeler, Tim and Uldemolins, Mateo and Lobo, Francisco and Bergeret, F. Sebastian and Prada, Elsa and San-Jose, Pablo},\n journal = {Phys. Rev. Lett.},\n volume = {136},\n issue = {8},\n pages = {086001},\n numpages = {8},\n year = {2026},\n month = {Feb},\n publisher = {American Physical Society},\n doi = {10.1103/qb8l-cj9j},\n url = {https://link.aps.org/doi/10.1103/qb8l-cj9j}\n}",
         "acknowledgement": ["PRL editor suggestion"]
     },
 
