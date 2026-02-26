@@ -1,18 +1,37 @@
 {
 
+    "Kokkeler:PRL25":{
+        "publication_type": "paper",
+        "name": "Fluxoid solitons in superconducting tapered tubes and bottlenecks",
+        "local_link": "",
+        "journal_link": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.195415",
+        "arXiv_link": "https://arxiv.org/abs/2510.20892",
+        "authors": ["Kokkeler", "Uldemolins", "Lobo", "Bergeret", "SanJose", "Prada"],
+        "journal": "Physical Review Letters (PRL)",
+        "date": "February 2026",
+        "github_repository_link": "",
+        "supplementary_notes_link" : "",
+        "slides_presentation_link" : "",
+        "poster_presentation_link" : "",
+        "bibtex": "",
+        "acknowledgement": ["PRL editor suggestion"]
+    },
+
     "Lobo:PRB25":{
+        "publication_type": "paper",
         "name": "Exponential suppression of the topological gap in self-consistent intrinsic Majorana nanowires",
-        "local_link": "/content/pdfs/papers/Lobo:PRB25/Lobo:PRB25.pdf",
+        "local_link": "/content/pdfs/publications/papers/Lobo_PRB_25/Lobo_PRB_25.pdf",
         "journal_link": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.195415",
         "arXiv_link": "https://arxiv.org/abs/2412.15174",
-        "authors": ["Francisco Lobo", "Pablo San-Jose", "Elsa Prada"],
+        "authors": ["Lobo", "SanJose", "Prada"],
         "journal": "Physical Review B (PRB)",
-        "date": "05/2025",
+        "date": "May 2025",
         "github_repository_link" : "https://github.com/pablosanjose/arxiv_2412_15174",
-        "supplementary_notes_link" : "/content/pdfs/papers/Lobo:PRB25/Lobo:PRB25_supplementary_notes.pdf",
-        "slides_presentation_link" : "/content/pdfs/papers/Lobo:PRB25/Lobo:PRB25_slides_presentation.pdf",
-        "poster_presentation_link" : "/content/pdfs/papers/Lobo:PRB25/Lobo:PRB25_poster.pdf",
-        "bibtex": "@article{PhysRevB.111.195415,\n  title = {Exponential suppression of the topological gap in self-consistent intrinsic Majorana nanowires},\n  author = {Lobo, Francisco and Prada, Elsa and San-Jose, Pablo},\n  journal = {Phys. Rev. B},\n  volume = {111},\n  issue = {19},\n  pages = {195415},\n  numpages = {10},\n  year = {2025},\n  month = {May},\n  publisher = {American Physical Society},\n  doi = {10.1103/PhysRevB.111.195415},\n  url = {https://link.aps.org/doi/10.1103/PhysRevB.111.195415}\n}"
+        "supplementary_notes_link" : "/content/pdfs/publications/papers/Lobo_PRB_25/Lobo_PRB_25_appendix.pdf",
+        "slides_presentation_link" : "/content/pdfs/publications/papers/Lobo_PRB_25/Lobo_PRB_25_slides.pdf",
+        "poster_presentation_link" : "/content/pdfs/publications/papers/Lobo_PRB_25/Lobo_PRB_25_poster.pdf",
+        "bibtex": "@article{PhysRevB.111.195415,\n  title = {Exponential suppression of the topological gap in self-consistent intrinsic Majorana nanowires},\n  author = {Lobo, Francisco and Prada, Elsa and San-Jose, Pablo},\n  journal = {Phys. Rev. B},\n  volume = {111},\n  issue = {19},\n  pages = {195415},\n  numpages = {10},\n  year = {2025},\n  month = {May},\n  publisher = {American Physical Society},\n  doi = {10.1103/PhysRevB.111.195415},\n  url = {https://link.aps.org/doi/10.1103/PhysRevB.111.195415}\n}",
+        "acknowledgement": ""
     }
 
 }

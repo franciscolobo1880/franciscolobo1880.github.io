@@ -1,0 +1,31 @@
+{
+    "ORCID":{
+        "name": "ORCID",
+        "account": "0009-0003-8417-3610",
+        "link": "https://orcid.org/0009-0003-8417-3610"
+    },
+
+    "Scholar":{
+        "name": "Google Scholar",
+        "account": "ra6MTs0AAAAJ",
+        "link": "https://scholar.google.com/citations?user=ra6MTs0AAAAJ&hl=pt-PT"
+    },
+
+    "Github":{
+        "name": "GitHub",
+        "account": "franciscolobo1880",
+        "link": "https://github.com/franciscolobo1880"
+    },
+
+    "Email":{
+        "name": "Email",
+        "account": "franciscolobo1880@gmail.com",
+        "link": "mailto:franciscolobo1880@gmail.com"
+    },
+
+    "Institute":{
+        "name": "Institute",
+        "account": "ICMM-CSIC",
+        "link": "https://www.icmm.csic.es/index.php/en/lobo-ribeiro-francisco-ricardo"
+    }
+}

@@ -1,24 +1,26 @@
 {
     "FPI27":{
-        "type": "Formación de personal investigador (FPI)",
+        "curriculum_type": "contract",
+        "name": "Formación de personal investigador (FPI)",
+        "reference": "PRE2022-104373",
+        "date": "2023-2027",
+        "city": "Madrid, Spain",
         "from": "Consejo Superior de Investigaciones Científicas (CSIC)",
         "from_link": "https://www.csic.es/es",
-        "reference": "PRE2022-104373",
-        "dates": "2023-2027",
         "at": "Instituto de Ciencia de Materiales de Madrid (ICMM-CSIC)",
-        "at_link": "https://www.icmm.csic.es/",
-        "at_city": "Madrid, Spain"
+        "at_link": "https://www.icmm.csic.es/"
     },
 
     "FCT23":{
-        "type": "Bolsa de investigação de mestrado",
+        "curriculum_type": "contract",
+        "name": "Bolsa de investigação de mestrado",
+        "reference": "EXPL/FIS-MAC/0953/2021",
+        "date": "2022-2023",
+        "city": "Braga, Portugal",
         "from": "Fundação para a Ciência e a Tecnologia (FCT)",
         "from_link": "https://www.fct.pt/",
-        "reference": "EXPL/FIS-MAC/0953/2021",
-        "dates": "2022-2023",
         "at": "Universidade do Minho (UM)",
-        "at_link": "https://www.uminho.pt/PT/",
-        "at_city": "Braga, Portugal"
+        "at_link": "https://www.uminho.pt/PT/"
     }
 
 }

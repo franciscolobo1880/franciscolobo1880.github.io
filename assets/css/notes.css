@@ -1,0 +1,334 @@
+/* Notes Page Styles */
+
+:root {
+    --bg-primary: #121518;
+    --bg-secondary: #1a1d21;
+    --bg-tertiary: #22262b;
+    --bg-header: #16181c;
+    --bg-controls: #1e2126;
+    --text-primary: #e8eaec;
+    --text-secondary: #a0a4a8;
+    --text-muted: #6c7075;
+    --accent: #ffce3a;
+    --accent-hover: #ffd85c;
+    --accent-dim: #d4aa30;
+    --border-color: #2a2e33;
+    --border-header: #252830;
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Crimson Text', 'Georgia', 'Times New Roman', serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* Navigation */
+.nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-header);
+    border-bottom: 1px solid var(--border-header);
+    z-index: 1000;
+    padding: 0;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1rem 2rem;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+}
+
+.nav-link.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* Main Content */
+.main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+}
+
+/* Notes Section */
+.notes-section {
+    margin-top: 1rem;
+}
+
+/* Controls */
+.controls-container {
+    background-color: var(--bg-controls);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    margin: 0;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+#search-input::placeholder {
+    color: var(--text-muted);
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--accent-dim);
+}
+
+/* Section Separator */
+.section-separator {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 2.5rem 0;
+}
+
+/* Log Notes Container */
+.logs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Log Note Card */
+.log-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s ease;
+}
+
+.log-card:hover {
+    border-color: var(--accent-dim);
+}
+
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+}
+
+.log-type {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background-color: var(--bg-tertiary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.log-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+}
+
+.log-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.log-title a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.log-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.log-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.log-link:hover {
+    background-color: var(--bg-tertiary);
+    border-color: var(--accent-dim);
+    color: var(--accent);
+}
+
+.log-link i {
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
+/* Rough Notes Container */
+.rough-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Rough Note Card - Clickable PDF link */
+.rough-card {
+    display: block;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.rough-card:hover {
+    border-color: var(--accent-dim);
+    background-color: var(--bg-tertiary);
+}
+
+.rough-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rough-type {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    background-color: var(--bg-primary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.rough-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 400;
+    flex-grow: 1;
+    transition: color 0.2s ease;
+}
+
+.rough-card:hover .rough-title {
+    color: var(--accent);
+}
+
+.rough-icon {
+    color: var(--accent);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* Empty state */
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* Hidden elements */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .nav-container {
+        gap: 1.5rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .main-content {
+        padding: 5rem 1rem 3rem;
+    }
+
+    .controls-container {
+        padding: 1rem;
+    }
+
+    .log-card,
+    .rough-card {
+        padding: 1rem;
+    }
+
+    .log-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .log-title,
+    .rough-title {
+        font-size: 1rem;
+    }
+
+    .log-links {
+        gap: 0.4rem;
+    }
+
+    .log-link {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}

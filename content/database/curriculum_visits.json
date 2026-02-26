@@ -1,0 +1,11 @@
+{
+    "Aalto26":{
+        "curriculum_type": "visit",
+        "name": "Aalto University",
+        "date": "April 2026",
+        "city": "Helsinki, Finland",
+        "link": "https://www.aalto.fi/en",
+        "topic": "Quantics and Tensor Trains",
+        "collaborators": ["Lado", "Antão"]
+    }
+}

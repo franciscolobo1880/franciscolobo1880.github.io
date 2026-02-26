@@ -1,433 +1,490 @@
-/* ===== CURRICULUM PAGE ===== */
+/* Curriculum Page Styles */
 
-/* Import all publications styles as base */
-@import url('publications.css');
-
-/* Override specific styles for Curriculum content */
-
-/* Updated slider positions for 6-option toggle (new order: Research, Degrees, Group, Contracts, Teaching, Awards) */
-.type-toggle-container[data-selected="research"] .type-toggle-slider {
-    left: 0%;
-    width: 16.667%;
+:root {
+    --bg-primary: #121518;
+    --bg-secondary: #1a1d21;
+    --bg-tertiary: #22262b;
+    --bg-header: #16181c;
+    --bg-controls: #1e2126;
+    --text-primary: #e8eaec;
+    --text-secondary: #a0a4a8;
+    --text-muted: #6c7075;
+    --accent: #ffce3a;
+    --accent-hover: #ffd85c;
+    --accent-dim: #d4aa30;
+    --border-color: #2a2e33;
+    --border-header: #252830;
+    --shadow: rgba(0, 0, 0, 0.4);
 }
 
-.type-toggle-container[data-selected="degrees"] .type-toggle-slider {
-    left: 16.667%;
-    width: 16.667%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.type-toggle-container[data-selected="group"] .type-toggle-slider {
-    left: 33.333%;
-    width: 16.667%;
+html {
+    scroll-behavior: smooth;
 }
 
-.type-toggle-container[data-selected="contracts"] .type-toggle-slider {
-    left: 50%;
-    width: 16.667%;
+body {
+    font-family: 'Crimson Text', 'Georgia', 'Times New Roman', serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    min-height: 100vh;
 }
 
-.type-toggle-container[data-selected="teaching"] .type-toggle-slider {
-    left: 66.667%;
-    width: 16.667%;
-}
-
-.type-toggle-container[data-selected="awards"] .type-toggle-slider {
-    left: 83.333%;
-    width: 16.667%;
-}
-
-/* FIXED year slider tick alignment */
-.year-ticks {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 0;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-.year-tick {
-    position: absolute;
-    width: 2px;
-    height: 12px;
-    background: var(--color-publication-year-tick);
-    top: -6px;
-    transform: translateX(-50%);
-}
-
-.year-tick-label {
-    position: absolute;
-    top: 25px;
-    transform: translateX(-50%);
-    font-size: 0.65em;
-    color: var(--color-publication-year-tick-label);
-    font-weight: 500;
-    white-space: nowrap;
-    max-width: 30px;
-    text-align: center;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Ensure year labels don't overlap with slider thumbs - FIXED POSITIONING */
-.year-slider-track {
-    position: relative;
-    height: 6px;
-    background: var(--color-publication-slider-track);
-    border-radius: 3px;
-    margin: 0 10px;
-}
-
-.year-slider-range {
-    position: absolute;
-    height: 100%;
-    background: var(--color-publication-slider-range);
-    border-radius: 3px;
-    z-index: 2;
-}
-
-#year-min, #year-max {
-    position: absolute;
+/* Navigation */
+.nav-header {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 6px;
-    margin: 0;
-    -webkit-appearance: none;
-    appearance: none;
-    background: transparent;
-    border-radius: 4px;
-    outline: none;
-    z-index: 10;
-    cursor: pointer;
+    right: 0;
+    background-color: var(--bg-header);
+    border-bottom: 1px solid var(--border-header);
+    z-index: 1000;
+    padding: 0;
 }
 
-#year-min::-webkit-slider-thumb,
-#year-max::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 18px;
-    height: 18px;
-    background: var(--color-publication-slider-thumb);
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1rem 2rem;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+}
+
+.nav-link.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* Main Content */
+.main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+}
+
+/* Profile Section */
+.profile-section {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.photo-container {
+    margin-bottom: 2rem;
+}
+
+.profile-photo {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--border-color);
+    box-shadow: 0 4px 20px var(--shadow);
+}
+
+.welcome-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.welcome-text a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-dim);
+    transition: border-color 0.2s ease;
+}
+
+.welcome-text a:hover {
+    border-bottom-color: var(--accent);
+}
+
+/* Socials */
+.socials-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.social-item:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--accent);
+    border-color: var(--accent-dim);
+}
+
+.social-item i {
+    font-size: 1rem;
+    color: var(--accent);
+}
+
+/* Section Separator */
+.section-separator {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 2.5rem 0;
+}
+
+/* Curriculum Section */
+.curriculum-section {
+    margin-top: 1rem;
+}
+
+/* Controls */
+.controls-container {
+    background-color: var(--bg-controls);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    margin-bottom: 1rem;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+#search-input::placeholder {
+    color: var(--text-muted);
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--accent-dim);
+}
+
+.year-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.year-filter label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.year-filter input {
+    width: 80px;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    -moz-appearance: textfield;
+}
+
+.year-filter input::-webkit-outer-spin-button,
+.year-filter input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.year-filter input:focus {
+    outline: none;
+    border-color: var(--accent-dim);
+}
+
+.toggle-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.toggle-btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.85rem;
     cursor: pointer;
-    border: 2px solid var(--color-publication-slider-thumb-border);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 15;
+    transition: all 0.2s ease;
 }
 
-#year-min::-webkit-slider-thumb:hover,
-#year-max::-webkit-slider-thumb:hover {
-    transform: scale(1.1);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+.toggle-btn:hover {
+    background-color: var(--bg-tertiary);
+    border-color: var(--accent-dim);
 }
 
-/* Timeline Styling - Override publications styles for career items */
-#curriculum-list {
+.toggle-btn.active {
+    background-color: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+/* Entries */
+.entries-container {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1rem;
 }
 
-.career-item {
-    background-color: var(--color-about-me-career-background);
-    border: 2px solid var(--color-about-me-career-border);
-    border-radius: 8px;
-    padding: 1.5em;
-    transition: all 0.3s ease;
-    margin-bottom: 1em;
+.entry-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s ease;
 }
 
-.career-item:hover {
-    border-color: var(--color-about-me-career-border-hover);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+.entry-card:hover {
+    border-color: var(--accent-dim);
 }
 
-.career-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2em;
-}
-
-.career-main-info {
+.entry-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 1em;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
 }
 
-.career-title {
-    flex: 1;
-}
-
-.career-title h3 {
-    color: var(--color-card-title);
-    font-size: 1.4em;
-    margin-bottom: 0.5em;
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-}
-
-.career-details {
-    color: var(--color-card-text);
-    font-size: 1em;
-    line-height: 1.5;
-}
-
-.career-details p {
-    margin-bottom: 0.4em;
-    font-size: 1em;
-}
-
-.career-details p:last-child {
-    margin-bottom: 0;
-}
-
-.career-details strong {
-    color: var(--color-card-title);
-    font-weight: 600;
-}
-
-/* Style links in career details */
-.career-details a {
-    color: var(--color-about-me-career-link);
-    text-decoration: none;
-    border-bottom: 1px dotted var(--color-about-me-career-link);
-    transition: border-color 0.3s ease;
-}
-
-.career-details a:hover {
-    border-bottom: 2px dotted var(--color-about-me-career-link);
-    text-decoration: none;
-}
-
-.career-period {
-    background-color: var(--color-about-me-career-period-bg);
-    color: var(--color-about-me-career-period-text);
-    padding: 0.5em 1em;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 1.1em;
-    white-space: nowrap;
-}
-
-.career-location {
-    color: var(--color-card-text);
-    font-size: 0.95em;
+.entry-tags {
     display: flex;
     align-items: center;
-    gap: 0.3em;
-    margin-top: 0.5em;
-    font-style: italic;
+    gap: 0.5rem;
 }
 
-.career-location i {
-    opacity: 0.7;
+.entry-type {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background-color: var(--bg-tertiary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    flex-shrink: 0;
 }
 
-/* Research items - Enhanced for keyword tags */
-.research-item {
-    background-color: var(--color-about-me-career-background);
-    border: 2px solid var(--color-about-me-career-border);
-    border-radius: 8px;
-    padding: 1.5em;
-    transition: all 0.3s ease;
-    margin-bottom: 1em;
+.entry-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
 }
 
-.research-item:hover {
-    border-color: var(--color-about-me-career-border-hover);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-}
-
-.research-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
-    flex-wrap: wrap;
-    gap: 0.5em;
-}
-
-.research-name {
-    color: var(--color-card-title);
-    font-size: 1.3em;
-    margin: 0;
-    font-weight: 600;
-    font-family: 'Playfair Display', serif;
-}
-
-.research-subtopics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-}
-
-.research-tag {
-    background-color: var(--color-about-me-social-icon-bg);
-    color: var(--color-pure-white);
-    padding: 0.3em 0.8em;
-    border-radius: 15px;
-    font-size: 0.85em;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.research-tag:hover {
-    background-color: var(--color-about-me-social-icon-hover-bg);
-    transform: scale(1.05);
-}
-
-/* Group items - Simple styling */
-.group-item {
-    background-color: var(--color-about-me-intro-background);
-    border: 2px solid var(--color-about-me-intro-border);
-    border-radius: 8px;
-    padding: 1.5em;
-    text-align: center;
-    transition: all 0.3s ease;
-    margin-bottom: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.group-item:hover {
-    border-color: var(--color-about-me-intro-border-hover);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-}
-
-.group-name {
-    color: var(--color-card-title);
-    font-size: 1.2em;
-    margin: 0;
+.entry-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
     font-weight: 400;
+}
+
+.entry-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.entry-title a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.entry-meta {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.entry-meta a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.entry-meta a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.entry-location {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.entry-medium {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: lowercase;
+    color: var(--text-muted);
+    background-color: var(--bg-primary);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+}
+
+/* Degree specific styles */
+.entry-advisors {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.entry-advisors span {
+    color: var(--text-muted);
+}
+
+.entry-advisors a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.entry-advisors a:hover {
+    text-decoration: underline;
+}
+
+.entry-institution {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.entry-institution a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.entry-institution a:hover {
+    text-decoration: underline;
+}
+
+/* Visit specific */
+.entry-collaborators {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+.entry-collaborators a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.entry-collaborators a:hover {
+    text-decoration: underline;
+}
+
+/* Empty state */
+.no-results {
     text-align: center;
+    padding: 3rem;
+    color: var(--text-muted);
+    font-size: 1rem;
 }
 
-/* Loading messages */
-.loading-message {
-    text-align: center;
-    color: var(--color-about-me-loading-text);
-    font-style: italic;
-    padding: 2em;
-}
+/* Responsive */
+@media (max-width: 600px) {
+    .nav-container {
+        gap: 1.5rem;
+        padding: 0.75rem 1rem;
+    }
 
-/* ===== RESPONSIVE DESIGN ===== */
+    .nav-link {
+        font-size: 0.9rem;
+    }
 
-@media screen and (max-width: 768px) {
-    .career-main-info {
+    .main-content {
+        padding: 5rem 1rem 3rem;
+    }
+
+    .profile-photo {
+        width: 140px;
+        height: 140px;
+    }
+
+    .welcome-text {
+        font-size: 1rem;
+    }
+
+    .socials-container {
+        gap: 0.5rem;
+    }
+
+    .social-item {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .controls-container {
+        padding: 1rem;
+    }
+
+    .year-filter {
+        justify-content: flex-start;
+    }
+
+    .toggle-container {
+        gap: 0.4rem;
+    }
+
+    .toggle-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .entry-card {
+        padding: 1rem;
+    }
+
+    .entry-header {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8em;
-    }
-    
-    .career-title h3 {
-        font-size: 1.2em;
-    }
-    
-    .career-period {
-        align-self: flex-start;
-        font-size: 1em;
-        padding: 0.4em 0.8em;
-    }
-    
-    .career-item {
-        padding: 1.5em;
-    }
-    
-    .career-details p {
-        font-size: 0.95em;
-    }
-    
-    .research-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8em;
-    }
-    
-    .research-name {
-        font-size: 1.1em;
-    }
-    
-    .research-tag {
-        font-size: 0.8em;
-        padding: 0.25em 0.6em;
-    }
-    
-    .group-item {
-        padding: 1.2em;
-    }
-    
-    .group-name {
-        font-size: 1.1em;
-    }
-    
-    .year-tick-label {
-        font-size: 0.6em;
-        max-width: 25px;
+        gap: 0.5rem;
     }
 
-    .year-slider-track {
-        margin: 0 5px;
-    }
-
-    #year-min::-webkit-slider-thumb,
-    #year-max::-webkit-slider-thumb {
-        width: 16px;
-        height: 16px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .career-title h3 {
-        font-size: 1.1em;
-    }
-    
-    .career-period {
-        font-size: 0.9em;
-    }
-    
-    .career-item {
-        padding: 1.2em;
-    }
-    
-    .career-details p {
-        font-size: 0.9em;
-    }
-    
-    .research-name {
-        font-size: 1em;
-    }
-    
-    .research-tag {
-        font-size: 0.75em;
-        padding: 0.2em 0.5em;
-    }
-    
-    .group-item {
-        padding: 1em;
-    }
-    
-    .group-name {
-        font-size: 1em;
-    }
-    
-    .year-tick-label {
-        font-size: 0.55em;
-        max-width: 20px;
-    }
-
-    #year-min::-webkit-slider-thumb,
-    #year-max::-webkit-slider-thumb {
-        width: 14px;
-        height: 14px;
+    .entry-title {
+        font-size: 1rem;
     }
 }

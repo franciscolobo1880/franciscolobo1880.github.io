@@ -1,0 +1,31 @@
+{
+
+    "LittleParksEffect":{
+            "note_type": "rough",
+            "name": "Little-Parks Effect",
+            "local_link": "/content/pdfs/notes/rough/LittleParksEffect.pdf",
+            "date": "~2025"
+        },
+
+    "ConjugateGradient":{
+            "note_type": "rough",
+            "name": "Conjugate Gradient Method",    
+            "local_link": "/content/pdfs/notes/rough/ConjugateGradient.pdf",
+            "date": "~2025"
+        },
+
+    "HFB01":{
+            "note_type": "rough",
+            "name": "Hartree-Fock-Bogoliubov mean-field theory",
+            "local_link": "/content/pdfs/publications/papers/Lobo_PRB_25/Lobo_PRB_25_appendix.pdf",
+            "date": "~2024"
+        },
+
+    "Graphene01":{
+            "note_type": "rough",
+            "name": "Graphene",
+            "local_link": "/content/pdfs/notes/rough/Graphene01.pdf",
+            "date": "~2022"
+        }
+    
+}

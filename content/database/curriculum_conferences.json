@@ -1,0 +1,121 @@
+{
+    "Villard26":{
+        "curriculum_type": "conference",
+        "medium": "poster",
+        "name": "Superconductor Semiconductor Hybrids",
+        "date": "February 2026",
+        "city": "Villard-de-Lans, France",
+        "link": "https://iwssh.sciencesconf.org/",
+        "work": "Lobo:PRB26"
+    },
+
+    "Madrid25":{
+        "curriculum_type": "conference",
+        "medium": "poster",
+        "name": "Emergence of Quantum Phases",
+        "date": "October 2025",
+        "city": "Madrid, Spain",
+        "link": "https://wp.icmm.csic.es/emergence/",
+        "work": "Lobo:PRB25"
+    },
+
+    "SanSebastian25":{
+        "curriculum_type": "conference",
+        "medium": "poster",
+        "name": "Quantum Designer's Special Edition",
+        "date": "July 2025",
+        "city": "San Sebastián, Spain",
+        "link": "https://www.uik.eus/en/activity/quantum-designers-special-edition-100-years-quantum-qd100",
+        "work": "Lobo:PRB25"
+    },
+
+    "Copenhagen25":{
+        "curriculum_type": "conference",
+        "medium": "poster",
+        "name": "Superconductor-Semiconductor Hybrids",
+        "date": "June 2025",
+        "city": "København, Denmark",
+        "link": "https://qdev.nbi.ku.dk/calender/workshop-on-superconductor-semiconductor-hybrids-2025/",
+        "work": "Lobo:PRB25"
+    },
+
+    "Anaheim25":{
+        "curriculum_type": "conference",
+        "medium": "talk",
+        "name": "March Meeting",
+        "date": "March 2025",   
+        "city": "Anaheim, USA",
+        "link": "https://www.aps.org/events/2025/joint-meeting",
+        "work": "Lobo:PRB25"
+    },
+
+    "Braga24":{
+        "curriculum_type": "conference",
+        "medium": "talk",
+        "name": "CMD31",
+        "date": "September 2024",
+        "city": "Braga, Portugal",
+        "link": "https://cmd31.sci-meet.net/",
+        "work": "Lobo:PRB25"
+    },
+
+    "Porto24":{
+        "curriculum_type": "conference",
+        "medium": "poster",
+        "name": "Quantum Matter",
+        "date": "October 2024",
+        "city": "Porto, Portugal",
+        "link": "https://quantummatterpt.weebly.com/",
+        "work":"Lobo:MSc23"
+    },
+
+    "Evora23":{
+        "curriculum_type": "conference",
+        "medium": "poster",
+        "name": "Workshop on Criticality",
+        "date": "October 2023",
+        "city": "Évora, Portugal",
+        "link": "https://www.cdnbqs.uevora.pt/Web-2023/webpage/index.php",
+        "work": "Lobo:MSc23"
+    },
+
+    "Milano23":{
+        "curriculum_type": "conference",
+        "medium": "talk",
+        "name": "CMD30 FisMat",
+        "date": "September 2023",
+        "city": "Milano, Italy",
+        "link": "https://semilab.com/events/cmd30-fismat-2023",
+        "work": "Lobo:MSc23"
+    },
+
+    "Madrid23":{
+        "curriculum_type": "conference",
+        "medium": "poster",
+        "name": "Emergence of Quantum Phases",
+        "date": "October 2023",
+        "city": "Madrid, Spain",
+        "link": "https://wp.icmm.csic.es/emergence/",
+        "work": "Lobo:MSc23"
+    },
+
+    "Tomar22":{
+        "curriculum_type": "conference",
+        "medium": "poster",
+        "name": "Quantum Matter Summer School",
+        "date": "September 2022",
+        "city": "Tomar, Portugal",
+        "link": "https://sites.google.com/view/qm-ss2022",
+        "work": "Lobo:MSc23"
+    },
+
+    "Toodler21":{
+        "curriculum_type": "conference",
+        "medium": "poster",
+        "name": "Toddler's School on Quantum Matter",
+        "date": "March 2021",
+        "city": "Online",
+        "link": "https://qm2021.sci-meet.net/",
+        "work": "Lobo:MSc23"
+    }
+}

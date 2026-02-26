@@ -1,0 +1,39 @@
+{
+
+    "Topology":{
+            "note_type": "log",
+            "name": "Topological superconductivity",
+            "local_link": "/content/pdfs/notes/logs/topology.pdf",
+            "date": "~2025",
+            "github_repository_link" : "https://github.com/franciscolobo1880/topoSC",
+            "supplementary_worksheet_link" : "/content/pdfs/notes/logs/topology_worksheet.pdf"
+        },
+
+    "Superconductivity":{
+            "note_type": "log",
+            "name": "Superconductivity",
+            "local_link": "/content/pdfs/notes/logs/superconductivity.pdf",
+            "date": "~2025",
+            "github_repository_link" : "",
+            "supplementary_worksheet_link" : "/content/pdfs/notes/logs/superconductivity_worksheet.pdf"
+        },
+
+    "Magnetism":{
+            "note_type": "log",
+            "name": "Magnetism",
+            "local_link": "/content/pdfs/notes/logs/magnetism.pdf",
+            "date": "",
+            "github_repository_link" : "",
+            "supplementary_worksheet_link" : "/content/pdfs/notes/logs/magnetism_worksheet.pdf"
+        },
+
+    "GreensFunctions":{
+            "note_type": "log",
+            "name": "Green's functions formalism",
+            "local_link": "/content/pdfs/notes/logs/greensfunction.pdf",
+            "date": "~2025",
+            "github_repository_link" : "",
+            "supplementary_worksheet_link" : "/content/pdfs/notes/logs/greensfunction_worksheet.pdf"
+        }
+    
+}
