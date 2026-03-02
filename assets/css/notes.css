@@ -236,8 +236,63 @@ body {
 }
 
 .rough-card:hover {
-    border-color: var(--accent-dim);
+    border-color: var(--text-muted);
     background-color: var(--bg-tertiary);
+}
+
+/* Rough Note Card - With link containers */
+.rough-card-container {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s ease;
+}
+
+.rough-card-container:hover {
+    border-color: var(--text-muted);
+}
+
+.rough-header-static {
+    margin-bottom: 0.5rem;
+}
+
+.rough-title-static {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+}
+
+.rough-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.rough-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.rough-link:hover {
+    background-color: var(--bg-tertiary);
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+}
+
+.rough-link i {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
 }
 
 .rough-header {
@@ -267,11 +322,11 @@ body {
 }
 
 .rough-card:hover .rough-title {
-    color: var(--accent);
+    color: var(--text-primary);
 }
 
 .rough-icon {
-    color: var(--accent);
+    color: var(--text-secondary);
     font-size: 1rem;
     flex-shrink: 0;
 }

@@ -101,8 +101,33 @@
         `;
     }
 
-    // Render rough entry (clickable card)
+    // Render rough entry
     function renderRoughEntry(key, entry) {
+        // If github_repository_link exists and is not empty, render with link containers
+        if (entry.github_repository_link) {
+            let linksHtml = `
+                <a href="${entry.local_link}" class="rough-link" target="_blank" rel="noopener">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>PDF</span>
+                </a>
+                <a href="${entry.github_repository_link}" class="rough-link" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            `;
+            
+            return `
+                <div class="rough-card-container" data-key="${key}">
+                    <div class="rough-header-static">
+                        <span class="rough-type">Rough</span>
+                    </div>
+                    <div class="rough-title-static">${entry.name}</div>
+                    <div class="rough-links">${linksHtml}</div>
+                </div>
+            `;
+        }
+        
+        // Default: clickable card linking to PDF
         return `
             <a href="${entry.local_link}" class="rough-card" data-key="${key}" target="_blank" rel="noopener">
                 <div class="rough-header">

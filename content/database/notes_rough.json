@@ -1,16 +1,26 @@
 {
 
+    "TensorTrains":{
+            "note_type": "rough",
+            "name": "Tensor Trains and Quantics",
+            "local_link": "/content/pdfs/notes/rough/TensorTrains.pdf",
+            "github_repository_link" : "https://github.com/franciscolobo1880/QuanticsTensorTrainsTests",
+            "date": "~2025"
+        },
+
     "LittleParksEffect":{
             "note_type": "rough",
-            "name": "Little-Parks Effect",
+            "name": "Little-Parks effect",
             "local_link": "/content/pdfs/notes/rough/LittleParksEffect.pdf",
+            "github_repository_link" : "",
             "date": "~2025"
         },
 
     "ConjugateGradient":{
             "note_type": "rough",
-            "name": "Conjugate Gradient Method",    
+            "name": "Conjugate gradient method",    
             "local_link": "/content/pdfs/notes/rough/ConjugateGradient.pdf",
+            "github_repository_link" : "",
             "date": "~2025"
         },
 
@@ -18,13 +28,15 @@
             "note_type": "rough",
             "name": "Hartree-Fock-Bogoliubov mean-field theory",
             "local_link": "/content/pdfs/publications/papers/Lobo_PRB_25/Lobo_PRB_25_appendix.pdf",
+            "github_repository_link" : "",
             "date": "~2024"
         },
 
     "Graphene01":{
             "note_type": "rough",
-            "name": "Graphene",
+            "name": "Hexagonal boron nitride",
             "local_link": "/content/pdfs/notes/rough/Graphene01.pdf",
+            "github_repository_link" : "",
             "date": "~2022"
         }
     
