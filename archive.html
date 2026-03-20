@@ -19,43 +19,18 @@
 
     <main class="main-content">
         <section class="archive-section">
-            <!-- Search controls -->
             <div class="controls-container">
                 <div class="search-container">
                     <input type="text" id="search-input" placeholder="Search...">
                 </div>
+                <div class="toggle-container">
+                    <button class="toggle-btn active" data-type="logbook">Logbooks</button>
+                    <button class="toggle-btn active" data-type="study">Studies</button>
+                    <button class="toggle-btn" data-type="note">Notes</button>
+                </div>
             </div>
             <div class="result-counter" id="result-counter"></div>
-            
-            <!-- Logbooks Section -->
-            <div class="section-wrapper">
-                <div class="section-header">
-                    <p class="section-description">Continuously developed, long-term, refined bodies of work</p>
-                </div>
-                <div class="logbooks-container" id="logbooks-container"></div>
-            </div>
-            
-            <!-- Separator -->
-            <div class="section-separator"></div>
-            
-            <!-- Studies Section -->
-            <div class="section-wrapper">
-                <div class="section-header">
-                    <p class="section-description">Detailed theoretical work that forms the backbone of my papers’ appendices.</p>
-                </div>
-                <div class="studies-container" id="studies-container"></div>
-            </div>
-            
-            <!-- Separator -->
-            <div class="section-separator"></div>
-            
-            <!-- Notes Section -->
-            <div class="section-wrapper">
-                <div class="section-header">
-                    <p class="section-description">Quick, rough notes capturing ideas, clarifications, and early understanding.</p>
-                </div>
-                <div class="notes-container" id="notes-container"></div>
-            </div>
+            <div class="entries-container" id="entries-container"></div>
         </section>
     </main>
 

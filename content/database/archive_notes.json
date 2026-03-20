@@ -1,9 +1,17 @@
 {
 
-    "TensorTrains":{
+    "TensorTrainsNotes":{
             "archive_type": "note",
-            "name": "Tensor Trains and Quantics",
+            "name": "Quantics TCI integral evaluations notes",
             "local_link": "/content/pdfs/archive/notes/TensorTrains.pdf",
+            "github_repository_link" : "",
+            "date": "~2025"
+        },
+
+    "TensorTrainsCode":{
+            "archive_type": "note",
+            "name": "Quantics TCI integral evaluations code",
+            "local_link": "",
             "github_repository_link" : "https://github.com/franciscolobo1880/QuanticsTensorTrainsTests",
             "date": "~2025"
         },

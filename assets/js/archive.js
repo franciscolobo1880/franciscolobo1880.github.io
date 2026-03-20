@@ -9,19 +9,20 @@
     let notes = {};
 
     // State
+    let activeToggles = new Set(['logbook', 'study']);
     let searchQuery = '';
 
     // Initialize
     async function init() {
         await loadAllData();
         setupControls();
-        renderArchive();
+        renderEntries();
     }
 
     // Load all JSON data
     async function loadAllData() {
         const basePath = 'content/database/';
-        
+
         const [logbooksRes, studiesRes, notesRes] = await Promise.all([
             fetch(basePath + 'archive_logbooks.json'),
             fetch(basePath + 'archive_studies.json'),
@@ -38,23 +39,40 @@
         const searchInput = document.getElementById('search-input');
         searchInput.addEventListener('input', function() {
             searchQuery = this.value.toLowerCase();
-            renderArchive();
+            renderEntries();
+        });
+
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const type = this.dataset.type;
+                if (activeToggles.has(type)) {
+                    activeToggles.delete(type);
+                    this.classList.remove('active');
+                } else {
+                    activeToggles.add(type);
+                    this.classList.add('active');
+                }
+                renderEntries();
+            });
         });
     }
 
-    // Extract year from date for sorting
+    // Extract year from date string
     function extractYear(dateStr) {
-        if (!dateStr) return 0;
+        if (!dateStr) return null;
         const match = dateStr.match(/(\d{4})/);
-        return match ? parseInt(match[1]) : 0;
+        return match ? parseInt(match[1]) : null;
     }
 
     // Check if entry matches search
     function matchesSearch(entry, key) {
         if (!searchQuery) return true;
-        
+
         const searchableFields = [
             entry.name,
+            entry.date,
+            entry.archive_type,
             key
         ];
 
@@ -62,234 +80,156 @@
         return searchText.includes(searchQuery);
     }
 
-    // Render logbook entry
-    function renderLogbookEntry(key, entry) {
-        let linksHtml = '';
+    // Get link icon
+    function getLinkIcon(linkType) {
+        const icons = {
+            local_link: 'fas fa-file-pdf',
+            github_repository_link: 'fab fa-github',
+            supplementary_worksheet_link: 'fas fa-file-alt'
+        };
 
-        if (entry.local_link) {
-            linksHtml += `
-                <a href="${entry.local_link}" class="log-link" target="_blank" rel="noopener">
-                    <i class="fas fa-file-pdf"></i>
-                    <span>PDF</span>
-                </a>
-            `;
-        }
-
-        if (entry.github_repository_link) {
-            linksHtml += `
-                <a href="${entry.github_repository_link}" class="log-link" target="_blank" rel="noopener">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-            `;
-        }
-
-        if (entry.supplementary_worksheet_link) {
-            linksHtml += `
-                <a href="${entry.supplementary_worksheet_link}" class="log-link" target="_blank" rel="noopener">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Worksheet</span>
-                </a>
-            `;
-        }
-
-        return `
-            <div class="log-card" data-key="${key}">
-                <div class="log-header">
-                    <span class="log-type">Logbook</span>
-                </div>
-                <div class="log-title">${entry.name}</div>
-                ${linksHtml ? `<div class="log-links">${linksHtml}</div>` : ''}
-            </div>
-        `;
+        return icons[linkType] || 'fas fa-link';
     }
 
-    // Render study entry
-    function renderStudyEntry(key, entry) {
-        let linksHtml = '';
+    // Get link label
+    function getLinkLabel(linkType) {
+        const labels = {
+            local_link: 'PDF',
+            github_repository_link: 'GitHub',
+            supplementary_worksheet_link: 'Worksheet'
+        };
 
-        if (entry.local_link) {
-            linksHtml += `
-                <a href="${entry.local_link}" class="study-link" target="_blank" rel="noopener">
-                    <i class="fas fa-file-pdf"></i>
-                    <span>PDF</span>
-                </a>
-            `;
-        }
-
-        if (entry.github_repository_link) {
-            linksHtml += `
-                <a href="${entry.github_repository_link}" class="study-link" target="_blank" rel="noopener">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-            `;
-        }
-
-        return `
-            <div class="study-card" data-key="${key}">
-                <div class="study-header">
-                    <span class="study-type">Study</span>
-                </div>
-                <div class="study-title">${entry.name}</div>
-                ${linksHtml ? `<div class="study-links">${linksHtml}</div>` : ''}
-            </div>
-        `;
+        return labels[linkType] || 'Link';
     }
 
-    // Render note entry
-    function renderNoteEntry(key, entry) {
-        // If github_repository_link exists and is not empty, render with link containers
-        if (entry.github_repository_link) {
-            let linksHtml = `
-                <a href="${entry.local_link}" class="note-link" target="_blank" rel="noopener">
-                    <i class="fas fa-file-pdf"></i>
-                    <span>PDF</span>
-                </a>
-                <a href="${entry.github_repository_link}" class="note-link" target="_blank" rel="noopener">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-            `;
-            
-            return `
-                <div class="note-card-container" data-key="${key}">
-                    <div class="note-header-static">
-                        <span class="note-type">Note</span>
-                    </div>
-                    <div class="note-title-static">${entry.name}</div>
-                    <div class="note-links">${linksHtml}</div>
-                </div>
-            `;
-        }
-        
-        // Default: clickable card linking to PDF
-        return `
-            <a href="${entry.local_link}" class="note-card" data-key="${key}" target="_blank" rel="noopener">
-                <div class="note-header">
-                    <span class="note-type">Note</span>
-                    <span class="note-title">${entry.name}</span>
-                    <i class="fas fa-file-pdf note-icon"></i>
-                </div>
-            </a>
-        `;
-    }
-
-    // Collect and sort entries
-    function collectLogbooks() {
-        const entries = [];
-        
-        for (const [key, entry] of Object.entries(logbooks)) {
-            if (matchesSearch(entry, key)) {
-                entries.push({ key, entry, year: extractYear(entry.date) });
-            }
-        }
-
-        // Sort by year descending (most recent first)
-        entries.sort((a, b) => b.year - a.year);
-        
-        return entries;
-    }
-
-    function collectStudies() {
-        const entries = [];
-        
-        for (const [key, entry] of Object.entries(studies)) {
-            if (matchesSearch(entry, key)) {
-                entries.push({ key, entry, year: extractYear(entry.date) });
-            }
-        }
-
-        // Sort by year descending (most recent first)
-        entries.sort((a, b) => b.year - a.year);
-        
-        return entries;
-    }
-
-    function collectNotes() {
-        const entries = [];
-        
-        for (const [key, entry] of Object.entries(notes)) {
-            if (matchesSearch(entry, key)) {
-                entries.push({ key, entry, year: extractYear(entry.date) });
-            }
-        }
-
-        // Sort by year descending (most recent first)
-        entries.sort((a, b) => b.year - a.year);
-        
-        return entries;
-    }
-
-    // Render all archive sections
-    function renderArchive() {
-        const archiveSection = document.querySelector('.archive-section');
-        const counterElement = document.getElementById('result-counter');
-        const logbooksContainer = document.getElementById('logbooks-container');
-        const studiesContainer = document.getElementById('studies-container');
-        const notesContainer = document.getElementById('notes-container');
-        const logbooksWrapper = logbooksContainer.closest('.section-wrapper');
-        const studiesWrapper = studiesContainer.closest('.section-wrapper');
-        const notesWrapper = notesContainer.closest('.section-wrapper');
-
-        const logbookEntries = collectLogbooks();
-        const studyEntries = collectStudies();
-        const noteEntries = collectNotes();
-        const totalResults = logbookEntries.length + studyEntries.length + noteEntries.length;
-        const isSearchActive = searchQuery.trim().length > 0;
-
-        // Mirror publications counter text format.
-        counterElement.innerHTML = `<span>${totalResults}</span> result${totalResults !== 1 ? 's' : ''}`;
-        archiveSection.classList.toggle('search-active', isSearchActive);
-
-        const sectionStates = [
-            { wrapper: logbooksWrapper, hasResults: logbookEntries.length > 0 },
-            { wrapper: studiesWrapper, hasResults: studyEntries.length > 0 },
-            { wrapper: notesWrapper, hasResults: noteEntries.length > 0 }
+    // Collect all non-empty links in display order.
+    function getEntryLinks(entry) {
+        const linkFields = [
+            'local_link',
+            'supplementary_worksheet_link',
+            'github_repository_link'
         ];
 
-        let hasPreviousVisibleSection = false;
-        sectionStates.forEach(({ wrapper, hasResults }) => {
-            wrapper.classList.toggle('has-results', hasResults);
-            wrapper.classList.toggle('search-stacked', isSearchActive && hasResults && hasPreviousVisibleSection);
+        const links = [];
 
-            if (hasResults) {
-                hasPreviousVisibleSection = true;
+        linkFields.forEach(field => {
+            const value = entry[field];
+            if (typeof value === 'string' && value.trim()) {
+                links.push({
+                    url: value,
+                    icon: getLinkIcon(field),
+                    label: getLinkLabel(field)
+                });
             }
         });
 
-        // Render logbooks
-        if (logbookEntries.length === 0) {
-            logbooksContainer.innerHTML = '<div class="no-results">No logbooks match the search.</div>';
-        } else {
-            let logbooksHtml = '';
-            logbookEntries.forEach(({ key, entry }) => {
-                logbooksHtml += renderLogbookEntry(key, entry);
-            });
-            logbooksContainer.innerHTML = logbooksHtml;
+        return links;
+    }
+
+    // Build links HTML
+    function buildLinksHtml(links) {
+        let html = '';
+
+        links.forEach(link => {
+            html += `
+                <a href="${link.url}" class="archive-link" target="_blank" rel="noopener">
+                    <i class="${link.icon}"></i>
+                    <span>${link.label}</span>
+                </a>
+            `;
+        });
+
+        return html;
+    }
+
+    // Render archive entry
+    function renderArchiveEntry(key, entry, type) {
+        const links = getEntryLinks(entry);
+        const isSingleLink = links.length === 1;
+        const linksHtml = isSingleLink ? '' : buildLinksHtml(links);
+        const typeLabel = type === 'logbook' ? 'Logbook' : type === 'study' ? 'Study' : 'Note';
+
+        if (isSingleLink) {
+            return `
+                <a href="${links[0].url}" class="archive-card archive-card-clickable archive-card-single-link" data-type="${type}" data-key="${key}" target="_blank" rel="noopener">
+                    <div class="archive-header">
+                        <span class="archive-type">${typeLabel}</span>
+                        <span class="archive-date">${entry.date || ''}</span>
+                    </div>
+                    <div class="archive-title">${entry.name}</div>
+                </a>
+            `;
         }
 
-        // Render studies
-        if (studyEntries.length === 0) {
-            studiesContainer.innerHTML = '<div class="no-results">No studies match the search.</div>';
-        } else {
-            let studiesHtml = '';
-            studyEntries.forEach(({ key, entry }) => {
-                studiesHtml += renderStudyEntry(key, entry);
-            });
-            studiesContainer.innerHTML = studiesHtml;
+        return `
+            <div class="archive-card" data-type="${type}" data-key="${key}">
+                <div class="archive-header">
+                    <span class="archive-type">${typeLabel}</span>
+                    <span class="archive-date">${entry.date || ''}</span>
+                </div>
+                <div class="archive-title">${entry.name}</div>
+                ${linksHtml ? `<div class="archive-links">${linksHtml}</div>` : ''}
+            </div>
+        `;
+    }
+
+    // Collect all entries
+    function collectEntries() {
+        const entries = [];
+
+        if (activeToggles.has('logbook')) {
+            for (const [key, entry] of Object.entries(logbooks)) {
+                if (matchesSearch(entry, key)) {
+                    entries.push({ key, entry, type: 'logbook' });
+                }
+            }
         }
 
-        // Render notes
-        if (noteEntries.length === 0) {
-            notesContainer.innerHTML = '<div class="no-results">No notes match the search.</div>';
-        } else {
-            let notesHtml = '';
-            noteEntries.forEach(({ key, entry }) => {
-                notesHtml += renderNoteEntry(key, entry);
-            });
-            notesContainer.innerHTML = notesHtml;
+        if (activeToggles.has('study')) {
+            for (const [key, entry] of Object.entries(studies)) {
+                if (matchesSearch(entry, key)) {
+                    entries.push({ key, entry, type: 'study' });
+                }
+            }
         }
+
+        if (activeToggles.has('note')) {
+            for (const [key, entry] of Object.entries(notes)) {
+                if (matchesSearch(entry, key)) {
+                    entries.push({ key, entry, type: 'note' });
+                }
+            }
+        }
+
+        // Sort by year descending (most recent first).
+        entries.sort((a, b) => {
+            const aYear = extractYear(a.entry.date) || 0;
+            const bYear = extractYear(b.entry.date) || 0;
+            return bYear - aYear;
+        });
+
+        return entries;
+    }
+
+    // Render all entries
+    function renderEntries() {
+        const container = document.getElementById('entries-container');
+        const counterElement = document.getElementById('result-counter');
+        const entries = collectEntries();
+
+        counterElement.innerHTML = `<span>${entries.length}</span> result${entries.length !== 1 ? 's' : ''}`;
+
+        if (entries.length === 0) {
+            container.innerHTML = '<div class="no-results">No archive entries match the current filters.</div>';
+            return;
+        }
+
+        let html = '';
+        entries.forEach(({ key, entry, type }) => {
+            html += renderArchiveEntry(key, entry, type);
+        });
+
+        container.innerHTML = html;
     }
 
     // Start
