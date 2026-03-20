@@ -1,0 +1,35 @@
+{
+
+    "TensorTrains":{
+            "archive_type": "note",
+            "name": "Tensor Trains and Quantics",
+            "local_link": "/content/pdfs/archive/notes/TensorTrains.pdf",
+            "github_repository_link" : "https://github.com/franciscolobo1880/QuanticsTensorTrainsTests",
+            "date": "~2025"
+        },
+
+    "LittleParksEffect":{
+            "archive_type": "note",
+            "name": "Little-Parks effect",
+            "local_link": "/content/pdfs/archive/notes/LittleParksEffect.pdf",
+            "github_repository_link" : "",
+            "date": "~2025"
+        },
+
+    "ConjugateGradient":{
+            "archive_type": "note",
+            "name": "Conjugate gradient method",    
+            "local_link": "/content/pdfs/archive/notes/ConjugateGradient.pdf",
+            "github_repository_link" : "",
+            "date": "~2025"
+        },
+
+    "Graphene01":{
+            "archive_type": "note",
+            "name": "Hexagonal boron nitride",
+            "local_link": "/content/pdfs/archive/notes/Graphene01.pdf",
+            "github_repository_link" : "",
+            "date": "~2022"
+        }
+    
+}
