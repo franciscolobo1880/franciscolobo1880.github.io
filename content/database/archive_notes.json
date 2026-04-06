@@ -32,10 +32,74 @@
             "date": "~2025"
         },
 
-    "Graphene01":{
+    "MinhoManyBodyCottam":{
             "archive_type": "note",
-            "name": "Hexagonal boron nitride",
-            "local_link": "/content/pdfs/archive/notes/Graphene01.pdf",
+            "name": "Minho's many-body physics class: Cottam's problems solutions",
+            "local_link": "/content/pdfs/archive/notes/MinhoManyBodyCottam.pdf",
+            "github_repository_link" : "",
+            "date": "~2022"
+        },
+
+    "MinhoManyBody02":{
+            "archive_type": "note",
+            "name": "Minho's many-body physics class: 2nd exam",
+            "local_link": "/content/pdfs/archive/notes/MinhoManyBody02.pdf",
+            "github_repository_link" : "",
+            "date": "~2022"
+        },
+
+    "MinhoManyBody01":{
+            "archive_type": "note",
+            "name": "Minho's many-body physics class: 1st exam",
+            "local_link": "/content/pdfs/archive/notes/MinhoManyBody01.pdf",
+            "github_repository_link" : "",
+            "date": "~2022"
+        },
+
+    "MinhoSemiconductorPhysics":{
+            "archive_type": "note",
+            "name": "Minho's semiconductor physics class: Hexagonal boron nitride",
+            "local_link": "/content/pdfs/archive/notes/MinhoSemiconductorPhysics.pdf",
+            "github_repository_link" : "",
+            "date": "~2022"
+        },
+
+    "MinhoGroupTheory02":{
+            "archive_type": "note",
+            "name": "Minho's group theory class: exam",
+            "local_link": "/content/pdfs/archive/notes/MinhoGroupTheory02.pdf",
+            "github_repository_link" : "",
+            "date": "~2022"
+        },
+
+    "MinhoGroupTheory01":{
+            "archive_type": "note",
+            "name": "Minho's group theory class: notes",
+            "local_link": "/content/pdfs/archive/notes/MinhoGroupTheory01.pdf",
+            "github_repository_link" : "",
+            "date": "~2022"
+        },
+
+    "MinhoTensorCalculus":{
+            "archive_type": "note",
+            "name": "Minho's tensor calculus class: exercises",
+            "local_link": "/content/pdfs/archive/notes/MinhoTensorCalculus.pdf",
+            "github_repository_link" : "",
+            "date": "~2022"
+        },
+
+    "MinhoQuantum01":{
+            "archive_type": "note",
+            "name": "Minho's quantum mechanics class: exercises",
+            "local_link": "/content/pdfs/archive/notes/MinhoQuantum01.pdf",
+            "github_repository_link" : "",
+            "date": "~2022"
+        },
+
+    "MinhoQuantumComputing":{
+            "archive_type": "note",
+            "name": "Minho's quantum computing class: Graphene plasmons",
+            "local_link": "/content/pdfs/archive/notes/MinhoQuantumComputing.pdf",
             "github_repository_link" : "",
             "date": "~2022"
         }
