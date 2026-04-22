@@ -1,4 +1,14 @@
 {
+    "UAM26":{
+        "curriculum_type": "conference",
+        "medium": "",
+        "name": "UAM doctorate annual meeting",
+        "date": "May 2026",
+        "city": "Madrid, Spain",
+        "link": "",
+        "work": ""
+    },
+
     "Villard26":{
         "curriculum_type": "conference",
         "medium": "poster",
@@ -6,7 +16,7 @@
         "date": "February 2026",
         "city": "Villard-de-Lans, France",
         "link": "https://iwssh.sciencesconf.org/",
-        "work": "Lobo:PRB26"
+        "work": " "
     },
 
     "Madrid25":{
