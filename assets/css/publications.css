@@ -1,20 +1,20 @@
 /* Publications Page Styles */
 
 :root {
-    --bg-primary: #121518;
-    --bg-secondary: #1a1d21;
-    --bg-tertiary: #22262b;
-    --bg-header: #16181c;
-    --bg-controls: #1e2126;
-    --text-primary: #e8eaec;
-    --text-secondary: #a0a4a8;
-    --text-muted: #6c7075;
+    --bg-primary: #2a2d31;
+    --bg-secondary: #34383d;
+    --bg-tertiary: #3f444a;
+    --bg-header: #2f3338;
+    --bg-controls: #383d43;
+    --text-primary: #f1f3f5;
+    --text-secondary: #d5d9de;
+    --text-muted: #b1b7bf;
     --accent: #ffce3a;
     --accent-hover: #ffd85c;
     --accent-dim: #d4aa30;
-    --border-color: #2a2e33;
-    --border-header: #252830;
-    --shadow: rgba(0, 0, 0, 0.4);
+    --border-color: #4a5058;
+    --border-header: #444a52;
+    --shadow: rgba(0, 0, 0, 0.22);
 }
 
 * {
