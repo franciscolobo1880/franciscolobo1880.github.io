@@ -1,12 +1,12 @@
 {
     "UAM26":{
         "curriculum_type": "conference",
-        "medium": "",
+        "medium": "poster",
         "name": "UAM doctorate annual meeting",
         "date": "May 2026",
         "city": "Madrid, Spain",
         "link": "",
-        "work": ""
+        "work": "LittleParks"
     },
 
     "Villard26":{
@@ -16,7 +16,7 @@
         "date": "February 2026",
         "city": "Villard-de-Lans, France",
         "link": "https://iwssh.sciencesconf.org/",
-        "work": " "
+        "work": "LittleParks"
     },
 
     "Madrid25":{

@@ -1,4 +1,19 @@
 {
+    "Manesco":{
+        "name": "Antonio Manesco",
+        "google_scholar_link": "https://scholar.google.com/citations?user=NnwQ6j0AAAAJ&hl=pt-BR"
+    },
+
+    "Sun":{
+        "name": "Yitao Sun",
+        "google_scholar_link": "https://scholar.google.com/citations?user=JLBo0eEAAAAJ&hl=zh-CN"
+    },
+
+    "Moustaj":{
+        "name": "Anouar Moustaj",
+        "google_scholar_link": "https://scholar.google.com/citations?user=ZiKEF0gAAAAJ&hl=en"
+    },
+
     "Lado":{
         "name": "José Lado",
         "google_scholar_link": "https://scholar.google.es/citations?user=Ns-grioAAAAJ&hl=es"
