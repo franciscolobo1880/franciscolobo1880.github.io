@@ -1,14 +1,4 @@
 {
-    "Copenhagen26":{
-        "curriculum_type": "visit",
-        "name": "Niels Bohr Institute",
-        "date": "September 2026 (3 months)",
-        "city": "København, Denmark",
-        "link": "https://nbi.ku.dk/english/",
-        "topic": "Mean-field superconductivity",
-        "collaborators": ["Manesco"]
-    },
-
     "Aalto26":{
         "curriculum_type": "visit",
         "name": "Aalto University",
