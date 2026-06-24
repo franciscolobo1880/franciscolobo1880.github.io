@@ -1,4 +1,20 @@
 {
+
+    "Guinea":{
+        "name": "Francisco Guinea",
+        "google_scholar_link": "https://scholar.google.com/citations?user=5FPqkUgAAAAJ&hl=en"
+    },
+
+    "Mele":{
+        "name": "Eugene Mele",
+        "google_scholar_link": "https://www.semanticscholar.org/author/E.-Mele/4119373"
+    },
+
+    "Phong":{
+        "name": "Vo Tien Phong",
+        "google_scholar_link": "https://www.semanticscholar.org/author/V%C3%B5-Ti%E1%BA%BFn-Phong/102918072"
+    },
+
     "Manesco":{
         "name": "Antonio Manesco",
         "google_scholar_link": "https://scholar.google.com/citations?user=NnwQ6j0AAAAJ&hl=pt-BR"
